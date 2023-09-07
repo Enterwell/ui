@@ -1,0 +1,15 @@
+import { theme } from '../components/theme';
+import { ThemeProvider } from '@mui/material';
+import { inter } from '../src/fonts.ts';
+import '../styles/global.css';
+
+
+export default function App({ Component, pageProps }) {
+  return (
+    <main className={`${inter.variable} font-sans`}>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </main>
+  );
+}
