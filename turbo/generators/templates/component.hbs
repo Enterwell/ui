@@ -1,0 +1,15 @@
+import { type HTMLAttributes } from 'react';
+
+export type {{ pascalCase name }}Props = HTMLAttributes<HTMLDivElement> & { 
+  value?: string;
+};
+
+export function {{ pascalCase name }}({ value, children, ...rest }: {{ pascalCase name }}Props) {
+  return (
+    <div {...rest}>
+      <div>{{ name }}</div>
+      <span>{value}</span>
+      {children}
+    </div>
+  );
+};

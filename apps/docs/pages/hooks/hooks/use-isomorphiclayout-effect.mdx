@@ -1,0 +1,13 @@
+# useIsomorphicLayoutEffect
+
+Use `useIsomorphicLayoutEffect` to run layout effects in both the server and the client.
+
+This hook runs `useLayoutEffect` on the client and `useEffect` on the server.
+
+```ts filename="demo.ts" {3-6}
+import { useIsomorphicLayoutEffect } from '@enterwell/hooks';
+
+useIsomorphicLayoutEffect(() => {
+    // Layout effect code here
+});
+```

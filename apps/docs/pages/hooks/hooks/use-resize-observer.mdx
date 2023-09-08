@@ -1,0 +1,18 @@
+# useDebounce
+
+Use `useResizeObserver` to observe the size of an element. The hook returns a ref that you need to attach to the element you want to observe. The callback function is called with the element and the `ResizeObserverEntry` object.
+
+```tsx filename="demo.ts" {3-6,9-11}
+import { useResizeObserver } from '@enterwell/hooks';
+
+const resizeObserverRef = useResizeObserver((_, entry) => {
+    const { width, height } = entry.contentRect;
+    // Do something with width and height
+});
+
+return (
+    <div ref={resizeObserverRef}>
+        ...
+    </div>
+);
+```

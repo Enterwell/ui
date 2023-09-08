@@ -1,0 +1,15 @@
+{
+  "index": "Home",
+  "ui": {
+    "title": "UI",
+    "type": "page"
+  },
+  "hooks": {
+    "title": "Hooks",
+    "type": "page"
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  }
+}

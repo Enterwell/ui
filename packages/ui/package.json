@@ -1,0 +1,46 @@
+{
+  "name": "@enterwell/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/index.js"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev:js": "tsup index.tsx --watch --format esm --dts --outDir dist",
+    "dev": "pnpm run \"/^dev:.*/\"",
+    "before-build:clean": "rimraf dist",
+    "build:js": "tsup index.tsx --format esm --dts --outDir dist",
+    "after-build:api": "api-extractor run",
+    "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@enterwell/hooks": "workspace:*",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@microsoft/api-extractor": "^7.36.4",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/material": "^5.14.8",
+    "@mui/system": "^5.14.8",
+    "@types/node": "^20.5.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint-config-custom": "workspace:*",
+    "react": "^18.2.0",
+    "rimraf": "^5.0.1",
+    "tsconfig": "workspace:*",
+    "tsup": "7.2.0",
+    "typescript": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.8",
+    "@mui/system": "^5.14.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
