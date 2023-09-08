@@ -1,6 +1,6 @@
 # @enterwell/ui
 
-This is an official Enterwell UI library.
+Official Enterwell UI library.
 
 ## What's inside?
 
@@ -12,6 +12,8 @@ This library includes the following packages/apps:
 - `ui`: a stub React component library documented in `docs` and published on npm
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+## Development
 
 ### Build
 
@@ -35,8 +37,12 @@ pnpm dev
 
 #### Create new component
 
-Run following command and select appropriate generator:
+Run following command and select appropriate generator and modify generated files.
 
 ```bash
 pnpm turbo gen
 ```
+
+Available generators:
+
+- component
