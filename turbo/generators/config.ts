@@ -41,13 +41,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "add",
         path: "apps/docs/pages/ui/components/{{kebabCase name}}.mdx",
         templateFile: "templates/componentDocsPage.hbs",
-      },
-      {
-        type: "append",
-        path: "apps/docs/pages/ui/components/_meta.json",
-        pattern: /(?<insertion>"\n)}/g,
-        template: ',\n    "{{kebabCase name}}": "{{pascalCase name}}",\n',
-      },
+      }
     ],
   });
 }

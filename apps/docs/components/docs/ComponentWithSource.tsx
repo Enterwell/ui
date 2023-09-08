@@ -4,14 +4,17 @@ import { useState } from "react";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Card } from "./Card";
+import cx from "classix";
 
 type ComponentWithSourceProps = React.HTMLAttributes<HTMLDivElement> & {
   component: React.FunctionComponent;
+  centered?: boolean;
 }
 
 export function ComponentWithSource({
   children,
   component,
+  centered,
   ...rest
 }: ComponentWithSourceProps) {
   const Component = component;
@@ -30,7 +33,9 @@ export function ComponentWithSource({
         </TabList>
       </Box>
       <TabPanel value="preview">
-        <Card>
+        <Card className={cx(
+          centered && "p-2 min-h-[280px] flex gap-2 items-center justify-center"
+        )}>
           <Component />
         </Card>
       </TabPanel>
