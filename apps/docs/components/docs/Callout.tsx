@@ -1,4 +1,4 @@
-import cx from 'clsx';
+import cx from 'classix';
 import type { ReactElement, ReactNode } from 'react'
 
 const TypeToEmoji = {

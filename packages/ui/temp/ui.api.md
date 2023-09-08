@@ -4,7 +4,25 @@
 
 ```ts
 
+import { ButtonProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
+import { ReactElement } from 'react';
+
+// @public
+export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): JSX.Element;
+
+// @public
+export type DropdownButtonOption = {
+    label: string | ReactElement;
+    value: string;
+};
+
+// @public
+export type DropdownButtonProps = ButtonProps & {
+    options?: DropdownButtonOption[];
+    icon?: ReactElement;
+    onClick?: (event: any, value: any) => void;
+};
 
 // @public
 export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawerProps): JSX.Element;

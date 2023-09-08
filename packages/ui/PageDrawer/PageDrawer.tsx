@@ -2,8 +2,7 @@ import { type HTMLAttributes, useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { Box } from '@mui/system';
 import { ExpandMore } from '@mui/icons-material';
-import useDebounce from '../hooks/useDebounce';
-import useResizeObserver from '../hooks/useResizeObserver';
+import { useDebounce, useResizeObserver } from '@enterwell/hooks';
 
 /**
  * The PageDrawer component props.

@@ -17,11 +17,15 @@
 			"path": "packages/eslint-config-custom"
 		},
 		{
+			"name": "📦 @enterwell/hooks",
+			"path": "packages/hooks"
+		},
+		{
 			"name": "📦 tsconfig",
 			"path": "packages/tsconfig"
 		},
 		{
-			"name": "📦 ui",
+			"name": "📦 @enterwell/ui",
 			"path": "packages/ui"
 		}
 	],

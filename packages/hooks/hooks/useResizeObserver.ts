@@ -3,10 +3,11 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
  * The resize observer hook.
- * @param {function} callback The callback.
- * @returns {object} The ref.
+ * @param callback - The callback.
+ * @returns The ref.
+ * @public
  */
-export default function useResizeObserver(callback: (element: never, entry: ResizeObserverEntry) => void) {
+export function useResizeObserver(callback: (element: any, entry: ResizeObserverEntry) => void) {
     const ref = useRef(null);
 
     useIsomorphicLayoutEffect(() => {
