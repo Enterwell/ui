@@ -9,7 +9,7 @@ const availablePackages = [
 export function PackagesList() {
     return (
         <div className="flex flex-col items-center">
-            <div className="grid grid-cols-2 gap-4 py-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-20">
                 {availablePackages.map((pkg) => (
                     <Card key={pkg.name} className="rounded-lg border bg-card shadow-xl">
                         <CardActionArea href={pkg.href}>
