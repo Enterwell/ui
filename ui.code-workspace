@@ -1,10 +1,6 @@
 {
 	"folders": [
 		{
-			"name": "🚀 web",
-			"path": "apps/web"
-		},
-		{
 			"name": "✨ ui",
 			"path": "."
 		},
