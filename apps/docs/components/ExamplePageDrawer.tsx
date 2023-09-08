@@ -5,10 +5,13 @@ export function ExamplePageDrawer() {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className='relative' style={{position: 'relative', height: 300}}>
-        <PageDrawer expanded={expanded} onChange={() => setExpanded((curr) => !curr)}>
-            <span>Content</span>
-        </PageDrawer>
+        <div className="flex flex-col items-center justify-center relative h-72 overflow-hidden rounded-lg">
+            <span>Page content</span>
+            <PageDrawer
+                expanded={expanded}
+                onChange={() => setExpanded((curr) => !curr)}>
+                <span>Drawer content</span>
+            </PageDrawer>
         </div>
     )
 }

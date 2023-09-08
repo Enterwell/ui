@@ -26,7 +26,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Enterwell UI Docs',
   },
-  primaryHue: NaN
+  primaryHue: 8
 }
 
 export default config

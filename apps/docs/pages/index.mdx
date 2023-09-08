@@ -1,6 +1,32 @@
-import { Callout } from '../components/Callout';
+import { Callout } from '../components/Docs/Callout';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { CardActionArea } from '@mui/material';
 
-<Callout type="warning">Docs for this section is under construction.</Callout>
+<h1 className="mt-12 lg:!mt-20 mx-6 w-[300px] md:!w-full font-extrabold text-5xl lg:text-6xl leading-tight xl:leading-snug text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-black/80 to-black dark:from-white dark:to-[#AAAAAA]">Enterwell {'<UI \\>'}</h1>
+<p className="mx-6 text-xl md:text-2xl text-center text-[#666666] dark:text-[#888888]"></p>
 
-- [UI](/ui)
-- [Hooks](/hooks)
+<div class="flex flex-col items-center">
+    <div className="grid grid-cols-2 gap-4 py-20">
+        <Card>
+            <CardActionArea href="/ui/about">
+                <CardContent className="flex items-center justify-center aspect-square">
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="text-4xl font-extrabold drop-shadow-[0_0_32px_hsl(var(--foreground))]">UI</div>
+                        <div className="text-muted-foreground text-center">React component library.</div>
+                    </div>
+                </CardContent>
+            </CardActionArea>
+        </Card>
+        <Card>
+            <CardActionArea href="/ui/hooks">
+                <CardContent className="flex items-center justify-center aspect-square">
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="text-4xl font-extrabold drop-shadow-[0_0_32px_hsl(var(--foreground))]">Hooks</div>
+                        <div className="text-muted-foreground text-center">React hooks library.</div>
+                    </div>
+                </CardContent>
+            </CardActionArea>
+        </Card>
+    </div>
+</div>

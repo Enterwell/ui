@@ -2,16 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+:is(html[class~=dark] .dark\:hover\:nx-bg-primary-100\/5:hover) {
+  background-color: hsl(0 0% 94%/.05);
+}
 :is(html[class~=dark] .dark\:nx-border-primary-100\/10) {
-  border-color: rgba(229, 231, 235, 0.1) !important;
+  border-color: rgba(229, 231, 235, 0.1);
 }
 
 :is(html[class~=dark] .dark\:nx-bg-primary-300\/10) {
-  background-color: rgba(130, 130, 130, 0.1) !important;
+  background-color: rgba(130, 130, 130, 0.1);
 }
 
+:is(html[class~=dark] .dark\:nx-bg-primary-400\/10) {
+  background-color: rgba(130, 130, 130, 0.1);
+}
+
+:is(html[class~=dark] .dark\:nx-bg-primary-500\/10),
+.nx-bg-primary-500\/10 {
+  background-color: hsl(0 0% 50%/.1);
+}
+
+:is(html[class~=dark] .nx-text-primary-600),
 :is(html[class~=dark] .dark\:nx-text-primary-600) {
-  background-color: rgba(130, 130, 130, 0.1) !important;
+  color: white;
+}
+
+:is(html[class~=dark] a:focus-visible),
+:is(html[class~=dark] button:focus-visible),
+:is(html[class~=dark] input:focus-visible) {
+  --tw-ring-color: hsl(0 0% 32%/var(--tw-ring-opacity));
+  --tw-ring-offset-color: hsl(0 0% 39%);
+}
+
+code .line.highlighted {
+  color: white;
+  background-color: rgba(130, 130, 130, 0.1);
 }
 
 @layer base {

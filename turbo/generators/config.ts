@@ -14,21 +14,39 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
     ],
     actions: [
+      // UI Library
       {
         type: "add",
-        path: "{{pascalCase name}}/{{pascalCase name}}.tsx",
+        path: "packages/ui/{{pascalCase name}}/{{pascalCase name}}.tsx",
         templateFile: "templates/component.hbs",
       },
       {
         type: "add",
-        path: "{{pascalCase name}}/index.tsx",
+        path: "packages/ui/{{pascalCase name}}/index.tsx",
         templateFile: "templates/componentIndex.hbs",
       },
       {
         type: "append",
-        path: "index.tsx",
+        path: "packages/ui/index.tsx",
         pattern: /(?<insertion>\/\/ component exports)/g,
         template: 'export * from "./{{pascalCase name}}";',
+      },
+      // Docs
+      {
+        type: "add",
+        path: "apps/docs/components/Example{{pascalCase name}}.tsx",
+        templateFile: "templates/componentDocsExample.hbs",
+      },
+      {
+        type: "add",
+        path: "apps/docs/pages/ui/components/{{kebabCase name}}.mdx",
+        templateFile: "templates/componentDocsPage.hbs",
+      },
+      {
+        type: "append",
+        path: "apps/docs/pages/ui/components/_meta.json",
+        pattern: /(?<insertion>"\n)}/g,
+        template: ',\n    "{{kebabCase name}}": "{{pascalCase name}}",\n',
       },
     ],
   });
