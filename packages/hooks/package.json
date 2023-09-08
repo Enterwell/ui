@@ -9,10 +9,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev:js": "tsup index.tsx --watch --format esm --dts --outDir dist",
+    "dev:js": "tsup index.ts --watch --format esm --dts --outDir dist",
     "dev": "pnpm run \"/^dev:.*/\"",
     "before-build:clean": "rimraf dist",
-    "build:js": "tsup index.tsx --format esm --dts --outDir dist",
+    "build:js": "tsup index.ts --format esm --dts --outDir dist",
     "after-build:api": "api-extractor run",
     "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
     "lint": "eslint ."

@@ -44,4 +44,34 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       }
     ],
   });
+  plop.setGenerator("hook", {
+    description: "Adds a new hook",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "What is the name of the hook (eg. 'useSomething')?",
+      },
+    ],
+    actions: [
+      // UI Library
+      {
+        type: "add",
+        path: "packages/hooks/hooks/{{camelCase name}}.ts",
+        templateFile: "templates/hook.hbs",
+      },
+      {
+        type: "append",
+        path: "packages/hooks/index.ts",
+        pattern: /(?<insertion>\/\/ hook exports)/g,
+        template: 'export * from "./hooks/{{camelCase name}}";',
+      },
+      // Docs
+      {
+        type: "add",
+        path: "apps/docs/pages/hooks/hooks/{{kebabCase name}}.mdx",
+        templateFile: "templates/hookDocsPage.hbs",
+      }
+    ],
+  });
 }
