@@ -8,8 +8,9 @@ This library includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library documented in `docs` and published on npm
+- `docs`: Documentatino app (built with [nextra](https://nextra.site/))
+- `ui`: a React component library documented in `docs` and published on npm
+- `hooks`: a React hooks library documented in `docs` and published on npm
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
@@ -46,3 +47,4 @@ pnpm turbo gen
 Available generators:
 
 - component
+- hook
