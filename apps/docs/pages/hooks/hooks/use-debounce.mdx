@@ -1,0 +1,10 @@
+# useDebounce
+
+Use `useDebounce` to debounce a value.
+
+```ts filename="demo.ts" {2}
+import { useDebounce } from '@enterwell/hooks';
+
+const [value, setValue] = useState(0);
+const valueDebounced = useDebounce(value, 50);
+```
