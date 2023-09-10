@@ -45,7 +45,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       // Changelog
       {
         type: "add",
-        path: "apps/docs/pages/hooks/hooks/Added {{pascalCase name}} component",
+        path: "packages/ui/changes/Added {{pascalCase name}} component",
       }
     ],
   });
@@ -80,7 +80,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       // Changelog
       {
         type: "add",
-        path: "apps/docs/pages/hooks/hooks/Added {{camelCase name}} hook",
+        path: "packages/changes/Added {{camelCase name}} hook",
       }
     ],
   });
