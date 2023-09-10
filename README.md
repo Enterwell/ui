@@ -1,6 +1,16 @@
-# @enterwell/ui
+<h1 align="center">
+  <a style="display: inline-block;" href="https://enterwell.net" target="_blank">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://enterwell.net/wp-content/uploads/2023/05/ew-logomark-monochrome-negative-256.x71089.svg">
+      <img width="128" height="128" alt="logo" src="https://enterwell.net/wp-content/uploads/2023/05/ew-logomark-monochrome-positive-256.x71089.svg">
+    </picture>
+  </a>
+  <p>Official Enterwell UI library</p>
+</h1>
 
-Official Enterwell UI library.
+<p align="center">
+    Collection of UI packages used for Enterwell projects.
+</p>
 
 ## What's inside?
 
@@ -8,9 +18,12 @@ This library includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: Documentatino app (built with [nextra](https://nextra.site/))
 - `ui`: a React component library documented in `docs` and published on npm
 - `hooks`: a React hooks library documented in `docs` and published on npm
+
+#### Other (not published)
+
+- `docs`: Documentation app (built with [nextra](https://nextra.site/)) - [enterwell.github.io/ui](https://enterwell.github.io/ui/)
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
