@@ -19,7 +19,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://enterwell.slack.com/archives/C03MRCRLFC0',
     icon: (
-      <Image alt="Slack" width={24} height={24} src='/assets/slack.svg' />
+      <Image alt="Slack" width={24} height={24} src='/ui/assets/slack.svg' />
     )
   },
   docsRepositoryBase: 'https://github.com/enterwell/ui',

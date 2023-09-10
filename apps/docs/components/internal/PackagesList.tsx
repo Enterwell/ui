@@ -19,7 +19,7 @@ export function PackagesList() {
                                     <div className="text-muted-foreground text-center">{pkg.description}</div>
                                 </div>
                                 <div className="absolute right-2 bottom-2 opacity-20">
-                                    <Image alt="React" width={32} height={32} src="/assets/react.svg" />
+                                    <Image alt="React" width={32} height={32} src="/ui/assets/react.svg" />
                                 </div>
                             </CardContent>
                         </CardActionArea>
