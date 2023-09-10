@@ -1,0 +1,45 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+      "config:base"
+    ],
+    "packageRules": [
+      {
+        "automerge": true,
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchPackageNames": [
+          "@types/node",
+          "@types/react",
+          "typescript",
+          "eslint",
+          "rimraf"
+        ]
+      },
+      {
+        "matchPackagePatterns": [
+            "*"
+        ],
+        "rangeStrategy": "pin"
+      },
+      {
+          "matchDepTypes": [
+              "engines",
+              "peerDependencies"
+          ],
+          "rangeStrategy": "auto"
+      }
+    ],
+    "dependencyDashboard": true,
+    "assigneesFromCodeOwners": true,
+    "baseBranches": [
+      "stage"
+    ],
+    "prHourlyLimit": 6,
+    "platformAutomerge": true,
+    "platformCommit": true
+  }
