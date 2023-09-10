@@ -80,7 +80,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       // Changelog
       {
         type: "add",
-        path: "packages/changes/Added {{camelCase name}} hook",
+        path: "packages/hooks/changes/Added {{camelCase name}} hook",
       }
     ],
   });
