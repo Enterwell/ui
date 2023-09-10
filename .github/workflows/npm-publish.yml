@@ -1,0 +1,20 @@
+name: Publish npm packages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    
+jobs:
+    publish_ui:
+        uses: './.github/workflows/npm-publish-reusable.yml'
+        with:
+            name: 'ui'
+        secrets: inherit
+    publish_hooks:
+        uses: './.github/workflows/npm-publish-reusable.yml'
+        with:
+            name: 'hooks'
+        secrets: inherit
+        

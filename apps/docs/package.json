@@ -2,6 +2,7 @@
   "name": "docs",
   "version": "0.0.1",
   "description": "Enterwell UI Docs",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
