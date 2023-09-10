@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
       <Image alt="Slack" width={24} height={24} src='/ui/assets/slack.svg' />
     )
   },
-  docsRepositoryBase: 'https://github.com/enterwell/ui',
+  docsRepositoryBase: 'https://github.com/enterwell/ui/tree/stage/apps/docs',
   footer: {
     text: 'Enterwell UI Docs',
   },

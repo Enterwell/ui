@@ -5,7 +5,7 @@
       <img width="128" height="128" alt="logo" src="https://enterwell.net/wp-content/uploads/2023/05/ew-logomark-monochrome-positive-256.x71089.svg">
     </picture>
   </a>
-  <p>Official Enterwell UI library</p>
+  <p>Enterwell UI</p>
 </h1>
 
 <p align="center">
