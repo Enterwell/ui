@@ -13,12 +13,10 @@ jobs:
             name: 'react-ui'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     publish_hooks:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
             name: 'react-hooks'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
