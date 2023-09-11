@@ -1,6 +1,17 @@
-# useDebounce
+import { useResizeObserver } from '@enterwell/hooks';
+import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
 
-Use `useResizeObserver` to observe the size of an element. The hook returns a ref that you need to attach to the element you want to observe. The callback function is called with the element and the `ResizeObserverEntry` object.
+# useResizeObserver
+
+## Description
+
+<ComponentDescription component={useResizeObserver} />
+
+### Parameters
+
+<ComponentParameters component={useResizeObserver} />
+
+## Example
 
 ```tsx filename="demo.ts" {3-6,9-11}
 import { useResizeObserver } from '@enterwell/hooks';
