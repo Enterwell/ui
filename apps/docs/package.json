@@ -21,8 +21,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@enterwell/hooks": "workspace:*",
-    "@enterwell/ui": "workspace:*",
+    "@enterwell/react-hooks": "workspace:*",
+    "@enterwell/react-ui": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "5.14.8",

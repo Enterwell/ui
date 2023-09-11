@@ -1,2 +1,2 @@
-declare module '@enterwell/hooks/api';
-declare module '@enterwell/ui/api';
+declare module '@enterwell/react-hooks/api';
+declare module '@enterwell/react-ui/api';

@@ -13,16 +13,16 @@
 			"path": "packages/eslint-config-custom"
 		},
 		{
-			"name": "📦 @enterwell/hooks",
-			"path": "packages/hooks"
+			"name": "📦 @enterwell/react-hooks",
+			"path": "packages/react-hooks"
+		},
+		{
+			"name": "📦 @enterwell/react-ui",
+			"path": "packages/react-ui"
 		},
 		{
 			"name": "📦 tsconfig",
 			"path": "packages/tsconfig"
-		},
-		{
-			"name": "📦 @enterwell/ui",
-			"path": "packages/ui"
 		}
 	],
 	"settings": {}

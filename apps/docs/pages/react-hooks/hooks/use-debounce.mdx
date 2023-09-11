@@ -1,4 +1,4 @@
-import { useDebounce } from '@enterwell/hooks';
+import { useDebounce } from '@enterwell/react-hooks';
 import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
 
 # useDebounce
@@ -14,7 +14,7 @@ import { ComponentDescription, ComponentParameters } from '../../../components/d
 ## Example
 
 ```ts filename="example.ts" {4}
-import { useDebounce } from '@enterwell/hooks';
+import { useDebounce } from '@enterwell/react-hooks';
 
 const [value, setValue] = useState(0);
 const valueDebounced = useDebounce(value, 50);

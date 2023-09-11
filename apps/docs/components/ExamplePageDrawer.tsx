@@ -1,4 +1,4 @@
-import { PageDrawer } from '@enterwell/ui';
+import { PageDrawer } from '@enterwell/react-ui';
 import { useState } from 'react';
 
 export function ExamplePageDrawer() {

@@ -10,11 +10,11 @@ jobs:
     publish_ui:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
-            name: 'ui'
+            name: 'react-ui'
         secrets: inherit
     publish_hooks:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
-            name: 'hooks'
+            name: 'react-hooks'
         secrets: inherit
         

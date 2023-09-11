@@ -1,8 +1,8 @@
 import { parse as parseJsDoc } from 'comment-parser';
 import { Mdx } from './Mdx';
 import { Fragment } from 'react';
-import hooksApi from '@enterwell/hooks/api';
-import uiApi from '@enterwell/ui/api';
+import hooksApi from '@enterwell/react-hooks/api';
+import uiApi from '@enterwell/react-ui/api';
 
 type ComponentDocsProps = {
     name: string;

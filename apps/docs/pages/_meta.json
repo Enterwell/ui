@@ -1,10 +1,10 @@
 {
   "index": "Home",
-  "ui": {
+  "react-ui": {
     "title": "UI",
     "type": "page"
   },
-  "hooks": {
+  "react-hooks": {
     "title": "Hooks",
     "type": "page"
   },
