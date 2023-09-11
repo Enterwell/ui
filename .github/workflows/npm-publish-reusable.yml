@@ -12,6 +12,7 @@ jobs:
     publish:
         name: Publish ${{ inputs.name }}
         runs-on: ubuntu-latest
+        concurrency: ci-${{ github.ref }}
         steps:
         - uses: actions/checkout@v3
         - name: Setup pnpm
