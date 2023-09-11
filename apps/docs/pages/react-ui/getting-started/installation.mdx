@@ -1,10 +1,21 @@
 import { Callout } from '../../../components/docs/Callout';
-
-<Callout type="warning">Docs for this section is under construction.</Callout>
-<Callout type="warning">Package is not yet published on npm.</Callout>
+import { PackagePeerDependencies } from '../../../components/docs/PackageDocs';
+import packageMetadata from '@enterwell/react-ui/package';
 
 # Installation
+
+If you don't have pnpm installed, you can install it by running the following command:
+
+```bash
+npm install -g pnpm
+```
+
+Run the following command to install the package:
 
 ```bash
 pnpm add @enterwell/react-ui
 ```
+
+### Peer Dependencies
+
+<PackagePeerDependencies metadata={packageMetadata} />

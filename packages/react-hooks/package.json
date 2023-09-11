@@ -9,7 +9,8 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./api": "./dist/api.js"
+    "./api": "./dist/api.js",
+    "./package": "./dist/package.js"
   },
   "license": "MIT",
   "scripts": {
