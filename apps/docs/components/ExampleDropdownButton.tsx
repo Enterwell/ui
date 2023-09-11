@@ -1,4 +1,4 @@
-import { DropdownButton } from '@enterwell/ui';
+import { DropdownButton } from '@enterwell/react-ui';
 import { Save } from '@mui/icons-material';
 
 export function ExampleDropdownButton() {

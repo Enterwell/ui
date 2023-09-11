@@ -1,4 +1,4 @@
-import { useResizeObserver } from '@enterwell/hooks';
+import { useResizeObserver } from '@enterwell/react-hooks';
 import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
 
 # useResizeObserver
@@ -14,7 +14,7 @@ import { ComponentDescription, ComponentParameters } from '../../../components/d
 ## Example
 
 ```tsx filename="demo.ts" {3-6,9-11}
-import { useResizeObserver } from '@enterwell/hooks';
+import { useResizeObserver } from '@enterwell/react-hooks';
 
 const resizeObserverRef = useResizeObserver((_, entry) => {
     const { width, height } = entry.contentRect;
