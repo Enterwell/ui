@@ -32,14 +32,14 @@ export function ComponentWithSource({
           <Tab label="Code" value="code" />
         </TabList>
       </Box>
-      <TabPanel value="preview">
+      <TabPanel value="preview" className="p-0">
         <Card className={cx(
           centered && "p-2 min-h-[280px] flex gap-2 items-center justify-center"
         )}>
           <Component />
         </Card>
       </TabPanel>
-      <TabPanel value="code">
+      <TabPanel value="code" className="p-0">
         {children}
       </TabPanel>
     </TabContext>

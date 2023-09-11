@@ -28,6 +28,27 @@ function handleComponentSource(node) {
       const src = componentSourceFilePath(name);
       const source = readComponentSourceFiles(name);
 
+      // Extract highted sections (when containing "// @highlight-start" and "// @highlight-end" comments")
+      const highlightedRange = [];
+      const codeLines = source.split("\n");
+      let highlightStart = null;
+      for (let i = 0; i < codeLines.length; i++) {
+        const line = codeLines[i];
+        if (line.includes("// @highlight-start")) {
+          highlightStart = i;
+        } else if (line.includes("// @highlight-end")) {
+          highlightedRange.push(`${highlightStart + 1}-${i - 1}`);
+          
+          // Remove hightlight comments
+          codeLines.splice(highlightStart, 1);
+          codeLines.splice(i - 1, 1);
+
+          highlightStart = null;
+        }
+      }
+
+      console.log('ranges', highlightedRange)
+
       // Add code as children so that rehype can take over at build time.
       node.children?.push(
         u("element", {
@@ -44,9 +65,10 @@ function handleComponentSource(node) {
               children: [
                 {
                   type: "text",
-                  value: source,
+                  value: codeLines.join("\n"),
                 },
               ],
+              data: { meta: `filename="${src}" {${highlightedRange.join(",")}} showLineNumbers` },
             }),
           ],
         })
