@@ -1,8 +1,8 @@
 import { parse as parseJsDoc } from 'comment-parser';
 import { Mdx } from './Mdx';
 import { Fragment } from 'react';
-import hooksApi from '@enterwell/hooks/dist/hooks.api.json';
-import uiApi from '@enterwell/ui/dist/ui.api.json';
+import hooksApi from '@enterwell/hooks/api';
+import uiApi from '@enterwell/ui/api';
 
 type ComponentDocsProps = {
     component: React.FunctionComponent;
@@ -35,11 +35,11 @@ export function ComponentDescription({ component }: ComponentDocsProps) {
 export function ComponentParameters({ component }: ComponentDocsProps) {
     const member = componentMember(component);
     const comment = componentComment(component);
-    const params = member?.parameters?.map((param) => ({
+    const params = member?.parameters?.map((param: any) => ({
         name: param.parameterName,
         description: comment?.tags?.find((tag) => tag.tag === 'param' && tag.name === param.parameterName)?.description,
         optional: param.isOptional,
-        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex).map(t => t.text).join(' '),
+        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex).map((t: any) => t.text).join(' '),
     }));
 
     if (!params?.length) {
