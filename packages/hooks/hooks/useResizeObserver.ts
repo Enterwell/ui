@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
- * The resize observer hook.
+ * Use `useResizeObserver` to observe the size of an element. The hook returns a ref that you need to attach to the element you want to observe. The callback function is called with the element and the `ResizeObserverEntry` object.
  * @param callback - The callback.
  * @returns The ref.
  * @public

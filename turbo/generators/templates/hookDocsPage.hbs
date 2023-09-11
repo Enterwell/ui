@@ -1,6 +1,19 @@
+import { {{ camelCase name }} } from '@enterwell/hooks';
+import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
+
 # {{ camelCase name }}
 
-```ts filename="demo.ts" {2}
+## Description
+
+<ComponentDescription component={ {{ camelCase name }} } />
+
+### Parameters
+
+<ComponentParameters component={ {{ camelCase name }} } />
+
+## Example
+
+```ts filename="example.ts"
 import { {{ camelCase name }} } from '@enterwell/hooks';
 
 {{ camelCase name }}();
