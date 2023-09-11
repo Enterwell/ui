@@ -1,6 +1,7 @@
 {
   "name": "@enterwell/react-ui",
-  "version": "0.2.0",
+  "description": "Enterwell's React UI component library.",
+  "version": "0.2.1",
   "type": "module",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,7 +10,8 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./api": "./dist/api.js"
+    "./api": "./dist/api.js",
+    "./package": "./dist/package.js"
   },
   "license": "MIT",
   "scripts": {
