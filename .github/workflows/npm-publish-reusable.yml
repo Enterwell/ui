@@ -22,11 +22,15 @@ jobs:
           uses: pnpm/action-setup@v2.2.4
           with:
             version: 'latest'
-        - uses: actions/setup-node@v2
+        - uses: actions/setup-node@v3
           with:
             node-version: "18.x"
-            registry-url: https://npm.pkg.github.com/
             cache: "pnpm"
+        - name: Setup npmrc
+          run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          env:
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        - run: git pull
         - name: Changelog
           id: version-bump
           uses: Enterwell/ChangelogManager-GitHub-Action@v3
@@ -42,8 +46,6 @@ jobs:
         - run: pnpm i --frozen-lockfile --filter=${{ inputs.name }}...
         - run: pnpm build --filter=${{ inputs.name }}...
         - run: pnpm publish --access public --filter=${{ inputs.name }} --no-git-checks
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         - name: Git tags update
           run: |
             git config user.name github-actions
