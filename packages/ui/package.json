@@ -7,13 +7,17 @@
   "files": [
     "dist/**"
   ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./api": "./dist/api.js"
+  },
   "license": "MIT",
   "scripts": {
     "dev:js": "tsup index.tsx --watch --format esm --dts --outDir dist",
     "dev": "pnpm run \"/^dev:.*/\"",
     "before-build:clean": "rimraf dist",
     "build:js": "tsup index.tsx --format esm --dts --outDir dist",
-    "after-build:api": "api-extractor run",
+    "after-build:api": "api-extractor run && node ./scripts/transform-api-docs.js",
     "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
     "lint": "eslint ."
   },
