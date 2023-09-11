@@ -5,7 +5,7 @@ import hooksApi from '@enterwell/hooks/api';
 import uiApi from '@enterwell/ui/api';
 
 type ComponentDocsProps = {
-    component: React.FunctionComponent;
+    name: string;
 };
 
 const api = [
@@ -13,18 +13,18 @@ const api = [
     ...uiApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? []
 ];
 
-function componentMember(component: React.FunctionComponent) {
-    return api?.find((m: any) => m.name === component.name);
+function componentMember(name: string) {
+    return api?.find((m: any) => m.name === name);
 }
 
-function componentComment(component: React.FunctionComponent) {
-    const member = componentMember(component);
+function componentComment(name: string) {
+    const member = componentMember(name);
     const comments = member ? parseJsDoc(member.docComment) : undefined;
     return comments?.at(0);
 }
 
-export function ComponentDescription({ component }: ComponentDocsProps) {
-    const comment = componentComment(component);
+export function ComponentDescription({ name }: ComponentDocsProps) {
+    const comment = componentComment(name);
     const { description } = comment || {};
 
     return (
@@ -32,9 +32,9 @@ export function ComponentDescription({ component }: ComponentDocsProps) {
     )
 }
 
-export function ComponentParameters({ component }: ComponentDocsProps) {
-    const member = componentMember(component);
-    const comment = componentComment(component);
+export function ComponentParameters({ name }: ComponentDocsProps) {
+    const member = componentMember(name);
+    const comment = componentComment(name);
     const params = member?.parameters?.map((param: any) => ({
         name: param.parameterName,
         description: comment?.tags?.find((tag) => tag.tag === 'param' && tag.name === param.parameterName)?.description,
