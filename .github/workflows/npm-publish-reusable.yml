@@ -37,7 +37,7 @@ jobs:
             message: "[skip ci] [version-bump] Automated commit for version ${{ steps.version-bump.outputs.bumped-semantic-version }}"
         - run: pnpm i --frozen-lockfile --filter=${{ inputs.name }}...
         - run: pnpm build --filter=${{ inputs.name }}...
-        - run: pnpm publish --access public --filter=${{ inputs.name }}
+        - run: pnpm publish --access public --filter=${{ inputs.name }} --no-git-checks
           env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         - name: Git tags update
