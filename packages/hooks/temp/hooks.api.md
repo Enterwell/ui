@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 export function useDebounce<T>(value: T, delay: number): T;
 
 // @public
+export function useDebouncedEffect(effect: Function, deps: unknown[], delay: number): void;
+
+// @public
 export const useIsomorphicLayoutEffect: typeof useEffect;
 
 // @public

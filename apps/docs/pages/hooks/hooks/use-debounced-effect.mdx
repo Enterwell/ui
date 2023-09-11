@@ -1,0 +1,22 @@
+import { useDebouncedEffect } from '@enterwell/hooks';
+import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
+
+# useDebouncedEffect
+
+## Description
+
+<ComponentDescription component={useDebouncedEffect} />
+
+### Parameters
+
+<ComponentParameters component={useDebouncedEffect} />
+
+## Example
+
+```ts filename="example.ts" {3-5}
+import { useDebouncedEffect } from '@enterwell/hooks';
+
+useDebouncedEffect(() => {
+    // Do effect stuff here
+}, [], 500);
+```

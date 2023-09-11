@@ -1,8 +1,19 @@
+import { useDebounce } from '@enterwell/hooks';
+import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
+
 # useDebounce
 
-Use `useDebounce` to debounce a value.
+## Description
 
-```ts filename="demo.ts" {2}
+<ComponentDescription component={useDebounce} />
+
+### Parameters
+
+<ComponentParameters component={useDebounce} />
+
+## Example
+
+```ts filename="example.ts" {4}
 import { useDebounce } from '@enterwell/hooks';
 
 const [value, setValue] = useState(0);
