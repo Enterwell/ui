@@ -41,6 +41,11 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "add",
         path: "apps/docs/pages/ui/components/{{kebabCase name}}.mdx",
         templateFile: "templates/componentDocsPage.hbs",
+      },
+      // Changelog
+      {
+        type: "add",
+        path: "packages/ui/changes/Added {{pascalCase name}} component",
       }
     ],
   });
@@ -71,6 +76,11 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "add",
         path: "apps/docs/pages/hooks/hooks/{{kebabCase name}}.mdx",
         templateFile: "templates/hookDocsPage.hbs",
+      },
+      // Changelog
+      {
+        type: "add",
+        path: "packages/hooks/changes/Added {{camelCase name}} hook",
       }
     ],
   });
