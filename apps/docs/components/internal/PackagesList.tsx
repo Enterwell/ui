@@ -2,8 +2,8 @@ import { Card, CardActionArea, CardContent } from "@mui/material";
 import Image from "next/image";
 
 const availablePackages = [
-    { name: "UI", description: "React component library.", href: '/ui/ui/about', library: 'react' },
-    { name: "Hooks", description: "React hooks library.", href: '/ui/hooks/about', library: 'react' },
+    { name: "UI", description: "Component library.", href: '/ui/react-ui/about', library: 'react' },
+    { name: "Hooks", description: "Hooks library.", href: '/ui/react-hooks/about', library: 'react' },
 ];
 
 export function PackagesList() {

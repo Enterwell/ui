@@ -1,5 +1,5 @@
 {
-  "name": "@enterwell/ui",
+  "name": "@enterwell/react-ui",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
@@ -22,7 +22,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@enterwell/hooks": "workspace:*",
+    "@enterwell/react-hooks": "workspace:*",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@microsoft/api-extractor": "^7.36.4",
