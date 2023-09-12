@@ -1,5 +1,9 @@
+---
+title: useDebounce
+---
+
 import { useDebounce } from '@enterwell/react-hooks';
-import { ComponentDescription, ComponentParameters } from '../../../components/docs/ComponentDocs';
+import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
 
 # useDebounce
 
@@ -19,3 +23,14 @@ import { useDebounce } from '@enterwell/react-hooks';
 const [value, setValue] = useState(0);
 const valueDebounced = useDebounce(value, 50);
 ```
+
+## Inspect
+
+<details>
+    <summary>Source code</summary>
+    <ComponentSource 
+        package="@enterwell/react-hooks" 
+        directory="hooks" 
+        name="useDebounce"
+    />
+</details>
