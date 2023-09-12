@@ -1,12 +1,18 @@
 import { parse as parseJsDoc } from 'comment-parser';
 import { Mdx } from './Mdx';
-import { Fragment } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 import hooksApi from '@enterwell/react-hooks/api';
 import uiApi from '@enterwell/react-ui/api';
 
 type ComponentDocsProps = {
     name: string;
 };
+
+type ComponentSource = PropsWithChildren<{
+    packageName: string;
+    path: string;
+    name: string;
+}>;
 
 const api = [
     ...hooksApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? [],
@@ -67,6 +73,14 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
                     <hr className="sm:hidden" />
                 </Fragment>
             ))}
+        </div>
+    )
+}
+
+export function ComponentSource({ children }: ComponentSource) {
+    return (
+        <div className='pt-6'>
+            {children}
         </div>
     )
 }
