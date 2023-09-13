@@ -5,9 +5,24 @@
 ```ts
 
 import { ButtonProps } from '@mui/material';
+import { ComponentProps } from 'react';
 import { HTMLAttributes } from 'react';
+import { Moment } from 'moment';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
+import { TextField } from '@mui/material';
+
+// @public
+export function DateTimeRangePicker({ start: propStartDate, end: propEndDate, hideTime, onChange, dense }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type DateTimeRangePickerProps = {
+    start: Moment;
+    end: Moment;
+    onChange: (startDate: Moment, endDate: Moment) => void;
+    hideTime?: boolean;
+    dense?: boolean;
+};
 
 // @public
 export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
@@ -32,6 +47,15 @@ export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawer
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     expanded?: boolean;
     onChange?: () => void;
+};
+
+// @public
+export function TimeInput({ value, defaultValue, useSeconds, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type TimeInputProps = ComponentProps<typeof TextField> & {
+    useSeconds?: boolean;
+    onTimeChange?: (time: string) => void;
 };
 
 // (No @packageDocumentation comment for this package)
