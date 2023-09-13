@@ -4,10 +4,27 @@
 
 ```ts
 
+import { Button } from '@mui/material';
 import { ButtonProps } from '@mui/material';
+import { ComponentProps } from 'react';
+import { DialogProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
+
+// @public
+export function ConfirmDialog({ isOpen, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
+    isOpen: boolean;
+    message: string;
+    color: ComponentProps<typeof Button>['color'];
+    confirmButtonText?: string;
+    cancelButtonText?: string;
+    onConfirm: () => void;
+    onCancel: () => void;
+};
 
 // @public
 export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
