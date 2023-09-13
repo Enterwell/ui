@@ -1,0 +1,35 @@
+---
+title: usePromise
+---
+
+import { usePromise } from '@enterwell/react-hooks';
+import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+
+# usePromise
+
+## Description
+
+<ComponentDescription name="usePromise" />
+
+### Parameters
+
+<ComponentParameters name="usePromise" />
+
+## Example
+
+```ts filename="example.ts"
+import { usePromise } from '@enterwell/react-hooks';
+
+const { item, isLoading, error } = usePromise(getData);
+```
+
+## Inspect
+
+<details>
+    <summary>Source code</summary>
+    <ComponentSource 
+        package="@enterwell/react-hooks" 
+        directory="hooks" 
+        name="usePromise"
+    />
+</details>
