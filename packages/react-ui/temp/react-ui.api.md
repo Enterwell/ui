@@ -13,10 +13,10 @@ import { ReactElement } from 'react';
 import { TextField } from '@mui/material';
 
 // @public
-export function DateTimeRangePicker({ start: propStartDate, end: propEndDate, hideTime, onChange, dense }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
+export function DateTimeRangePicker({ start: propStartDate, end: propEndDate, hideTime, onChange, ...rest }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
-export type DateTimeRangePickerProps = {
+export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "onClick" | "value" | "title"> & {
     start: Moment;
     end: Moment;
     onChange: (startDate: Moment, endDate: Moment) => void;
@@ -50,7 +50,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {
