@@ -34,6 +34,10 @@
   --tw-ring-offset-color: hsl(0 0% 39%);
 }
 
+.nx-border-primary-500 {
+  border-color: hsl(0 0% 50%);
+}
+
 code .line.highlighted {
   color: white;
   background-color: rgba(130, 130, 130, 0.1);

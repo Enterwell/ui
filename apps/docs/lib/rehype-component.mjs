@@ -21,8 +21,8 @@ function readComponentSourceFiles(relativePaths) {
       // Ignore error
     }
   }
-  
-  return null;
+
+  return { path: null, source: null };
 }
 
 function highlightCode(source) {
@@ -90,7 +90,7 @@ function handleComponentWithSource(node) {
 
     try {
       // Read the source file.
-      const src = docsComponentSourceFilePath(name);
+      const src = docsComponentSourceFilePath(name.trim());
       const { path, source } = readComponentSourceFiles(src);
 
       const { codeLines, highlightedRange } = highlightCode(source);
