@@ -53,7 +53,7 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
         : undefined;
     const returnsTypeValid = returnsType && returnsType !== 'void';
 
-    if (!params?.length || returnsTypeValid) {
+    if (!params?.length && !returnsTypeValid) {
         return (
             <div className="text-center text-gray-400">
                 <p>No parameters</p>
