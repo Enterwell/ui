@@ -4,8 +4,10 @@
 
 ```ts
 
+import { Button } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 import { ComponentProps } from 'react';
+import { DialogProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
 import { Moment } from 'moment';
 import * as react_jsx_runtime from 'react/jsx-runtime';
@@ -22,6 +24,20 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
     onChange: (startDate: Moment, endDate: Moment) => void;
     hideTime?: boolean;
     dense?: boolean;
+};
+
+// @public
+export function ConfirmDialog({ isOpen, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
+    isOpen: boolean;
+    message: string;
+    color: ComponentProps<typeof Button>['color'];
+    confirmButtonText?: string;
+    cancelButtonText?: string;
+    onConfirm: () => void;
+    onCancel: () => void;
 };
 
 // @public
