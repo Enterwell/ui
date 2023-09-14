@@ -14,27 +14,36 @@
 
 ## What's inside?
 
-This library includes the following packages/apps:
+This repository includes the following:
 
-### Apps and Packages
+### Packages
 
-- `ui`: a React component library documented in `docs` and published on npm
-- `hooks`: a React hooks library documented in `docs` and published on npm
+- `@enterwell/react-ui` - React component library
+- `@enterwell/react-hooks` - React hooks library
 
 #### Other (not published)
 
-- `docs`: Documentation app (built with [nextra](https://nextra.site/)) - [enterwell.github.io/ui](https://enterwell.github.io/ui/)
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `docs` - Documentation app (built with [nextra](https://nextra.site/)) available at [enterwell.github.io/ui](https://enterwell.github.io/ui/)
+- `eslint-config-custom` - `eslint` configurations (includes `eslint-config-next`)
+- `tsconfig` - `tsconfig.json`s used throughout the monorepo
 
 ## Development
+
+### Requirements
+
+- [NVM for Windows](https://github.com/coreybutler/nvm-windows)
+  - Run `nvm install lst && nvm use lts`
+  - Optionally install Node 18 (LTS) manually from [Node.js Download page](https://nodejs.org/en/download)
+- [PNPM](https://pnpm.io/installation)
+- [Visual Studio Code](https://code.visualstudio.com/) (optional)
+
+Open workspace file `ui.code-workspace` with VS Code or your favorite editor.
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```bash
-cd ui
 pnpm i
 pnpm build
 ```
@@ -44,14 +53,13 @@ pnpm build
 To develop all apps and packages, run the following command:
 
 ```bash
-cd ui
 pnpm i
 pnpm dev
 ```
 
-#### Create new component
+#### Code generator
 
-Run following command and select appropriate generator and modify generated files.
+Run following command (from root) and select appropriate generator and modify generated files.
 
 ```bash
 pnpm turbo gen
@@ -59,5 +67,7 @@ pnpm turbo gen
 
 Available generators:
 
-- component
-- hook
+| Generator | Description | Command |
+|-----------|-------------|---------|
+| component | Creates react component in `react-ui` package along with basic documentation. | `pnpm turbo gen component` |
+| hook | Creates react hook in `react-hooks` package alogn with basic documentation. | `pnpm turbo gen hook` |
