@@ -8,6 +8,7 @@ import hrLocale from 'date-fns/locale/hr';
 import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration } from 'date-fns';
 import { TimeInput } from '../TimeInput';
 import { DateTimeRangePickerInput } from './DateTimeRangePickerInput';
+import { Stack } from '@mui/system';
 
 // TODO: Test cases
 //       - Test if start date format shows only date when time is 00:00
@@ -203,102 +204,82 @@ export function DateTimeRangePicker({
           justifyContent="center"
         >
           <Grid item md={3}>
-            <Box sx={{ p: 2 }}>
-              <Grid container spacing={1}>
-                <Grid item xs={12}>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Button variant="contained" fullWidth onClick={handleAccept}>Potvrdi</Button>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Button variant="text" fullWidth onClick={handleClose}>Odustani</Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                {preselectedOptionsOrDefault.map((opt) => (
-                  <Grid item key={opt.name} xs={12} sm={4} md={12}>
-                    <Button
-                      variant="outlined"
-                      fullWidth
-                      title={`${opt.startDate} ${opt.endDate}`}
-                      onClick={() => handlePreselect(opt.startDate, opt.endDate)}
-                    >
-                      {opt.name}
-                    </Button>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
+            <Stack spacing={1} sx={{ p: 2 }}>
+              <Stack direction="row" spacing={1}>
+                <Button variant="contained" fullWidth onClick={handleAccept}>Potvrdi</Button>
+                <Button variant="text" fullWidth onClick={handleClose}>Odustani</Button>
+              </Stack>
+              {preselectedOptionsOrDefault.map((opt) => (
+                <Button
+                  key={opt.name}
+                  variant="outlined"
+                  fullWidth
+                  title={`${opt.startDate} ${opt.endDate}`}
+                  onClick={() => handlePreselect(opt.startDate, opt.endDate)}
+                >
+                  {opt.name}
+                </Button>
+              ))}
+            </Stack>
           </Grid>
           <Grid item md={9} sx={{ maxWidth: '662px', overflow: 'hidden' }}>
-            <Grid container justifyContent="center">
+            <Stack justifyContent="center">
+              <Stack direction="row" spacing={1} sx={{ p: 2, pb: 1 }}>
+                <TextField
+                  type="date"
+                  value={dateValue[0] ? format(dateValue[0], 'yyyy-MM-dd') : ''}
+                  onChange={(e) => setDateValue([e.target.value as unknown as Date, dateValue[1]])}
+                  fullWidth
+                  size="small"
+                  label="Od"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <TextField
+                  type="date"
+                  value={dateValue[1] ? format(dateValue[1], 'yyyy-MM-dd') : ''}
+                  onChange={(e) => setDateValue([dateValue[0], e.target.value as unknown as Date])}
+                  fullWidth
+                  size="small"
+                  label="Do"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Stack>
               {!hideTime && (
-                <>
-                  <Grid item flexGrow={1}>
-                    <Box sx={{ p: 2, pb: 1 }}>
-                      <Grid container spacing={1}>
-                        <Grid item xs={6}>
-                          <TextField
-                            type="date"
-                            value={dateValue[0] ? format(dateValue[0], 'yyyy-MM-dd') : ''}
-                            onChange={(e) => setDateValue([e.target.value as unknown as Date, dateValue[1]])}
-                            fullWidth
-                            size="small"
-                            label="Od"
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
-                          />
-                        </Grid>
-                        <Grid item xs={6}>
-                          <TextField
-                            type="date"
-                            value={dateValue[1] ? format(dateValue[1], 'yyyy-MM-dd') : ''}
-                            onChange={(e) => setDateValue([dateValue[0], e.target.value as unknown as Date])}
-                            fullWidth
-                            size="small"
-                            label="Do"
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  </Grid>
-                  <Grid item flexGrow={1}>
-                    <Box sx={{ pb: 2, px: 2 }}>
-                      <Grid container spacing={1}>
-                        <Grid item xs={6}>
-                          <TimeInput value={startTime} onTimeChange={setStartTime} useSeconds={useSeconds} />
-                        </Grid>
-                        <Grid item xs={6}>
-                          <TimeInput value={endTime} onTimeChange={setEndTime} useSeconds={useSeconds} />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  </Grid>
-                </>
+                <Stack direction="row" spacing={1} sx={{ pb: 2, px: 2 }}>
+                  <TimeInput
+                    value={startTime}
+                    onTimeChange={setStartTime}
+                    useSeconds={useSeconds}
+                    size="small"
+                    fullWidth />
+                  <TimeInput
+                    value={endTime}
+                    onTimeChange={setEndTime}
+                    useSeconds={useSeconds}
+                    size="small"
+                    fullWidth />
+                </Stack>
               )}
-              <Grid item>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hrLocale}>
-                  <StaticDateRangePicker
-                    value={dateValue}
-                    onChange={setDateValue}
-                    disableFuture
-                    displayStaticWrapperAs="desktop"
-                    calendars={isDesktop ? 2 : 1}
-                    renderInput={(startProps, endProps) => (
-                      <>
-                        <TextField {...startProps} variant="standard" />
-                        <Box sx={{ mx: 2 }}> do </Box>
-                        <TextField {...endProps} variant="standard" />
-                      </>
-                    )}
-                  />
-                </LocalizationProvider>
-              </Grid>
-            </Grid>
+              <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hrLocale}>
+                <StaticDateRangePicker
+                  value={dateValue}
+                  onChange={setDateValue}
+                  disableFuture
+                  displayStaticWrapperAs="desktop"
+                  calendars={isDesktop ? 2 : 1}
+                  renderInput={(startProps, endProps) => (
+                    <Stack direction="row" spacing={2}>
+                      <TextField {...startProps} variant="standard" />
+                      <TextField {...endProps} variant="standard" />
+                    </Stack>
+                  )}
+                />
+              </LocalizationProvider>
+            </Stack>
           </Grid>
         </Grid>
       </Popover>
