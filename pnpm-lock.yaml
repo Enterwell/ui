@@ -56,9 +56,6 @@ importers:
       comment-parser:
         specifier: ^1.4.0
         version: 1.4.0
-      moment:
-        specifier: ^2.29.4
-        version: 2.29.4
       next:
         specifier: 13.4.19
         version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
@@ -181,7 +178,7 @@ importers:
         version: 5.14.8(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.21)(react@18.2.0)
       '@mui/x-date-pickers-pro':
         specifier: 5.0.20
-        version: 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(moment@2.29.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0)
       '@types/node':
         specifier: ^20.5.2
         version: 20.5.2
@@ -197,9 +194,6 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../eslint-config-custom
-      moment:
-        specifier: ^2.29.4
-        version: 2.29.4
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -504,7 +498,7 @@ packages:
       '@date-io/core': 2.17.0
     dev: true
 
-  /@date-io/moment@2.17.0(moment@2.29.4):
+  /@date-io/moment@2.17.0:
     resolution: {integrity: sha512-e4nb4CDZU4k0WRVhz1Wvl7d+hFsedObSauDHKtZwU9kt7gdYEAzKgnrSCTHsEaXrDumdrkCYTeZ0Tmyk7uV4tw==}
     peerDependencies:
       moment: ^2.24.0
@@ -513,7 +507,6 @@ packages:
         optional: true
     dependencies:
       '@date-io/core': 2.17.0
-      moment: 2.29.4
     dev: true
 
   /@emotion/babel-plugin@11.11.0:
@@ -1233,7 +1226,7 @@ packages:
       react: 18.2.0
       react-is: 18.2.0
 
-  /@mui/x-date-pickers-pro@5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(moment@2.29.4)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/x-date-pickers-pro@5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-syNnokcG4lvj9SIcnfji6eVvpSpuHs+7jqLsJYDBTogxK53ctSXQVMb5GQ16ioTzEQSqZojhngHSj+/s11Ao1Q==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -1259,15 +1252,14 @@ packages:
       '@date-io/date-fns': 2.17.0(date-fns@2.30.0)
       '@date-io/dayjs': 2.17.0
       '@date-io/luxon': 2.17.0
-      '@date-io/moment': 2.17.0(moment@2.29.4)
+      '@date-io/moment': 2.17.0
       '@mui/material': 5.14.8(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
       '@mui/system': 5.14.8(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.21)(react@18.2.0)
       '@mui/utils': 5.14.8(react@18.2.0)
-      '@mui/x-date-pickers': 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(moment@2.29.4)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/x-date-pickers': 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-license-pro': 5.17.12(react@18.2.0)
       clsx: 1.2.1
       date-fns: 2.30.0
-      moment: 2.29.4
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1278,7 +1270,7 @@ packages:
       - '@emotion/styled'
     dev: true
 
-  /@mui/x-date-pickers@5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(moment@2.29.4)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/x-date-pickers@5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.8)(@mui/system@5.14.8)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ERukSeHIoNLbI1C2XRhF9wRhqfsr+Q4B1SAw2ZlU7CWgcG8UBOxgqRKDEOVAIoSWL+DWT6GRuQjOKvj6UXZceA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -1311,7 +1303,7 @@ packages:
       '@date-io/date-fns': 2.17.0(date-fns@2.30.0)
       '@date-io/dayjs': 2.17.0
       '@date-io/luxon': 2.17.0
-      '@date-io/moment': 2.17.0(moment@2.29.4)
+      '@date-io/moment': 2.17.0
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.21)(react@18.2.0)
       '@mui/material': 5.14.8(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
@@ -1320,7 +1312,6 @@ packages:
       '@types/react-transition-group': 4.4.6
       clsx: 1.2.1
       date-fns: 2.30.0
-      moment: 2.29.4
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -6142,9 +6133,6 @@ packages:
     dependencies:
       minimist: 1.2.8
     dev: true
-
-  /moment@2.29.4:
-    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
 
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}

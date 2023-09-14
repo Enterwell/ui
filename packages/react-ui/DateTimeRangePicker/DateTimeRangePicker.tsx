@@ -68,7 +68,7 @@ export function DateTimeRangePicker({
   };
 
   /**
-   * Combines the date and time into moment objects.
+   * Combines the date and time into Date objects.
    *
    * @returns First element is start date and time, seconds is end date and time.
    */
