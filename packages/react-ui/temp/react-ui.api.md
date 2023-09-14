@@ -13,18 +13,35 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 
 // @public
-export function ConfirmDialog({ isOpen, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
+    onConfirm?: () => void;
+    slots?: {
+        dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
+            color?: ConfirmDialogProps["color"];
+        };
+    };
+};
+
+// @public
+export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
     isOpen: boolean;
-    message: string;
-    color: ComponentProps<typeof Button>['color'];
+    header: string;
+    message?: string;
+    color?: ComponentProps<typeof Button>['color'];
     confirmButtonText?: string;
     cancelButtonText?: string;
     onConfirm: () => void;
     onCancel: () => void;
 };
+
+// @public
+export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
 export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
