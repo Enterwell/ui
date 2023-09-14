@@ -1,12 +1,39 @@
 import {
   Box, Button, Grid, Popover, TextField, useTheme, useMediaQuery
 } from '@mui/material';
-import { ComponentProps, MouseEvent, useState } from 'react';
+import { ComponentProps, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { StaticDateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import hrLocale from 'date-fns/locale/hr';
-import { parse, format, isSameDay, isSameMinute, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth } from 'date-fns';
+import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration } from 'date-fns';
 import { TimeInput } from '../TimeInput';
+import { DateTimeRangePickerInput } from './DateTimeRangePickerInput';
+
+// TODO: Test cases
+//       - Test if start date format shows only date when time is 00:00
+//       - Test if end date format shows only date when time is 23:59
+//       - Test if start date and start time is combined correctly (without time-zone offsets)
+//       - Test if end date and end time is combined correctly (without time-zone offsets)
+
+function durationGetTime(duration: Duration) {
+  return (typeof duration.years !== 'undefined' ? duration.years * 365 * 24 * 60 * 60 * 1000 : 0) +
+    (typeof duration.months !== 'undefined' ? duration.months * 30 * 24 * 60 * 60 * 1000 : 0) +
+    (typeof duration.weeks !== 'undefined' ? duration.weeks * 7 * 24 * 60 * 60 * 1000 : 0) +
+    (typeof duration.days !== 'undefined' ? duration.days * 24 * 60 * 60 * 1000 : 0) +
+    (typeof duration.hours !== 'undefined' ? duration.hours * 60 * 60 * 1000 : 0) +
+    (typeof duration.minutes !== 'undefined' ? duration.minutes * 60 * 1000 : 0) +
+    (typeof duration.seconds !== 'undefined' ? duration.seconds * 1000 : 0);
+}
+
+/**
+ * The date time range picker preselect option.
+ * @public
+ */
+export type DateTimeRangePickerPreselectOption = {
+  name: string,
+  startDate: Date,
+  endDate: Date
+};
 
 /**
  * The date time range picker props.
@@ -15,9 +42,11 @@ import { TimeInput } from '../TimeInput';
 export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "onClick" | "value" | "title" | "onChange"> & {
   start: Date;
   end: Date;
-  onChange: (startDate: Date, endDate: Date) => void;
   hideTime?: boolean;
+  useSeconds?: boolean;
   dense?: boolean;
+  preselectOptions?: DateTimeRangePickerPreselectOption[];
+  onChange: (startDate: Date, endDate: Date) => void;
 };
 
 /**
@@ -28,23 +57,32 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 * @public
 */
 export function DateTimeRangePicker({
-  start: propStartDate,
-  end: propEndDate,
+  start,
+  end,
   hideTime,
+  useSeconds,
+  preselectOptions,
   onChange,
   ...rest
 }: DateTimeRangePickerProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
-  const [startTime, setStartTime] = useState(format(propStartDate, 'HH:mm'));
-  const [endTime, setEndTime] = useState(format(propEndDate, 'HH:mm'));
+  const [startTime, setStartTime] = useState(format(start, 'HH:mm'));
+  const [endTime, setEndTime] = useState(format(end, 'HH:mm'));
 
   // Use js dates because we use date-fns adapter
-  const defaultStartDate = startOfDay(propStartDate);
-  const defaultEndDate = startOfDay(propEndDate);
+  const defaultStartDate = startOfDay(start);
+  const defaultEndDate = startOfDay(end);
 
   const [dateValue, setDateValue] = useState<[Date | null, Date | null]>([defaultStartDate, defaultEndDate]);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+
+  // Reset cached value when props change (only when not in popover)
+  useEffect(() => {
+    if (!anchorEl) {
+      setDateValue([defaultStartDate, defaultEndDate]);
+    }
+  }, [start, end]);
 
   /**
    * Handles the picker input click.
@@ -63,8 +101,8 @@ export function DateTimeRangePicker({
   const handleClose = () => {
     setAnchorEl(null);
     setDateValue([defaultStartDate, defaultEndDate]);
-    setStartTime(format(propStartDate, 'HH:mm'));
-    setEndTime(format(propEndDate, 'HH:mm'));
+    setStartTime(format(start, 'HH:mm'));
+    setEndTime(format(end, 'HH:mm'));
   };
 
   /**
@@ -76,24 +114,24 @@ export function DateTimeRangePicker({
     if (dateValue[0] == null || dateValue[1] == null)
       return [];
 
-    let startDuration = parse(startTime, "HH:mm", 0);
-    const endDuration = parse(endTime, "HH:mm", 0);
+    let startDurationTime = durationGetTime(intervalToDuration({ start: startOfDay(new Date()), end: parse(startTime, "HH:mm", new Date()) }));
+    const endDurationTime = durationGetTime(intervalToDuration({ start: startOfDay(new Date()), end: parse(endTime, "HH:mm", new Date()) }));
 
     // Check if start is after end - set equal
     if (dateValue[0] != null
       && dateValue[1] != null
       && isSameDay(dateValue[0], dateValue[1])
-      && startDuration.getTime() > endDuration.getTime()) {
-      startDuration = endDuration;
+      && startDurationTime > endDurationTime) {
+      startDurationTime = endDurationTime;
     }
 
     const startDateTime = dateValue[0] ? startOfDay(dateValue[0]) : undefined;
     if (startDateTime != null) {
-      startDateTime.setMilliseconds(startDateTime.getMilliseconds() + startDuration.getTime());
+      startDateTime.setMilliseconds(startDateTime.getMilliseconds() + startDurationTime);
     }
     const endDateTime = dateValue[1] ? startOfDay(dateValue[1]) : undefined;
     if (endDateTime != null) {
-      endDateTime.setMilliseconds(endDateTime.getMilliseconds() + endDuration.getTime());
+      endDateTime.setMilliseconds(endDateTime.getMilliseconds() + endDurationTime);
     }
     return [startDateTime, endDateTime];
   };
@@ -123,26 +161,23 @@ export function DateTimeRangePicker({
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const preselectedOptions: { name: string, startDate: Date, endDate: Date }[] = [
-    { name: 'Danas', startDate: startOfDay(new Date()), endDate: endOfDay(new Date()) },
-    { name: 'Jučer', startDate: startOfYesterday(), endDate: endOfYesterday() },
-    { name: 'Proteklih 7 dana', startDate: sub(startOfDay(new Date()), { days: 7 }), endDate: endOfDay(new Date()) },
-    { name: 'Proteklih 30 dana', startDate: sub(startOfDay(new Date()), { days: 30 }), endDate: endOfDay(new Date()) },
-    { name: 'Ovaj mjesec', startDate: startOfMonth(new Date()), endDate: endOfDay(new Date()) },
-    { name: 'Prošli mjesec', startDate: sub(startOfMonth(new Date()), { months: 1 }), endDate: endOfMonth(sub(startOfMonth(new Date()), { months: 1 })) }
-  ];
+  const preselectedOptionsOrDefault: { name: string, startDate: Date, endDate: Date }[] = useMemo(() => {
+    if (preselectOptions)
+      return preselectOptions;
 
-  const startValueStringFormat = hideTime || isSameMinute(startOfDay(propStartDate), propStartDate)
-    ? 'dd.MM.yyyy.'
-    : 'dd.MM.yyyy. HH:mm';
-  const endValueStringFormat = hideTime || isSameMinute(endOfDay(propEndDate), propEndDate)
-    ? 'dd.MM.yyyy.'
-    : 'dd.MM.yyyy. HH:mm';
-  const valueString = `${format(propStartDate, startValueStringFormat)} do ${format(propEndDate, endValueStringFormat)}`;
+    return [
+      { name: 'Danas', startDate: startOfDay(new Date()), endDate: endOfDay(new Date()) },
+      { name: 'Jučer', startDate: startOfYesterday(), endDate: endOfYesterday() },
+      { name: 'Proteklih 7 dana', startDate: sub(startOfDay(new Date()), { days: 7 }), endDate: endOfDay(new Date()) },
+      { name: 'Proteklih 30 dana', startDate: sub(startOfDay(new Date()), { days: 30 }), endDate: endOfDay(new Date()) },
+      { name: 'Ovaj mjesec', startDate: startOfMonth(new Date()), endDate: endOfDay(new Date()) },
+      { name: 'Prošli mjesec', startDate: sub(startOfMonth(new Date()), { months: 1 }), endDate: endOfMonth(sub(startOfMonth(new Date()), { months: 1 })) }
+    ];
+  }, [preselectOptions]);
 
   return (
     <>
-      <TextField onClick={handleOpen} value={valueString} title={valueString} {...rest} />
+      <DateTimeRangePickerInput onClick={handleOpen} start={start} end={end} hideTime={hideTime} useSeconds={useSeconds} {...rest} />
       <Popover
         id={id}
         open={open}
@@ -180,7 +215,7 @@ export function DateTimeRangePicker({
                     </Grid>
                   </Grid>
                 </Grid>
-                {preselectedOptions.map((opt) => (
+                {preselectedOptionsOrDefault.map((opt) => (
                   <Grid item key={opt.name} xs={12} sm={4} md={12}>
                     <Button
                       variant="outlined"
@@ -235,10 +270,10 @@ export function DateTimeRangePicker({
                     <Box sx={{ pb: 2, px: 2 }}>
                       <Grid container spacing={1}>
                         <Grid item xs={6}>
-                          <TimeInput value={startTime} onTimeChange={setStartTime} />
+                          <TimeInput value={startTime} onTimeChange={setStartTime} useSeconds={useSeconds} />
                         </Grid>
                         <Grid item xs={6}>
-                          <TimeInput value={endTime} onTimeChange={setEndTime} />
+                          <TimeInput value={endTime} onTimeChange={setEndTime} useSeconds={useSeconds} />
                         </Grid>
                       </Grid>
                     </Box>
