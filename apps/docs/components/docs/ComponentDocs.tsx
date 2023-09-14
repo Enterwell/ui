@@ -80,7 +80,7 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
             ))}
             {returnsTypeValid && (
                 <>
-                    <h4 className='text-xl font-bold'>Returns</h4>
+                    <h4 className='text-xl font-bold text-right' title="Returns">{'=>'}</h4>
                     <div>
                         {returnsType && <span className="text-muted-foreground">{returnsType}</span>}
                     </div>
