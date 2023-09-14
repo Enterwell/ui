@@ -4,18 +4,18 @@ import {
 import { ComponentProps, MouseEvent, useState } from 'react';
 import { StaticDateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import moment, { type Moment } from 'moment';
 import hrLocale from 'date-fns/locale/hr';
+import { parse, format, isSameDay, isSameMinute, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth } from 'date-fns';
 import { TimeInput } from '../TimeInput';
 
 /**
  * The date time range picker props.
  * @public
  */
-export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "onClick" | "value" | "title"> & {
-  start: Moment;
-  end: Moment;
-  onChange: (startDate: Moment, endDate: Moment) => void;
+export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "onClick" | "value" | "title" | "onChange"> & {
+  start: Date;
+  end: Date;
+  onChange: (startDate: Date, endDate: Date) => void;
   hideTime?: boolean;
   dense?: boolean;
 };
@@ -35,12 +35,12 @@ export function DateTimeRangePicker({
   ...rest
 }: DateTimeRangePickerProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
-  const [startTime, setStartTime] = useState(moment(propStartDate).format('HH:mm'));
-  const [endTime, setEndTime] = useState(propEndDate.format('HH:mm'));
+  const [startTime, setStartTime] = useState(format(propStartDate, 'HH:mm'));
+  const [endTime, setEndTime] = useState(format(propEndDate, 'HH:mm'));
 
   // Use js dates because we use date-fns adapter
-  const defaultStartDate = moment(propStartDate).startOf('day').toDate();
-  const defaultEndDate = moment(propEndDate).startOf('day').toDate();
+  const defaultStartDate = startOfDay(propStartDate);
+  const defaultEndDate = startOfDay(propEndDate);
 
   const [dateValue, setDateValue] = useState<[Date | null, Date | null]>([defaultStartDate, defaultEndDate]);
   const theme = useTheme();
@@ -58,31 +58,43 @@ export function DateTimeRangePicker({
 
   /**
    * Handles the picker close.
-   * This will close the picker.
+   * This will close the picker and reset selection.
    */
   const handleClose = () => {
     setAnchorEl(null);
+    setDateValue([defaultStartDate, defaultEndDate]);
+    setStartTime(format(propStartDate, 'HH:mm'));
+    setEndTime(format(propEndDate, 'HH:mm'));
   };
 
   /**
-   * Combines the date and time into.
+   * Combines the date and time into moment objects.
    *
    * @returns First element is start date and time, seconds is end date and time.
    */
   const combineDateAndTime = () => {
-    let startDuration = moment.duration(startTime);
-    const endDuration = moment.duration(endTime);
+    if (dateValue[0] == null || dateValue[1] == null)
+      return [];
+
+    let startDuration = parse(startTime, "HH:mm", 0);
+    const endDuration = parse(endTime, "HH:mm", 0);
 
     // Check if start is after end - set equal
-    if (moment(dateValue[0]).startOf('day').isSame(moment(dateValue[1]).startOf('day'))
-      && startDuration.asMilliseconds() > endDuration.asMilliseconds()) {
+    if (dateValue[0] != null
+      && dateValue[1] != null
+      && isSameDay(dateValue[0], dateValue[1])
+      && startDuration.getTime() > endDuration.getTime()) {
       startDuration = endDuration;
     }
 
-    const startDateTime = moment(dateValue[0]).startOf('day');
-    const endDateTime = moment(dateValue[1]).startOf('day');
-    startDateTime.add(startDuration.asMilliseconds(), 'ms');
-    endDateTime.add(endDuration.asMilliseconds(), 'ms');
+    const startDateTime = dateValue[0] ? startOfDay(dateValue[0]) : undefined;
+    if (startDateTime != null) {
+      startDateTime.setMilliseconds(startDateTime.getMilliseconds() + startDuration.getTime());
+    }
+    const endDateTime = dateValue[1] ? startOfDay(dateValue[1]) : undefined;
+    if (endDateTime != null) {
+      endDateTime.setMilliseconds(endDateTime.getMilliseconds() + endDuration.getTime());
+    }
     return [startDateTime, endDateTime];
   };
 
@@ -91,8 +103,10 @@ export function DateTimeRangePicker({
    */
   const handleAccept = () => {
     const combined = combineDateAndTime();
-    onChange(combined[0], combined[1]);
-    handleClose();
+    if (combined[0] != null && combined[1] != null) {
+      onChange(combined[0], combined[1]);
+      setAnchorEl(null);
+    }
   };
 
   /**
@@ -109,22 +123,22 @@ export function DateTimeRangePicker({
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const preselectedOptions = [
-    { name: 'Danas', startDate: moment().startOf('day'), endDate: moment().endOf('day') },
-    { name: 'Jučer', startDate: moment().subtract(1, 'days').startOf('day'), endDate: moment().subtract(1, 'days').endOf('day') },
-    { name: 'Proteklih 7 dana', startDate: moment().subtract(7, 'days').startOf('day'), endDate: moment().endOf('day') },
-    { name: 'Proteklih 30 dana', startDate: moment().subtract(30, 'days').startOf('day'), endDate: moment().endOf('day') },
-    { name: 'Ovaj mjesec', startDate: moment().startOf('month'), endDate: moment().endOf('day') },
-    { name: 'Prošli mjesec', startDate: moment().subtract(1, 'months').startOf('month'), endDate: moment().subtract(1, 'months').endOf('month') }
+  const preselectedOptions: { name: string, startDate: Date, endDate: Date }[] = [
+    { name: 'Danas', startDate: startOfDay(new Date()), endDate: endOfDay(new Date()) },
+    { name: 'Jučer', startDate: startOfYesterday(), endDate: endOfYesterday() },
+    { name: 'Proteklih 7 dana', startDate: sub(startOfDay(new Date()), { days: 7 }), endDate: endOfDay(new Date()) },
+    { name: 'Proteklih 30 dana', startDate: sub(startOfDay(new Date()), { days: 30 }), endDate: endOfDay(new Date()) },
+    { name: 'Ovaj mjesec', startDate: startOfMonth(new Date()), endDate: endOfDay(new Date()) },
+    { name: 'Prošli mjesec', startDate: sub(startOfMonth(new Date()), { months: 1 }), endDate: endOfMonth(sub(startOfMonth(new Date()), { months: 1 })) }
   ];
 
-  const startValueStringFormat = hideTime || moment(propStartDate).startOf('day').isSame(propStartDate, 'minute')
-    ? 'DD.MM.YYYY.'
-    : 'DD.MM.YYYY. HH:mm';
-  const endValueStringFormat = hideTime || moment(propEndDate).endOf('day').isSame(propEndDate, 'minute')
-    ? 'DD.MM.YYYY.'
-    : 'DD.MM.YYYY. HH:mm';
-  const valueString = `${moment(propStartDate).format(startValueStringFormat)} do ${moment(propEndDate).format(endValueStringFormat)}`;
+  const startValueStringFormat = hideTime || isSameMinute(startOfDay(propStartDate), propStartDate)
+    ? 'dd.MM.yyyy.'
+    : 'dd.MM.yyyy. HH:mm';
+  const endValueStringFormat = hideTime || isSameMinute(endOfDay(propEndDate), propEndDate)
+    ? 'dd.MM.yyyy.'
+    : 'dd.MM.yyyy. HH:mm';
+  const valueString = `${format(propStartDate, startValueStringFormat)} do ${format(propEndDate, endValueStringFormat)}`;
 
   return (
     <>
@@ -172,7 +186,7 @@ export function DateTimeRangePicker({
                       variant="outlined"
                       fullWidth
                       title={`${opt.startDate} ${opt.endDate}`}
-                      onClick={() => handlePreselect(opt.startDate.toDate(), opt.endDate.toDate())}
+                      onClick={() => handlePreselect(opt.startDate, opt.endDate)}
                     >
                       {opt.name}
                     </Button>
@@ -191,7 +205,7 @@ export function DateTimeRangePicker({
                         <Grid item xs={6}>
                           <TextField
                             type="date"
-                            value={moment(dateValue[0]).format('YYYY-MM-DD')}
+                            value={dateValue[0] ? format(dateValue[0], 'yyyy-MM-dd') : ''}
                             onChange={(e) => setDateValue([e.target.value as unknown as Date, dateValue[1]])}
                             fullWidth
                             size="small"
@@ -204,7 +218,7 @@ export function DateTimeRangePicker({
                         <Grid item xs={6}>
                           <TextField
                             type="date"
-                            value={moment(dateValue[1]).format('YYYY-MM-DD')}
+                            value={dateValue[1] ? format(dateValue[1], 'yyyy-MM-dd') : ''}
                             onChange={(e) => setDateValue([dateValue[0], e.target.value as unknown as Date])}
                             fullWidth
                             size="small"
