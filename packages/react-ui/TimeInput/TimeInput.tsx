@@ -49,6 +49,7 @@ export function TimeInput({
   defaultValue,
   useSeconds,
   onChange,
+  onKeyDown,
   onBlur,
   onTimeChange,
   ...rest
@@ -79,11 +80,25 @@ export function TimeInput({
     }
   }
 
+  /**
+   * Handles the input key down.
+   * This will call onTimeChange callback if the key is Enter.
+   */
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (onKeyDown) {
+      onKeyDown(event);
+    }
+    if (event.key === 'Enter' && onTimeChange) {
+      onTimeChange(processTime(value ?? defaultValue, useSeconds ?? false));
+    }
+  }
+
   return (
     <TextField
       value={value}
       defaultValue={defaultValue}
       onChange={handleChange}
+      onKeyDown={handleKeyDown}
       onBlur={handleBlur}
       {...rest}
     />
