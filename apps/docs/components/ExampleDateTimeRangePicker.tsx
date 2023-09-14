@@ -6,9 +6,11 @@ export function ExampleDateTimeRangePicker() {
     const [end, setEnd] = useState<Date>(new Date());
 
     return (
+        // @highlight-start
         <DateTimeRangePicker
             start={start}
             end={end}
             onChange={(start, end) => { setStart(start); setEnd(end); }} />
+        // @highlight-end
     )
 }
