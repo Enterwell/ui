@@ -46,8 +46,6 @@ export function usePromise<T>(promise?: PromiseFunction<T>): UsePromiseResult<T>
 
         setState((curr) => ({ ...curr, isLoading: true }));
 
-        console.log('usePromise', 'promiseProvided', JSON.stringify(promise), typeof promise, !promise)
-
         // Resolve as promise object or function
         loadPromiseRef.current = typeof promise === 'function' ? promise() : promise;
 
