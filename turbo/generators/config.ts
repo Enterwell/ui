@@ -17,17 +17,17 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       // UI Library
       {
         type: "add",
-        path: "packages/ui/{{pascalCase name}}/{{pascalCase name}}.tsx",
+        path: "packages/react-ui/{{pascalCase name}}/{{pascalCase name}}.tsx",
         templateFile: "templates/component.hbs",
       },
       {
         type: "add",
-        path: "packages/ui/{{pascalCase name}}/index.tsx",
+        path: "packages/react-ui/{{pascalCase name}}/index.tsx",
         templateFile: "templates/componentIndex.hbs",
       },
       {
         type: "append",
-        path: "packages/ui/index.tsx",
+        path: "packages/react-ui/index.tsx",
         pattern: /(?<insertion>\/\/ component exports)/g,
         template: 'export * from "./{{pascalCase name}}";',
       },
@@ -39,13 +39,13 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: "add",
-        path: "apps/docs/pages/ui/components/{{kebabCase name}}.mdx",
+        path: "apps/docs/pages/react-ui/components/{{kebabCase name}}.mdx",
         templateFile: "templates/componentDocsPage.hbs",
       },
       // Changelog
       {
         type: "add",
-        path: "packages/ui/changes/Added {{pascalCase name}} component",
+        path: "packages/react-ui/changes/Added {{pascalCase name}} component",
       }
     ],
   });
@@ -62,25 +62,25 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       // UI Library
       {
         type: "add",
-        path: "packages/hooks/hooks/{{camelCase name}}.ts",
+        path: "packages/react-hooks/hooks/{{camelCase name}}.ts",
         templateFile: "templates/hook.hbs",
       },
       {
         type: "append",
-        path: "packages/hooks/index.ts",
+        path: "packages/react-hooks/index.ts",
         pattern: /(?<insertion>\/\/ hook exports)/g,
         template: 'export * from "./hooks/{{camelCase name}}";',
       },
       // Docs
       {
         type: "add",
-        path: "apps/docs/pages/hooks/hooks/{{kebabCase name}}.mdx",
+        path: "apps/docs/pages/react-hooks/hooks/{{kebabCase name}}.mdx",
         templateFile: "templates/hookDocsPage.hbs",
       },
       // Changelog
       {
         type: "add",
-        path: "packages/hooks/changes/Added {{camelCase name}} hook",
+        path: "packages/react-hooks/changes/Added {{camelCase name}} hook",
       }
     ],
   });

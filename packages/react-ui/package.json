@@ -24,29 +24,32 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
     "@enterwell/react-hooks": "workspace:*",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@microsoft/api-extractor": "^7.36.4",
-    "@mui/icons-material": "^5.14.8",
-    "@mui/material": "^5.14.8",
-    "@mui/system": "^5.14.8",
-    "@types/node": "^20.5.2",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@microsoft/api-extractor": "7.36.4",
+    "@mui/icons-material": "5.14.9",
+    "@mui/material": "5.14.9",
+    "@mui/system": "5.14.9",
+    "@mui/x-date-pickers-pro": "5.0.20",
+    "@types/node": "20.5.2",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "date-fns": "2.30.0",
     "eslint-config-custom": "workspace:*",
-    "react": "^18.2.0",
-    "rimraf": "^5.0.1",
+    "react": "18.2.0",
+    "rimraf": "5.0.1",
     "tsconfig": "workspace:*",
     "tsup": "7.2.0",
-    "typescript": "^4.5.2"
+    "typescript": "4.5.2"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.8",
-    "@mui/system": "^5.14.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@mui/material": "5.14.9",
+    "@mui/system": "5.14.9",
+    "@mui/x-date-pickers-pro": "5.0.20",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Box, Tab } from "@mui/material";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
+import { ComponentProps } from "react";
+import { Tabs } from 'nextra/components'
 import { Card } from "./Card";
 import cx from "classix";
+import { NoSsr } from "@mui/material";
 
-type ComponentWithSourceProps = React.HTMLAttributes<HTMLDivElement> & {
+type ComponentWithSourceProps = Omit<ComponentProps<typeof Tabs>, 'items'> & {
   component: React.FunctionComponent;
   centered?: boolean;
 }
@@ -19,29 +19,20 @@ export function ComponentWithSource({
 }: ComponentWithSourceProps) {
   const Component = component;
 
-  const [tabValue, setTabValue] = useState('preview');
-  const handleTabChange = (_: React.SyntheticEvent, newValue: string) => {
-    setTabValue(newValue);
-  };
-
   return (
-    <TabContext value={tabValue}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} {...rest}>
-        <TabList onChange={handleTabChange} aria-label="Component Preview and Code">
-          <Tab label="Preview" value="preview" />
-          <Tab label="Code" value="code" />
-        </TabList>
-      </Box>
-      <TabPanel value="preview" className="p-0">
+    <Tabs items={['Preview', 'Code']} {...rest}>
+      <Tabs.Tab>
         <Card className={cx(
           centered && "p-2 min-h-[280px] flex gap-2 items-center justify-center"
         )}>
-          <Component />
+          <NoSsr>
+            <Component />
+          </NoSsr>
         </Card>
-      </TabPanel>
-      <TabPanel value="code" className="p-0">
+      </Tabs.Tab>
+      <Tabs.Tab>
         {children}
-      </TabPanel>
-    </TabContext>
+      </Tabs.Tab>
+    </Tabs>
   )
 }
