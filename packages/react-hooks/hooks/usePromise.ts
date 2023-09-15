@@ -1,6 +1,5 @@
 import {
     useEffect,
-    useRef,
     useState,
     useTransition
 } from 'react';
@@ -34,32 +33,30 @@ export type PromiseFunction<T> = (Promise<T> | undefined) | (() => Promise<T> | 
 export function usePromise<T>(promise?: PromiseFunction<T>): UsePromiseResult<T> {
     const [state, setState] = useState<UsePromiseResult<T>>({ isLoading: true, item: undefined, error: undefined });
     const [, startTransition] = useTransition();
-    const loadPromiseRef = useRef<Promise<T> | undefined>(undefined);
 
     useEffect(() => {
         let canceled = false;
 
-        // Ignore if promise not provided or already loading and not canceled
-        if (!promise || (loadPromiseRef.current && !canceled)) {
+        // Ignore if promise not provided
+        if (!promise) {
             return;
         }
 
         setState((curr) => ({ ...curr, isLoading: true }));
 
         // Resolve as promise object or function
-        loadPromiseRef.current = typeof promise === 'function' ? promise() : promise;
+        const current = typeof promise === 'function' ? promise() : promise;
 
         // If promise is undefined, load is considered complete and empty
-        if (!loadPromiseRef.current) {
+        if (!current) {
             startTransition(() => {
                 setState({ isLoading: false });
             });
             return;
         }
 
-        loadPromiseRef.current
+        current
             .then(item => {
-                loadPromiseRef.current = undefined;
                 if (canceled) {
                     return;
                 }
@@ -67,7 +64,6 @@ export function usePromise<T>(promise?: PromiseFunction<T>): UsePromiseResult<T>
                     setState({ isLoading: false, item });
                 });
             }).catch(err => {
-                loadPromiseRef.current = undefined;
                 if (canceled) {
                     return;
                 }
