@@ -8,6 +8,9 @@ import * as react from 'react';
 import { useEffect } from 'react';
 
 // @public
+export type PromiseFunction<T> = (Promise<T> | undefined) | (() => Promise<T> | undefined);
+
+// @public
 export function useDebounce<T>(value: T, delay: number): T;
 
 // @public
@@ -15,6 +18,16 @@ export function useDebouncedEffect(effect: Function, deps: unknown[], delay: num
 
 // @public
 export const useIsomorphicLayoutEffect: typeof useEffect;
+
+// @public
+export function usePromise<T>(promise?: PromiseFunction<T>): UsePromiseResult<T>;
+
+// @public
+export type UsePromiseResult<T> = {
+    item?: T | undefined;
+    isLoading: boolean;
+    error?: string | undefined;
+};
 
 // @public
 export function useResizeObserver(callback: (element: any, entry: ResizeObserverEntry) => void): react.MutableRefObject<null>;
