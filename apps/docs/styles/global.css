@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.nx-bg-primary-50 {
+  background-color: hsl(0 0% 98%) !important;
+}
+
+.nx-bg-primary-100 {
+  background-color: hsl(0 0% 94%) !important;
+}
+
 :is(html[class~=dark] .dark\:hover\:nx-bg-primary-100\/5:hover) {
   background-color: hsl(0 0% 94%/.05) !important;
 }
@@ -22,9 +30,25 @@
   background-color: hsl(0 0% 50%/.1) !important;
 }
 
+.nx-text-primary-600 {
+  color: black !important;
+}
+
 :is(html[class~=dark] .nx-text-primary-600),
 :is(html[class~=dark] .dark\:nx-text-primary-600) {
   color: white !important;
+}
+
+.nx-bg-primary-700\/5 {
+  background-color: hsl(0 0% 32%/.05) !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  --tw-ring-color: hsl(0 0% 80%/var(--tw-ring-opacity))  !important;
+  --tw-ring-offset-color: hsl(0 0% 80%)  !important;
 }
 
 :is(html[class~=dark] a:focus-visible),
@@ -38,6 +62,10 @@
 summary:focus-visible {
   --tw-ring-offset-shadow: var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width) hsl(0 0% 32%/var(--tw-ring-opacity)) !important;
   --tw-ring-shadow: var(--tw-ring-inset)0 0 0 calc(2px + var(--tw-ring-offset-width)) hsl(0 0% 32%/var(--tw-ring-opacity)) !important;
+}
+
+.nx-text-primary-800{
+  color: hsl(0 0% 32%) !important;
 }
 
 .nx-border-primary-500 {

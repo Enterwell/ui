@@ -119,7 +119,7 @@ function handleComponentSource(node) {
 
       const { codeLines, highlightedRange } = highlightCode(source);
 
-      pushChildCodeBlock(node, codeLines, path, highlightedRange);
+      pushChildCodeBlock(node, codeLines, path.replace("../..", ""), highlightedRange);
     } catch (error) {
       console.error(error)
     }
