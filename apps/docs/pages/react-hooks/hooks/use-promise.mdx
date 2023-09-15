@@ -70,7 +70,8 @@ const getData = () => {
     });
 };
 
-const { item, isLoading, error } = usePromise(getData);
+const getDataPromise = getData();
+const { item, isLoading, error } = usePromise(getDataPromise);
 ```
 
 ## Inspect
