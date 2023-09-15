@@ -9,6 +9,7 @@ import { useDebounce, useResizeObserver } from '@enterwell/react-hooks';
  * @public
  */
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
+  color?: string;
   expanded?: boolean;
   onChange?: () => void;
 };
@@ -20,7 +21,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
  * @returns The PageDrawer component.
  * @public
  */
-export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawerProps): JSX.Element {
+export function PageDrawer({ expanded, onChange, children, color, ...rest }: PageDrawerProps): JSX.Element {
   const [drawerSize, setDrawerSize] = useState(0);
   const drawerSizeDebounced = useDebounce(drawerSize, 50);
   const resizeObserverRef = useResizeObserver((_, entry) => {
@@ -34,9 +35,7 @@ export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawer
         ref={resizeObserverRef}
         sx={{
           position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
+          inset: 'auto 0 0 0',
           bgcolor: 'transparent',
           backgroundImage: 'none',
           border: 'none',
@@ -55,8 +54,8 @@ export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawer
             minHeight: 32,
             height: 32,
             '.MuiAccordionSummary-expandIconWrapper': {
-              bgcolor: 'rgba(234, 135, 20, 0.2)',
-              color: '#EA8714',
+              bgcolor: color ?? 'primary.dark',
+              color: 'primary.main',
               borderRadius: 1
             },
             '&.Mui-expanded': {
@@ -77,8 +76,9 @@ export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawer
         >
           <Box
             sx={{
-              borderTop: '1px solid rgba(234, 135, 20, 0.2)',
-              borderBottom: '1px solid rgba(234, 135, 20, 0.2) ',
+              borderTop: '1px solid',
+              borderBottom: '1px solid',
+              borderColor: color ?? 'primary.dark',
               height: 3,
               width: '100%',
               position: 'absolute',
