@@ -45,10 +45,15 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
         name: param.parameterName,
         description: comment?.tags?.find((tag) => tag.tag === 'param' && tag.name === param.parameterName)?.description,
         optional: param.isOptional,
-        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex).map((t: any) => t.text).join(' '),
+        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex).map((t: any) => t.text).join('')
     }));
+    const returnsComment = comment?.tags?.find((tag) => tag.tag === 'returns');
+    const returnsType = member?.returnTypeTokenRange 
+        ? member.excerptTokens.slice(member.returnTypeTokenRange.startIndex, member.returnTypeTokenRange.endIndex).map((t: any) => t.text).join('')
+        : undefined;
+    const returnsTypeValid = returnsType && returnsType !== 'void';
 
-    if (!params?.length) {
+    if (!params?.length && !returnsTypeValid) {
         return (
             <div className="text-center text-gray-400">
                 <p>No parameters</p>
@@ -57,7 +62,7 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
     };
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-[auto_auto_1fr] gap-x-4 gap-y-1 items-center mt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_auto_1fr] gap-x-4 gap-y-2 items-baseline mt-2">
             {params?.map((param: any) => (
                 <Fragment key={param.name}>
                     <div>
@@ -73,6 +78,17 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
                     <hr className="sm:hidden" />
                 </Fragment>
             ))}
+            {returnsTypeValid && (
+                <>
+                    <h4 className='text-xl font-bold text-right' title="Returns">{'=>'}</h4>
+                    <div>
+                        {returnsType && <span className="text-muted-foreground">{returnsType}</span>}
+                    </div>
+                    <div>
+                        <Mdx>{([returnsComment?.name, returnsComment?.description].filter(Boolean).join(' '))?.trim()}</Mdx>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

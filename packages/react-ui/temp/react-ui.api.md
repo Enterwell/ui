@@ -11,6 +11,7 @@ import { DialogProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
+import { TextField } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
@@ -42,6 +43,16 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 
 // @public
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
+export function DateTimeRangePicker({ start: propStartDate, end: propEndDate, hideTime, onChange, ...rest }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "onClick" | "value" | "title" | "onChange"> & {
+    start: Date;
+    end: Date;
+    onChange: (startDate: Date, endDate: Date) => void;
+    hideTime?: boolean;
+    dense?: boolean;
+};
 
 // @public
 export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
@@ -66,6 +77,15 @@ export function PageDrawer({ expanded, onChange, children, ...rest }: PageDrawer
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     expanded?: boolean;
     onChange?: () => void;
+};
+
+// @public
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type TimeInputProps = ComponentProps<typeof TextField> & {
+    useSeconds?: boolean;
+    onTimeChange?: (time: string) => void;
 };
 
 // (No @packageDocumentation comment for this package)
