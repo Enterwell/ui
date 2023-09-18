@@ -5,10 +5,12 @@
 ```ts
 
 import { Button } from '@mui/material';
+import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 import { ComponentProps } from 'react';
 import { DialogProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
+import * as react from 'react';
 import { ReactElement } from 'react';
 import { TextField } from '@mui/material';
 
@@ -88,6 +90,26 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     color?: string;
     expanded?: boolean;
     onChange?: () => void;
+};
+
+// @public
+export const SplitButton: react.ForwardRefExoticComponent<Omit<SplitButtonProps, "ref"> & react.RefAttributes<HTMLButtonElement>>;
+
+// @public
+export type SplitButtonProps = Omit<ButtonGroupProps, "onChange" | "onClick"> & {
+    options: Array<{
+        key: string;
+        value: string;
+    }>;
+    loading?: boolean;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, option: {
+        key: string;
+        value: string;
+    }) => void;
+    onChange?: (event: React.MouseEvent<HTMLLIElement>, option: {
+        key: string;
+        value: string;
+    }) => void;
 };
 
 // @public
