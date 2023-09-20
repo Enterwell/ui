@@ -17,10 +17,28 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 ## Example
 
-```ts filename="example.ts"
+```ts filename="example.ts - Minimal example"
 import { useDataGrid } from '@enterwell/react-mui-hooks';
+import { DataGrid } from '@mui/x-data-grid';
 
-useDataGrid();
+const columns = [
+    { field: 'firstName', headerName: 'First Name' },
+    { field: 'lastName', headerName: 'Last Name' },
+];
+
+const handleOnPage = async (page: number) => {
+    const response = await fetch('/users?page=' + page);
+    return await response.json();
+};
+
+const dataGrid = useDataGrid({
+    columns,
+    onPage: handleOnPage
+});
+
+return (
+    <DataGrid {...dataGrid} />
+);
 ```
 
 ## Inspect

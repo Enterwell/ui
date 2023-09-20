@@ -231,13 +231,13 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
  * @public
  */
 export type UseDataGridProps = {
+    columns: ExtendedGridColDef[],
+    onPage: (page: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     tableId?: string,
     pageSize?: number,
-    columns: ExtendedGridColDef[],
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
     renderCell?: (params: any) => React.ReactElement,
-    onPage: (page: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     onRowClick?: any,
     rowHeight?: number,
     selection?: boolean,
