@@ -95,8 +95,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onSelection, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onSelection, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -128,7 +127,7 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): JSX.Element;
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {
