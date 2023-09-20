@@ -16,16 +16,16 @@ export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel,
 
 // @public
 export type UseDataGridProps = {
-    tableId?: string;
-    pageSize?: number;
     columns: ExtendedGridColDef[];
-    columnVisibilityModel?: GridColumnVisibilityModel;
-    defaultSort?: GridSortModel;
-    renderCell?: (params: any) => React.ReactElement;
     onPage: (page: number, sortModel?: GridSortModel) => Promise<{
         rows: GridValidRowModel[];
         totalRowsCount?: number;
     }>;
+    tableId?: string;
+    pageSize?: number;
+    columnVisibilityModel?: GridColumnVisibilityModel;
+    defaultSort?: GridSortModel;
+    renderCell?: (params: any) => React.ReactElement;
     onRowClick?: any;
     rowHeight?: number;
     selection?: boolean;
@@ -44,7 +44,7 @@ export type UseDataGridResponse = ComponentPropsWithRef<typeof DataGrid> & {
 
 // Warnings were encountered during analysis:
 //
-// dist/index.d.ts:22:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
+// dist/index.d.ts:20:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
