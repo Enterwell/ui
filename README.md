@@ -70,4 +70,5 @@ Available generators:
 | Generator | Description | Command |
 |-----------|-------------|---------|
 | component | Creates react component in `react-ui` package along with basic documentation. | `pnpm turbo gen component` |
-| hook | Creates react hook in `react-hooks` package alogn with basic documentation. | `pnpm turbo gen hook` |
+| react-hook | Creates react hook in `react-hooks` package alogn with basic documentation. | `pnpm turbo gen react-hook` |
+| react-mui-hook | Creates react hook in `react-mui-hooks` package alogn with basic documentation. | `pnpm turbo gen react-mui-hook` |

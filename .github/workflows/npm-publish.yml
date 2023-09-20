@@ -21,4 +21,10 @@ jobs:
             name: 'react-hooks'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    publish_mui_hooks:
+        uses: './.github/workflows/npm-publish-reusable.yml'
+        with:
+            name: 'react-mui-hooks'
+        secrets: 
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         

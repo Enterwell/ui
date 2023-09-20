@@ -29,7 +29,7 @@ function hookTemplate(packageName: string) {
       {
         type: "add",
         path: `apps/docs/pages/${packageName}/hooks/{{kebabCase name}}.mdx`,
-        templateFile: `templates/${packageName.substring(0, packageName.length -1)}DocsPage.hbs`,
+        templateFile: `templates/${packageName.substring(0, packageName.length - 1)}DocsPage.hbs`,
       },
       // Changelog
       {
