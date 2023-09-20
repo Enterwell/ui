@@ -4,8 +4,47 @@
 
 ```ts
 
+import { ComponentPropsWithRef } from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid-pro';
+import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
+import { GridSortModel } from '@mui/x-data-grid';
+import { GridValidRowModel } from '@mui/x-data-grid';
+
 // @public
-export function useDataGrid(): void;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, renderCell, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
+
+// @public
+export type UseDataGridProps = {
+    tableId?: string;
+    pageSize?: number;
+    columns: ExtendedGridColDef[];
+    columnVisibilityModel?: GridColumnVisibilityModel;
+    defaultSort?: GridSortModel;
+    renderCell?: (params: any) => React.ReactElement;
+    onPage: (page: number, sortModel?: GridSortModel) => Promise<{
+        rows: GridValidRowModel[];
+        totalRowsCount?: number;
+    }>;
+    onRowClick?: any;
+    rowHeight?: number;
+    selection?: boolean;
+    checkboxSelection?: boolean;
+    infiniteLoading?: boolean;
+    keepNonExistentRowsSelected?: boolean;
+};
+
+// @public
+export type UseDataGridResponse = ComponentPropsWithRef<typeof DataGrid> & {
+    filterChanged: (keepPage?: boolean) => void;
+    isSelectAll: boolean;
+    setIsSelectAll: (value: boolean) => void;
+    isAnySelected: boolean;
+};
+
+// Warnings were encountered during analysis:
+//
+// dist/index.d.ts:22:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
