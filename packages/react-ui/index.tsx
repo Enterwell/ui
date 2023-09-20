@@ -1,6 +1,7 @@
 'use client';
 
 // component exports
+export * from "./Select";
 export * from "./ConfirmButton";
 export * from "./TimeInput";
 export * from "./DateTimeRangePicker";

@@ -4,10 +4,13 @@
 
 ```ts
 
+import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { Button } from '@mui/material';
 import { ButtonProps } from '@mui/material';
+import { ChipTypeMap } from '@mui/material';
 import { ComponentProps } from 'react';
 import { DialogProps } from '@mui/material';
+import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
@@ -93,6 +96,39 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 
 // @public
 export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onSelection, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+
+// @public
+export type SelectItem = {
+    value: string;
+    label?: string;
+};
+
+// @public
+export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+    multiple?: boolean;
+    items: T[];
+    placeholder?: string;
+    selected: T | T[];
+    loading?: boolean;
+    label?: ReactElement;
+    onSelection: (value: T[]) => void;
+    displayOption?: (option: T) => string;
+    pageSize: number;
+    onPage?: (text: string | null, page: number, pageSize: number) => void;
+    debounce?: number;
+    noOptionsText?: string;
+    loadingOptionsText?: string;
+    error?: boolean;
+    helperText?: string;
+    required?: boolean;
+    disableFilterOptions?: boolean;
+    stopPropagationOnKeyCodeSpace?: boolean;
+    onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
+};
+
+// @public
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {
