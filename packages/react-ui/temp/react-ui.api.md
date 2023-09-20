@@ -14,6 +14,7 @@ import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { TextField } from '@mui/material';
 
 // @public
@@ -110,7 +111,7 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     placeholder?: string;
     selected: T | T[];
     loading?: boolean;
-    label?: ReactElement;
+    label?: ReactNode;
     onSelection: (value: T[]) => void;
     displayOption?: (option: T) => string;
     pageSize: number;

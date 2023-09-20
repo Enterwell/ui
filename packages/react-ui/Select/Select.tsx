@@ -1,4 +1,4 @@
-import { useState, useEffect, KeyboardEvent, SyntheticEvent, ReactElement, FocusEvent } from 'react';
+import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
 import { Autocomplete, TextField, CircularProgress, ChipTypeMap } from '@mui/material';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
@@ -46,7 +46,7 @@ export type SelectProps<
     placeholder?: string;
     selected: T | T[];
     loading?: boolean;
-    label?: ReactElement;
+    label?: ReactNode;
     onSelection: (value: T[]) => void;
     displayOption?: (option: T) => string;
     pageSize: number;
