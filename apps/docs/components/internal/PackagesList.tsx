@@ -2,14 +2,15 @@ import { Card, CardActionArea, CardContent } from "@mui/material";
 import Image from "next/image";
 
 const availablePackages = [
-    { name: "UI", description: "Component library.", href: '/ui/react-ui/about', library: 'react' },
-    { name: "Hooks", description: "Hooks library.", href: '/ui/react-hooks/about', library: 'react' },
+    { name: "UI", description: "Component library.", href: '/ui/react-ui/about', libraries: ['react', 'mui'] },
+    { name: "Hooks", description: "Hooks library.", href: '/ui/react-hooks/about', libraries: ['react'] },
+    { name: "MUI Hooks", description: "MUI hooks library.", href: '/ui/react-mui-hooks/about', libraries: ['react', 'mui'] },
 ];
 
 export function PackagesList() {
     return (
         <div className="flex flex-col items-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-20">
                 {availablePackages.map((pkg) => (
                     <Card key={pkg.name} className="rounded-lg border bg-card dark:border-neutral-700 shadow-xl">
                         <CardActionArea href={pkg.href}>
@@ -20,6 +21,7 @@ export function PackagesList() {
                                 </div>
                                 <div className="absolute right-2 bottom-2 opacity-20">
                                     <Image alt="React" width={32} height={32} src="/ui/assets/react.svg" />
+                                    <Image alt="MUI" width={32} height={32} src="/ui/assets/mui.svg" />
                                 </div>
                             </CardContent>
                         </CardActionArea>

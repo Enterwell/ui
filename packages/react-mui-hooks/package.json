@@ -1,0 +1,46 @@
+{
+  "name": "@enterwell/react-mui-hooks",
+  "version": "0.3.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./api": "./dist/api.js",
+    "./package": "./dist/package.js"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev:js": "tsup index.ts --watch --format esm --dts --outDir dist",
+    "dev": "pnpm run \"/^dev:.*/\"",
+    "before-build:clean": "rimraf dist",
+    "build:js": "tsup index.ts --format esm --dts --outDir dist",
+    "after-build:api": "api-extractor run && node ./scripts/transform-api-docs.js",
+    "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.36.4",
+    "@mui/material": "5.14.9",
+    "@mui/x-data-grid-pro": "6.14.0",
+    "@types/node": "^20.5.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint-config-custom": "workspace:*",
+    "react": "^18.2.0",
+    "rimraf": "^5.0.1",
+    "tsconfig": "workspace:*",
+    "tsup": "7.2.0",
+    "typescript": "^4.5.2",
+    "@enterwell/react-hooks": "workspace:*"
+  },
+  "peerDependencies": {
+    "@mui/material": "5.14.9",
+    "@mui/x-data-grid-pro": "6.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
