@@ -9,11 +9,12 @@ import { ButtonProps } from '@mui/material';
 import { ComponentProps } from 'react';
 import { DialogProps } from '@mui/material';
 import { HTMLAttributes } from 'react';
+import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 import { TextField } from '@mui/material';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
@@ -26,7 +27,7 @@ export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDial
 };
 
 // @public
-export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): JSX.Element;
+export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
@@ -41,7 +42,7 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DateTimeRangePicker({ start, end, hideTime, useSeconds, preselectOptions, onChange, ...rest }: DateTimeRangePickerProps): JSX.Element;
+export function DateTimeRangePicker({ start, end, hideTime, useSeconds, preselectOptions, onChange, ...rest }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DateTimeRangePickerPreselectOption = {
@@ -65,7 +66,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
-export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): JSX.Element;
+export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DropdownButtonOption = {
@@ -91,7 +92,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): JSX.Element;
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {
