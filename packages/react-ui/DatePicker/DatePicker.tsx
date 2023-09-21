@@ -9,13 +9,12 @@ import { FocusEvent } from 'react';
  * DatePicker props
  * @public
  */
-export type DatePickerProps = Omit<MuiDatePickerProps<Date, Date>, "renderInput"> & {
+export type DatePickerProps = MuiDatePickerProps<Date, Date> & {
   helperText?: string;
   error?: boolean;
   required?: boolean;
   displayDateFormat?: string;
   onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onChange?: (date: Date | null, keyboardInputValue?: string | undefined) => void;
 };
 
 /**
@@ -25,30 +24,32 @@ export type DatePickerProps = Omit<MuiDatePickerProps<Date, Date>, "renderInput"
  * @public
  */
 export function DatePicker({
-  onChange,
   onBlur,
   helperText,
   error,
   required,
   displayDateFormat = "dd.MM.yyyy.",
+  inputFormat,
+  InputProps,
+  renderInput,
   ...rest
 }: DatePickerProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hr}>
       <MuiDatePicker
-        inputFormat={displayDateFormat}
-        onChange={(date, keyboardInputValue) => onChange(date, keyboardInputValue)}
+        inputFormat={inputFormat ?? displayDateFormat}
         InputProps={{
-          onBlur
+          onBlur,
+          ...InputProps
         }}
-        renderInput={(params) => (
+        renderInput={renderInput ?? ((params) => (
           <TextField
             error={error}
             helperText={helperText}
             required={required}
             {...params}
           />
-        )}
+        ))}
         {...rest}
       />
     </LocalizationProvider>
