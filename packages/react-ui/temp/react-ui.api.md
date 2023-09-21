@@ -138,6 +138,9 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     disableFilterOptions?: boolean;
     stopPropagationOnKeyCodeSpace?: boolean;
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
+};
+
+// @public
 export const SplitButton: react.ForwardRefExoticComponent<Omit<SplitButtonProps, "ref"> & react.RefAttributes<HTMLButtonElement>>;
 
 // @public
