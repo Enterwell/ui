@@ -13,7 +13,6 @@ export type DatePickerProps = MuiDatePickerProps<Date, Date> & {
   helperText?: string;
   error?: boolean;
   required?: boolean;
-  displayDateFormat?: string;
   onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
@@ -28,8 +27,7 @@ export function DatePicker({
   helperText,
   error,
   required,
-  displayDateFormat = "dd.MM.yyyy.",
-  inputFormat,
+  inputFormat = "dd.MM.yyyy.",
   InputProps,
   renderInput,
   ...rest
@@ -37,7 +35,7 @@ export function DatePicker({
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hr}>
       <MuiDatePicker
-        inputFormat={inputFormat ?? displayDateFormat}
+        inputFormat={inputFormat}
         InputProps={{
           onBlur,
           ...InputProps
