@@ -47,7 +47,7 @@ export type SelectProps<
     selected: T | T[];
     loading?: boolean;
     label?: ReactNode;
-    onSelection: (value: T[]) => void;
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     displayOption?: (option: T) => string;
     pageSize: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
@@ -82,7 +82,7 @@ export function Select<
     selected,
     loading: parentLoading,
     label,
-    onSelection,
+    onChange,
     displayOption,
     pageSize,
     onPage,
@@ -106,8 +106,7 @@ export function Select<
   // Used to display loading icon when calling a callback for new data.
   const [loading, setLoading] = useState(false);
 
-  // When input items change, checks if we can call for more pages
-  // and sets loading indicator to false if it was true.
+  // When items are loaded, stop displaying loading icon.
   useEffect(() => setLoading(false), [items, pageSize]);
 
   // Handle the debounced input change.
@@ -119,10 +118,10 @@ export function Select<
   }, [debouncedText]);
 
   /**
- * Handle the list scroll.
- * When user scroll to end, next page is requested.
- */
-  const handleScroll = () => {
+   * Handle the scroll pagination.
+   * When user scroll to end, next page is requested.
+   */
+  const handleScrollPagination = () => {
     // If there is more pages to load, request next page
     if (items.length % pageSize === 0) {
       setLoading(true);
@@ -133,9 +132,21 @@ export function Select<
   };
 
   /**
- * Handle the dropdown opening.
- * Request initial page.
- */
+   * Handles the listbox scroll event.
+   * @param event - event
+   */
+  const handleListboxScroll = (event: React.UIEvent<HTMLUListElement>) => {
+    const listboxNode = event.currentTarget;
+    const scrollOffset = listboxNode.scrollTop + listboxNode.clientHeight + ScrollLoadOffset;
+    if (scrollOffset > listboxNode.scrollHeight) {
+      handleScrollPagination();
+    }
+  }
+
+  /**
+   * Handle the dropdown opening.
+   * Request initial page.
+   */
   const handleOnOpen = () => {
     if (onPage) {
       onPage(debouncedText, 0, pageSize);
@@ -143,18 +154,18 @@ export function Select<
   };
 
   /**
- * Handle the dropwdown closed.
- * Clears the input text.
- * @return {void}
- */
+   * Handle the dropwdown closed.
+   * Clears the input text.
+   * @return {void}
+   */
   const handleOnClose = () => {
     setInputText(null);
   };
 
   /**
- * Handles key down event
- * @param event - event
- */
+   * Handles key down event
+   * @param event - event
+   */
   const handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (stopPropagationOnKeyCodeSpace && event.key === ' ') {
       event.stopPropagation();
@@ -176,17 +187,18 @@ export function Select<
     : createFilterOptions<T>();
 
   /**
- * Handles the change event.
- * @param _ - The event.
- * @param value - The value.
- */
-  const handleChange = (_: SyntheticEvent<Element, Event>, value: T | T[] | null) => {
+   * Handles the change event.
+   * @param event - The event.
+   * @param value - The value.
+   */
+  const handleChange = (event: SyntheticEvent<Element, Event>, value: T | T[] | null) => {
     if (Array.isArray(value)) {
-      return onSelection(value);
+      return onChange(event, value);
     }
 
-    return onSelection(value != null ? [value] : []);
+    return onChange(event, value != null ? [value] : []);
   };
+
   return (
     <Autocomplete<T, boolean, false, false, ChipComponent>
       onOpen={handleOnOpen}
@@ -237,17 +249,7 @@ export function Select<
       // GitHub issue to implement a proper pagination onAutocomplete
       // component was opened few days ago.
       ListboxProps={{
-        onScroll: (event) => {
-          const listboxNode = event.currentTarget;
-          if (
-            listboxNode.scrollTop
-            + listboxNode.clientHeight
-            + ScrollLoadOffset
-            > listboxNode.scrollHeight
-          ) {
-            handleScroll();
-          }
-        },
+        onScroll: handleListboxScroll,
       }}
       {...rest}
     />

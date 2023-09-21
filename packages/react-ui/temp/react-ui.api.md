@@ -17,7 +17,9 @@ import { HTMLAttributes } from 'react';
 import * as react from 'react';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
+import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
+import { TextFieldProps } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): JSX.Element;
@@ -51,11 +53,12 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): JSX.Element;
 
 // @public
-export type DatePickerProps = DatePickerProps_2<Date, Date> & {
+export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
+    renderInput?: (params: TextFieldProps) => JSX.Element;
 };
 
 // @public
@@ -109,7 +112,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onSelection, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -125,7 +128,7 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     selected: T | T[];
     loading?: boolean;
     label?: ReactNode;
-    onSelection: (value: T[]) => void;
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     displayOption?: (option: T) => string;
     pageSize: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;

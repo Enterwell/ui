@@ -17,7 +17,7 @@ export function ExampleSelect() {
                     { value: '4', label: 'Four' },
                 ]}
                 selected={selected}
-                onSelection={setSelected}
+                onChange={(_, value) => setSelected(value)}
                 pageSize={20}
             />
             {/* // @highlight-end */}
