@@ -43,16 +43,15 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onChange, onBlur, helperText, error, required, displayDateFormat, ...rest }: DatePickerProps): JSX.Element;
+export function DatePicker({ onBlur, helperText, error, required, displayDateFormat, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): JSX.Element;
 
 // @public
-export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
+export type DatePickerProps = DatePickerProps_2<Date, Date> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;
     displayDateFormat?: string;
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
-    onChange?: (date: Date | null, keyboardInputValue?: string | undefined) => void;
 };
 
 // @public
