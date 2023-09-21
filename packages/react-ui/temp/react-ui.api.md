@@ -8,7 +8,9 @@ import { Button } from '@mui/material';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 import { ComponentProps } from 'react';
+import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePicker';
 import { DialogProps } from '@mui/material';
+import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import * as react from 'react';
 import { ReactElement } from 'react';
@@ -40,6 +42,17 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
     cancelButtonText?: string;
     onConfirm: () => void;
     onCancel: () => void;
+};
+
+// @public
+export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): JSX.Element;
+
+// @public
+export type DatePickerProps = DatePickerProps_2<Date, Date> & {
+    helperText?: string;
+    error?: boolean;
+    required?: boolean;
+    onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
 // @public
