@@ -112,7 +112,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, items, placeholder, selected, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -122,15 +122,15 @@ export type SelectItem = {
 
 // @public
 export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+    value: T | T[];
+    options: T[];
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     multiple?: boolean;
-    items: T[];
     placeholder?: string;
-    selected: T | T[];
     loading?: boolean;
     label?: ReactNode;
-    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     displayOption?: (option: T) => string;
-    pageSize: number;
+    pageSize?: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
     debounce?: number;
     noOptionsText?: string;

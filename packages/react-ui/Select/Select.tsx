@@ -41,15 +41,15 @@ export type SelectProps<
   T extends SelectItem,
   ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> =
   Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+    value: T | T[];
+    options: T[];
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     multiple?: boolean;
-    items: T[];
     placeholder?: string;
-    selected: T | T[];
     loading?: boolean;
     label?: ReactNode;
-    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     displayOption?: (option: T) => string;
-    pageSize: number;
+    pageSize?: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
 
     /**
@@ -77,9 +77,9 @@ export function Select<
   T extends SelectItem,
   ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({
     multiple,
-    items,
+    value,
+    options,
     placeholder,
-    selected,
     loading: parentLoading,
     label,
     onChange,
@@ -107,12 +107,16 @@ export function Select<
   const [loading, setLoading] = useState(false);
 
   // When items are loaded, stop displaying loading icon.
-  useEffect(() => setLoading(false), [items, pageSize]);
+  useEffect(() => setLoading(false), [options, pageSize]);
 
   // Handle the debounced input change.
   // This will request first page from server.
   useEffect(() => {
     if (debouncedText !== null && onPage) {
+      if (!pageSize) {
+        throw Error("Page size is required when using pagination.");
+      }
+      
       onPage(debouncedText, 0, pageSize);
     }
   }, [debouncedText]);
@@ -123,10 +127,14 @@ export function Select<
    */
   const handleScrollPagination = () => {
     // If there is more pages to load, request next page
-    if (items.length % pageSize === 0) {
+    if (options.length % (pageSize ?? 0) === 0) {
       setLoading(true);
       if (onPage) {
-        onPage(debouncedText, Math.floor(items.length / pageSize), pageSize);
+        if (!pageSize) {
+          throw Error("Page size is required when using pagination.");
+        }
+
+        onPage(debouncedText, Math.floor(options.length / pageSize), pageSize);
       }
     }
   };
@@ -149,6 +157,10 @@ export function Select<
    */
   const handleOnOpen = () => {
     if (onPage) {
+      if (!pageSize) {
+        throw Error("Page size is required when using pagination.");
+      }
+
       onPage(debouncedText, 0, pageSize);
     }
   };
@@ -174,10 +186,11 @@ export function Select<
 
   // If we passed in selected elements to the component, check if its an array.
   // Because, if its not, it needs to be.
-  const defaultValue = Array.isArray(selected) ? selected : [selected];
+  const defaultValue = Array.isArray(value) ? value : [value];
+  const inputValue = multiple ? defaultValue : defaultValue?.at(0) ?? null;
 
   // Merges both arrays and gets unique items
-  const optionItems = distinctByValue(items.concat(defaultValue))
+  const optionItems = distinctByValue(options.concat(defaultValue))
     .filter(Boolean)
     .map((o) => ({ ...o, text: o.value }));
 
@@ -206,7 +219,7 @@ export function Select<
       onKeyDown={handleOnKeyDown}
       multiple={multiple}
       options={optionItems}
-      value={multiple ? defaultValue : defaultValue[0]}
+      value={inputValue}
       noOptionsText={
         parentLoading || loading ? loadingOptionsText : noOptionsText
       }
