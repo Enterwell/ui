@@ -5,6 +5,7 @@ title: Select
 import { Select } from '@enterwell/react-ui';
 import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ExampleSelect } from '../../../components/ExampleSelect.tsx';
+import { ExampleSelectWithPagination } from '../../../components/ExampleSelectWithPagination.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
 
 # Select
@@ -17,9 +18,15 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 <ComponentParameters name="Select" />
 
-## Example
+## Examples
+
+### With local options
 
 <ComponentWithSource component={ ExampleSelect } centered />
+
+### With server-side pagination
+
+<ComponentWithSource component={ ExampleSelectWithPagination } centered />
 
 ## Inspect
 

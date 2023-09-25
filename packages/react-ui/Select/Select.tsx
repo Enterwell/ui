@@ -41,15 +41,15 @@ export type SelectProps<
   T extends SelectItem,
   ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> =
   Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+    value: T | T[];
+    options: T[];
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
     multiple?: boolean;
-    items: T[];
     placeholder?: string;
-    selected: T | T[];
     loading?: boolean;
     label?: ReactNode;
-    onSelection: (value: T[]) => void;
     displayOption?: (option: T) => string;
-    pageSize: number;
+    pageSize?: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
 
     /**
@@ -77,12 +77,12 @@ export function Select<
   T extends SelectItem,
   ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({
     multiple,
-    items,
+    value,
+    options,
     placeholder,
-    selected,
     loading: parentLoading,
     label,
-    onSelection,
+    onChange,
     displayOption,
     pageSize,
     onPage,
@@ -106,55 +106,78 @@ export function Select<
   // Used to display loading icon when calling a callback for new data.
   const [loading, setLoading] = useState(false);
 
-  // When input items change, checks if we can call for more pages
-  // and sets loading indicator to false if it was true.
-  useEffect(() => setLoading(false), [items, pageSize]);
+  // When items are loaded, stop displaying loading icon.
+  useEffect(() => setLoading(false), [options, pageSize]);
 
   // Handle the debounced input change.
   // This will request first page from server.
   useEffect(() => {
     if (debouncedText !== null && onPage) {
+      if (!pageSize) {
+        throw Error("Page size is required when using pagination.");
+      }
+      
       onPage(debouncedText, 0, pageSize);
     }
   }, [debouncedText]);
 
   /**
- * Handle the list scroll.
- * When user scroll to end, next page is requested.
- */
-  const handleScroll = () => {
+   * Handle the scroll pagination.
+   * When user scroll to end, next page is requested.
+   */
+  const handleScrollPagination = () => {
     // If there is more pages to load, request next page
-    if (items.length % pageSize === 0) {
+    if (options.length % (pageSize ?? 0) === 0) {
       setLoading(true);
       if (onPage) {
-        onPage(debouncedText, Math.floor(items.length / pageSize), pageSize);
+        if (!pageSize) {
+          throw Error("Page size is required when using pagination.");
+        }
+
+        onPage(debouncedText, Math.floor(options.length / pageSize), pageSize);
       }
     }
   };
 
   /**
- * Handle the dropdown opening.
- * Request initial page.
- */
+   * Handles the listbox scroll event.
+   * @param event - event
+   */
+  const handleListboxScroll = (event: React.UIEvent<HTMLUListElement>) => {
+    const listboxNode = event.currentTarget;
+    const scrollOffset = listboxNode.scrollTop + listboxNode.clientHeight + ScrollLoadOffset;
+    if (scrollOffset > listboxNode.scrollHeight) {
+      handleScrollPagination();
+    }
+  }
+
+  /**
+   * Handle the dropdown opening.
+   * Request initial page.
+   */
   const handleOnOpen = () => {
     if (onPage) {
+      if (!pageSize) {
+        throw Error("Page size is required when using pagination.");
+      }
+
       onPage(debouncedText, 0, pageSize);
     }
   };
 
   /**
- * Handle the dropwdown closed.
- * Clears the input text.
- * @return {void}
- */
+   * Handle the dropwdown closed.
+   * Clears the input text.
+   * @return {void}
+   */
   const handleOnClose = () => {
     setInputText(null);
   };
 
   /**
- * Handles key down event
- * @param event - event
- */
+   * Handles key down event
+   * @param event - event
+   */
   const handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (stopPropagationOnKeyCodeSpace && event.key === ' ') {
       event.stopPropagation();
@@ -163,10 +186,11 @@ export function Select<
 
   // If we passed in selected elements to the component, check if its an array.
   // Because, if its not, it needs to be.
-  const defaultValue = Array.isArray(selected) ? selected : [selected];
+  const defaultValue = Array.isArray(value) ? value : [value];
+  const inputValue = multiple ? defaultValue : defaultValue?.at(0) ?? null;
 
   // Merges both arrays and gets unique items
-  const optionItems = distinctByValue(items.concat(defaultValue))
+  const optionItems = distinctByValue(options.concat(defaultValue))
     .filter(Boolean)
     .map((o) => ({ ...o, text: o.value }));
 
@@ -176,17 +200,18 @@ export function Select<
     : createFilterOptions<T>();
 
   /**
- * Handles the change event.
- * @param _ - The event.
- * @param value - The value.
- */
-  const handleChange = (_: SyntheticEvent<Element, Event>, value: T | T[] | null) => {
+   * Handles the change event.
+   * @param event - The event.
+   * @param value - The value.
+   */
+  const handleChange = (event: SyntheticEvent<Element, Event>, value: T | T[] | null) => {
     if (Array.isArray(value)) {
-      return onSelection(value);
+      return onChange(event, value);
     }
 
-    return onSelection(value != null ? [value] : []);
+    return onChange(event, value != null ? [value] : []);
   };
+
   return (
     <Autocomplete<T, boolean, false, false, ChipComponent>
       onOpen={handleOnOpen}
@@ -194,7 +219,7 @@ export function Select<
       onKeyDown={handleOnKeyDown}
       multiple={multiple}
       options={optionItems}
-      value={multiple ? defaultValue : defaultValue[0]}
+      value={inputValue}
       noOptionsText={
         parentLoading || loading ? loadingOptionsText : noOptionsText
       }
@@ -237,17 +262,7 @@ export function Select<
       // GitHub issue to implement a proper pagination onAutocomplete
       // component was opened few days ago.
       ListboxProps={{
-        onScroll: (event) => {
-          const listboxNode = event.currentTarget;
-          if (
-            listboxNode.scrollTop
-            + listboxNode.clientHeight
-            + ScrollLoadOffset
-            > listboxNode.scrollHeight
-          ) {
-            handleScroll();
-          }
-        },
+        onScroll: handleListboxScroll,
       }}
       {...rest}
     />

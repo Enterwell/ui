@@ -3,22 +3,21 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 
 export function ExampleSelect() {
-    const [selected, setSelected] = useState<SelectItem[]>([]);
+    const [value, setValue] = useState<SelectItem[]>([]);
 
     return (
         <Box sx={{ width: 300 }}>
             {/* // @highlight-start */}
             <Select
-                fullWidth
-                items={[
+                value={value}
+                onChange={(_, value) => setValue(value)}
+                options={[
                     { value: '1', label: 'One' },
                     { value: '2', label: 'Two' },
                     { value: '3', label: 'Three' },
                     { value: '4', label: 'Four' },
                 ]}
-                selected={selected}
-                onSelection={setSelected}
-                pageSize={20}
+                fullWidth
             />
             {/* // @highlight-end */}
         </Box>
