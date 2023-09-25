@@ -171,7 +171,7 @@ function BooleanInputValue(props: GridFilterInputValueProps) {
         applyValue({ ...item, value: selectedItems[0]?.value });
     };
 
-    const items = [
+    const options = [
         { label: 'Da', value: 'true' },
         { label: 'Ne', value: 'false' }
     ];
@@ -179,10 +179,9 @@ function BooleanInputValue(props: GridFilterInputValueProps) {
     return (
         <Select
             label="Vrijednost"
-            selected={items.filter((x) => x.value === item.value)}
-            items={items}
-            onSelection={handleChange}
-            pageSize={items?.length ?? 20} />
+            value={options.filter((x) => x.value === item.value)}
+            options={options}
+            onChange={(_, value) => handleChange(value)} />
     );
 }
 
