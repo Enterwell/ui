@@ -31,10 +31,10 @@ This repository includes the following:
 
 ### Requirements
 
-- [NVM for Windows](https://github.com/coreybutler/nvm-windows)
+- [nvm for Windows](https://github.com/coreybutler/nvm-windows)
   - Run `nvm install lst && nvm use lts`
   - Optionally install Node 18 (LTS) manually from [Node.js Download page](https://nodejs.org/en/download)
-- [PNPM](https://pnpm.io/installation)
+- [pnpm](https://pnpm.io/installation)
 - [Visual Studio Code](https://code.visualstudio.com/) (optional)
 
 Open workspace file `ui.code-workspace` with VS Code or your favorite editor.
