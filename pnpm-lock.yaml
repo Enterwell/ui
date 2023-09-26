@@ -183,8 +183,8 @@ importers:
         specifier: 6.15.0
         version: 6.15.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-data-grid-pro':
-        specifier: 6.14.0
-        version: 6.14.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.15.0
+        version: 6.15.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
       '@types/node':
         specifier: 20.6.3
         version: 20.6.3
@@ -1504,33 +1504,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
 
-  /@mui/x-data-grid-pro@6.14.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-7k9F97g4M9klWzqHhcoGLzrNk+JLpNKRL+/g/4nR7IbrlyGkw8FhUTppM8UAOg2mDTCtjlRj0y9iR2C5p22lyQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      '@mui/material': ^5.4.1
-      '@mui/system': ^5.4.1
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
-    dependencies:
-      '@babel/runtime': 7.22.15
-      '@mui/material': 5.14.9(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/system': 5.14.11(@types/react@18.2.22)(react@18.2.0)
-      '@mui/utils': 5.14.9(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/x-data-grid': 6.14.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/x-license-pro': 6.10.2(@types/react@18.2.22)(react@18.2.0)
-      '@types/format-util': 1.0.2
-      clsx: 2.0.0
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      reselect: 4.1.8
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: true
-
-  /@mui/x-data-grid@6.14.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EMkPT0YQsjqfH8f/UpPscpPFlywWuyrkS6aaB90t821Z6khoheFS1XeKbCa3L6byC/fwt1cAmIljlh8xJxIueg==}
+  /@mui/x-data-grid-pro@6.15.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4YUWKCN8o+ZjcJO6FpdhnuXqrxrR0AYgr5pUaUaGyurvcpMZdxL1SwYjzSZyzL0NRMU/tK2DAWS77vHl89xSFA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@mui/material': ^5.4.1
@@ -1542,6 +1517,9 @@ packages:
       '@mui/material': 5.14.9(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
       '@mui/system': 5.14.11(@types/react@18.2.22)(react@18.2.0)
       '@mui/utils': 5.14.11(@types/react@18.2.22)(react@18.2.0)
+      '@mui/x-data-grid': 6.15.0(@mui/material@5.14.9)(@mui/system@5.14.11)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/x-license-pro': 6.10.2(@types/react@18.2.22)(react@18.2.0)
+      '@types/format-util': 1.0.2
       clsx: 2.0.0
       prop-types: 15.8.1
       react: 18.2.0
