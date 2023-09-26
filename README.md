@@ -18,8 +18,8 @@ This repository includes the following:
 
 ### Packages
 
-- `@enterwell/react-ui` - React component library
-- `@enterwell/react-hooks` - React hooks library
+- `@enterwell/react-ui` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-ui) - React component library
+- `@enterwell/react-hooks` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-hooks) - React hooks library
 
 #### Other (not published)
 
@@ -31,10 +31,10 @@ This repository includes the following:
 
 ### Requirements
 
-- [NVM for Windows](https://github.com/coreybutler/nvm-windows)
+- [nvm for Windows](https://github.com/coreybutler/nvm-windows)
   - Run `nvm install lst && nvm use lts`
   - Optionally install Node 18 (LTS) manually from [Node.js Download page](https://nodejs.org/en/download)
-- [PNPM](https://pnpm.io/installation)
+- [pnpm](https://pnpm.io/installation)
 - [Visual Studio Code](https://code.visualstudio.com/) (optional)
 
 Open workspace file `ui.code-workspace` with VS Code or your favorite editor.
@@ -70,4 +70,5 @@ Available generators:
 | Generator | Description | Command |
 |-----------|-------------|---------|
 | component | Creates react component in `react-ui` package along with basic documentation. | `pnpm turbo gen component` |
-| hook | Creates react hook in `react-hooks` package alogn with basic documentation. | `pnpm turbo gen hook` |
+| react-hook | Creates react hook in `react-hooks` package alogn with basic documentation. | `pnpm turbo gen react-hook` |
+| react-mui-hook | Creates react hook in `react-mui-hooks` package alogn with basic documentation. | `pnpm turbo gen react-mui-hook` |

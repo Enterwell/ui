@@ -3,6 +3,7 @@ import { Mdx } from './Mdx';
 import { Fragment, PropsWithChildren } from 'react';
 import hooksApi from '@enterwell/react-hooks/api';
 import uiApi from '@enterwell/react-ui/api';
+import muiHooksApi from '@enterwell/react-mui-hooks/api';
 
 type ComponentDocsProps = {
     name: string;
@@ -16,7 +17,8 @@ type ComponentSource = PropsWithChildren<{
 
 const api = [
     ...hooksApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? [],
-    ...uiApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? []
+    ...uiApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? [],
+    ...muiHooksApi.members.find((m: any) => m.kind === "EntryPoint")?.members ?? [],
 ];
 
 function componentMember(name: string) {
