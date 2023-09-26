@@ -25,8 +25,8 @@
   "devDependencies": {
     "@microsoft/api-extractor": "7.36.4",
     "@types/node": "20.5.2",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
     "eslint-config-custom": "workspace:*",
     "react": "18.2.0",
     "rimraf": "5.0.4",
