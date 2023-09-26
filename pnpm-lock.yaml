@@ -115,8 +115,8 @@ importers:
   packages/eslint-config-custom:
     devDependencies:
       '@vercel/style-guide':
-        specifier: 5.0.0
-        version: 5.0.0(eslint@8.48.0)(typescript@5.2.2)
+        specifier: 5.0.1
+        version: 5.0.1(eslint@8.48.0)(typescript@5.2.2)
       eslint-config-turbo:
         specifier: 1.10.12
         version: 1.10.12(eslint@8.48.0)
@@ -2551,14 +2551,14 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
 
-  /@vercel/style-guide@5.0.0(eslint@8.48.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-z8EbEyZm5Zn6AOa+XJ7dOja94m5Hm6cgCuTRK74qxKFWi7qQYUJoEkU27wYgOplZSAYVLB8mHfe51RGZMyqiUw==}
+  /@vercel/style-guide@5.0.1(eslint@8.48.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-3J/5xpwJ2Wk+cKB3EGY2KCdVQycaThLKhjBmgXPfIKb+E74lPpXVIDfaQE0D2JoAyIzGsqdH7Lbmr+DojwofxQ==}
     engines: {node: '>=16'}
     peerDependencies:
-      '@next/eslint-plugin-next': ^12.3.0
-      eslint: ^8.48.0
-      prettier: ^3.0.0
-      typescript: ^4.8.0
+      '@next/eslint-plugin-next': '>=12.3.0 <14'
+      eslint: '>=8.48.0 <9'
+      prettier: '>=3.0.0 <4'
+      typescript: '>=4.8.0 <6'
     peerDependenciesMeta:
       '@next/eslint-plugin-next':
         optional: true
@@ -5873,6 +5873,7 @@ packages:
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
     dependencies:
       js-tokens: 4.0.0
 
