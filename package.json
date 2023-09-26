@@ -11,6 +11,6 @@
     "turbo": "1.10.13",
     "@turbo/gen": "1.10.13"
   },
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.7.6",
   "name": "ui"
 }
