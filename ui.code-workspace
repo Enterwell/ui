@@ -17,6 +17,10 @@
 			"path": "packages/react-hooks"
 		},
 		{
+			"name": "📦 @enterwell/react-mui-hooks",
+			"path": "packages/react-mui-hooks"
+		},
+		{
 			"name": "📦 @enterwell/react-ui",
 			"path": "packages/react-ui"
 		},

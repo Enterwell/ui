@@ -1,0 +1,35 @@
+---
+title: {{ camelCase name }}
+---
+
+import { {{ camelCase name }} } from '@enterwell/react-mui-hooks';
+import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+
+# {{ camelCase name }}
+
+## Description
+
+<ComponentDescription name="{{ camelCase name }}" />
+
+### Parameters
+
+<ComponentParameters name="{{ camelCase name }}" />
+
+## Example
+
+```ts filename="example.ts"
+import { {{ camelCase name }} } from '@enterwell/react-mui-hooks';
+
+{{ camelCase name }}();
+```
+
+## Inspect
+
+<details>
+    <summary>Source code</summary>
+    <ComponentSource 
+        package="@enterwell/react-mui-hooks" 
+        directory="hooks" 
+        name="{{ camelCase name }}"
+    />
+</details>

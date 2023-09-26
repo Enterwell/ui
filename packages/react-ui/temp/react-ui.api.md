@@ -15,6 +15,7 @@ import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import * as react from 'react';
+import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 import { SyntheticEvent } from 'react';
@@ -22,7 +23,7 @@ import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
@@ -35,7 +36,7 @@ export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDial
 };
 
 // @public
-export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): JSX.Element;
+export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
@@ -50,7 +51,7 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): JSX.Element;
+export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
@@ -62,7 +63,7 @@ export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput">
 };
 
 // @public
-export function DateTimeRangePicker({ start, end, hideTime, useSeconds, preselectOptions, onChange, ...rest }: DateTimeRangePickerProps): JSX.Element;
+export function DateTimeRangePicker({ start, end, hideTime, useSeconds, preselectOptions, onChange, ...rest }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DateTimeRangePickerPreselectOption = {
@@ -86,7 +87,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
-export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): JSX.Element;
+export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DropdownButtonOption = {
@@ -112,7 +113,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -164,7 +165,7 @@ export type SplitButtonProps = Omit<ButtonGroupProps, "onChange" | "onClick"> & 
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): JSX.Element;
+export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {

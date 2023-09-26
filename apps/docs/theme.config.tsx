@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 const config: DocsThemeConfig = {
   logo: (
-    <div className="flex flex-row gap-1 items-center">
+    <div className="flex flex-row gap-1 items-center whitespace-nowrap">
       <Image
         alt="Enterwell"
         width={40}
@@ -29,6 +29,7 @@ const config: DocsThemeConfig = {
     text: 'Enterwell UI Docs',
   },
   primaryHue: 8,
+  primarySaturation: 0,
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {

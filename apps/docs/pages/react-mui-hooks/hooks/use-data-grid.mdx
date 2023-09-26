@@ -1,0 +1,53 @@
+---
+title: useDataGrid
+---
+
+import { useDataGrid } from '@enterwell/react-mui-hooks';
+import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+
+# useDataGrid
+
+## Description
+
+<ComponentDescription name="useDataGrid" />
+
+### Parameters
+
+<ComponentParameters name="useDataGrid" />
+
+## Example
+
+```ts filename="example.ts - Minimal example"
+import { useDataGrid } from '@enterwell/react-mui-hooks';
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+    { field: 'firstName', headerName: 'First Name' },
+    { field: 'lastName', headerName: 'Last Name' },
+];
+
+const handleOnPage = async (page: number) => {
+    const response = await fetch('/users?page=' + page);
+    return await response.json();
+};
+
+const dataGrid = useDataGrid({
+    columns,
+    onPage: handleOnPage
+});
+
+return (
+    <DataGrid {...dataGrid} />
+);
+```
+
+## Inspect
+
+<details>
+    <summary>Source code</summary>
+    <ComponentSource 
+        package="@enterwell/react-mui-hooks" 
+        directory="hooks" 
+        name="useDataGrid"
+    />
+</details>
