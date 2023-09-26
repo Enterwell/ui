@@ -1,6 +1,7 @@
 'use client';
 
 // component exports
+export * from "./Select";
 export * from "./SplitButton";
 export * from "./DatePicker";
 export * from "./ConfirmButton";

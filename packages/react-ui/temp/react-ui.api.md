@@ -4,9 +4,11 @@
 
 ```ts
 
+import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { Button } from '@mui/material';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
+import { ChipTypeMap } from '@mui/material';
 import { ComponentProps } from 'react';
 import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePicker';
 import { DialogProps } from '@mui/material';
@@ -14,7 +16,10 @@ import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import * as react from 'react';
 import { ReactElement } from 'react';
+import { ReactNode } from 'react';
+import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
+import { TextFieldProps } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): JSX.Element;
@@ -48,11 +53,12 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): JSX.Element;
 
 // @public
-export type DatePickerProps = DatePickerProps_2<Date, Date> & {
+export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
+    renderInput?: (params: TextFieldProps) => JSX.Element;
 };
 
 // @public
@@ -103,6 +109,38 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     color?: string;
     expanded?: boolean;
     onChange?: () => void;
+};
+
+// @public
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, ...rest }: SelectProps<T, ChipComponent>): JSX.Element;
+
+// @public
+export type SelectItem = {
+    value: string;
+    label?: string;
+};
+
+// @public
+export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+    value: T | T[];
+    options: T[];
+    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
+    multiple?: boolean;
+    placeholder?: string;
+    loading?: boolean;
+    label?: ReactNode;
+    displayOption?: (option: T) => string;
+    pageSize?: number;
+    onPage?: (text: string | null, page: number, pageSize: number) => void;
+    debounce?: number;
+    noOptionsText?: string;
+    loadingOptionsText?: string;
+    error?: boolean;
+    helperText?: string;
+    required?: boolean;
+    disableFilterOptions?: boolean;
+    stopPropagationOnKeyCodeSpace?: boolean;
+    onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
 // @public
