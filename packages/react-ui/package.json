@@ -32,7 +32,7 @@
     "@mui/material": "5.14.11",
     "@mui/system": "5.14.11",
     "@mui/lab": "5.0.0-alpha.146",
-    "@mui/x-date-pickers-pro": "5.0.20",
+    "@mui/x-date-pickers-pro": "6.15.0",
     "@mui/x-date-pickers": "5.0.20",
     "@types/node": "20.5.2",
     "@types/react": "18.2.23",
@@ -51,7 +51,7 @@
     "@mui/material": "5.14.11",
     "@mui/system": "5.14.11",
     "@mui/lab": "5.0.0-alpha.146",
-    "@mui/x-date-pickers-pro": "5.0.20",
+    "@mui/x-date-pickers-pro": "6.15.0",
     "@mui/x-date-pickers": "5.0.20",
     "react": "18.2.0",
     "react-dom": "18.2.0"
