@@ -18,8 +18,8 @@ This repository includes the following:
 
 ### Packages
 
-- `@enterwell/react-ui` - React component library
-- `@enterwell/react-hooks` - React hooks library
+- `@enterwell/react-ui` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-ui) - React component library
+- `@enterwell/react-hooks` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-hooks) - React hooks library
 
 #### Other (not published)
 
