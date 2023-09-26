@@ -40,7 +40,7 @@ jobs:
             changes-location: ./packages/${{ inputs.name }}/changes
             path-to-project-file: ./packages/${{ inputs.name }}/package.json
         - name: Commit changelog changes
-          uses: EndBug/add-and-commit@v9.1.1
+          uses: EndBug/add-and-commit@v9.1.3
           with:
             message: "[skip ci] [version-bump] Automated commit for version ${{ steps.version-bump.outputs.bumped-semantic-version }}"
         - run: pnpm i --frozen-lockfile --filter=${{ inputs.name }}...
