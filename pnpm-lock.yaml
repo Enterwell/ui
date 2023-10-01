@@ -131,8 +131,8 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@microsoft/api-extractor':
-        specifier: 7.37.2
-        version: 7.37.2(@types/node@20.5.2)
+        specifier: 7.38.0
+        version: 7.38.0(@types/node@20.5.2)
       '@types/node':
         specifier: 20.5.2
         version: 20.5.2
@@ -174,8 +174,8 @@ importers:
         specifier: workspace:*
         version: link:../react-ui
       '@microsoft/api-extractor':
-        specifier: 7.37.2
-        version: 7.37.2(@types/node@20.6.3)
+        specifier: 7.38.0
+        version: 7.38.0(@types/node@20.6.3)
       '@mui/material':
         specifier: 5.14.11
         version: 5.14.11(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.23)(react-dom@18.2.0)(react@18.2.0)
@@ -232,8 +232,8 @@ importers:
         specifier: workspace:*
         version: link:../react-hooks
       '@microsoft/api-extractor':
-        specifier: 7.37.2
-        version: 7.37.2(@types/node@20.5.2)
+        specifier: 7.38.0
+        version: 7.38.0(@types/node@20.5.2)
       '@mui/icons-material':
         specifier: 5.14.11
         version: 5.14.11(@mui/material@5.14.11)(@types/react@18.2.23)(react@18.2.0)
@@ -1064,8 +1064,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.37.2(@types/node@20.5.2):
-    resolution: {integrity: sha512-b4tr1rTto9/utTjbuqRwfQP2mzP0ACCmJMUY0JIOfOQ3tewGOkMCIRpIS5kcv5/nURekoAY06hNwHmkVsv/s1g==}
+  /@microsoft/api-extractor@7.38.0(@types/node@20.5.2):
+    resolution: {integrity: sha512-e1LhZYnfw+JEebuY2bzhw0imDCl1nwjSThTrQqBXl40hrVo6xm3j/1EpUr89QyzgjqmAwek2ZkIVZbrhaR+cqg==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.2(@types/node@20.5.2)
@@ -1084,8 +1084,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.37.2(@types/node@20.6.3):
-    resolution: {integrity: sha512-b4tr1rTto9/utTjbuqRwfQP2mzP0ACCmJMUY0JIOfOQ3tewGOkMCIRpIS5kcv5/nURekoAY06hNwHmkVsv/s1g==}
+  /@microsoft/api-extractor@7.38.0(@types/node@20.6.3):
+    resolution: {integrity: sha512-e1LhZYnfw+JEebuY2bzhw0imDCl1nwjSThTrQqBXl40hrVo6xm3j/1EpUr89QyzgjqmAwek2ZkIVZbrhaR+cqg==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.2(@types/node@20.6.3)
