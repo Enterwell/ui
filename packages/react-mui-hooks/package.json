@@ -27,7 +27,7 @@
     "@enterwell/react-ui": "workspace:*",
     "@microsoft/api-extractor": "7.38.0",
     "@mui/material": "5.14.11",
-    "@mui/x-data-grid": "6.15.0",
+    "@mui/x-data-grid": "6.16.0",
     "@mui/x-data-grid-pro": "6.15.0",
     "@types/node": "20.8.2",
     "@types/react": "18.2.24",
@@ -43,7 +43,7 @@
   "peerDependencies": {
     "@enterwell/react-ui": "workspace:*",
     "@mui/material": "5.14.11",
-    "@mui/x-data-grid": "6.15.0",
+    "@mui/x-data-grid": "6.16.0",
     "@mui/x-data-grid-pro": "6.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
