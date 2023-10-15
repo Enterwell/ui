@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.4.0] - 2023-09-29
+### Added
+- ConfirmButton component
+- DatePicker component
+- Select component
+- SplitButton component
+
 ## [0.3.0] - 2023-09-15
 ### Added
 - TimeInput component
