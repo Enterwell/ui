@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.2.1] - 2023-10-15
+### Fixed
+- Updated dependencies
+- useDataGrid types
+
 ## [0.2.0] - 2023-09-26
 ### Added
 - useDataGrid hook
