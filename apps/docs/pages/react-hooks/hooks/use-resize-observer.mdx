@@ -3,7 +3,9 @@ title: useResizeObserver
 ---
 
 import { useResizeObserver } from '@enterwell/react-hooks';
+import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+import { ExampleUseResizeObserver } from '../../../components/ExampleUseResizeObserver';
 
 # useResizeObserver
 
@@ -17,20 +19,7 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 ## Example
 
-```tsx filename="demo.ts" {3-6,9-11}
-import { useResizeObserver } from '@enterwell/react-hooks';
-
-const resizeObserverRef = useResizeObserver((_, entry) => {
-    const { width, height } = entry.contentRect;
-    // Do something with width and height
-});
-
-return (
-    <div ref={resizeObserverRef}>
-        ...
-    </div>
-);
-```
+<ComponentWithSource component={ ExampleUseResizeObserver } centered />
 
 ## Inspect
 

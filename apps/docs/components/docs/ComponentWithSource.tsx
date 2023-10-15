@@ -1,5 +1,3 @@
-"use client";
-
 import { ComponentProps } from "react";
 import { Tabs } from 'nextra/components'
 import { Card } from "./Card";
