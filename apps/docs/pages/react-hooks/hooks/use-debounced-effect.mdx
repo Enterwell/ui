@@ -3,7 +3,9 @@ title: useDebouncedEffect
 ---
 
 import { useDebouncedEffect } from '@enterwell/react-hooks';
+import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+import { ExampleUseDebouncedEffect } from '../../../components/ExampleUseDebouncedEffect';
 
 # useDebouncedEffect
 
@@ -17,13 +19,7 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 ## Example
 
-```ts filename="example.ts" {3-5}
-import { useDebouncedEffect } from '@enterwell/react-hooks';
-
-useDebouncedEffect(() => {
-    // Do effect stuff here
-}, [], 500);
-```
+<ComponentWithSource component={ ExampleUseDebouncedEffect } centered />
 
 ## Inspect
 

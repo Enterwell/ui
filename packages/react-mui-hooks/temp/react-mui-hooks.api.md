@@ -5,11 +5,11 @@
 ```ts
 
 import { ComponentPropsWithRef } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
-import { GridSortModel } from '@mui/x-data-grid';
-import { GridValidRowModel } from '@mui/x-data-grid';
+import { GridSortModel } from '@mui/x-data-grid-pro';
+import { GridValidRowModel } from '@mui/x-data-grid-pro';
 
 // @public
 export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, renderCell, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
@@ -35,7 +35,8 @@ export type UseDataGridProps = {
 };
 
 // @public
-export type UseDataGridResponse = ComponentPropsWithRef<typeof DataGrid> & {
+export type UseDataGridResponse = {
+    props: ComponentPropsWithRef<typeof DataGridPro>;
     filterChanged: (keepPage?: boolean) => void;
     isSelectAll: boolean;
     setIsSelectAll: (value: boolean) => void;
@@ -44,7 +45,7 @@ export type UseDataGridResponse = ComponentPropsWithRef<typeof DataGrid> & {
 
 // Warnings were encountered during analysis:
 //
-// dist/index.d.ts:20:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
+// dist/index.d.ts:19:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

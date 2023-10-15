@@ -10,6 +10,6 @@ import { useDebouncedEffect } from './useDebouncedEffect';
  */
 export function useDebounce<T>(value: T, delay: number) {
     const [debouncedValue, setDebouncedValue] = useState(value);
-    useDebouncedEffect(setDebouncedValue, [value, delay], delay);
+    useDebouncedEffect(() => setDebouncedValue(value), [value, delay], delay);
     return debouncedValue;
 }

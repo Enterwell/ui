@@ -3,7 +3,9 @@ title: useDebounce
 ---
 
 import { useDebounce } from '@enterwell/react-hooks';
+import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+import { ExampleUseDebounce } from '../../../components/ExampleUseDebounce';
 
 # useDebounce
 
@@ -17,18 +19,13 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 ## Example
 
-```ts filename="example.ts" {4}
-import { useDebounce } from '@enterwell/react-hooks';
-
-const [value, setValue] = useState(0);
-const valueDebounced = useDebounce(value, 50);
-```
+<ComponentWithSource component={ ExampleUseDebounce } centered />
 
 ## Inspect
 
 <details>
     <summary>Source code</summary>
-    <ComponentSource 
+    <ComponentSource
         package="@enterwell/react-hooks" 
         directory="hooks" 
         name="useDebounce"

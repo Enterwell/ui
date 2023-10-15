@@ -56,6 +56,12 @@ importers:
       '@mui/system':
         specifier: 5.14.13
         version: 5.14.13(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.24)(react@18.2.0)
+      '@mui/x-data-grid':
+        specifier: 6.16.2
+        version: 6.16.2(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/x-data-grid-pro':
+        specifier: 6.16.2
+        version: 6.16.2(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-date-pickers':
         specifier: 5.0.20
         version: 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0)
@@ -1319,7 +1325,7 @@ packages:
       react: ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.23.1
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.6
       '@types/react-is': 18.2.1
       prop-types: 15.8.1
       react: 18.2.0
@@ -1366,7 +1372,6 @@ packages:
       reselect: 4.1.8
     transitivePeerDependencies:
       - '@types/react'
-    dev: true
 
   /@mui/x-data-grid@6.16.2(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nKZxlzkcqXUbgxvz01J0okziBH4uvnEVVneOSzp5TeCOC7Wke1YFBJRRjR6H6tVpbaqlOw/LFULrTfcJtiaMBQ==}
@@ -1388,7 +1393,6 @@ packages:
       reselect: 4.1.8
     transitivePeerDependencies:
       - '@types/react'
-    dev: true
 
   /@mui/x-date-pickers-pro@5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-syNnokcG4lvj9SIcnfji6eVvpSpuHs+7jqLsJYDBTogxK53ctSXQVMb5GQ16ioTzEQSqZojhngHSj+/s11Ao1Q==}
@@ -1507,7 +1511,6 @@ packages:
       react: 18.2.0
     transitivePeerDependencies:
       - '@types/react'
-    dev: true
 
   /@mui/x-tree-view@6.0.0-alpha.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/base@5.0.0-beta.19)(@mui/material@5.14.13)(@mui/system@5.14.13)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JUG3HmBrmGEALbCFg1b+i7h726e1dWYZs4db3syO1j+Q++E3nbvE4Lehp5yGTFm+8esH0Tny50tuJaa4WX6VSA==}
@@ -1950,7 +1953,6 @@ packages:
 
   /@types/format-util@1.0.2:
     resolution: {integrity: sha512-9SrLCpgzWo2yHHhiMOX0WwgDh37nSbDbWUsRc1ss++o8O97E3tB6SJiyUQM21UeUsKvZNuhDCmkRaINZ4uJAfg==}
-    dev: true
 
   /@types/glob@7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
@@ -7264,7 +7266,6 @@ packages:
 
   /reselect@4.1.8:
     resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
-    dev: true
 
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
