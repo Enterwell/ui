@@ -3,7 +3,9 @@ title: useIsomorphicLayoutEffect
 ---
 
 import { useIsomorphicLayoutEffect } from '@enterwell/react-hooks';
+import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
+import { ExampleUseIsomotphicLayoutEffect } from '../../../components/ExampleUseIsomotphicLayoutEffect';
 
 # useIsomorphicLayoutEffect
 
@@ -17,13 +19,7 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 ## Example
 
-```ts filename="example.ts" {3-6}
-import { useIsomorphicLayoutEffect } from '@enterwell/react-hooks';
-
-useIsomorphicLayoutEffect(() => {
-    // Layout effect code here
-});
-```
+<ComponentWithSource component={ ExampleUseIsomotphicLayoutEffect } centered />
 
 ## Inspect
 

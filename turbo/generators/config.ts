@@ -28,6 +28,11 @@ function hookTemplate(packageName: string) {
       // Docs
       {
         type: "add",
+        path: "apps/docs/components/Example{{pascalCase name}}.tsx",
+        templateFile: "templates/hookDocsExample.hbs",
+      },
+      {
+        type: "add",
         path: `apps/docs/pages/${packageName}/hooks/{{kebabCase name}}.mdx`,
         templateFile: `templates/${packageName.substring(0, packageName.length - 1)}DocsPage.hbs`,
       },

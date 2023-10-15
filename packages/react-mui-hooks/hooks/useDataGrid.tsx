@@ -23,15 +23,13 @@ import {
     type GridFilterInputValueProps,
     type GridFilterItem,
     type GridColDef,
-} from '@mui/x-data-grid-pro';
-import {
     type GridTreeNode,
     type MuiEvent,
     type GridSortModel,
     type GridPaginationModel,
-    DataGrid,
     type GridValidRowModel,
-} from '@mui/x-data-grid';
+    type DataGridPro,
+} from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
 import { Select } from '@enterwell/react-ui';
@@ -124,7 +122,7 @@ function CellRenderer({
     if (customType === 'enum') {
         const enumLabel = params.enum?.get(value)?.label;
         if (enumLabel) {
-            return <Text {...rest}>{}</Text>;
+            return <Text {...rest}>{ }</Text>;
         }
     }
     if (customType === 'actions') {
@@ -249,7 +247,8 @@ export type UseDataGridProps = {
  * The DataGrid response.
  * @public
  */
-export type UseDataGridResponse = ComponentPropsWithRef<typeof DataGrid> & {
+export type UseDataGridResponse = {
+    props: ComponentPropsWithRef<typeof DataGridPro>,
     filterChanged: (keepPage?: boolean) => void,
     isSelectAll: boolean,
     setIsSelectAll: (value: boolean) => void,
@@ -466,51 +465,53 @@ export function useDataGrid({
     })), [columns, renderCell, headerRenderer, rowHeight]);
 
     return {
-        ref: resizeRef,
-        rows: allRows,
-        rowCount: rows.totalRows,
-        filterChanged: handleFilterChanged,
-        pageSizeOptions: [pageSize],
-        density: isMobile ? 'compact' : 'standard',
-        sx: {
-            '& .MuiDataGrid-row': {
-                cursor: onRowClick !== undefined ? 'pointer' : 'default'
+        props: {
+            ref: resizeRef,
+            rows: allRows,
+            rowCount: rows.totalRows,
+            pageSizeOptions: [pageSize],
+            density: isMobile ? 'compact' : 'standard',
+            sx: {
+                '& .MuiDataGrid-row': {
+                    cursor: onRowClick !== undefined ? 'pointer' : 'default'
+                },
+                ...dataGridSx
             },
-            ...dataGridSx
+            columns: columnsMemo,
+            columnVisibilityModel: columnVisibility,
+            onColumnVisibilityModelChange: handleColumnVisibilityChange,
+            paginationMode: 'server',
+            paginationModel: {
+                page: Math.max(pageIndex, 0),
+                pageSize,
+            },
+            onPaginationModelChange: handlePaginationModelChange,
+            sortingMode: 'server',
+            sortModel,
+            disableColumnFilter: true,
+            disableDensitySelector: true,
+            onSortModelChange: handleSortModelChange,
+            hideFooterSelectedRowCount: true,
+            loading: loading.length > 0,
+            localeText: {
+                noRowsLabel: 'Nema zapisa'
+            },
+            onRowClick,
+            rowHeight,
+            onCellKeyDown: handleCellKeyDown,
+            columnHeaderHeight: rowHeight + 1,
+            disableRowSelectionOnClick: !selection,
+            checkboxSelection,
+            rowSelectionModel: customSelectionModel,
+            onRowSelectionModelChange: handleRowSelectionModelChange,
+            slots: {
+                loadingOverlay: LinearProgress,
+            },
+            keepNonExistentRowsSelected
         },
-        columns: columnsMemo,
-        columnVisibilityModel: columnVisibility,
-        onColumnVisibilityModelChange: handleColumnVisibilityChange,
-        paginationMode: 'server',
-        paginationModel: {
-            page: Math.max(pageIndex, 0),
-            pageSize,
-        },
-        onPaginationModelChange: handlePaginationModelChange,
-        sortingMode: 'server',
-        sortModel,
-        disableColumnFilter: true,
-        disableDensitySelector: true,
-        onSortModelChange: handleSortModelChange,
-        hideFooterSelectedRowCount: true,
-        loading: loading.length > 0,
-        localeText: {
-            noRowsLabel: 'Nema zapisa'
-        },
-        onRowClick,
-        rowHeight,
-        onCellKeyDown: handleCellKeyDown,
-        columnHeaderHeight: rowHeight + 1,
-        disableRowSelectionOnClick: !selection,
-        checkboxSelection,
+        filterChanged: handleFilterChanged,
         isSelectAll: isAllItemsSelected,
         setIsSelectAll: setIsAllItemsSelected,
         isAnySelected: customSelectionModel.length > 0,
-        rowSelectionModel: customSelectionModel,
-        onRowSelectionModelChange: handleRowSelectionModelChange,
-        slots: {
-            loadingOverlay: LinearProgress,
-        },
-        keepNonExistentRowsSelected
     };
 }
