@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.5.0] - 2023-10-17
+### Changed
+- Simplified PageDrawer component to use sitcky instead of absolute positioning
+
 ## [0.4.1] - 2023-10-15
 ### Fixed
 - Updated dependencies
