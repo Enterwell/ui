@@ -28,7 +28,7 @@
     "@microsoft/api-extractor": "7.38.0",
     "@mui/material": "5.14.13",
     "@mui/x-data-grid": "6.16.2",
-    "@mui/x-data-grid-pro": "6.16.2",
+    "@mui/x-data-grid-pro": "6.17.0",
     "@types/node": "18.18.5",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
@@ -44,7 +44,7 @@
     "@enterwell/react-ui": "workspace:*",
     "@mui/material": "5.14.13",
     "@mui/x-data-grid": "6.16.2",
-    "@mui/x-data-grid-pro": "6.16.2",
+    "@mui/x-data-grid-pro": "6.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
