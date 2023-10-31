@@ -20,6 +20,7 @@ This repository includes the following:
 
 - `@enterwell/react-ui` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-ui) - React component library
 - `@enterwell/react-hooks` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-hooks) - React hooks library
+- `@enterwell/react-mui-hooks` [![npm version](https://badge.fury.io/js/@enterwell%2Freact-mui-ui.svg)](https://badge.fury.io/js/@enterwell%2Freact-mui-hooks) - React MUI hooks library
 
 #### Other (not published)
 
