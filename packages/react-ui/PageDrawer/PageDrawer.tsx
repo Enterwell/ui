@@ -1,10 +1,10 @@
-import { 
-  useState, 
+import {
+  useState,
   useRef,
-  type HTMLAttributes, 
-  type ElementRef, 
-  type TouchEvent as ReactTouchEvent, 
-  type MouseEvent as ReactMouseEvent 
+  type HTMLAttributes,
+  type ElementRef,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent
 } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { Box } from '@mui/system';
@@ -52,7 +52,16 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
  * @returns The PageDrawer component.
  * @public
  */
-export function PageDrawer({ expanded, onChange, children, height, minHeight = 50, onResize, color, ...rest }: PageDrawerProps): JSX.Element {
+export function PageDrawer({
+  expanded, 
+  onChange,
+  children,
+  height, 
+  minHeight = 50, 
+  onResize,
+  color, 
+  ...rest 
+}: PageDrawerProps) {
   const isResizingRef = useRef(false);
   const didResize = useRef(false);
   const ref = useRef<ElementRef<'div'>>(null);
