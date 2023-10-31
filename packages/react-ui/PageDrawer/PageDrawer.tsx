@@ -111,13 +111,18 @@ export function PageDrawer({
     if (!isResizingRef.current) return;
 
     const containerRect = ref.current?.getBoundingClientRect();
-    const containerClientRect = getScrollParent(ref.current ?? document.documentElement).getBoundingClientRect();
     const handleClientRect = handleRef.current?.getBoundingClientRect();
-
     let newHeight: number | undefined = (containerRect?.y ?? 0) + (containerRect?.height ?? 0) - clientY - (handleClientRect?.height ?? 0) / 2;
 
+    // Correct for min height
     if (newHeight < minHeight) return;
-    if (newHeight > containerClientRect.height) newHeight = containerClientRect?.height - (handleClientRect?.height ?? 0);
+
+    // Correct for max height
+    // We use scroll parent as container because the drawer is sticky
+    const containerClientRect = getScrollParent(ref.current ?? document.documentElement).getBoundingClientRect();
+    if (newHeight > containerClientRect.height) {
+      newHeight = containerClientRect?.height - (handleClientRect?.height ?? 0);
+    }
 
     if (contentRef.current && newHeight != null) {
       didResize.current = true;
