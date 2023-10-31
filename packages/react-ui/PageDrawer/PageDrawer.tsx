@@ -1,20 +1,14 @@
-import React, { type HTMLAttributes, useState, useRef, ElementRef, AnchorHTMLAttributes } from 'react';
+import { 
+  useState, 
+  useRef,
+  type HTMLAttributes, 
+  type ElementRef, 
+  type TouchEvent as ReactTouchEvent, 
+  type MouseEvent as ReactMouseEvent 
+} from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { Box } from '@mui/system';
 import { ExpandMore } from '@mui/icons-material';
-
-/**
- * The PageDrawer component props.
- * @public
- */
-export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
-  color?: string;
-  expanded?: boolean;
-  height?: number;
-  minHeight?: number;
-  onChange?: () => void;
-  onResize?: (height: number | undefined) => void;
-};
 
 const isScrollable = (node: Element) => {
   if (!(node instanceof HTMLElement || node instanceof SVGElement)) {
@@ -37,6 +31,19 @@ const getScrollParent = (node: Element): Element => {
   }
   return document.scrollingElement || document.documentElement
 }
+
+/**
+ * The PageDrawer component props.
+ * @public
+ */
+export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
+  color?: string;
+  expanded?: boolean;
+  height?: number;
+  minHeight?: number;
+  onChange?: () => void;
+  onResize?: (height: number | undefined) => void;
+};
 
 /**
  * The PageDrawer component.
@@ -64,7 +71,7 @@ export function PageDrawer({ expanded, onChange, children, height, minHeight = 5
     }
   };
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+  const handleTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
     event.stopPropagation();
 
     isResizingRef.current = true;
@@ -73,7 +80,7 @@ export function PageDrawer({ expanded, onChange, children, height, minHeight = 5
     document.addEventListener('touchend', handleTouchEnd);
   }
 
-  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseDown = (event: ReactMouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
     event.stopPropagation();
 
