@@ -10,6 +10,7 @@ export function Mdx({ children }: { children?: string }) {
     const { default: MDXContent } = evaluateSync(children, {
         ...runtime,
         ...provider,
+        baseUrl: import.meta.url,
         useMDXComponents,
         format: "mdx",
         development: false,
