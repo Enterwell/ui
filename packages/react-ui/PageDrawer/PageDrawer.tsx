@@ -1,4 +1,4 @@
-import { type HTMLAttributes, useState } from 'react';
+import React, { type HTMLAttributes, useState, useRef, ElementRef, AnchorHTMLAttributes } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { Box } from '@mui/system';
 import { ExpandMore } from '@mui/icons-material';
@@ -10,8 +10,33 @@ import { ExpandMore } from '@mui/icons-material';
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
   color?: string;
   expanded?: boolean;
+  height?: number;
+  minHeight?: number;
   onChange?: () => void;
+  onResize?: (height: number | undefined) => void;
 };
+
+const isScrollable = (node: Element) => {
+  if (!(node instanceof HTMLElement || node instanceof SVGElement)) {
+    return false
+  }
+  const style = getComputedStyle(node)
+  return ['overflow', 'overflow-x', 'overflow-y'].some((propertyName) => {
+    const value = style.getPropertyValue(propertyName)
+    return value === 'auto' || value === 'scroll'
+  })
+}
+
+const getScrollParent = (node: Element): Element => {
+  let currentParent = node.parentElement
+  while (currentParent) {
+    if (isScrollable(currentParent)) {
+      return currentParent
+    }
+    currentParent = currentParent.parentElement
+  }
+  return document.scrollingElement || document.documentElement
+}
 
 /**
  * The PageDrawer component.
@@ -20,9 +45,99 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
  * @returns The PageDrawer component.
  * @public
  */
-export function PageDrawer({ expanded, onChange, children, color, ...rest }: PageDrawerProps): JSX.Element {
+export function PageDrawer({ expanded, onChange, children, height, minHeight = 50, onResize, color, ...rest }: PageDrawerProps): JSX.Element {
+  const isResizingRef = useRef(false);
+  const didResize = useRef(false);
+  const ref = useRef<ElementRef<'div'>>(null);
+  const contentRef = useRef<ElementRef<'div'>>(null);
+  const handleRef = useRef<ElementRef<'div'>>(null);
+  const [isExpanded, setIsExpanded] = useState(expanded ?? false);
+  const realExpanded = expanded ?? isExpanded;
+
+  const handleOnChange = () => {
+    if (didResize.current)
+      return;
+
+    setIsExpanded(!realExpanded);
+    if (onChange) {
+      onChange();
+    }
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+
+    isResizingRef.current = true;
+    didResize.current = false;
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+  }
+
+  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    isResizingRef.current = true;
+    didResize.current = false;
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
+  const handleTouchMove = (event: TouchEvent) => {
+    handleMove(event.touches[0].clientY);
+  };
+
+  const handleMouseMove = (event: MouseEvent) => {
+    handleMove(event.clientY);
+  };
+
+  const handleMove = (clientY: number) => {
+    if (!isResizingRef.current) return;
+
+    const containerRect = ref.current?.getBoundingClientRect();
+    const containerClientRect = getScrollParent(ref.current ?? document.documentElement).getBoundingClientRect();
+    const handleClientRect = handleRef.current?.getBoundingClientRect();
+
+    let newHeight: number | undefined = (containerRect?.y ?? 0) + (containerRect?.height ?? 0) - clientY - (handleClientRect?.height ?? 0) / 2;
+
+    if (newHeight < minHeight) return;
+    if (newHeight > containerClientRect.height) newHeight = containerClientRect?.height - (handleClientRect?.height ?? 0);
+
+    if (contentRef.current && newHeight != null) {
+      didResize.current = true;
+      contentRef.current.style.setProperty('height', `${newHeight}px`);
+      if (onResize) {
+        onResize(newHeight);
+      }
+    }
+  };
+
+  const handleTouchEnd = (event: TouchEvent) => {
+    if (didResize.current) {
+      event.stopPropagation();
+    }
+
+    isResizingRef.current = false;
+
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
+  };
+
+  const handleMouseUp = (event: MouseEvent) => {
+    if (didResize.current) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    isResizingRef.current = false;
+
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+
   return (
     <Accordion
+      ref={ref}
       sx={{
         position: 'sticky',
         inset: 'auto 0 0 0',
@@ -33,11 +148,14 @@ export function PageDrawer({ expanded, onChange, children, color, ...rest }: Pag
           display: 'none'
         }
       }}
-      expanded={expanded}
-      onChange={onChange}
+      expanded={realExpanded}
+      onChange={handleOnChange}
       {...rest}
     >
       <AccordionSummary
+        ref={handleRef}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         expandIcon={<ExpandMore />}
         sx={{
           position: 'relative',
@@ -77,12 +195,14 @@ export function PageDrawer({ expanded, onChange, children, color, ...rest }: Pag
           }}
         />
       </AccordionSummary>
-      <AccordionDetails sx={{
-        bgcolor: 'background.default',
-        maxHeight: '40vh',
-        overflowX: 'hidden',
-        overflowY: 'auto'
-      }}
+      <AccordionDetails
+        ref={contentRef}
+        sx={{
+          bgcolor: 'background.default',
+          overflowX: 'hidden',
+          overflowY: 'auto',
+          height: height ? `${height}px` : undefined,
+        }}
       >
         {children}
       </AccordionDetails>
