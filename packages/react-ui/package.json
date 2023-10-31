@@ -34,7 +34,7 @@
     "@mui/lab": "5.0.0-alpha.149",
     "@mui/x-date-pickers-pro": "5.0.20",
     "@mui/x-date-pickers": "5.0.20",
-    "@types/node": "18.18.5",
+    "@types/node": "18.18.8",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "date-fns": "2.30.0",
