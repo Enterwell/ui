@@ -64,6 +64,7 @@ export type SelectProps<
     disableFilterOptions?: boolean;
     stopPropagationOnKeyCodeSpace?: boolean;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    listStartDecorator?: ReactNode;
     listEndDecorator?: ReactNode;
   };
 
@@ -96,6 +97,7 @@ export function Select<
     disableFilterOptions,
     stopPropagationOnKeyCodeSpace,
     onBlur,
+    listStartDecorator,
     listEndDecorator,
     ...rest
   }: SelectProps<T, ChipComponent>) {
@@ -243,6 +245,7 @@ export function Select<
           }
         }}>
           <Paper>
+            {listStartDecorator}
             {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
             {listEndDecorator}
           </Paper>

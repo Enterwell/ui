@@ -116,7 +116,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, listEndDecorator, ...rest }: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, listStartDecorator, listEndDecorator, ...rest }: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -145,6 +145,7 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     disableFilterOptions?: boolean;
     stopPropagationOnKeyCodeSpace?: boolean;
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
+    listStartDecorator?: ReactNode;
     listEndDecorator?: ReactNode;
 };
 
