@@ -162,7 +162,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.2)(typescript@5.2.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3)(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -217,7 +217,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.2)(typescript@5.2.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3)(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -284,7 +284,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.38.2)(typescript@5.2.2)
+        version: 8.0.1(@microsoft/api-extractor@7.38.3)(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -8593,7 +8593,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.1(@microsoft/api-extractor@7.38.2)(typescript@5.2.2):
+  /tsup@8.0.1(@microsoft/api-extractor@7.38.3)(typescript@5.2.2):
     resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
     engines: {node: '>=18'}
     hasBin: true
@@ -8612,7 +8612,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.38.2(@types/node@18.18.8)
+      '@microsoft/api-extractor': 7.38.3(@types/node@18.18.12)
       bundle-require: 4.0.1(esbuild@0.19.7)
       cac: 6.7.14
       chokidar: 3.5.3
