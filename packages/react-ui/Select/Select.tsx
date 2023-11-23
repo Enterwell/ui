@@ -2,7 +2,6 @@ import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNo
 import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Popper, Paper } from '@mui/material';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
-import { Box, Stack } from '@mui/system';
 
 const ScrollLoadOffset = 100;
 
