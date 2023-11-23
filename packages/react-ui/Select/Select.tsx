@@ -1,7 +1,9 @@
 import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
-import { Autocomplete, TextField, CircularProgress, ChipTypeMap } from '@mui/material';
+import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Popper, Paper } from '@mui/material';
+import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
+import { Box, Stack } from '@mui/system';
 
 const ScrollLoadOffset = 100;
 
@@ -48,7 +50,7 @@ export type SelectProps<
     placeholder?: string;
     loading?: boolean;
     label?: ReactNode;
-    displayOption?: (option: T) => string;
+    displayOption?: (option: T) => string | ReactNode;
     pageSize?: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
 
@@ -64,6 +66,7 @@ export type SelectProps<
     disableFilterOptions?: boolean;
     stopPropagationOnKeyCodeSpace?: boolean;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    listEndDecorator?: ReactNode;
   };
 
 /**
@@ -95,6 +98,7 @@ export function Select<
     disableFilterOptions,
     stopPropagationOnKeyCodeSpace,
     onBlur,
+    listEndDecorator,
     ...rest
   }: SelectProps<T, ChipComponent>) {
 
@@ -234,6 +238,21 @@ export function Select<
           {displayOption ? displayOption(option) : option.label}
         </li>
       )}
+      PopperComponent={({ children, ...rest }) => {
+        console.log(rest)
+        return (
+          <Popper {...rest} sx={({
+            '& .MuiAutocomplete-paper': {
+              boxShadow: 'none'
+            }
+          })}>
+            <Paper>
+              {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
+              {listEndDecorator}
+            </Paper>
+          </Popper>
+        );
+      }}
       filterOptions={customFilterOptions}
       renderInput={(params) => (
         <TextField
