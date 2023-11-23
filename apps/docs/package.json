@@ -31,7 +31,7 @@
     "@mui/material": "5.14.18",
     "@mui/system": "5.14.18",
     "@mui/x-data-grid": "6.18.0",
-    "@mui/x-data-grid-pro": "6.18.0",
+    "@mui/x-data-grid-pro": "6.18.1",
     "@mui/x-date-pickers": "5.0.20",
     "@mui/x-date-pickers-pro": "5.0.20",
     "classix": "2.1.35",
@@ -50,7 +50,7 @@
     "autoprefixer": "10.4.16",
     "postcss": "8.4.31",
     "tailwindcss": "3.3.5",
-    "typescript": "5.2.2",
+    "typescript": "5.3.2",
     "unist-builder": "4.0.0",
     "unist-util-visit": "5.0.0"
   }
