@@ -1,6 +1,5 @@
 import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
 import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Popper, Paper } from '@mui/material';
-import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
 import { Box, Stack } from '@mui/system';
@@ -120,7 +119,7 @@ export function Select<
       if (!pageSize) {
         throw Error("Page size is required when using pagination.");
       }
-      
+
       onPage(debouncedText, 0, pageSize);
     }
   }, [debouncedText]);
@@ -238,21 +237,18 @@ export function Select<
           {displayOption ? displayOption(option) : option.label}
         </li>
       )}
-      PopperComponent={({ children, ...rest }) => {
-        console.log(rest)
-        return (
-          <Popper {...rest} sx={({
-            '& .MuiAutocomplete-paper': {
-              boxShadow: 'none'
-            }
-          })}>
-            <Paper>
-              {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
-              {listEndDecorator}
-            </Paper>
-          </Popper>
-        );
-      }}
+      PopperComponent={({ children, ...rest }) => (
+        <Popper {...rest} sx={{
+          '& .MuiAutocomplete-paper': {
+            boxShadow: 'none'
+          }
+        }}>
+          <Paper>
+            {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
+            {listEndDecorator}
+          </Paper>
+        </Popper>
+      )}
       filterOptions={customFilterOptions}
       renderInput={(params) => (
         <TextField
