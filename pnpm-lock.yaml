@@ -1498,7 +1498,7 @@ packages:
       react: ^17.0.2 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@mui/utils': 5.14.17(@types/react@18.2.38)(react@18.2.0)
+      '@mui/utils': 5.14.18(@types/react@18.2.38)(react@18.2.0)
       react: 18.2.0
     transitivePeerDependencies:
       - '@types/react'
