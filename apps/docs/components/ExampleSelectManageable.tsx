@@ -11,7 +11,6 @@ export function ExampleSelectManageable() {
         <Box sx={{ width: 400 }}>
             {/* // @highlight-start */}
             <Select
-            open
                 value={value}
                 onChange={(_, value) => setValue(value)}
                 options={[
