@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev:js": "tsup index.ts --watch --format esm --dts --outDir dist",
+    "dev:js": "tsup index.ts --format esm --dts --watch",
     "dev": "pnpm run \"/^dev:.*/\"",
     "before-build:clean": "rimraf dist",
-    "build:js": "tsup index.ts --format esm --dts --outDir dist",
+    "build:js": "tsup index.ts --format esm --dts",
     "after-build:api": "api-extractor run && node ./scripts/transform-api-docs.js",
     "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
     "lint": "eslint ."
