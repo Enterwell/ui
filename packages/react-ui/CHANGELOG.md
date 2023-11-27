@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.7.0] - 2023-11-27
+### Added
+- Select listEndDecorator prop
+- Select listStartDecorator prop
+
+### Fixed
+- Loosen peer-dependencies
+- Added date-fns peer-dep
+- ConfirmDialog header heading level
+
 ## [0.6.0] - 2023-11-07
 ### Added
 - Ability to resize PageDrawer
