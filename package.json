@@ -6,11 +6,11 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "eslint": "8.53.0",
+    "eslint": "8.54.0",
     "tsconfig": "workspace:*",
     "turbo": "1.10.16",
     "@turbo/gen": "1.10.16"
   },
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@8.11.0",
   "name": "ui"
 }

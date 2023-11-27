@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev:js": "tsup index.ts --watch --format esm --dts --outDir dist",
+    "dev:js": "tsup index.ts --format esm --dts --watch",
     "dev": "pnpm run \"/^dev:.*/\"",
     "before-build:clean": "rimraf dist",
-    "build:js": "tsup index.ts --format esm --dts --outDir dist",
+    "build:js": "tsup index.ts --format esm --dts",
     "after-build:api": "api-extractor run && node ./scripts/transform-api-docs.js",
     "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
     "lint": "eslint ."
@@ -25,27 +25,27 @@
   "devDependencies": {
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
-    "@microsoft/api-extractor": "7.38.2",
-    "@mui/material": "5.14.17",
-    "@mui/x-data-grid": "6.17.0",
-    "@mui/x-data-grid-pro": "6.17.0",
-    "@types/node": "18.18.8",
-    "@types/react": "18.2.36",
-    "@types/react-dom": "18.2.14",
+    "@microsoft/api-extractor": "7.38.3",
+    "@mui/material": "5.14.18",
+    "@mui/x-data-grid": "6.18.2",
+    "@mui/x-data-grid-pro": "6.18.2",
+    "@types/node": "18.18.13",
+    "@types/react": "18.2.38",
+    "@types/react-dom": "18.2.17",
     "date-fns": "2.30.0",
     "eslint-config-custom": "workspace:*",
     "react": "18.2.0",
     "rimraf": "5.0.5",
     "tsconfig": "workspace:*",
-    "tsup": "7.2.0",
-    "typescript": "5.2.2"
+    "tsup": "8.0.1",
+    "typescript": "5.3.2"
   },
   "peerDependencies": {
     "@enterwell/react-ui": "workspace:*",
-    "@mui/material": "5.14.17",
-    "@mui/x-data-grid": "6.17.0",
-    "@mui/x-data-grid-pro": "6.17.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@mui/material": "^5",
+    "@mui/x-data-grid": "^6",
+    "@mui/x-data-grid-pro": "^6",
+    "react": "^18",
+    "react-dom": "^18"
   }
 }

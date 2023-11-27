@@ -1,5 +1,5 @@
 import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
-import { Autocomplete, TextField, CircularProgress, ChipTypeMap } from '@mui/material';
+import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Popper, Paper } from '@mui/material';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
 
@@ -48,7 +48,7 @@ export type SelectProps<
     placeholder?: string;
     loading?: boolean;
     label?: ReactNode;
-    displayOption?: (option: T) => string;
+    displayOption?: (option: T) => string | ReactNode;
     pageSize?: number;
     onPage?: (text: string | null, page: number, pageSize: number) => void;
 
@@ -64,6 +64,8 @@ export type SelectProps<
     disableFilterOptions?: boolean;
     stopPropagationOnKeyCodeSpace?: boolean;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    listStartDecorator?: ReactNode;
+    listEndDecorator?: ReactNode;
   };
 
 /**
@@ -95,6 +97,8 @@ export function Select<
     disableFilterOptions,
     stopPropagationOnKeyCodeSpace,
     onBlur,
+    listStartDecorator,
+    listEndDecorator,
     ...rest
   }: SelectProps<T, ChipComponent>) {
 
@@ -116,7 +120,7 @@ export function Select<
       if (!pageSize) {
         throw Error("Page size is required when using pagination.");
       }
-      
+
       onPage(debouncedText, 0, pageSize);
     }
   }, [debouncedText]);
@@ -233,6 +237,19 @@ export function Select<
         <li {...params} key={option.value}>
           {displayOption ? displayOption(option) : option.label}
         </li>
+      )}
+      PopperComponent={({ children, ...rest }) => (
+        <Popper {...rest} sx={{
+          '& .MuiAutocomplete-paper': {
+            boxShadow: 'none'
+          }
+        }}>
+          <Paper>
+            {listStartDecorator}
+            {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
+            {listEndDecorator}
+          </Paper>
+        </Popper>
       )}
       filterOptions={customFilterOptions}
       renderInput={(params) => (
