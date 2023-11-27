@@ -5,9 +5,9 @@ import {
   Button,
   Typography,
   type DialogProps,
+  type ButtonProps,
 } from '@mui/material';
 import { Stack } from '@mui/system';
-import { ComponentProps } from 'react';
 
 /**
  * The confirm dialog props type.
@@ -17,7 +17,7 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
   isOpen: boolean;
   header: string;
   message?: string;
-  color?: ComponentProps<typeof Button>['color'];
+  color?: ButtonProps["color"];
   confirmButtonText?: string;
   cancelButtonText?: string;
   onConfirm: () => void;
@@ -36,7 +36,6 @@ export function ConfirmDialog({
   header,
   message,
   maxWidth = "xs",
-  fullWidth = true,
   color = "primary",
   confirmButtonText = "Potvrdi",
   cancelButtonText = "Odustani",
@@ -45,11 +44,11 @@ export function ConfirmDialog({
   ...rest
 }: ConfirmDialogProps) {
   return (
-    <Dialog open={isOpen} onClose={onCancel} {...rest}>
+    <Dialog open={isOpen} onClose={onCancel} maxWidth={maxWidth} {...rest}>
       <DialogContent>
-        <Stack spacing={2}>
-          <Typography variant="h5" textAlign="center" paddingTop={4} paddingX={3}>{header}</Typography>
-          {message && <Typography variant="body1" color="textSecondary" textAlign="center" paddingX={3}>{message}</Typography>}
+        <Stack spacing={2} paddingX={3}>
+          <Typography variant="h2" textAlign="center" paddingTop={4}>{header}</Typography>
+          {message && <Typography color="textSecondary" textAlign="center">{message}</Typography>}
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
