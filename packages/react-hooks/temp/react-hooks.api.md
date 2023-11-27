@@ -4,8 +4,12 @@
 
 ```ts
 
+import { MutableRefObject } from 'react';
 import * as react from 'react';
 import { useEffect } from 'react';
+
+// @public
+export type MaybeRef<T> = T | MutableRefObject<T>;
 
 // @public
 export type PromiseFunction<T> = (Promise<T> | undefined) | (() => Promise<T> | undefined);
@@ -18,6 +22,11 @@ export function useDebouncedEffect(effect: Function, deps: unknown[], delay: num
 
 // @public
 export const useIsomorphicLayoutEffect: typeof useEffect;
+
+// @public
+export function useMutationObserver(target: MaybeRef<Element | null | undefined>, callback: MutationCallback, options?: MutationObserverInit): {
+    stop: () => void;
+};
 
 // @public
 export function usePromise<T>(promise?: PromiseFunction<T>): UsePromiseResult<T>;
