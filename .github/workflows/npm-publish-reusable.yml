@@ -22,6 +22,8 @@ jobs:
           with:
             branch: "mutex/${{ github.event.workflow_run.head_branch }}-publish"
         - uses: actions/checkout@v4
+          with:
+            ref: main
         - name: Setup pnpm
           uses: pnpm/action-setup@v2.4.0
           with:
