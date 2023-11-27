@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "packages/**"
+      - ".github/workflows/npm-publish-reusable.yml"
+      - ".github/workflows/npm-publish.yml"
   workflow_dispatch:
     
 jobs:
