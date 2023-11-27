@@ -15,7 +15,6 @@ jobs:
     publish:
         name: Publish ${{ inputs.name }}
         runs-on: ubuntu-latest
-        concurrency: ci-${{ github.ref }}-${{ inputs.name }}
         steps:
         # Ensuring that only one PR-environment-creation per branch will run at a time
         - name: Mutex setup
