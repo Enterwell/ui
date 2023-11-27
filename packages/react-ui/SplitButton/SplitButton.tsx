@@ -6,9 +6,9 @@ import {
   Paper,
   MenuItem,
   MenuList,
-  ClickAwayListener
+  ClickAwayListener,
+  CircularProgress
 } from '@mui/material';
-import LoadingButton from '@mui/lab/LoadingButton';
 import { ArrowDropDown } from '@mui/icons-material';
 import {
   useState, useEffect, useRef, forwardRef, MouseEvent
@@ -93,17 +93,24 @@ const SplitButton = forwardRef<HTMLButtonElement, SplitButtonProps>((props, ref)
   return (
     <>
       <ButtonGroup disabled={disabled} variant={variant} {...rest}>
-        <LoadingButton
+        <Button
           ref={ref}
-          loading={loading}
+          disabled={loading}
           onClick={handleClick}
           variant={variant}
           sx={{
+            position: 'relative',
             '&.Mui-disabled': { pointerEvents: 'auto' },
+            color: loading ? 'transparent !important' : undefined,
           }}
         >
+          {loading && <CircularProgress size={16} sx={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }} />}
           {children}
-        </LoadingButton>
+        </Button>
         <Button onClick={handleToggle} ref={anchorRef}>
           <ArrowDropDown />
         </Button>
