@@ -5,7 +5,6 @@
 ```ts
 
 import { AutocompleteProps } from '@mui/material/Autocomplete';
-import { Button } from '@mui/material';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 import { ChipTypeMap } from '@mui/material';
@@ -36,14 +35,14 @@ export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDial
 };
 
 // @public
-export function ConfirmDialog({ isOpen, header, message, maxWidth, fullWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+export function ConfirmDialog({ isOpen, header, message, maxWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
     isOpen: boolean;
     header: string;
     message?: string;
-    color?: ComponentProps<typeof Button>['color'];
+    color?: ButtonProps["color"];
     confirmButtonText?: string;
     cancelButtonText?: string;
     onConfirm: () => void;
