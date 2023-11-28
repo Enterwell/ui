@@ -7,9 +7,9 @@ const roboto = Roboto({
     display: 'swap',
 });
 
-export const theme = createTheme({
+export const theme = (mode: string | undefined) => createTheme({
     palette: {
-        mode: 'dark',
+        mode: mode === 'light' ? 'light' : 'dark',
         primary: {
             main: '#eeeeee',
         },
