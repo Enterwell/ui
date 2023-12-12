@@ -1,27 +1,37 @@
 import React, { type MouseEvent } from 'react';
 import {
-    Typography, Stack, IconButton, InputBase, type TypographyProps
+    Typography, Stack, IconButton, InputBase, useTheme, type TypographyProps
 } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import ClearIcon from '@mui/icons-material/Clear';
+import { Variant } from '@mui/material/styles/createTypography';
+import { Search, Clear } from '@mui/icons-material';
 
+/**
+ * The SearchHeader component props.
+ * @public
+ */
 export type SearchHeaderProps = TypographyProps & {
     onSubmit?: (searchTerm: string) => void,
+    placeholder: string
 }
 
 /**
  * Search header.
- * @param props The props of the component.
+ * @param props - The props of the component.
  * @returns The search header component.
+ * @public
  */
-export default function SearchHeader({
+export function SearchHeader({
     onSubmit,
+    placeholder,
     children,
+    variant = 'h1',
     ...rest
 }: SearchHeaderProps) {
     const [isSearching, setIsSearching] = React.useState(false);
     const [searchTerm, setSearchTerm] = React.useState('');
 
+    const theme = useTheme();
+    console.log("theme.", theme.typography)
     const handleSearchClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setIsSearching(true);
@@ -51,30 +61,32 @@ export default function SearchHeader({
         }
     };
 
+    const fontSize = variant ? theme.typography[variant as Variant].fontSize : undefined;
+
     return isSearching ? (
         <InputBase
             startAdornment={(
                 <IconButton onClick={handleClearClick}>
-                    <ClearIcon color="primary" />
+                    <Clear color="primary" sx={{ fontSize: fontSize }} />
                 </IconButton>
             )}
             autoFocus
-            placeholder="Pretraži po pojmu"
+            placeholder={placeholder}
             onClick={(e) => e.stopPropagation()}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleSubmit}
             onBlur={handleInputBlur}
             sx={{
-                fontSize: 16,
+                fontSize: fontSize
             }}
         />
     ) : (
         <Stack spacing={1} direction="row" alignItems="center">
-            <Typography variant="h1" {...rest}>{children}</Typography>
+            <Typography variant={variant} {...rest}>{children}</Typography>
             {onSubmit && (
-                <IconButton size="small" onClick={handleSearchClick}>
-                    <SearchIcon />
+                <IconButton onClick={handleSearchClick}>
+                    <Search sx={{ fontSize: fontSize }} />
                 </IconButton>
             )}
         </Stack>

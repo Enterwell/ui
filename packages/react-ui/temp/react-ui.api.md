@@ -20,6 +20,7 @@ import { ReactNode } from 'react';
 import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
+import { TypographyProps } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
@@ -112,6 +113,14 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     minHeight?: number;
     onChange?: () => void;
     onResize?: (height: number | undefined) => void;
+};
+
+// @public
+export function SearchHeader({ onSubmit, children, ...rest }: SearchHeaderProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type SearchHeaderProps = TypographyProps & {
+    onSubmit?: (searchTerm: string) => void;
 };
 
 // @public
