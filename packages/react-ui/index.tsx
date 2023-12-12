@@ -10,3 +10,4 @@ export * from "./DateTimeRangePicker";
 export * from "./ConfirmDialog";
 export * from "./DropdownButton";
 export * from "./PageDrawer";
+export * from "./SearchHeader";
