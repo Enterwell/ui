@@ -8,8 +8,8 @@
   "devDependencies": {
     "eslint": "8.55.0",
     "tsconfig": "workspace:*",
-    "turbo": "1.11.0",
-    "@turbo/gen": "1.11.0"
+    "turbo": "1.11.2",
+    "@turbo/gen": "1.11.2"
   },
   "packageManager": "pnpm@8.11.0",
   "name": "ui"
