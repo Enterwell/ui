@@ -1,6 +1,6 @@
 import React, { type MouseEvent } from 'react';
 import {
-    Typography, Stack, IconButton, InputBase, useTheme, type TypographyProps
+    Typography, Stack, IconButton, InputBase, useTheme
 } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import { Search, Clear } from '@mui/icons-material';
@@ -9,9 +9,11 @@ import { Search, Clear } from '@mui/icons-material';
  * The SearchHeader component props.
  * @public
  */
-export type SearchHeaderProps = TypographyProps & {
+export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void,
-    placeholder: string
+    placeholder: string,
+    variant: Variant,
+    children: React.ReactNode
 }
 
 /**
@@ -67,7 +69,7 @@ export function SearchHeader({
         <InputBase
             startAdornment={(
                 <IconButton onClick={handleClearClick}>
-                    <Clear color="primary" sx={{ fontSize: fontSize }} />
+                    <Clear color="primary" />
                 </IconButton>
             )}
             autoFocus
@@ -77,13 +79,10 @@ export function SearchHeader({
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleSubmit}
             onBlur={handleInputBlur}
-            sx={{
-                fontSize: fontSize
-            }}
         />
     ) : (
         <Stack spacing={1} direction="row" alignItems="center">
-            <Typography variant={variant} {...rest}>{children}</Typography>
+            <Typography variant={variant}>{children}</Typography>
             {onSubmit && (
                 <IconButton onClick={handleSearchClick}>
                     <Search sx={{ fontSize: fontSize }} />
