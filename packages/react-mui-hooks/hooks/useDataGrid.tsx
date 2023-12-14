@@ -234,7 +234,6 @@ export type UseDataGridProps = {
     pageSize?: number,
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
-    renderCell?: (params: any) => React.ReactElement,
     onRowClick?: any,
     rowHeight?: number,
     selection?: boolean,
@@ -269,7 +268,6 @@ export function useDataGrid({
     columns,
     columnVisibilityModel,
     defaultSort,
-    renderCell,
     onPage,
     onRowClick,
     rowHeight = 40,
@@ -451,7 +449,7 @@ export function useDataGrid({
     const columnsMemo = useMemo(() => columns.map((c) => ({
         ...c,
         cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
-        renderCell: renderCell || ((params: ExtendedGridRenderCellParams) => (
+        renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
             <CellRenderer
                 customType={params.colDef.customType}
                 value={params.value}
@@ -460,9 +458,9 @@ export function useDataGrid({
                 params={params.colDef}
             />
         )),
-        renderHeader: headerRenderer,
+        renderHeader: c.renderHeader || headerRenderer,
         ...resolveCustomTypeOperators(c),
-    })), [columns, renderCell, headerRenderer, rowHeight]);
+    })), [columns, headerRenderer, rowHeight]);
 
     return {
         props: {
