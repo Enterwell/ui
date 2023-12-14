@@ -90,7 +90,12 @@ type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unkno
     width?: number
 };
 
-type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
+/**
+ * Extended data grid column definition.
+ *
+ * @public
+ */
+export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     customType?: CellRendererCustomType
     enum?: { get: (value: any) => { label: string } | undefined },
     width?: number
