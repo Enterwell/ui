@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.9.0] - 2023-11-27
+### Changed
+- SplitButton now using custom button loading implementation
+
+### Removed
+- mui-lab dependency
+
 ## [0.8.0] - 2023-11-27
 ### Added
 - Select listEndDecorator prop
