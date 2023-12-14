@@ -1,4 +1,4 @@
-import { useDataGrid } from '@enterwell/react-mui-hooks';
+import { ExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
 import { DataGridPro, GridValidRowModel } from '@mui/x-data-grid-pro';
 import { useEffect } from 'react';
 
@@ -8,7 +8,7 @@ async function getData(page: number, pageSize: number) {
 }
 
 export function ExampleUseDataGrid() {
-    const columns = [
+    const columns: ExtendedGridColDef[] = [
         { field: 'title', headerName: 'Title' },
         { field: 'status', headerName: 'Status' },
     ];
