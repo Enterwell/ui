@@ -26,9 +26,8 @@
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
     "@microsoft/api-extractor": "7.38.5",
-    "@mui/material": "5.14.20",
-    "@mui/x-data-grid": "6.18.3",
-    "@mui/x-data-grid-pro": "6.18.3",
+    "@mui/material": "5.15.0",
+    "@mui/x-data-grid-pro": "6.18.4",
     "@types/node": "18.19.3",
     "@types/react": "18.2.42",
     "@types/react-dom": "18.2.17",
@@ -38,12 +37,11 @@
     "rimraf": "5.0.5",
     "tsconfig": "workspace:*",
     "tsup": "8.0.1",
-    "typescript": "5.3.2"
+    "typescript": "5.3.3"
   },
   "peerDependencies": {
     "@enterwell/react-ui": "workspace:*",
     "@mui/material": "^5",
-    "@mui/x-data-grid": "^6",
     "@mui/x-data-grid-pro": "^6",
     "react": "^18",
     "react-dom": "^18"

@@ -12,6 +12,17 @@ import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
 
 // @public
+export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
+    customType?: CellRendererCustomType;
+    enum?: {
+        get: (value: any) => {
+            label: string;
+        } | undefined;
+    };
+    width?: number;
+};
+
+// @public
 export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
 
 // @public
@@ -44,7 +55,7 @@ export type UseDataGridResponse = {
 
 // Warnings were encountered during analysis:
 //
-// dist/index.d.ts:19:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
+// dist/index.d.ts:11:5 - (ae-forgotten-export) The symbol "CellRendererCustomType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
