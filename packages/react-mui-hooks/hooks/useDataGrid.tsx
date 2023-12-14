@@ -122,7 +122,7 @@ function CellRenderer({
     if (customType === 'enum') {
         const enumLabel = params.enum?.get(value)?.label;
         if (enumLabel) {
-            return <Text {...rest}>{ }</Text>;
+            return <Text {...rest}>{enumLabel}</Text>;
         }
     }
     if (customType === 'actions') {
