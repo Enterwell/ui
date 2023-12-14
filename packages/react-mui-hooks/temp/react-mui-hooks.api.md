@@ -23,7 +23,7 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
 };
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, renderCell, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
@@ -36,7 +36,6 @@ export type UseDataGridProps = {
     pageSize?: number;
     columnVisibilityModel?: GridColumnVisibilityModel;
     defaultSort?: GridSortModel;
-    renderCell?: (params: any) => React.ReactElement;
     onRowClick?: any;
     rowHeight?: number;
     selection?: boolean;
