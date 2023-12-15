@@ -29,6 +29,7 @@ import {
     type GridPaginationModel,
     type GridValidRowModel,
     type DataGridPro,
+    type GridSortItem,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -90,11 +91,43 @@ type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unkno
     width?: number
 };
 
-type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
+/**
+ * Extended data grid column definition.
+ *
+ * @public
+ */
+export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     customType?: CellRendererCustomType
     enum?: { get: (value: any) => { label: string } | undefined },
     width?: number
 };
+
+/**
+ * Type-safe extended data grid column definition.
+ *
+ * @public
+ */
+export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
+  field: keyof T
+};
+
+/**
+ * Type-safe data grid column visibility model
+ *
+ * @public
+ */
+export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
+  [K in keyof Partial<T>]: boolean
+};
+
+/**
+ * Type-safe sort model
+ *
+ * @public
+ */
+export type TypedSortModel<T> = (GridSortItem & {
+  field: keyof T
+})[];
 
 type CellRendererProps = {
     customType?: CellRendererCustomType,
@@ -122,7 +155,7 @@ function CellRenderer({
     if (customType === 'enum') {
         const enumLabel = params.enum?.get(value)?.label;
         if (enumLabel) {
-            return <Text {...rest}>{ }</Text>;
+            return <Text {...rest}>{enumLabel}</Text>;
         }
     }
     if (customType === 'actions') {
@@ -229,12 +262,11 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     tableId?: string,
     pageSize?: number,
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
-    renderCell?: (params: any) => React.ReactElement,
     onRowClick?: any,
     rowHeight?: number,
     selection?: boolean,
@@ -269,7 +301,6 @@ export function useDataGrid({
     columns,
     columnVisibilityModel,
     defaultSort,
-    renderCell,
     onPage,
     onRowClick,
     rowHeight = 40,
@@ -300,7 +331,7 @@ export function useDataGrid({
             setLoading((current) => [...current, page]);
             console.debug('Loading page', page, 'with sort', sortModel);
 
-            const response = await onPage(Math.max(page, 0), sortModel);
+            const response = await onPage(Math.max(page, 0), pageSize, sortModel);
             const pageIndexOrZero = page <= 0 ? 0 : page;
 
             console.debug('Loaded page', page);
@@ -451,7 +482,7 @@ export function useDataGrid({
     const columnsMemo = useMemo(() => columns.map((c) => ({
         ...c,
         cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
-        renderCell: renderCell || ((params: ExtendedGridRenderCellParams) => (
+        renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
             <CellRenderer
                 customType={params.colDef.customType}
                 value={params.value}
@@ -460,9 +491,9 @@ export function useDataGrid({
                 params={params.colDef}
             />
         )),
-        renderHeader: headerRenderer,
+        renderHeader: c.renderHeader || headerRenderer,
         ...resolveCustomTypeOperators(c),
-    })), [columns, renderCell, headerRenderer, rowHeight]);
+    })), [columns, headerRenderer, rowHeight]);
 
     return {
         props: {

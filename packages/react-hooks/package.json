@@ -23,16 +23,16 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.38.3",
-    "@types/node": "18.18.13",
-    "@types/react": "18.2.39",
+    "@microsoft/api-extractor": "7.38.5",
+    "@types/node": "18.19.3",
+    "@types/react": "18.2.45",
     "@types/react-dom": "18.2.17",
     "eslint-config-custom": "workspace:*",
     "react": "18.2.0",
     "rimraf": "5.0.5",
     "tsconfig": "workspace:*",
     "tsup": "8.0.1",
-    "typescript": "5.3.2"
+    "typescript": "5.3.3"
   },
   "peerDependencies": {
     "react": "^18",
