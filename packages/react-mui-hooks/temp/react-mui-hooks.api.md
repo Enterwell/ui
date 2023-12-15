@@ -8,6 +8,7 @@ import { ComponentPropsWithRef } from 'react';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
+import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
 
@@ -21,6 +22,21 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     };
     width?: number;
 };
+
+// @public
+export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
+    [K in keyof Partial<T>]: boolean;
+};
+
+// @public
+export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
+    field: keyof T;
+};
+
+// @public
+export type TypedSortModel<T> = (GridSortItem & {
+    field: keyof T;
+})[];
 
 // @public
 export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;

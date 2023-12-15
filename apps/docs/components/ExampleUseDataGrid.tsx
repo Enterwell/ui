@@ -1,6 +1,18 @@
-import { ExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
-import { DataGridPro, GridValidRowModel } from '@mui/x-data-grid-pro';
+import { TypedExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
+import { DataGridPro } from '@mui/x-data-grid-pro';
 import { useEffect } from 'react';
+
+type Todo = {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+type TodoRow = {
+  id: number;
+  title: string;
+  status: string;
+}
 
 async function getData(page: number, pageSize: number) {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos');
@@ -8,21 +20,21 @@ async function getData(page: number, pageSize: number) {
 }
 
 export function ExampleUseDataGrid() {
-    const columns: ExtendedGridColDef[] = [
+    const columns: TypedExtendedGridColDef<TodoRow>[] = [
         { field: 'title', headerName: 'Title' },
-        { field: 'status', headerName: 'Status' },
+        { field: 'status', headerName: 'Status' }
     ];
 
     const handleOnPage = async (page: number, pageSize: number): Promise<{
-        rows: GridValidRowModel[];
-        totalRowsCount?: number | undefined;
+        rows: TodoRow[];
+        totalRowsCount?: number;
     }> => {
         const response = await getData(page, pageSize);
         return {
-            rows: response.map((item: any) => ({
-                id: item.id,
-                title: item.title,
-                status: item.completed ? 'Completed' : 'Not Completed'
+            rows: response.map((item: Todo) => ({
+              id: item.id,
+              title: item.title,
+              status: item.completed ? 'Completed' : 'Not Completed'
             }))
         };
     };
