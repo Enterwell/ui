@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.3.0] - 2023-12-15
+### Added
+- ExtendedGridColDef type export
+- Type-safe types for usage with useDataGrid hook
+
+### Fixed
+- ExtendedGridColDef's renderHeader function properly used
+- useDataGrid's enum cell renderer
+- ExtendedGridColDef's renderCell function properly used
+- Incosistent useDataGrid's page size
+
+### Removed
+- useDataGrid's renderCell prop
+- Data grid community version dependency
+
 ## [0.2.3] - 2023-11-27
 ### Fixed
 - Loosen peer-dependencies
