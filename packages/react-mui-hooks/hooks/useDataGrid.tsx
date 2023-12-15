@@ -29,6 +29,7 @@ import {
     type GridPaginationModel,
     type GridValidRowModel,
     type DataGridPro,
+    type GridSortItem,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -100,6 +101,33 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     enum?: { get: (value: any) => { label: string } | undefined },
     width?: number
 };
+
+/**
+ * Type-safe extended data grid column definition.
+ *
+ * @public
+ */
+export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
+  field: keyof T
+};
+
+/**
+ * Type-safe data grid column visibility model
+ *
+ * @public
+ */
+export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
+  [K in keyof Partial<T>]: boolean
+};
+
+/**
+ * Type-safe sort model
+ *
+ * @public
+ */
+export type TypedSortModel<T> = (GridSortItem & {
+  field: keyof T
+})[];
 
 type CellRendererProps = {
     customType?: CellRendererCustomType,
