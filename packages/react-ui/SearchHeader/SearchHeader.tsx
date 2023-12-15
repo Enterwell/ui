@@ -1,4 +1,4 @@
-import React, { type MouseEvent } from 'react';
+import React, { ReactNode, type MouseEvent } from 'react';
 import {
     Typography, Stack, IconButton, InputBase, useTheme
 } from '@mui/material';
@@ -11,9 +11,12 @@ import { Search, Clear } from '@mui/icons-material';
  */
 export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void,
-    placeholder: string,
-    variant: Variant,
-    children: React.ReactNode
+    placeholder?: string | undefined,
+    /**
+     * @defaultValue 'h1'
+     */
+    variant?: Variant | undefined,
+    children?: ReactNode | undefined
 }
 
 /**
@@ -26,14 +29,13 @@ export function SearchHeader({
     onSubmit,
     placeholder,
     children,
-    variant = 'h1',
-    ...rest
+    variant = 'h1'
 }: SearchHeaderProps) {
     const [isSearching, setIsSearching] = React.useState(false);
     const [searchTerm, setSearchTerm] = React.useState('');
 
     const theme = useTheme();
-    console.log("theme.", theme.typography)
+
     const handleSearchClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setIsSearching(true);
