@@ -44,7 +44,7 @@ export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel,
 // @public
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[];
-    onPage: (page: number, sortModel?: GridSortModel) => Promise<{
+    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{
         rows: GridValidRowModel[];
         totalRowsCount?: number;
     }>;
