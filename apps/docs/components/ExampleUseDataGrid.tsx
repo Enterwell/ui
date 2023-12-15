@@ -13,11 +13,11 @@ export function ExampleUseDataGrid() {
         { field: 'status', headerName: 'Status' },
     ];
 
-    const handleOnPage = async (page: number): Promise<{
+    const handleOnPage = async (page: number, pageSize: number): Promise<{
         rows: GridValidRowModel[];
         totalRowsCount?: number | undefined;
     }> => {
-        const response = await getData(page, 20);
+        const response = await getData(page, pageSize);
         return {
             rows: response.map((item: any) => ({
                 id: item.id,

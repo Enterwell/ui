@@ -234,7 +234,7 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     tableId?: string,
     pageSize?: number,
     columnVisibilityModel?: GridColumnVisibilityModel,
@@ -303,7 +303,7 @@ export function useDataGrid({
             setLoading((current) => [...current, page]);
             console.debug('Loading page', page, 'with sort', sortModel);
 
-            const response = await onPage(Math.max(page, 0), sortModel);
+            const response = await onPage(Math.max(page, 0), pageSize, sortModel);
             const pageIndexOrZero = page <= 0 ? 0 : page;
 
             console.debug('Loaded page', page);
