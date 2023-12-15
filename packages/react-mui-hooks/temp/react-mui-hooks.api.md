@@ -8,16 +8,43 @@ import { ComponentPropsWithRef } from 'react';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
+import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, renderCell, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
+export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
+    customType?: CellRendererCustomType;
+    enum?: {
+        get: (value: any) => {
+            label: string;
+        } | undefined;
+    };
+    width?: number;
+};
+
+// @public
+export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
+    [K in keyof Partial<T>]: boolean;
+};
+
+// @public
+export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
+    field: keyof T;
+};
+
+// @public
+export type TypedSortModel<T> = (GridSortItem & {
+    field: keyof T;
+})[];
+
+// @public
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[];
-    onPage: (page: number, sortModel?: GridSortModel) => Promise<{
+    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{
         rows: GridValidRowModel[];
         totalRowsCount?: number;
     }>;
@@ -25,7 +52,6 @@ export type UseDataGridProps = {
     pageSize?: number;
     columnVisibilityModel?: GridColumnVisibilityModel;
     defaultSort?: GridSortModel;
-    renderCell?: (params: any) => React.ReactElement;
     onRowClick?: any;
     rowHeight?: number;
     selection?: boolean;
@@ -45,7 +71,7 @@ export type UseDataGridResponse = {
 
 // Warnings were encountered during analysis:
 //
-// dist/index.d.ts:19:5 - (ae-forgotten-export) The symbol "ExtendedGridColDef" needs to be exported by the entry point index.d.ts
+// dist/index.d.ts:11:5 - (ae-forgotten-export) The symbol "CellRendererCustomType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
