@@ -30,6 +30,7 @@ import {
     type GridValidRowModel,
     type DataGridPro,
     type GridSortItem,
+    type GridLocaleText,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -272,7 +273,8 @@ export type UseDataGridProps = {
     selection?: boolean,
     checkboxSelection?: boolean,
     infiniteLoading?: boolean,
-    keepNonExistentRowsSelected?: boolean
+    keepNonExistentRowsSelected?: boolean,
+    localeText?: Partial<GridLocaleText>
 };
 
 /**
@@ -307,7 +309,8 @@ export function useDataGrid({
     selection,
     checkboxSelection,
     infiniteLoading,
-    keepNonExistentRowsSelected = true
+    keepNonExistentRowsSelected = true,
+    localeText = {}
 }: UseDataGridProps): UseDataGridResponse {
     const defaultSortOrFirst: GridSortModel | undefined = defaultSort || (columns.length > 0 ? [{ field: columns[0].field, sort: 'asc' }] : undefined);
 
@@ -525,7 +528,8 @@ export function useDataGrid({
             hideFooterSelectedRowCount: true,
             loading: loading.length > 0,
             localeText: {
-                noRowsLabel: 'Nema zapisa'
+                noRowsLabel: 'Nema zapisa',
+                ...localeText
             },
             onRowClick,
             rowHeight,
