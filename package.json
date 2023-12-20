@@ -6,7 +6,7 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "eslint": "8.55.0",
+    "eslint": "8.56.0",
     "tsconfig": "workspace:*",
     "turbo": "1.11.2",
     "@turbo/gen": "1.11.2"
