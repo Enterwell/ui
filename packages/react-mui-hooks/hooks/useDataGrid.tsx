@@ -30,6 +30,7 @@ import {
     type GridValidRowModel,
     type DataGridPro,
     type GridSortItem,
+    type GridRowScrollEndParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -271,6 +272,7 @@ export type UseDataGridProps = {
     rowHeight?: number,
     selection?: boolean,
     checkboxSelection?: boolean,
+    enablePagination?: boolean,
     infiniteLoading?: boolean,
     keepNonExistentRowsSelected?: boolean
 };
@@ -306,6 +308,7 @@ export function useDataGrid({
     rowHeight = 40,
     selection,
     checkboxSelection,
+    enablePagination = true,
     infiniteLoading,
     keepNonExistentRowsSelected = true
 }: UseDataGridProps): UseDataGridResponse {
@@ -495,6 +498,16 @@ export function useDataGrid({
         ...resolveCustomTypeOperators(c),
     })), [columns, headerRenderer, rowHeight]);
 
+    /**
+     * Handles rows scroll end action.
+     */
+    const handleRowsScrollEnd = (params: GridRowScrollEndParams) => {
+      if (!infiniteLoading) return;
+
+      console.debug('Infinite loading: loading next page', params);
+      handlePaginationModelChange({ page: pageIndex + 1, pageSize });
+    };
+
     return {
         props: {
             ref: resizeRef,
@@ -511,11 +524,13 @@ export function useDataGrid({
             columns: columnsMemo,
             columnVisibilityModel: columnVisibility,
             onColumnVisibilityModelChange: handleColumnVisibilityChange,
+            pagination: !infiniteLoading && enablePagination,
             paginationMode: 'server',
             paginationModel: {
                 page: Math.max(pageIndex, 0),
                 pageSize,
             },
+            hideFooterPagination: infiniteLoading,
             onPaginationModelChange: handlePaginationModelChange,
             sortingMode: 'server',
             sortModel,
@@ -529,6 +544,8 @@ export function useDataGrid({
             },
             onRowClick,
             rowHeight,
+            scrollEndThreshold: rowHeight * Math.round(pageSize / 2),
+            onRowsScrollEnd: handleRowsScrollEnd,
             onCellKeyDown: handleCellKeyDown,
             columnHeaderHeight: rowHeight + 1,
             disableRowSelectionOnClick: !selection,
