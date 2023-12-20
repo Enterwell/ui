@@ -40,7 +40,7 @@ export type TypedSortModel<T> = (GridSortItem & {
 })[];
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, infiniteLoading, keepNonExistentRowsSelected, localeText }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
@@ -57,6 +57,7 @@ export type UseDataGridProps = {
     rowHeight?: number;
     selection?: boolean;
     checkboxSelection?: boolean;
+    enablePagination?: boolean;
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
     localeText?: Partial<GridLocaleText>;
