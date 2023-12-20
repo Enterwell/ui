@@ -8,6 +8,7 @@ import { ComponentPropsWithRef } from 'react';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
+import { GridLocaleText } from '@mui/x-data-grid-pro';
 import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
@@ -39,7 +40,7 @@ export type TypedSortModel<T> = (GridSortItem & {
 })[];
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enablePagination, infiniteLoading, keepNonExistentRowsSelected }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
@@ -59,6 +60,7 @@ export type UseDataGridProps = {
     enablePagination?: boolean;
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
+    localeText?: Partial<GridLocaleText>;
 };
 
 // @public
