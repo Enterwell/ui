@@ -30,6 +30,7 @@ import {
     type GridValidRowModel,
     type DataGridPro,
     type GridSortItem,
+    type GridLocaleText,
     type GridRowScrollEndParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
@@ -274,7 +275,8 @@ export type UseDataGridProps = {
     checkboxSelection?: boolean,
     enablePagination?: boolean,
     infiniteLoading?: boolean,
-    keepNonExistentRowsSelected?: boolean
+    keepNonExistentRowsSelected?: boolean,
+    localeText?: Partial<GridLocaleText>
 };
 
 /**
@@ -310,7 +312,8 @@ export function useDataGrid({
     checkboxSelection,
     enablePagination = true,
     infiniteLoading,
-    keepNonExistentRowsSelected = true
+    keepNonExistentRowsSelected = true,
+    localeText = {}
 }: UseDataGridProps): UseDataGridResponse {
     const defaultSortOrFirst: GridSortModel | undefined = defaultSort || (columns.length > 0 ? [{ field: columns[0].field, sort: 'asc' }] : undefined);
 
@@ -540,7 +543,8 @@ export function useDataGrid({
             hideFooterSelectedRowCount: true,
             loading: loading.length > 0,
             localeText: {
-                noRowsLabel: 'Nema zapisa'
+                noRowsLabel: 'Nema zapisa',
+                ...localeText
             },
             onRowClick,
             rowHeight,
