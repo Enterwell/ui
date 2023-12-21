@@ -155,7 +155,12 @@ function CellRenderer({
         return <Text {...rest}>{format(value, DISPLAY_DATETIME_FORMAT)}</Text>;
     }
     if (customType === 'enum') {
-        const enumLabel = params.enum?.get(value)?.label;
+        let enumLabel: string | undefined = '';
+
+        try {
+          enumLabel = params.enum?.get(value)?.label;
+        } catch (_) {}
+
         if (enumLabel) {
             return <Text {...rest}>{enumLabel}</Text>;
         }
