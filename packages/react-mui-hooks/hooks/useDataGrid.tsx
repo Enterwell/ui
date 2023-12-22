@@ -32,7 +32,7 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
-    type GridProSlotsComponent,
+    type UncapitalizedGridProSlotsComponent,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -279,7 +279,7 @@ export type UseDataGridProps = {
     infiniteLoading?: boolean,
     keepNonExistentRowsSelected?: boolean,
     localeText?: Partial<GridLocaleText>,
-    slots?: Partial<GridProSlotsComponent>,
+    slots?: Partial<UncapitalizedGridProSlotsComponent>,
     slotProps?: GridProSlotProps
 };
 

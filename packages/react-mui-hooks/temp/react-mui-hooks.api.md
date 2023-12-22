@@ -10,10 +10,10 @@ import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
 import { GridLocaleText } from '@mui/x-data-grid-pro';
 import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
-import { GridProSlotsComponent } from '@mui/x-data-grid-pro';
 import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
+import { UncapitalizedGridProSlotsComponent } from '@mui/x-data-grid-pro';
 
 // @public
 export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
@@ -63,7 +63,7 @@ export type UseDataGridProps = {
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
     localeText?: Partial<GridLocaleText>;
-    slots?: Partial<GridProSlotsComponent>;
+    slots?: Partial<UncapitalizedGridProSlotsComponent>;
     slotProps?: GridProSlotProps;
 };
 
