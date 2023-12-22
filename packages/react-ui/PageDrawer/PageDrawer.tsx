@@ -59,7 +59,17 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
   minHeight?: number;
   onChange?: () => void;
   onResize?: (height: number | undefined) => void;
-  rootSx?: SxProps<Theme>;
+  slots?: {
+    root?: {
+      sx?: SxProps<Theme>;
+    },
+    summary?: {
+      sx?: SxProps<Theme>;
+    },
+    details?: {
+      sx?: SxProps<Theme>;
+    }
+  }
 };
 
 /**
@@ -78,7 +88,7 @@ export function PageDrawer({
   onResize,
   color = 'primary.dark', 
   bgColor = 'background.default',
-  rootSx = {},
+  slots = {},
   ...rest 
 }: PageDrawerProps) {
   const isResizingRef = useRef(false);
@@ -187,7 +197,7 @@ export function PageDrawer({
         '&::before': {
           display: 'none'
         },
-        ...rootSx
+        ...(slots.root?.sx ?? {})
       }}
       expanded={realExpanded}
       onChange={handleOnChange}
@@ -220,7 +230,8 @@ export function PageDrawer({
             right: 0,
             bottom: 0,
             bgcolor: bgColor
-          }
+          },
+          ...(slots.summary?.sx ?? {})
         }}
       >
         <Box
@@ -243,6 +254,7 @@ export function PageDrawer({
           overflowX: 'hidden',
           overflowY: 'auto',
           height: height ? `${height}px` : undefined,
+          ...(slots.details?.sx ?? {})
         }}
       >
         {children}

@@ -105,7 +105,7 @@ export type DropdownButtonProps = ButtonProps & {
 };
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, rootSx, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
@@ -116,7 +116,17 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     minHeight?: number;
     onChange?: () => void;
     onResize?: (height: number | undefined) => void;
-    rootSx?: SxProps<Theme>;
+    slots?: {
+        root?: {
+            sx?: SxProps<Theme>;
+        };
+        summary?: {
+            sx?: SxProps<Theme>;
+        };
+        details?: {
+            sx?: SxProps<Theme>;
+        };
+    };
 };
 
 // @public
