@@ -32,10 +32,12 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
+    type GridProSlotsComponent,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
 import { Select } from '@enterwell/react-ui';
+import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
 
 const DISPLAY_DATETIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
 const DISPLAY_DATE_FORMAT = "dd.MM.yyyy.";
@@ -276,7 +278,9 @@ export type UseDataGridProps = {
     enablePagination?: boolean,
     infiniteLoading?: boolean,
     keepNonExistentRowsSelected?: boolean,
-    localeText?: Partial<GridLocaleText>
+    localeText?: Partial<GridLocaleText>,
+    slots?: Partial<GridProSlotsComponent>,
+    slotProps?: GridProSlotProps
 };
 
 /**
@@ -313,7 +317,9 @@ export function useDataGrid({
     enablePagination = true,
     infiniteLoading,
     keepNonExistentRowsSelected = true,
-    localeText = {}
+    localeText = {},
+    slots = {},
+    slotProps = {}
 }: UseDataGridProps): UseDataGridResponse {
     const defaultSortOrFirst: GridSortModel | undefined = defaultSort || (columns.length > 0 ? [{ field: columns[0].field, sort: 'asc' }] : undefined);
 
@@ -558,7 +564,9 @@ export function useDataGrid({
             onRowSelectionModelChange: handleRowSelectionModelChange,
             slots: {
                 loadingOverlay: LinearProgress,
+                ...slots
             },
+            slotProps,
             keepNonExistentRowsSelected
         },
         filterChanged: handleFilterChanged,

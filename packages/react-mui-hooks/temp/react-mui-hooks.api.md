@@ -9,6 +9,8 @@ import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
 import { GridLocaleText } from '@mui/x-data-grid-pro';
+import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
+import { GridProSlotsComponent } from '@mui/x-data-grid-pro';
 import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
@@ -40,7 +42,7 @@ export type TypedSortModel<T> = (GridSortItem & {
 })[];
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText, slots, slotProps }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
@@ -61,6 +63,8 @@ export type UseDataGridProps = {
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
     localeText?: Partial<GridLocaleText>;
+    slots?: Partial<GridProSlotsComponent>;
+    slotProps?: GridProSlotProps;
 };
 
 // @public
@@ -74,7 +78,7 @@ export type UseDataGridResponse = {
 
 // Warnings were encountered during analysis:
 //
-// dist/index.d.ts:11:5 - (ae-forgotten-export) The symbol "CellRendererCustomType" needs to be exported by the entry point index.d.ts
+// dist/index.d.ts:12:5 - (ae-forgotten-export) The symbol "CellRendererCustomType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
