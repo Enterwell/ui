@@ -32,6 +32,7 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
+    type GridDensity,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -270,6 +271,10 @@ export type UseDataGridProps = {
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
     onRowClick?: any,
+    /**
+     * @defaultValue `compact` on mobile devices and `standard` on desktop
+     */
+    density?: GridDensity,
     rowHeight?: number,
     selection?: boolean,
     checkboxSelection?: boolean,
@@ -308,6 +313,7 @@ export function useDataGrid({
     onPage,
     onRowClick,
     rowHeight = 40,
+    density,
     selection,
     checkboxSelection,
     enablePagination = true,
@@ -517,7 +523,7 @@ export function useDataGrid({
             rows: allRows,
             rowCount: rows.totalRows,
             pageSizeOptions: [pageSize],
-            density: isMobile ? 'compact' : 'standard',
+            density: !!density ? density : (isMobile ? 'compact' : 'standard'),
             sx: {
                 '& .MuiDataGrid-row': {
                     cursor: onRowClick !== undefined ? 'pointer' : 'default'
