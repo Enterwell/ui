@@ -17,9 +17,11 @@ import * as react from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
+import { SxProps } from '@mui/material';
 import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
+import { Theme } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 
 // @public
@@ -103,16 +105,18 @@ export type DropdownButtonProps = ButtonProps & {
 };
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, rootSx, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     color?: string;
+    bgColor?: string;
     expanded?: boolean;
     height?: number;
     minHeight?: number;
     onChange?: () => void;
     onResize?: (height: number | undefined) => void;
+    rootSx?: SxProps<Theme>;
 };
 
 // @public
