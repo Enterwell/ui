@@ -157,7 +157,12 @@ function CellRenderer({
         return <Text {...rest}>{format(value, DISPLAY_DATETIME_FORMAT)}</Text>;
     }
     if (customType === 'enum') {
-        const enumLabel = params.enum?.get(value)?.label;
+        let enumLabel: string | undefined = '';
+
+        try {
+          enumLabel = params.enum?.get(value)?.label;
+        } catch {}
+
         if (enumLabel) {
             return <Text {...rest}>{enumLabel}</Text>;
         }
@@ -268,15 +273,27 @@ export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
     onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     tableId?: string,
+    /**
+     * @defaultValue `20`
+     */
     pageSize?: number,
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
     onRowClick?: any,
+    /**
+     * @defaultValue `40`
+     */
     rowHeight?: number,
     selection?: boolean,
     checkboxSelection?: boolean,
+    /**
+     * @defaultValue `true`
+     */
     enablePagination?: boolean,
     infiniteLoading?: boolean,
+    /**
+     * @defaultValue `true`
+     */
     keepNonExistentRowsSelected?: boolean,
     localeText?: Partial<GridLocaleText>
 };
