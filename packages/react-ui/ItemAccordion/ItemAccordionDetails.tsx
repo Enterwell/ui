@@ -3,8 +3,8 @@ import MuiAccordionDetails, { type AccordionDetailsProps } from '@mui/material/A
 /**
  * Item accordion details component.
  * 
- * @param props -The props of the component 
- * @returns  The ItemAccordionDetails component.
+ * @param props - The props of the component 
+ * @returns The ItemAccordionDetails component.
  * @public
  */
 export function ItemAccordionDetails(props: AccordionDetailsProps) {
