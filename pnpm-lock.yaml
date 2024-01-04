@@ -60,8 +60,8 @@ importers:
         specifier: 6.18.5
         version: 6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-data-grid-pro':
-        specifier: 6.18.5
-        version: 6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.18.6
+        version: 6.18.6(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-date-pickers':
         specifier: 5.0.20
         version: 5.0.20(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0)
@@ -186,8 +186,8 @@ importers:
         specifier: 5.15.0
         version: 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-data-grid-pro':
-        specifier: 6.18.5
-        version: 6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.18.6
+        version: 6.18.6(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@types/node':
         specifier: 18.19.3
         version: 18.19.3
@@ -1353,8 +1353,8 @@ packages:
       react: 18.2.0
       react-is: 18.2.0
 
-  /@mui/x-data-grid-pro@6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JQJeDYbP6XXaXX/vc5k+LobTNiqYaq/WAsr9/MlLgZWv5xaLwbVuif2b2pNflPXz5Eid6rbMf6glTDGnNnlE2A==}
+  /@mui/x-data-grid-pro@6.18.6(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fyex5IcRrtT7K6JoY/FoWFjlIaXmJ3tQgWh4ew8YG46jVvCtZlumQgGw5bSjs2/QVp0NVeXlp9nZ5O8dSN8xLg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@mui/material': ^5.4.1
@@ -1366,7 +1366,7 @@ packages:
       '@mui/material': 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/system': 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react@18.2.0)
       '@mui/utils': 5.15.0(@types/react@18.2.45)(react@18.2.0)
-      '@mui/x-data-grid': 6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/x-data-grid': 6.18.6(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-license-pro': 6.10.2(@types/react@18.2.45)(react@18.2.0)
       '@types/format-util': 1.0.3
       clsx: 2.0.0
@@ -1379,6 +1379,28 @@ packages:
 
   /@mui/x-data-grid@6.18.5(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-EEVJfQGXNmfLMVgj30ZpUSwx9Q8CZ/qGAYzLoARpLFOvrkGtbG8q5t4/WClkQ8MoDi7kO7TWOQ0AZz1C9/sh5g==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.23.5
+      '@mui/material': 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/system': 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react@18.2.0)
+      '@mui/utils': 5.15.0(@types/react@18.2.45)(react@18.2.0)
+      clsx: 2.0.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      reselect: 4.1.8
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
+  /@mui/x-data-grid@6.18.6(@mui/material@5.15.0)(@mui/system@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BRI2ilDrWq5pSBH1Rx/har57CIQPF0CebvPZNRVE4EV9RqTt3pwNyWaRQDjmHN9kij0YUlbZe0v9UrRT9I8KLw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@mui/material': ^5.4.1
