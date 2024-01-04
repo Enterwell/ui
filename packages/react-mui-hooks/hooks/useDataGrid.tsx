@@ -159,7 +159,7 @@ function CellRenderer({
 
         try {
           enumLabel = params.enum?.get(value)?.label;
-        } catch (_) {}
+        } catch {}
 
         if (enumLabel) {
             return <Text {...rest}>{enumLabel}</Text>;
