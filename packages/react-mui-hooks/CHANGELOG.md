@@ -13,10 +13,10 @@ _NOTE: This is an automatically generated file. Do not modify contents of this f
 
 ## [0.4.0] - 2023-12-20
 ### Added
-- [useDataGrid] enablePagination optional prop
+- [useDataGrid] `enablePagination` optional prop
 
 ### Changed
-- [useDataGrid] pagination enabled by default
+- [useDataGrid] Pagination enabled by default
 
 ## [0.3.0] - 2023-12-15
 ### Added

@@ -1,0 +1,14 @@
+{
+  "categories": [
+    "ConfirmButton",
+    "ConfirmDialog",
+    "DatePicker",
+    "DateTimeRangePicker",
+    "DropdownButton",
+    "PageDrawer",
+    "SearchHeader",
+    "Select",
+    "SplitButton",
+    "TimeInput"
+  ]
+}
