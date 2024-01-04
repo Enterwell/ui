@@ -23,8 +23,8 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.39.0",
-    "@types/node": "18.19.3",
+    "@microsoft/api-extractor": "7.39.1",
+    "@types/node": "18.19.4",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.18",
     "eslint-config-custom": "workspace:*",

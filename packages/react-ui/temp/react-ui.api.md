@@ -123,7 +123,7 @@ export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void;
     placeholder?: string | undefined;
     variant?: Variant | undefined;
-    children?: ReactNode | undefined;
+    children: ReactNode;
 };
 
 // @public

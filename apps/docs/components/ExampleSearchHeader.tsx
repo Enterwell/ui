@@ -5,7 +5,8 @@ export function ExampleSearchHeader() {
         <SearchHeader
             variant='h4'
             onSubmit={(searchTerm) => console.log(searchTerm)}
-            placeholder='Search by term'>
+            placeholder='Search by term'
+        >
             Search
         </SearchHeader>
     )

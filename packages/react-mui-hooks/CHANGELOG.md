@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.5.0] - 2023-12-20
+### Added
+- [useDataGrid] localeText optional prop
+
 ## [0.4.0] - 2023-12-20
 ### Added
-- [useDataGrid] enablePagination optional prop
+- [useDataGrid] `enablePagination` optional prop
 
 ### Changed
-- [useDataGrid] pagination enabled by default
+- [useDataGrid] Pagination enabled by default
 
 ## [0.3.0] - 2023-12-15
 ### Added
