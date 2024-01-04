@@ -34,12 +34,14 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
+    type UncapitalizedGridProSlotsComponent,
     type GridFilterModel,
     type GridColumnResizeParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
 import { Select } from '@enterwell/react-ui';
+import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
 
 const DISPLAY_DATETIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
 const DISPLAY_DATE_FORMAT = "dd.MM.yyyy.";
@@ -118,7 +120,7 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
  * @public
  */
 export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
-  field: keyof T
+    field: keyof T
 };
 
 /**
@@ -127,7 +129,7 @@ export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
  * @public
  */
 export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
-  [K in keyof Partial<T>]: boolean
+    [K in keyof Partial<T>]: boolean
 };
 
 /**
@@ -136,7 +138,7 @@ export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
  * @public
  */
 export type TypedSortModel<T> = (GridSortItem & {
-  field: keyof T
+    field: keyof T
 })[];
 
 type CellRendererProps = {
@@ -166,8 +168,8 @@ function CellRenderer({
         let enumLabel: string | undefined = '';
 
         try {
-          enumLabel = params.enum?.get(value)?.label;
-        } catch {}
+            enumLabel = params.enum?.get(value)?.label;
+        } catch { }
 
         if (enumLabel) {
             return <Text {...rest}>{enumLabel}</Text>;
@@ -305,7 +307,9 @@ export type UseDataGridProps = {
      * @defaultValue `true`
      */
     keepNonExistentRowsSelected?: boolean,
-    localeText?: Partial<GridLocaleText>
+    localeText?: Partial<GridLocaleText>,
+    slots?: Partial<UncapitalizedGridProSlotsComponent>,
+    slotProps?: GridProSlotProps
 };
 
 /**
@@ -343,7 +347,9 @@ export function useDataGrid({
     enablePagination = true,
     infiniteLoading,
     keepNonExistentRowsSelected = true,
-    localeText = {}
+    localeText = {},
+    slots = {},
+    slotProps = {}
 }: UseDataGridProps): UseDataGridResponse {
     const defaultSortOrFirst: GridSortModel | undefined = defaultSort || (columns.length > 0 ? [{ field: columns[0].field, sort: 'asc' }] : undefined);
 
@@ -551,30 +557,30 @@ export function useDataGrid({
 
         if (tableId) {
             const storageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
-    
+
             if (storageValue) {
                 width = Number(storageValue);
             }
         }
 
         return {
-          ...c,
-          cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
-          renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
-              <CellRenderer
-                  customType={params.colDef.customType}
-                  value={params.value}
-                  width={params.width}
-                  rowHeight={rowHeight}
-                  params={params.colDef}
-              />
-          )),
-          renderHeader: c.renderHeader || headerRenderer,
-          ...resolveCustomTypeOperators(c),
-          ...width && {
-              flex: undefined,
-              width
-          }
+            ...c,
+            cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
+            renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
+                <CellRenderer
+                    customType={params.colDef.customType}
+                    value={params.value}
+                    width={params.width}
+                    rowHeight={rowHeight}
+                    params={params.colDef}
+                />
+            )),
+            renderHeader: c.renderHeader || headerRenderer,
+            ...resolveCustomTypeOperators(c),
+            ...width && {
+                flex: undefined,
+                width
+            }
         }
     }), [tableId, columns, headerRenderer, rowHeight]);
 
@@ -650,7 +656,9 @@ export function useDataGrid({
             onRowSelectionModelChange: handleRowSelectionModelChange,
             slots: {
                 loadingOverlay: LinearProgress,
+                ...slots
             },
+            slotProps,
             keepNonExistentRowsSelected
         },
         filterChanged: handleFilterChanged,

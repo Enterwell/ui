@@ -56,9 +56,6 @@ importers:
       '@mui/system':
         specifier: 5.15.3
         version: 5.15.3(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react@18.2.0)
-      '@mui/x-data-grid':
-        specifier: 6.18.6
-        version: 6.18.6(@mui/material@5.15.3)(@mui/system@5.15.3)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-data-grid-pro':
         specifier: 6.18.6
         version: 6.18.6(@mui/material@5.15.3)(@mui/system@5.15.3)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
