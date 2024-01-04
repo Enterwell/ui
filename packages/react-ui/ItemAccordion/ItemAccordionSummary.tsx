@@ -15,12 +15,12 @@ export function ItemAccordionSummary(props: AccordionSummaryProps) {
 
   return (
     <MuiAccordionSummary
-      sx={{ height: '52px' }}
       expandIcon={<ExpandMore color="primary" />}
       {...rest}
+      sx={{ height: 56, ...rest.sx }}
     >
       {children}
-    </MuiAccordionSummary>
+    </MuiAccordionSummary >
   );
 }
 

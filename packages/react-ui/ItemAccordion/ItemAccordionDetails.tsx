@@ -10,7 +10,7 @@ import MuiAccordionDetails, { type AccordionDetailsProps } from '@mui/material/A
 export function ItemAccordionDetails(props: AccordionDetailsProps) {
 
   return (
-    <MuiAccordionDetails sx={{ padding: 16, borderTop: '1px solid rgba(0, 0, 0, .125)' }} {...props} />
+    <MuiAccordionDetails {...props} sx={{ padding: 16, borderTop: '1px solid rgba(0, 0, 0, .125)', ...props.sx }} />
   );
 }
 
