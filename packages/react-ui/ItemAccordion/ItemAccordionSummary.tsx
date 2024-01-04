@@ -4,7 +4,7 @@ import { ExpandMore } from '@mui/icons-material';
 /**
  * Item accordion summary component.
  * 
- * @param props - The props of the component 
+ * @param props - The props of the component
  * @returns The ItemAccordionSummary component.
  * @public
  */
