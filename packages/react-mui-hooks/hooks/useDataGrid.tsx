@@ -38,6 +38,8 @@ import {
     type UncapitalizedGridProSlotsComponent,
     type GridFilterModel,
     type GridColumnResizeParams,
+    type GridPinnedColumns,
+    type GridColumnOrderChangeParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -48,6 +50,8 @@ const DISPLAY_DATETIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
 const DISPLAY_DATE_FORMAT = "dd.MM.yyyy.";
 const columnVisibilityLocalStorageKey = 'muidatagrid-columnvisibility';
 const columnSizeLocalStorageKey = 'muidatagrid-columnwidth';
+const columnPinningLocalStorageKey = 'muidatagrid-columnpinning';
+const columnOrderingLocalStorageKey = 'muidatagrid-columnordering';
 
 const dataGridSx = (theme: Theme) => ({
     '& .MuiDataGrid-columnHeader::after': {
@@ -454,11 +458,12 @@ export function useDataGrid({
     };
 
     // Column visibility
-    const [columnVisibility, setColumnVisibility] = useState(
-        Boolean(tableId) && localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`) !== null
-            ? JSON.parse(localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`) ?? "")
+    const [columnVisibility, setColumnVisibility] = useState(() => {
+        const savedColumnVisibility = localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`);
+        return Boolean(tableId) && savedColumnVisibility !== null
+            ? JSON.parse(savedColumnVisibility)
             : columnVisibilityModel
-    );
+    });
 
     /**
      * Handles the column visibility model changing.
@@ -557,15 +562,15 @@ export function useDataGrid({
         setIsMobile(window.innerWidth < theme.breakpoints.values.sm);
     });
 
-    const columnsMemo = useMemo(() => columns.map((c) => {
+    const columnsMemo = useMemo(() => {
+        const columnsAdjusted = columns.map((c) => {
         // Get column width from local storage
         let width: number | null | undefined;
 
         if (tableId) {
-            const storageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
-
-            if (storageValue) {
-                width = Number(storageValue);
+            const columnSizeStorageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
+            if (columnSizeStorageValue) {
+                width = Number(columnSizeStorageValue);
             }
         }
 
@@ -587,8 +592,27 @@ export function useDataGrid({
                 flex: undefined,
                 width
             }
+            };
+        });
+
+        // Reorder columns based on saves order (if provided)
+        if (tableId) {
+            columnsAdjusted.forEach((c) => {
+                const columnOrderingStorageValue = localStorage.getItem(`${columnOrderingLocalStorageKey}-${tableId}-${c.field}`);
+                if (!columnOrderingStorageValue) return;
+
+                const order = JSON.parse(columnOrderingStorageValue);
+                if (order != null) {
+                    // Move column to new index
+                    const index = columnsAdjusted.findIndex((x) => x.field === c.field);
+                    columnsAdjusted.splice(index, 1);
+                    columnsAdjusted.splice(order, 0, c);
+                }
+            });
         }
-    }), [tableId, columns, headerRenderer, rowHeight]);
+
+        return columnsAdjusted;
+    }, [tableId, columns, headerRenderer, rowHeight]);
 
     /**
      * Handles rows scroll end action.
@@ -611,6 +635,37 @@ export function useDataGrid({
         }
     };
 
+    // Column pinning
+    const [pinnedColumns, setPinnedColumns] = useState(() => {
+        const savedPinnedColumns = localStorage.getItem(`${columnPinningLocalStorageKey}-${tableId}`);
+        return Boolean(tableId) && savedPinnedColumns != null
+            ? JSON.parse(savedPinnedColumns)
+            : null
+    });
+
+    /**
+     * Handles pinned columns change action.
+     * 
+     * @param newPinnedColumns The new pinned columns.
+     */
+    const handlePinnedColumnsChange = (newPinnedColumns: GridPinnedColumns) => {
+        localStorage.setItem(`${columnPinningLocalStorageKey}-${tableId}`, JSON.stringify(newPinnedColumns));
+        setPinnedColumns(newPinnedColumns);
+    };
+
+    /**
+     * Handles column order change.
+     * 
+     * @param newColumnOrder The new column order.
+     */
+    const handleColumnOrderChange = (newColumnOrder: GridColumnOrderChangeParams) => {
+        if (tableId) {
+            localStorage.setItem(
+                `${columnOrderingLocalStorageKey}-${tableId}-${newColumnOrder.column.field}`,
+                JSON.stringify(newColumnOrder.targetIndex));
+        }
+    };
+
     return {
         props: {
             ref: resizeRef,
@@ -628,6 +683,9 @@ export function useDataGrid({
             columnVisibilityModel: columnVisibility,
             onColumnVisibilityModelChange: handleColumnVisibilityChange,
             onColumnWidthChange: handleOnColumnWidthChange,
+            onColumnOrderChange: handleColumnOrderChange,
+            pinnedColumns,
+            onPinnedColumnsChange: handlePinnedColumnsChange,
             pagination: !infiniteLoading && enablePagination,
             paginationMode: 'server',
             paginationModel: {
