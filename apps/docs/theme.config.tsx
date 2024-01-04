@@ -3,15 +3,23 @@ import { DocsThemeConfig } from 'nextra-theme-docs';
 import Image from 'next/image';
 import { useConfig } from 'nextra-theme-docs';
 import { useRouter } from 'next/router'
+import { SlackIcon } from './components/internal/icons/SlackIcon';
 
 const config: DocsThemeConfig = {
   logo: (
     <div className="flex flex-row gap-1 items-center whitespace-nowrap">
       <Image
         alt="Enterwell"
+        className="image--dark"
         width={40}
         height={40}
         src="https://enterwell.net/wp-content/uploads/2023/05/ew-logomark-monochrome-negative-64.x71089.svg" />
+      <Image
+        alt="Enterwell"
+        className="image--light"
+        width={40}
+        height={40}
+        src="https://enterwell.net/wp-content/uploads/2023/05/ew-logomark-monochrome-positive-64.x71089.svg" />
       <span className="text-xs sm:text-sm md:text-lg">Enterwell {'<'}UI{' \\>'}</span>
     </div>
   ),
@@ -21,7 +29,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://enterwell.slack.com/archives/C03MRCRLFC0',
     icon: (
-      <Image alt="Slack" width={24} height={24} src='/ui/assets/slack.svg' />
+      <SlackIcon width={24} height={24} />
     )
   },
   docsRepositoryBase: 'https://github.com/enterwell/ui/tree/stage/apps/docs',

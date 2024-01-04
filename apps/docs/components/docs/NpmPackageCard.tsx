@@ -1,5 +1,5 @@
 import { Card, CardActionArea } from "@mui/material";
-import Image from "next/image";
+import { NpmIcon } from "../internal/icons/NpmIcon";
 
 type NpmPackageCardProps = {
     name: string;
@@ -12,7 +12,7 @@ export function NpmPackageCard({ name, version }: NpmPackageCardProps) {
             <CardActionArea href={`https://www.npmjs.com/package/${name}`}>
                 <div className="px-4 py-2 flex items-center justify-between gap-4 w-full">
                     <span className="flex items-center gap-2">
-                        <Image width={32} height={32} src="/ui/assets/npm.svg" alt="NPM" />
+                        <NpmIcon width={32} height={32} />
                         <span>{name}</span>
                     </span>
                     <span>v{version}</span>
