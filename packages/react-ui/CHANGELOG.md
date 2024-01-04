@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.11.0] - 2024-01-04
+### Changed
+- [SearchHeader] Made `children` prop required
+
+### Fixed
+- [DateTimeRangePicker] Error caused by changing date through the input
+
 ## [0.10.1] - 2023-12-15
 ### Fixed
 - Updated dependencies
