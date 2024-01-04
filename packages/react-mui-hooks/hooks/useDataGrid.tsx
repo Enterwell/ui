@@ -536,7 +536,7 @@ export function useDataGrid({
      * @param params Grid column resize params
      */
     const handleOnColumnWidthChange = (params: GridColumnResizeParams) => {
-        if (tableId) {
+        if (tableId && params.width) {
             localStorage.setItem(`${columnSizeLocalStorageKey}-${tableId}-${params.colDef.field}`, params.width.toString());
         }
     };
