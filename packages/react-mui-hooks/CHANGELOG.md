@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.6.0] - 2024-01-04
+### Added
+- [useDataGrid] Documented props' default values
+- [useDataGrid] `enableColumnFilters` optional prop for server side filtering
+- [useDataGrid] `localeText` optional prop
+- [useDataGrid] `density` optional prop
+- [useDataGrid] Saving column widths to the local storage
+- [useDataGrid] `slots` and `slotProps` optional props
+
+### Fixed
+- [useDataGrid] missing enum value error
+
 ## [0.5.0] - 2023-12-20
 ### Added
 - [useDataGrid] localeText optional prop
