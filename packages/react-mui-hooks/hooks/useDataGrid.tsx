@@ -12,7 +12,9 @@ import {
     Typography,
     Grid,
     useTheme,
-    LinearProgress
+    LinearProgress,
+    Theme,
+    lighten
 } from '@mui/material';
 import {
     type GridCallbackDetails,
@@ -32,6 +34,7 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
+    type GridFilterModel,
     type GridColumnResizeParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
@@ -43,7 +46,7 @@ const DISPLAY_DATE_FORMAT = "dd.MM.yyyy.";
 const columnVisibilityLocalStorageKey = 'muidatagrid-columnvisibility';
 const columnSizeLocalStorageKey = 'muidatagrid-columnwidth';
 
-const dataGridSx = {
+const dataGridSx = (theme: Theme) => ({
     '& .MuiDataGrid-columnHeader::after': {
         content: '""',
         position: 'absolute',
@@ -54,9 +57,12 @@ const dataGridSx = {
         bgcolor: 'divider'
     },
     '& .MuiDataGrid-sortIcon': {
-        color: '#F3BB7B'
+        color: lighten(theme.palette.primary.main, 0.4)
+    },
+    '& .MuiDataGrid-filterIcon': {
+        color: lighten(theme.palette.primary.main, 0.4)
     }
-};
+});
 
 /**
  * The text component.
@@ -271,7 +277,7 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
     tableId?: string,
     /**
      * @defaultValue `20`
@@ -286,6 +292,10 @@ export type UseDataGridProps = {
     rowHeight?: number,
     selection?: boolean,
     checkboxSelection?: boolean,
+    /**
+     * @defaultValue `false`
+     */
+    enableColumnFilters?: boolean,
     /**
      * @defaultValue `true`
      */
@@ -329,6 +339,7 @@ export function useDataGrid({
     rowHeight = 40,
     selection,
     checkboxSelection,
+    enableColumnFilters = false,
     enablePagination = true,
     infiniteLoading,
     keepNonExistentRowsSelected = true,
@@ -343,6 +354,7 @@ export function useDataGrid({
     });
     const [pageIndex, setPageIndex] = useState(-1);
     const [sortModel, setSortModel] = useState<GridSortModel | undefined>(defaultSortOrFirst);
+    const [filterModel, setFilterModel] = useState<GridFilterModel | undefined>(undefined);
     const theme = useTheme();
 
     /**
@@ -352,11 +364,12 @@ export function useDataGrid({
      */
     const handleLoadPage = useCallback(async (page: number, clearCache: boolean) => {
         if (loading.includes(page)) return;
+
         try {
             setLoading((current) => [...current, page]);
             console.debug('Loading page', page, 'with sort', sortModel);
 
-            const response = await onPage(Math.max(page, 0), pageSize, sortModel);
+            const response = await onPage(Math.max(page, 0), pageSize, sortModel, filterModel);
             const pageIndexOrZero = page <= 0 ? 0 : page;
 
             console.debug('Loaded page', page);
@@ -374,7 +387,7 @@ export function useDataGrid({
         } finally {
             setLoading((current) => current.filter((p) => p !== page));
         }
-    }, [pageSize, sortModel, onPage, loading]);
+    }, [pageSize, sortModel, filterModel, onPage, loading]);
 
     /**
      * Handles filter changed. This will go back to first page and request page.
@@ -382,6 +395,7 @@ export function useDataGrid({
      */
     const handleFilterChanged = (keepPage = false) => {
         if (!keepPage) setPageIndex(-1);
+
         handleLoadPage(keepPage ? pageIndex : -1, true);
     };
 
@@ -402,6 +416,29 @@ export function useDataGrid({
         }
 
         setSortModel(data);
+    };
+
+    /**
+     * Handles the filter model change.
+     *
+     * @param data Grid filter model data
+     */
+    const handleFilterModelChange = (data: GridFilterModel) => {
+        // If the filter items have no value selected just yet, don't make a state change
+        if (!!data.items.length && data.items.every((item) => item.value == null)) return;
+
+        // If the filter items with value are the same ones already
+        // in the state, don't make a state change
+        // this is here to prevent unnecessary rerendering
+        const filterItemsWithValues = data.items.filter((item) => item.value != null);
+        if (filterItemsWithValues.every((item) =>
+            filterModel?.items.find((stateItem) => stateItem.field === item.field && stateItem.value === item.value)) &&
+            filterItemsWithValues.length === filterModel?.items.length) {
+            return;
+        }
+
+        setPageIndex(-1);
+        setFilterModel(data);
     };
 
     // Column visibility
@@ -441,10 +478,14 @@ export function useDataGrid({
         }
     }, [columnVisibilityModelMemo]);
 
+    /**
+     * Triggering the page load if the page index, sort model or the filter model have changed.
+     */
     useEffect(() => {
         if (pageIndex < 0 && sortModel === defaultSortOrFirst) return;
+
         handleLoadPage(pageIndex, !infiniteLoading);
-    }, [pageIndex, sortModel]);
+    }, [pageIndex, sortModel, filterModel]);
 
     const allRows = Object.values(rows.pages).flat();
 
@@ -565,12 +606,12 @@ export function useDataGrid({
             rowCount: rows.totalRows,
             pageSizeOptions: [pageSize],
             density: isMobile ? 'compact' : 'standard',
-            sx: {
+            sx: (theme: Theme) => ({
                 '& .MuiDataGrid-row': {
                     cursor: onRowClick !== undefined ? 'pointer' : 'default'
                 },
-                ...dataGridSx
-            },
+                ...dataGridSx(theme)
+            }),
             columns: columnsMemo,
             columnVisibilityModel: columnVisibility,
             onColumnVisibilityModelChange: handleColumnVisibilityChange,
@@ -585,9 +626,12 @@ export function useDataGrid({
             onPaginationModelChange: handlePaginationModelChange,
             sortingMode: 'server',
             sortModel,
-            disableColumnFilter: true,
             disableDensitySelector: true,
             onSortModelChange: handleSortModelChange,
+            disableColumnFilter: !enableColumnFilters,
+            filterMode: 'server',
+            filterDebounceMs: 500,
+            onFilterModelChange: handleFilterModelChange,
             hideFooterSelectedRowCount: true,
             loading: loading.length > 0,
             localeText: {
