@@ -8,6 +8,7 @@ import { ComponentPropsWithRef } from 'react';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridColDef } from '@mui/x-data-grid-pro';
 import { GridColumnVisibilityModel } from '@mui/x-data-grid-pro';
+import { GridDensity } from '@mui/x-data-grid-pro';
 import { GridFilterModel } from '@mui/x-data-grid-pro';
 import { GridLocaleText } from '@mui/x-data-grid-pro';
 import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
@@ -43,7 +44,7 @@ export type TypedSortModel<T> = (GridSortItem & {
 })[];
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, selection, checkboxSelection, enableColumnFilters, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText, slots, slotProps }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, density, selection, checkboxSelection, enableColumnFilters, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText, slots, slotProps }: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type UseDataGridProps = {
@@ -57,6 +58,7 @@ export type UseDataGridProps = {
     columnVisibilityModel?: GridColumnVisibilityModel;
     defaultSort?: GridSortModel;
     onRowClick?: any;
+    density?: GridDensity;
     rowHeight?: number;
     selection?: boolean;
     checkboxSelection?: boolean;
