@@ -13,10 +13,10 @@ export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void,
     placeholder?: string | undefined,
     /**
-     * @defaultValue 'h1'
+     * @defaultValue `h1`
      */
     variant?: Variant | undefined,
-    children?: ReactNode | undefined
+    children: ReactNode
 }
 
 /**

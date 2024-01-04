@@ -1,6 +1,4 @@
-import {
-  Box, Button, Grid, Popover, TextField, useTheme, useMediaQuery
-} from '@mui/material';
+import { Button, Grid, Popover, TextField, useMediaQuery, type Theme } from '@mui/material';
 import { ComponentProps, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { StaticDateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
@@ -75,8 +73,7 @@ export function DateTimeRangePicker({
   const defaultEndDate = startOfDay(end);
 
   const [dateValue, setDateValue] = useState<[Date | null, Date | null]>([defaultStartDate, defaultEndDate]);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+  const isDesktop = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
 
   // Reset cached value when props change (only when not in popover)
   useEffect(() => {
@@ -228,7 +225,7 @@ export function DateTimeRangePicker({
                 <TextField
                   type="date"
                   value={dateValue[0] ? format(dateValue[0], 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setDateValue([e.target.value as unknown as Date, dateValue[1]])}
+                  onChange={(e) => setDateValue([new Date(e.target.value), dateValue[1]])}
                   fullWidth
                   size="small"
                   label="Od"
@@ -239,7 +236,7 @@ export function DateTimeRangePicker({
                 <TextField
                   type="date"
                   value={dateValue[1] ? format(dateValue[1], 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setDateValue([dateValue[0], e.target.value as unknown as Date])}
+                  onChange={(e) => setDateValue([dateValue[0], new Date(e.target.value)])}
                   fullWidth
                   size="small"
                   label="Do"
