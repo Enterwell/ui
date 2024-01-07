@@ -1,4 +1,5 @@
 // hook exports
+export * from "./hooks/useControllableState";
 export * from "./hooks/usePromise";
 export * from "./hooks/useDebouncedEffect";
 export * from "./hooks/useDebounce";
