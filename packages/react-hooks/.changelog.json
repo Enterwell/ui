@@ -1,0 +1,12 @@
+{
+    "categories": [
+      "useCallbackRef",
+      "useControllableState",
+      "useDebounce",
+      "useDebouncedEffect",
+      "useIsomorphicLayoutEffect",
+      "useMutationObserver",
+      "usePromise",
+      "useResizeObserver"
+    ]
+  }
