@@ -1,5 +1,6 @@
 import { Card, CardActionArea, CardContent } from "@mui/material";
-import Image from "next/image";
+import { ReactIcon } from "./icons/ReactIcon";
+import { MuiIcon } from "./icons/MuiIcon";
 
 const availablePackages = [
     { name: "UI", description: "Component library.", href: '/ui/react-ui/about', libraries: ['react', 'mui'] },
@@ -20,8 +21,8 @@ export function PackagesList() {
                                     <div className="text-muted-foreground text-center">{pkg.description}</div>
                                 </div>
                                 <div className="absolute right-3 bottom-3 opacity-20 flex flex-row items-center gap-2">
-                                    {pkg.libraries.includes('react') && <Image alt="React" width={32} height={32} src="/ui/assets/react.svg" />}
-                                    {pkg.libraries.includes('mui') && <Image alt="MUI" width={32} height={32} src="/ui/assets/mui.svg" />}
+                                    {pkg.libraries.includes('react') && <ReactIcon width={32} height={32} />}
+                                    {pkg.libraries.includes('mui') && <MuiIcon width={32} height={32} />}
                                 </div>
                             </CardContent>
                         </CardActionArea>
