@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { usePromise } from '@enterwell/react-hooks';
 
 function getItems() {
