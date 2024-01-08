@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { usePromise } from '@enterwell/react-hooks';
 
 function getItems() {
@@ -11,7 +11,8 @@ function getItems() {
 
 export function ExampleUsePromiseWithPromiseObject() {
     // @highlight-start
-    const { item, isLoading, error } = usePromise(getItems());
+    const getItemsMemo = useMemo(() => getItems(), []);
+    const { item, isLoading, error } = usePromise(getItemsMemo);
     // @highlight-end
 
     return (
