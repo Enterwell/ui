@@ -4,6 +4,10 @@
 
 ```ts
 
+import { AccordionActionsProps } from '@mui/material/AccordionActions';
+import { AccordionDetailsProps } from '@mui/material/AccordionDetails';
+import { AccordionProps } from '@mui/material/Accordion';
+import { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
@@ -101,6 +105,18 @@ export type DropdownButtonProps = ButtonProps & {
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
 };
+
+// @public
+export function ItemAccordion(props: AccordionProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionActions(props: AccordionActionsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
