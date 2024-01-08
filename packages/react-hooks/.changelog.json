@@ -1,6 +1,5 @@
 {
     "categories": [
-      "useCallbackRef",
       "useControllableState",
       "useDebounce",
       "useDebouncedEffect",
