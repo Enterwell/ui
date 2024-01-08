@@ -11,7 +11,7 @@ function getItems() {
 
 export function ExampleUsePromiseWithPromiseObject() {
     // @highlight-start
-    const { item, isLoading, error } = usePromise(getItems);
+    const { item, isLoading, error } = usePromise(getItems());
     // @highlight-end
 
     return (
