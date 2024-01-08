@@ -1,3 +1,4 @@
+import { useTheme } from '@mui/material';
 import MuiAccordionDetails, { type AccordionDetailsProps } from '@mui/material/AccordionDetails';
 
 /**
@@ -8,9 +9,9 @@ import MuiAccordionDetails, { type AccordionDetailsProps } from '@mui/material/A
  * @public
  */
 export function ItemAccordionDetails(props: AccordionDetailsProps) {
-
+  const theme = useTheme();
   return (
-    <MuiAccordionDetails {...props} sx={{ padding: 16, borderTop: '1px solid rgba(0, 0, 0, .125)', ...props.sx }} />
+    <MuiAccordionDetails {...props} sx={{ padding: 16, borderTop: '1px solid', borderTopColor: theme.palette.divider, ...props.sx }} />
   );
 }
 

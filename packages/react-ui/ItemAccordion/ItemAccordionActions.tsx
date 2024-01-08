@@ -1,3 +1,4 @@
+import { useTheme } from '@mui/material';
 import MuiAccordionActions, { type AccordionActionsProps } from '@mui/material/AccordionActions';
 
 /**
@@ -8,8 +9,9 @@ import MuiAccordionActions, { type AccordionActionsProps } from '@mui/material/A
  * @public
  */
 export function ItemAccordionActions(props: AccordionActionsProps) {
+  const theme = useTheme();
   return (
-    <MuiAccordionActions {...props} sx={{ borderTop: '1px solid rgba(0, 0, 0, .125)', ...props.sx }} />
+    <MuiAccordionActions {...props} sx={{ borderTop: '1px solid', borderTopColor: theme.palette.divider, ...props.sx }} />
   );
 }
 
