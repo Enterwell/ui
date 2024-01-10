@@ -40,6 +40,7 @@ export function ExampleUseDataGrid() {
     };
 
     const dataGrid = useDataGrid({
+        tableId: 'example-use-data-grid',
         columns,
         onPage: handleOnPage
     });
