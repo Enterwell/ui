@@ -649,7 +649,9 @@ export function useDataGrid({
      * @param newPinnedColumns The new pinned columns.
      */
     const handlePinnedColumnsChange = (newPinnedColumns: GridPinnedColumns) => {
-        localStorage.setItem(`${columnPinningLocalStorageKey}-${tableId}`, JSON.stringify(newPinnedColumns));
+        if (tableId) {
+            localStorage.setItem(`${columnPinningLocalStorageKey}-${tableId}`, JSON.stringify(newPinnedColumns));
+        }
         setPinnedColumns(newPinnedColumns);
     };
 
