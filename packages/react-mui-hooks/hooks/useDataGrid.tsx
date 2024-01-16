@@ -327,7 +327,7 @@ export type UseDataGridProps = {
  */
 export type UseDataGridResponse = {
     props: ComponentPropsWithRef<typeof DataGridPro>,
-    filterChanged: (keepPage?: boolean) => void,
+    refreshTable: (keepPage?: boolean) => void,
     isSelectAll: boolean,
     setIsSelectAll: (value: boolean) => void,
     isAnySelected: boolean,
@@ -406,10 +406,11 @@ export function useDataGrid({
     }, [pageSize, sortModel, filterModel, onPage, loading]);
 
     /**
-     * Handles filter changed. This will go back to first page and request page.
-     * @param keepPage - If set to true, when filter is changed, page will remain selected; returns to first page if set to false.
+     * Handles the table refresh. This will go back to the first page and request a new one.
+     *
+     * @param keepPage - If set to true, when table is refreshed, page will remain selected; returns to first page if set to false.
      */
-    const handleFilterChanged = (keepPage = false) => {
+    const handleTableRefresh = (keepPage = false) => {
         if (!keepPage) setPageIndex(-1);
 
         handleLoadPage(keepPage ? pageIndex : -1, true);
@@ -727,7 +728,7 @@ export function useDataGrid({
             slotProps,
             keepNonExistentRowsSelected
         },
-        filterChanged: handleFilterChanged,
+        refreshTable: handleTableRefresh,
         isSelectAll: isAllItemsSelected,
         setIsSelectAll: setIsAllItemsSelected,
         isAnySelected: customSelectionModel.length > 0,

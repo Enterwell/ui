@@ -74,7 +74,7 @@ export type UseDataGridProps = {
 // @public
 export type UseDataGridResponse = {
     props: ComponentPropsWithRef<typeof DataGridPro>;
-    filterChanged: (keepPage?: boolean) => void;
+    refreshTable: (keepPage?: boolean) => void;
     isSelectAll: boolean;
     setIsSelectAll: (value: boolean) => void;
     isAnySelected: boolean;
