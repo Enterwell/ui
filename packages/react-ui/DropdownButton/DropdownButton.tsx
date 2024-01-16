@@ -14,7 +14,7 @@ export type DropdownButtonOption = {
  * The props of the {@link DropdownButton} component.
  * @public
  */
-export type DropdownButtonProps = ButtonProps & {
+export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
   options?: DropdownButtonOption[];
   icon?: ReactElement;
   onClick?: (event: any, value: any) => void;
