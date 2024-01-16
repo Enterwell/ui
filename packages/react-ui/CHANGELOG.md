@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.12.0] - 2024-01-08
+### Added
+- [ItemAccordion] ItemAccordion component
+
 ## [0.11.0] - 2024-01-04
 ### Changed
 - [SearchHeader] Made `children` prop required
