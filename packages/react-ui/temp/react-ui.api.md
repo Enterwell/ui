@@ -27,10 +27,11 @@ import { TextFieldProps } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
+    iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
         dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
