@@ -545,11 +545,6 @@ export function useDataGrid({
 
               if (nextRowId && nextRowId !== currentRowId) {
                 setCustomSelectionModel([ nextRowId ]);
-
-                const row = details.api.getRow(nextRowId);
-                if (row) {
-                  onRowClick?.({ row });
-                }
               }
             }
         }
