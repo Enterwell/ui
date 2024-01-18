@@ -46,7 +46,7 @@ export function ExampleUseDataGrid() {
     });
 
     useEffect(() => {
-        dataGrid.filterChanged();
+        dataGrid.refreshTable();
     }, []);
 
     return (
