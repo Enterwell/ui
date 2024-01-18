@@ -100,7 +100,7 @@ export type DropdownButtonOption = {
 };
 
 // @public
-export type DropdownButtonProps = ButtonProps & {
+export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
     options?: DropdownButtonOption[];
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
