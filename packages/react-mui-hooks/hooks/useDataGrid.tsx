@@ -2,6 +2,7 @@ import {
     type ComponentPropsWithRef,
     type PropsWithChildren,
     isValidElement,
+    KeyboardEvent,
     useCallback,
     useEffect,
     useMemo,
@@ -327,7 +328,7 @@ export type UseDataGridProps = {
  */
 export type UseDataGridResponse = {
     props: ComponentPropsWithRef<typeof DataGridPro>,
-    filterChanged: (keepPage?: boolean) => void,
+    refreshTable: (keepPage?: boolean) => void,
     isSelectAll: boolean,
     setIsSelectAll: (value: boolean) => void,
     isAnySelected: boolean,
@@ -406,10 +407,11 @@ export function useDataGrid({
     }, [pageSize, sortModel, filterModel, onPage, loading]);
 
     /**
-     * Handles filter changed. This will go back to first page and request page.
-     * @param keepPage - If set to true, when filter is changed, page will remain selected; returns to first page if set to false.
+     * Handles the table refresh. This will go back to the first page and request a new one.
+     *
+     * @param keepPage - If set to true, when table is refreshed, page will remain selected; returns to first page if set to false.
      */
-    const handleFilterChanged = (keepPage = false) => {
+    const handleTableRefresh = (keepPage = false) => {
         if (!keepPage) setPageIndex(-1);
 
         handleLoadPage(keepPage ? pageIndex : -1, true);
@@ -527,24 +529,24 @@ export function useDataGrid({
     }, [customSelectionModel, allRows]);
 
     /**
-     * Handles the select all checkbox click.
-     * @param {GridCellParams<any, unknown, unknown, GridTreeNode>} params The params.
-     * @param {MuiEvent<React.KeyboardEvent<HTMLElement>>} event The event.
-     * @param {GridCallbackDetails<any>} details The details.
-     * @returns {void}
+     * Handles action fired when a keydown event comes from a cell element.
+     * @param params Grid cell properties.
+     * @param event The event object.
+     * @param details Additional details for the callback.
      */
-    const handleCellKeyDown = (
-        params: GridCellParams<any, unknown, unknown, GridTreeNode>,
-        event: MuiEvent<React.KeyboardEvent<HTMLElement>>,
-        details: any // NOTE: Workaournd for unavailable API in types
-    ) => {
-        if (selection
-            && !checkboxSelection) {
-            const currentRowIndex = allRows.indexOf(params.row);
-            const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
-            const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
-            if (nextRowId) {
-                setCustomSelectionModel([nextRowId]);
+    const handleCellKeyDown = (params: GridCellParams, event: MuiEvent<KeyboardEvent<HTMLElement>>, details: any) => {
+        if (selection && !checkboxSelection) {
+            // Move the selected row index only if the key pressed is either ArrowUp or ArrowDown
+            if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+              const currentRowId = details.api.getRowId(params.row);
+              const currentRowIndex = details.api.getRowIndexRelativeToVisibleRows(currentRowId);
+
+              const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
+              const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
+
+              if (nextRowId && nextRowId !== currentRowId) {
+                setCustomSelectionModel([ nextRowId ]);
+              }
             }
         }
     };
@@ -576,7 +578,7 @@ export function useDataGrid({
 
         return {
             ...c,
-            cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
+            cellClassName: `${c.cellClassName || ''} mui-datagrid-cell-narrow-on-mobile`,
             renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
                 <CellRenderer
                     customType={params.colDef.customType}
@@ -727,7 +729,7 @@ export function useDataGrid({
             slotProps,
             keepNonExistentRowsSelected
         },
-        filterChanged: handleFilterChanged,
+        refreshTable: handleTableRefresh,
         isSelectAll: isAllItemsSelected,
         setIsSelectAll: setIsAllItemsSelected,
         isAnySelected: customSelectionModel.length > 0,
