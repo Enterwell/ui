@@ -28,7 +28,14 @@ export function ExampleSelectManageable() {
                     </Stack>
                 )}
                 listEndDecorator={(
-                    <Button startIcon={<Add />} fullWidth>
+                    <Button
+                      fullWidth
+                      startIcon={<Add />}
+                      onMouseDown={(event) => {
+                        // Prevent input blur which triggers closing the Popper
+                        event.preventDefault();
+                      }}
+                    >
                         Add
                     </Button>
                 )}
