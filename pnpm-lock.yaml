@@ -134,8 +134,8 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@microsoft/api-extractor':
-        specifier: 7.39.1
-        version: 7.39.1(@types/node@18.19.8)
+        specifier: 7.39.4
+        version: 7.39.4(@types/node@18.19.8)
       '@types/node':
         specifier: 18.19.8
         version: 18.19.8
@@ -159,7 +159,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.39.1)(typescript@5.3.3)
+        version: 8.0.1(@microsoft/api-extractor@7.39.4)(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -177,8 +177,8 @@ importers:
         specifier: workspace:*
         version: link:../react-ui
       '@microsoft/api-extractor':
-        specifier: 7.39.1
-        version: 7.39.1(@types/node@18.19.8)
+        specifier: 7.39.4
+        version: 7.39.4(@types/node@18.19.8)
       '@mui/material':
         specifier: 5.15.5
         version: 5.15.5(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
@@ -211,7 +211,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.39.1)(typescript@5.3.3)
+        version: 8.0.1(@microsoft/api-extractor@7.39.4)(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -232,8 +232,8 @@ importers:
         specifier: workspace:*
         version: link:../react-hooks
       '@microsoft/api-extractor':
-        specifier: 7.39.1
-        version: 7.39.1(@types/node@18.19.8)
+        specifier: 7.39.4
+        version: 7.39.4(@types/node@18.19.8)
       '@mui/icons-material':
         specifier: 5.15.5
         version: 5.15.5(@mui/material@5.15.5)(@types/react@18.2.48)(react@18.2.0)
@@ -275,7 +275,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(@microsoft/api-extractor@7.39.1)(typescript@5.3.3)
+        version: 8.0.1(@microsoft/api-extractor@7.39.4)(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -1103,24 +1103,24 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@microsoft/api-extractor-model@7.28.4(@types/node@18.19.8):
-    resolution: {integrity: sha512-vucgyPmgHrJ/D4/xQywAmjTmSfxAx2/aDmD6TkIoLu51FdsAfuWRbijWA48AePy60OO+l+mmy9p2P/CEeBZqig==}
+  /@microsoft/api-extractor-model@7.28.7(@types/node@18.19.8):
+    resolution: {integrity: sha512-4gCGGEQGHmbQmarnDcEWS2cjj0LtNuD3D6rh3ZcAyAYTkceAugAk2eyQHGdTcGX8w3qMjWCTU1TPb8xHnMM+Kg==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.63.0(@types/node@18.19.8)
+      '@rushstack/node-core-library': 3.64.2(@types/node@18.19.8)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.39.1(@types/node@18.19.8):
-    resolution: {integrity: sha512-V0HtCufWa8hZZvSmlEzQZfINcJkHAU/bmpyJQj6w+zpI87EkR8DuBOW6RWrO9c7mUYFZoDaNgUTyKo83ytv+QQ==}
+  /@microsoft/api-extractor@7.39.4(@types/node@18.19.8):
+    resolution: {integrity: sha512-6YvfkpbEqRQ0UPdVBc+lOiq7VlXi9kw8U3w+RcXCFDVc/UljlXU5l9fHEyuBAW1GGO2opUe+yf9OscWhoHANhg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.4(@types/node@18.19.8)
+      '@microsoft/api-extractor-model': 7.28.7(@types/node@18.19.8)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.63.0(@types/node@18.19.8)
+      '@rushstack/node-core-library': 3.64.2(@types/node@18.19.8)
       '@rushstack/rig-package': 0.5.1
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
@@ -1875,8 +1875,8 @@ packages:
     resolution: {integrity: sha512-0xd7qez0AQ+MbHatZTlI1gu5vkG8r7MYRUJAHPAHJBmGLs16zpkrpAVLvjQKQOqaXPDUBwOiJzNc00znHSCVBw==}
     dev: true
 
-  /@rushstack/node-core-library@3.63.0(@types/node@18.19.8):
-    resolution: {integrity: sha512-Q7B3dVpBQF1v+mUfxNcNZh5uHVR8ntcnkN5GYjbBLrxUYHBGKbnCM+OdcN+hzCpFlLBH6Ob0dEHhZ0spQwf24A==}
+  /@rushstack/node-core-library@3.64.2(@types/node@18.19.8):
+    resolution: {integrity: sha512-n1S2VYEklONiwKpUyBq/Fym6yAsfsCXrqFabuOMcCuj4C+zW+HyaspSHXJCKqkMxfjviwe/c9+DUqvRWIvSN9Q==}
     peerDependencies:
       '@types/node': '*'
     peerDependenciesMeta:
@@ -8625,7 +8625,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.1(@microsoft/api-extractor@7.39.1)(typescript@5.3.3):
+  /tsup@8.0.1(@microsoft/api-extractor@7.39.4)(typescript@5.3.3):
     resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
     engines: {node: '>=18'}
     hasBin: true
@@ -8644,7 +8644,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.39.1(@types/node@18.19.8)
+      '@microsoft/api-extractor': 7.39.4(@types/node@18.19.8)
       bundle-require: 4.0.1(esbuild@0.19.7)
       cac: 6.7.14
       chokidar: 3.5.3
