@@ -1,5 +1,5 @@
 import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
-import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Popper, Paper } from '@mui/material';
+import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Paper } from '@mui/material';
 import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
 import { useDebounce } from '@enterwell/react-hooks';
 
@@ -238,18 +238,12 @@ export function Select<
           {displayOption ? displayOption(option) : option.label}
         </li>
       )}
-      PopperComponent={({ children, ...rest }) => (
-        <Popper {...rest} sx={{
-          '& .MuiAutocomplete-paper': {
-            boxShadow: 'none'
-          }
-        }}>
-          <Paper>
-            {listStartDecorator}
-            {typeof children === 'function' ? children({ placement: rest.placement ?? 'auto' }) : children}
-            {listEndDecorator}
-          </Paper>
-        </Popper>
+      PaperComponent={({ children, ...rest }) => (
+        <Paper {...rest}>
+          {listStartDecorator}
+          {children}
+          {listEndDecorator}
+        </Paper>
       )}
       filterOptions={customFilterOptions}
       renderInput={(params) => (
