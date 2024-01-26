@@ -66,8 +66,8 @@ importers:
         specifier: 5.0.20
         version: 5.0.20(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@mui/material@5.15.5)(@mui/system@5.15.5)(@types/react@18.2.48)(date-fns@2.30.0)(react-dom@18.2.0)(react@18.2.0)
       classix:
-        specifier: 2.1.35
-        version: 2.1.35
+        specifier: 2.1.36
+        version: 2.1.36
       comment-parser:
         specifier: 1.4.1
         version: 1.4.1
@@ -2924,8 +2924,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /classix@2.1.35:
-    resolution: {integrity: sha512-YRI5UjBq9Aspfnj6ZyCobyeye3EDAanCpBWqXhNH9bVloKC6Ejnz+K4pWu/qMSaJRJEtLgmfvkIRk5zbQqj2PA==}
+  /classix@2.1.36:
+    resolution: {integrity: sha512-1glwI9Ho7s/Z5vqCNLj3eYU+17A9KHjLREcmzJUmZS+GnXBgS1/or5fzqhB5b59jsPxazONrajM5d9hgJgnnlA==}
     dev: false
 
   /clean-regexp@1.0.0:
