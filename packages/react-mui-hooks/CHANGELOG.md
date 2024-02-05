@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.7.0] - 2024-01-19
+### Added
+- [useDataGrid] Column pinning support
+- [useDataGrid] Column ordering support
+
+### Changed
+- [useDataGrid] Properly forwarding the ColDef's `cellClassName` property
+- [useDataGrid] `filterChanged` prop renamed to `refreshTable`
+
+### Fixed
+- [useDataGrid] Keyboard navigation
+- [useDataGrid] Reduced the number of rerenders
+
 ## [0.6.0] - 2024-01-04
 ### Added
 - [useDataGrid] Documented props' default values

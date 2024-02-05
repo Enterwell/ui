@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.14.0] - 2024-01-26
+### Changed
+- [Select] The way list decorators are injected
+
+## [0.13.0] - 2024-01-19
+### Added
+- [ConfirmButton] `iconButton` optional prop
+
+### Fixed
+- [DropdownButton] `onClick` prop type
+
 ## [0.12.0] - 2024-01-08
 ### Added
 - [ItemAccordion] ItemAccordion component
