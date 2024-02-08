@@ -1,4 +1,4 @@
-name: Retarget PRs
+name: Retarget PR
 
 # Triggering the workflow on PR events of interest
 on:
