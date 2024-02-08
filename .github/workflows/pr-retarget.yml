@@ -1,0 +1,28 @@
+name: Retarget PRs
+
+# Triggering the workflow on PR events of interest
+on:
+  pull_request:
+    types:
+      - "opened"
+      - "synchronize"
+      - "reopened"
+      - "edited"
+
+jobs:
+  # Retarget to stage branch if PR is opened against main branch directly
+  # Only allow targeting main if they are from stage and hotfix branches
+  retarget-prs:
+    if: github.base_ref == 'main' && github.head_ref != 'stage' && github.head_ref != 'hotfix'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Change PR target
+      - name: Change PR target
+        run: gh pr edit ${{ github.event.number }} --base stage
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
