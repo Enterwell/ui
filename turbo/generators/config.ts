@@ -1,4 +1,6 @@
 import type { PlopTypes } from "@turbo/gen";
+import camelCase from 'just-camel-case';
+import pascalCase from 'just-pascal-case';
 
 // Learn more about Turborepo Generators at https://turbo.build/repo/docs/core-concepts/monorepos/code-generation
 
@@ -38,8 +40,20 @@ function hookTemplate(packageName: string) {
       },
       // Changelog
       {
+        type: 'modify',
+        path: `packages/${packageName}/.changelog.json`,
+        transform: (content: string, data: any) => {
+          const hookName = camelCase(data.name);
+
+          const parsedConfiguration = JSON.parse(content);
+          parsedConfiguration.categories.push(hookName);
+
+          return JSON.stringify(parsedConfiguration, null, 2);
+        }
+      },
+      {
         type: "add",
-        path: `packages/${packageName}/changes/Added {{camelCase name}} hook`,
+        path: `packages/${packageName}/changes/Added [{{camelCase name}}] Hook`,
       }
     ],
   }
@@ -87,8 +101,20 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       // Changelog
       {
+        type: 'modify',
+        path: 'packages/react-ui/.changelog.json',
+        transform: (content: string, data: any) => {
+          const componentName = pascalCase(data.name);
+
+          const parsedConfiguration = JSON.parse(content);
+          parsedConfiguration.categories.push(componentName);
+
+          return JSON.stringify(parsedConfiguration, null, 2);
+        }
+      },
+      {
         type: "add",
-        path: "packages/react-ui/changes/Added {{pascalCase name}} component",
+        path: "packages/react-ui/changes/Added [{{pascalCase name}}] Component",
       }
     ],
   });
