@@ -12,7 +12,8 @@ on:
 jobs:
   # Retarget to stage branch if PR is opened against main branch directly
   # Only allow targeting main if they are from stage and hotfix branches
-  retarget-prs:
+  retarget-pr:
+    name: Retarget PR
     if: github.base_ref == 'main' && github.head_ref != 'stage' && github.head_ref != 'hotfix'
     runs-on: ubuntu-latest
 
