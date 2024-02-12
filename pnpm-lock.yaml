@@ -14,6 +14,12 @@ importers:
       eslint:
         specifier: 8.56.0
         version: 8.56.0
+      just-camel-case:
+        specifier: 6.2.0
+        version: 6.2.0
+      just-pascal-case:
+        specifier: 3.2.0
+        version: 3.2.0
       tsconfig:
         specifier: workspace:*
         version: link:packages/tsconfig
@@ -5622,6 +5628,14 @@ packages:
     dependencies:
       array-includes: 3.1.6
       object.assign: 4.1.4
+    dev: true
+
+  /just-camel-case@6.2.0:
+    resolution: {integrity: sha512-ICenRLXwkQYLk3UyvLQZ+uKuwFVJ3JHFYFn7F2782G2Mv2hW8WPePqgdhpnjGaqkYtSVWnyCESZhGXUmY3/bEg==}
+    dev: true
+
+  /just-pascal-case@3.2.0:
+    resolution: {integrity: sha512-B0PW5mgJrsGmXdvDLxC2Kdfyie74m+mRO+iCjJ+Es0Jl5kcQwVfB0qb/qiDOCE3m0XUOo1SdZBWzUlNCO9zreg==}
     dev: true
 
   /katex@0.16.9:

@@ -6,10 +6,12 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
+    "@turbo/gen": "1.12.2",
     "eslint": "8.56.0",
+    "just-camel-case": "6.2.0",
+    "just-pascal-case": "3.2.0",
     "tsconfig": "workspace:*",
-    "turbo": "1.12.2",
-    "@turbo/gen": "1.12.2"
+    "turbo": "1.12.2"
   },
   "packageManager": "pnpm@8.15.1",
   "name": "ui"
