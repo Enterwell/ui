@@ -28,7 +28,7 @@
     "@microsoft/api-extractor": "7.39.5",
     "@mui/material": "5.15.10",
     "@mui/x-data-grid-pro": "6.19.4",
-    "@types/node": "18.19.10",
+    "@types/node": "18.19.15",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.18",
     "date-fns": "2.30.0",
