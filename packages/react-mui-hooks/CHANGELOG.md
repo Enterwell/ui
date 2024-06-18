@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.8.0] - 2024-06-18
+### Changed
+- [useDataGrid] Disabled column hide when last one is left
+- [useDataGrid] Hide all columns button removed
+
 ## [0.7.0] - 2024-01-19
 ### Added
 - [useDataGrid] Column pinning support
