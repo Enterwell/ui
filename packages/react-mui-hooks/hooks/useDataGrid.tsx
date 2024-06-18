@@ -472,6 +472,10 @@ export function useDataGrid({
      * @param newVisibility - The new visibility model.
      */
     const handleColumnVisibilityChange = (newVisibility: GridColumnVisibilityModel) => {
+        // Do not hide the last remaining column
+        const hiddenColumns = Object.values(newVisibility).filter(v => !v).length;
+        if ((columns.length - hiddenColumns) <= 0) return;
+
         setColumnVisibility(newVisibility);
         if (tableId) {
             localStorage.setItem(`${columnVisibilityLocalStorageKey}-${tableId}`, JSON.stringify(newVisibility));
@@ -538,15 +542,15 @@ export function useDataGrid({
         if (selection && !checkboxSelection) {
             // Move the selected row index only if the key pressed is either ArrowUp or ArrowDown
             if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-              const currentRowId = details.api.getRowId(params.row);
-              const currentRowIndex = details.api.getRowIndexRelativeToVisibleRows(currentRowId);
+                const currentRowId = details.api.getRowId(params.row);
+                const currentRowIndex = details.api.getRowIndexRelativeToVisibleRows(currentRowId);
 
-              const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
-              const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
+                const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
+                const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
 
-              if (nextRowId && nextRowId !== currentRowId) {
-                setCustomSelectionModel([ nextRowId ]);
-              }
+                if (nextRowId && nextRowId !== currentRowId) {
+                    setCustomSelectionModel([nextRowId]);
+                }
             }
         }
     };
@@ -566,34 +570,34 @@ export function useDataGrid({
 
     const columnsMemo = useMemo(() => {
         const columnsAdjusted = columns.map((c) => {
-        // Get column width from local storage
-        let width: number | null | undefined;
+            // Get column width from local storage
+            let width: number | null | undefined;
 
-        if (tableId) {
-            const columnSizeStorageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
-            if (columnSizeStorageValue) {
-                width = Number(columnSizeStorageValue);
+            if (tableId) {
+                const columnSizeStorageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
+                if (columnSizeStorageValue) {
+                    width = Number(columnSizeStorageValue);
+                }
             }
-        }
 
-        return {
-            ...c,
-            cellClassName: `${c.cellClassName || ''} mui-datagrid-cell-narrow-on-mobile`,
-            renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
-                <CellRenderer
-                    customType={params.colDef.customType}
-                    value={params.value}
-                    width={params.width}
-                    rowHeight={rowHeight}
-                    params={params.colDef}
-                />
-            )),
-            renderHeader: c.renderHeader || headerRenderer,
-            ...resolveCustomTypeOperators(c),
-            ...width && {
-                flex: undefined,
-                width
-            }
+            return {
+                ...c,
+                cellClassName: `${c.cellClassName || ''} mui-datagrid-cell-narrow-on-mobile`,
+                renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
+                    <CellRenderer
+                        customType={params.colDef.customType}
+                        value={params.value}
+                        width={params.width}
+                        rowHeight={rowHeight}
+                        params={params.colDef}
+                    />
+                )),
+                renderHeader: c.renderHeader || headerRenderer,
+                ...resolveCustomTypeOperators(c),
+                ...width && {
+                    flex: undefined,
+                    width
+                }
             };
         });
 
@@ -726,7 +730,12 @@ export function useDataGrid({
                 loadingOverlay: LinearProgress,
                 ...slots
             },
-            slotProps,
+            slotProps: {
+                columnsPanel: {
+                    disableHideAllButton: true
+                },
+                ...slotProps
+            },
             keepNonExistentRowsSelected
         },
         refreshTable: handleTableRefresh,
