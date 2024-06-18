@@ -39,7 +39,7 @@
     "date-fns": "2.30.0",
     "eslint-config-custom": "workspace:*",
     "react": "18.2.0",
-    "rimraf": "5.0.5",
+    "rimraf": "5.0.7",
     "tsconfig": "workspace:*",
     "tsup": "8.0.2",
     "typescript": "5.3.3"
