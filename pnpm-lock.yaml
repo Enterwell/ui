@@ -67,10 +67,10 @@ importers:
         version: 6.19.4(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mui/x-date-pickers':
         specifier: 5.0.20
-        version: 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@3.6.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@2.30.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mui/x-date-pickers-pro':
         specifier: 5.0.20
-        version: 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@3.6.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@2.30.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classix:
         specifier: 2.1.37
         version: 2.1.37
@@ -94,7 +94,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5)))
+        version: 1.0.7(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)))
     devDependencies:
       '@types/node':
         specifier: 18.19.33
@@ -113,10 +113,10 @@ importers:
         version: 8.4.34
       tailwindcss:
         specifier: 3.4.4
-        version: 3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))
+        version: 3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
       unist-builder:
         specifier: 4.0.0
         version: 4.0.0
@@ -165,10 +165,10 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   packages/react-mui-hooks:
     dependencies:
@@ -217,10 +217,10 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   packages/react-ui:
     dependencies:
@@ -281,10 +281,10 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   packages/tsconfig: {}
 
@@ -2106,9 +2106,6 @@ packages:
   date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
-
-  date-fns@3.6.0:
-    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   dayjs@1.11.11:
     resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
@@ -4846,11 +4843,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.4.5:
-    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.5.3:
     resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
     engines: {node: '>=14.17'}
@@ -5279,12 +5271,6 @@ snapshots:
       '@date-io/core': 2.17.0
     optionalDependencies:
       date-fns: 2.30.0
-
-  '@date-io/date-fns@2.17.0(date-fns@3.6.0)':
-    dependencies:
-      '@date-io/core': 2.17.0
-    optionalDependencies:
-      date-fns: 3.6.0
 
   '@date-io/dayjs@2.17.0(dayjs@1.11.11)':
     dependencies:
@@ -5920,32 +5906,6 @@ snapshots:
       - '@emotion/styled'
       - '@types/react'
 
-  '@mui/x-date-pickers-pro@5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@3.6.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@date-io/date-fns': 2.17.0(date-fns@3.6.0)
-      '@date-io/dayjs': 2.17.0(dayjs@1.11.11)
-      '@date-io/luxon': 2.17.0
-      '@date-io/moment': 2.17.0
-      '@mui/material': 5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@mui/system': 5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0)
-      '@mui/utils': 5.15.9(@types/react@18.2.55)(react@18.2.0)
-      '@mui/x-date-pickers': 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@3.6.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@mui/x-license-pro': 5.17.12(@types/react@18.2.55)(react@18.2.0)
-      clsx: 1.2.1
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-transition-group: 4.4.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      rifm: 0.12.1(react@18.2.0)
-    optionalDependencies:
-      date-fns: 3.6.0
-      dayjs: 1.11.11
-    transitivePeerDependencies:
-      - '@emotion/react'
-      - '@emotion/styled'
-      - '@types/react'
-
   '@mui/x-date-pickers@5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@2.30.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.23.9
@@ -5968,32 +5928,6 @@ snapshots:
       '@emotion/react': 11.11.4(@types/react@18.2.55)(react@18.2.0)
       '@emotion/styled': 11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0)
       date-fns: 2.30.0
-      dayjs: 1.11.11
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@mui/x-date-pickers@5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@3.6.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@date-io/core': 2.17.0
-      '@date-io/date-fns': 2.17.0(date-fns@3.6.0)
-      '@date-io/dayjs': 2.17.0(dayjs@1.11.11)
-      '@date-io/luxon': 2.17.0
-      '@date-io/moment': 2.17.0
-      '@mui/material': 5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@mui/system': 5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0)
-      '@mui/utils': 5.15.9(@types/react@18.2.55)(react@18.2.0)
-      '@types/react-transition-group': 4.4.10
-      clsx: 1.2.1
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-transition-group: 4.4.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      rifm: 0.12.1(react@18.2.0)
-    optionalDependencies:
-      '@emotion/react': 11.11.4(@types/react@18.2.55)(react@18.2.0)
-      '@emotion/styled': 11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0)
-      date-fns: 3.6.0
       dayjs: 1.11.11
     transitivePeerDependencies:
       - '@types/react'
@@ -7140,9 +7074,6 @@ snapshots:
   date-fns@2.30.0:
     dependencies:
       '@babel/runtime': 7.23.9
-
-  date-fns@3.6.0:
-    optional: true
 
   dayjs@1.11.11:
     optional: true
@@ -9993,21 +9924,21 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.34
 
-  postcss-load-config@4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5)):
+  postcss-load-config@4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 2.3.2
     optionalDependencies:
       postcss: 8.4.34
-      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.4.5)
+      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.5.3)
 
-  postcss-load-config@4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5)):
+  postcss-load-config@4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 2.3.2
     optionalDependencies:
       postcss: 8.4.39
-      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.4.5)
+      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.5.3)
 
   postcss-nested@6.0.1(postcss@8.4.34):
     dependencies:
@@ -10636,11 +10567,11 @@ snapshots:
       '@pkgr/utils': 2.4.0
       tslib: 2.6.2
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))):
     dependencies:
-      tailwindcss: 3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))
+      tailwindcss: 3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
 
-  tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5)):
+  tailwindcss@3.4.4(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -10659,7 +10590,7 @@ snapshots:
       postcss: 8.4.34
       postcss-import: 15.1.0(postcss@8.4.34)
       postcss-js: 4.0.1(postcss@8.4.34)
-      postcss-load-config: 4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))
+      postcss-load-config: 4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
       postcss-nested: 6.0.1(postcss@8.4.34)
       postcss-selector-parser: 6.0.13
       resolve: 1.22.6
@@ -10732,7 +10663,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5):
+  ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -10746,7 +10677,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.4.5
+      typescript: 5.5.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optional: true
@@ -10782,7 +10713,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))(typescript@5.4.5):
+  tsup@8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3):
     dependencies:
       bundle-require: 4.0.1(esbuild@0.21.5)
       cac: 6.7.14
@@ -10792,7 +10723,7 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.4.5))
+      postcss-load-config: 4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
       resolve-from: 5.0.0
       rollup: 4.5.1
       source-map: 0.8.0-beta.0
@@ -10801,7 +10732,7 @@ snapshots:
     optionalDependencies:
       '@microsoft/api-extractor': 7.39.5(@types/node@18.19.33)
       postcss: 8.4.39
-      typescript: 5.4.5
+      typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -10880,8 +10811,6 @@ snapshots:
       is-typed-array: 1.1.10
 
   typescript@5.3.3: {}
-
-  typescript@5.4.5: {}
 
   typescript@5.5.3: {}
 
