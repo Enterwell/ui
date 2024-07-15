@@ -29,7 +29,7 @@
     "@types/react-dom": "18.2.19",
     "eslint-config-custom": "workspace:*",
     "react": "18.2.0",
-    "rimraf": "5.0.9",
+    "rimraf": "6.0.1",
     "tsconfig": "workspace:*",
     "tsup": "8.1.0",
     "typescript": "5.5.3"
