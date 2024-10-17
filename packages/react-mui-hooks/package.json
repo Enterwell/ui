@@ -26,8 +26,8 @@
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
     "@microsoft/api-extractor": "7.39.5",
-    "@mui/material": "5.15.10",
-    "@mui/x-data-grid-pro": "6.19.4",
+    "@mui/material": "6.1.4",
+    "@mui/x-data-grid-pro": "7.21.0",
     "@types/node": "18.19.33",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
@@ -41,8 +41,8 @@
   },
   "peerDependencies": {
     "@enterwell/react-ui": "workspace:*",
-    "@mui/material": "^5",
-    "@mui/x-data-grid-pro": "^6",
+    "@mui/material": "^5 || ^6.0.0",
+    "@mui/x-data-grid-pro": "^6 || ^7.0.0",
     "react": "^18",
     "react-dom": "^18"
   }
