@@ -130,8 +130,8 @@ importers:
         specifier: 5.2.0
         version: 5.2.0(eslint@9.6.0)(typescript@5.5.3)
       eslint-config-turbo:
-        specifier: 1.13.4
-        version: 1.13.4(eslint@9.6.0)
+        specifier: 2.2.2
+        version: 2.2.2(eslint@9.6.0)
 
   packages/react-hooks:
     dependencies:
@@ -1026,12 +1026,14 @@ packages:
   '@mui/x-license-pro@5.17.12':
     resolution: {integrity: sha512-UzFaE+9A30kfguCuME0D5zqsItqbHZ3xZwmyrJr8MvZOEoqiJWF4NT4Pvlg2nqaPYt/h81j7sjVFa3KiwT0vbg==}
     engines: {node: '>=12.0.0'}
+    deprecated: In MUI X v7 the name of this package changed to @mui/x-license to reflect the existence of the premium plan.
     peerDependencies:
       react: ^17.0.2 || ^18.0.0
 
   '@mui/x-license-pro@6.10.2':
     resolution: {integrity: sha512-Baw3shilU+eHgU+QYKNPFUKvfS5rSyNJ98pQx02E0gKA22hWp/XAt88K1qUfUMPlkPpvg/uci6gviQSSLZkuKw==}
     engines: {node: '>=14.0.0'}
+    deprecated: In MUI X v7 the name of this package changed to @mui/x-license to reflect the existence of the premium plan.
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
 
@@ -2311,8 +2313,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-turbo@1.13.4:
-    resolution: {integrity: sha512-+we4eWdZlmlEn7LnhXHCIPX/wtujbHCS7XjQM/TN09BHNEl2fZ8id4rHfdfUKIYTSKyy8U/nNyJ0DNoZj5Q8bw==}
+  eslint-config-turbo@2.2.2:
+    resolution: {integrity: sha512-2hud2RNCon5qekzzhcYs93lREmxZN++qTs6FBXuFgM8ZBqLnLnHOjyaqu6deZoKkJ38clTU/2xpDn7uVQnGsMw==}
     peerDependencies:
       eslint: '>6.6.0'
 
@@ -2418,8 +2420,8 @@ packages:
   eslint-plugin-tsdoc@0.2.17:
     resolution: {integrity: sha512-xRmVi7Zx44lOBuYqG8vzTXuL6IdGOeF9nHX17bjJ8+VE6fsxpdGem0/SBTmAwgYMKYB1WBkqRJVQ+n8GK041pA==}
 
-  eslint-plugin-turbo@1.13.4:
-    resolution: {integrity: sha512-82GfMzrewI/DJB92Bbch239GWbGx4j1zvjk1lqb06lxIlMPnVwUHVwPbAnLfyLG3JuhLv9whxGkO/q1CL18JTg==}
+  eslint-plugin-turbo@2.2.2:
+    resolution: {integrity: sha512-M7MK21GMoRAy8siU6xT+xJPpdxvR0UP1QbnZjkQI9A65B2h3qVNAU2QfIb2EwwY95eK6dPlfszCm4rbaCvVuPA==}
     peerDependencies:
       eslint: '>6.6.0'
 
@@ -2456,6 +2458,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   eslint@9.6.0:
@@ -7345,10 +7348,10 @@ snapshots:
     dependencies:
       eslint: 9.6.0
 
-  eslint-config-turbo@1.13.4(eslint@9.6.0):
+  eslint-config-turbo@2.2.2(eslint@9.6.0):
     dependencies:
       eslint: 9.6.0
-      eslint-plugin-turbo: 1.13.4(eslint@9.6.0)
+      eslint-plugin-turbo: 2.2.2(eslint@9.6.0)
 
   eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0)):
     dependencies:
@@ -7496,7 +7499,7 @@ snapshots:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
 
-  eslint-plugin-turbo@1.13.4(eslint@9.6.0):
+  eslint-plugin-turbo@2.2.2(eslint@9.6.0):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.6.0
