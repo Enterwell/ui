@@ -39,7 +39,7 @@ jobs:
             token: ${{ env.GH_TOKEN }}
 
         - name: Setup pnpm
-          uses: pnpm/action-setup@v3.0.0
+          uses: pnpm/action-setup@v4.1.0
           with:
             version: 'latest'
 
