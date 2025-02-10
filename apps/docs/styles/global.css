@@ -93,3 +93,21 @@
 .image--dark {
   display: var(--dark-display);
 }
+@keyframes gradientAnimation {
+  0% {
+    border-image: linear-gradient(45deg, hsl(var(--muted)), hsl(var(--primary))) 1;
+  }
+
+  50% {
+    border-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--muted))) 1;
+  }
+
+  100% {
+    border-image: linear-gradient(45deg, hsl(var(--muted)), hsl(var(--primary))) 1;
+  }
+}
+
+.animated-card {
+  animation: gradientAnimation 5s infinite;
+  border: 1px solid transparent;
+}

@@ -25,19 +25,19 @@
   "devDependencies": {
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
-    "@microsoft/api-extractor": "7.39.5",
+    "@microsoft/api-extractor": "7.47.11",
     "@mui/material": "5.15.10",
     "@mui/x-data-grid-pro": "6.19.4",
     "@types/node": "18.19.33",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
     "date-fns": "2.30.0",
     "eslint-config-custom": "workspace:*",
-    "react": "18.2.0",
+    "react": "18.3.1",
     "rimraf": "6.0.1",
     "tsconfig": "workspace:*",
-    "tsup": "8.1.0",
-    "typescript": "5.5.3"
+    "tsup": "8.3.5",
+    "typescript": "5.6.3"
   },
   "peerDependencies": {
     "@enterwell/react-ui": "workspace:*",
