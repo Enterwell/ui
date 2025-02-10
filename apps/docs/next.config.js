@@ -1,4 +1,4 @@
-import { rehypeComponent } from './lib/rehype-component.mjs';
+import { rehypeComponent } from './lib/rehype-component.js';
 import nextra from 'nextra';
 
 const withNextra = nextra({

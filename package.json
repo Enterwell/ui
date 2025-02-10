@@ -1,5 +1,10 @@
 {
+  "packageManager": "pnpm@9.5.0",
+  "name": "ui",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -12,7 +17,5 @@
     "just-pascal-case": "3.2.0",
     "tsconfig": "workspace:*",
     "turbo": "2.4.0"
-  },
-  "packageManager": "pnpm@9.5.0",
-  "name": "ui"
+  }
 }
