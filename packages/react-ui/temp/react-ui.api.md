@@ -56,10 +56,10 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
+export function DatePicker({ onBlur, helperText, error, required, format, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
-export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
+export type DatePickerProps = Omit<DatePickerProps_2<Date, false>, "renderInput"> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;

@@ -229,9 +229,6 @@ export function DateTimeRangePicker({
                   fullWidth
                   size="small"
                   label="Od"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
                 <TextField
                   type="date"
@@ -240,9 +237,6 @@ export function DateTimeRangePicker({
                   fullWidth
                   size="small"
                   label="Do"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
               </Stack>
               {!hideTime && (
@@ -268,12 +262,12 @@ export function DateTimeRangePicker({
                   disableFuture
                   displayStaticWrapperAs="desktop"
                   calendars={isDesktop ? 2 : 1}
-                  renderInput={(startProps, endProps) => (
-                    <Stack direction="row" spacing={2}>
-                      <TextField {...startProps} variant="standard" />
-                      <TextField {...endProps} variant="standard" />
-                    </Stack>
-                  )}
+                  // renderInput={(startProps, endProps) => (
+                  //   <Stack direction="row" spacing={2}>
+                  //     <TextField {...startProps} variant="standard" />
+                  //     <TextField {...endProps} variant="standard" />
+                  //   </Stack>
+                  // )}
                 />
               </LocalizationProvider>
             </Stack>

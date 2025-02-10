@@ -12,10 +12,10 @@ import { GridDensity } from '@mui/x-data-grid-pro';
 import { GridFilterModel } from '@mui/x-data-grid-pro';
 import { GridLocaleText } from '@mui/x-data-grid-pro';
 import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
+import { GridProSlotsComponent } from '@mui/x-data-grid-pro';
 import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
-import { UncapitalizedGridProSlotsComponent } from '@mui/x-data-grid-pro';
 
 // @public
 export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
@@ -25,7 +25,6 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
             label: string;
         } | undefined;
     };
-    width?: number;
 };
 
 // @public
@@ -67,7 +66,7 @@ export type UseDataGridProps = {
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
     localeText?: Partial<GridLocaleText>;
-    slots?: Partial<UncapitalizedGridProSlotsComponent>;
+    slots?: Partial<GridProSlotsComponent>;
     slotProps?: GridProSlotProps;
 };
 

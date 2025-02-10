@@ -9,7 +9,7 @@ import { FocusEvent } from 'react';
  * DatePicker props
  * @public
  */
-export type DatePickerProps = Omit<MuiDatePickerProps<Date, Date>, "renderInput"> & {
+export type DatePickerProps = Omit<MuiDatePickerProps<Date, false>, "renderInput"> & {
   helperText?: string;
   error?: boolean;
   required?: boolean;
@@ -28,27 +28,25 @@ export function DatePicker({
   helperText,
   error,
   required,
-  inputFormat = "dd.MM.yyyy.",
-  InputProps,
+  format = "dd.MM.yyyy.",
   renderInput,
   ...rest
 }: DatePickerProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hr}>
       <MuiDatePicker
-        inputFormat={inputFormat}
-        InputProps={{
-          onBlur,
-          ...InputProps
+        format={format}
+        slots={{
+          field: renderInput ?? ((params) => (
+            <TextField
+              error={error}
+              helperText={helperText}
+              required={required}
+              onBlur={onBlur}
+              {...params}
+            />
+          ))
         }}
-        renderInput={renderInput ?? ((params) => (
-          <TextField
-            error={error}
-            helperText={helperText}
-            required={required}
-            {...params}
-          />
-        ))}
         {...rest}
       />
     </LocalizationProvider>
