@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 import { usePromise } from '@enterwell/react-hooks';
 

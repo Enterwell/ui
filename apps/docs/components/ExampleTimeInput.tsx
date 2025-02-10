@@ -1,3 +1,5 @@
+'use client';
+
 import { TimeInput } from '@enterwell/react-ui';
 import { useState } from 'react';
 

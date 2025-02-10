@@ -1,9 +1,9 @@
 import { DatePicker as MuiDatePicker, type DatePickerProps as MuiDatePickerProps } from '@mui/x-date-pickers/DatePicker';
 import { TextField, type TextFieldProps } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import hr from 'date-fns/locale/hr';
-import { FocusEvent } from 'react';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
+import { hr } from 'date-fns/locale/hr';
+import { FocusEvent, JSX } from 'react';
 
 /**
  * DatePicker props

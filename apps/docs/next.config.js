@@ -2,14 +2,12 @@ import { rehypeComponent } from './lib/rehype-component.js';
 import nextra from 'nextra';
 
 const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
   mdxOptions: {
     rehypePlugins: [
       rehypeComponent
     ]
   },
-  defaultShowCopyCode: true
+  defaultShowCopyCode: true,
 })
 
 /** @type {import('next').NextConfig} */

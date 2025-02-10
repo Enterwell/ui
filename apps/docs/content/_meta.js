@@ -1,4 +1,4 @@
-{
+export default {
   "index": "Home",
   "react-ui": {
     "title": "UI",
@@ -15,12 +15,5 @@
   "about": {
     "title": "About",
     "type": "page"
-  },
-  "404": {
-    "type": "page",
-    "theme": {
-      "timestamp": false,
-      "typesetting": "article"
-    }
   }
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { parse as parseJsDoc } from 'comment-parser';
 import { Mdx } from './Mdx';
 import { Fragment, PropsWithChildren } from 'react';

@@ -1,6 +1,8 @@
+'use client';
+
 import { evaluateSync } from "@mdx-js/mdx";
 import * as provider from "@mdx-js/react";
-import { useMDXComponents } from "nextra/mdx";
+import { useMDXComponents } from "../../mdx-components";
 import React from "react";
 import * as runtime from "react/jsx-runtime";
 

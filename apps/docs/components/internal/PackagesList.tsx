@@ -13,7 +13,7 @@ export function PackagesList() {
         <div className="flex flex-col items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-20">
                 {availablePackages.map((pkg) => (
-                    <Card key={pkg.name} className="!rounded-none border-none !shadow-none animated-card">
+                    <Card key={pkg.name} className="rounded-none! border-none shadow-none! animated-card">
                         <CardActionArea href={pkg.href}>
                             <CardContent className="flex items-center justify-center aspect-square">
                                 <div className="flex flex-col items-center gap-2">
