@@ -94,11 +94,11 @@ importers:
         version: 18.2.0(react@18.2.0)
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)))
+        version: 1.0.7(tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3)))
     devDependencies:
       '@types/node':
-        specifier: 18.19.33
-        version: 18.19.33
+        specifier: 18.19.80
+        version: 18.19.80
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
@@ -113,7 +113,7 @@ importers:
         version: 8.4.34
       tailwindcss:
         specifier: 3.4.5
-        version: 3.4.5(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
+        version: 3.4.5(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -141,10 +141,10 @@ importers:
     devDependencies:
       '@microsoft/api-extractor':
         specifier: 7.39.5
-        version: 7.39.5(@types/node@18.19.33)
+        version: 7.39.5(@types/node@18.19.80)
       '@types/node':
-        specifier: 18.19.33
-        version: 18.19.33
+        specifier: 18.19.80
+        version: 18.19.80
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
@@ -165,7 +165,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.80))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -184,7 +184,7 @@ importers:
         version: link:../react-ui
       '@microsoft/api-extractor':
         specifier: 7.39.5
-        version: 7.39.5(@types/node@18.19.33)
+        version: 7.39.5(@types/node@18.19.80)
       '@mui/material':
         specifier: 5.15.10
         version: 5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -192,8 +192,8 @@ importers:
         specifier: 6.19.4
         version: 6.19.4(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.16.0(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@types/node':
-        specifier: 18.19.33
-        version: 18.19.33
+        specifier: 18.19.80
+        version: 18.19.80
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
@@ -217,7 +217,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.80))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -239,7 +239,7 @@ importers:
         version: link:../react-hooks
       '@microsoft/api-extractor':
         specifier: 7.39.5
-        version: 7.39.5(@types/node@18.19.33)
+        version: 7.39.5(@types/node@18.19.80)
       '@mui/icons-material':
         specifier: 5.15.10
         version: 5.15.10(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.55)(react@18.2.0)
@@ -256,8 +256,8 @@ importers:
         specifier: 5.0.20
         version: 5.0.20(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@mui/material@5.15.10(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mui/system@5.15.9(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(react@18.2.0))(@types/react@18.2.55)(date-fns@2.30.0)(dayjs@1.11.11)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@types/node':
-        specifier: 18.19.33
-        version: 18.19.33
+        specifier: 18.19.80
+        version: 18.19.80
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
@@ -281,7 +281,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3)
+        version: 8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.80))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))(typescript@5.5.3)
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -784,6 +784,7 @@ packages:
   '@mui/base@5.0.0-beta.36':
     resolution: {integrity: sha512-6A8fYiXgjqTO6pgj31Hc8wm1M3rFYCxDRh09dBVk0L0W4cb2lnurRJa3cAyic6hHY+we1S58OdGYRbKmOsDpGQ==}
     engines: {node: '>=12.0.0'}
+    deprecated: This package has been replaced by @base-ui-components/react
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
@@ -1026,12 +1027,14 @@ packages:
   '@mui/x-license-pro@5.17.12':
     resolution: {integrity: sha512-UzFaE+9A30kfguCuME0D5zqsItqbHZ3xZwmyrJr8MvZOEoqiJWF4NT4Pvlg2nqaPYt/h81j7sjVFa3KiwT0vbg==}
     engines: {node: '>=12.0.0'}
+    deprecated: In MUI X v7 the name of this package changed to @mui/x-license to reflect the existence of the premium plan.
     peerDependencies:
       react: ^17.0.2 || ^18.0.0
 
   '@mui/x-license-pro@6.10.2':
     resolution: {integrity: sha512-Baw3shilU+eHgU+QYKNPFUKvfS5rSyNJ98pQx02E0gKA22hWp/XAt88K1qUfUMPlkPpvg/uci6gviQSSLZkuKw==}
     engines: {node: '>=14.0.0'}
+    deprecated: In MUI X v7 the name of this package changed to @mui/x-license to reflect the existence of the premium plan.
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
 
@@ -1368,8 +1371,8 @@ packages:
   '@types/ms@0.7.33':
     resolution: {integrity: sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==}
 
-  '@types/node@18.19.33':
-    resolution: {integrity: sha512-NR9+KrpSajr2qBVp/Yt5TU/rp+b5Mayi3+OlMlcg2cVCfRmcG5PWZ7S4+MG9PZ5gWBoc9Pd0BKSRViuBCRPu0A==}
+  '@types/node@18.19.80':
+    resolution: {integrity: sha512-kEWeMwMeIvxYkeg1gTc01awpwLbfMRZXdIhwRcakd/KlK53jmRC26LqcbIt7fnAQTu5GzlnWmzA3H6+l1u6xxQ==}
 
   '@types/node@20.14.10':
     resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
@@ -2456,6 +2459,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   eslint@9.6.0:
@@ -3325,9 +3329,11 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -5609,20 +5615,20 @@ snapshots:
       '@types/react': 18.2.55
       react: 18.2.0
 
-  '@microsoft/api-extractor-model@7.28.8(@types/node@18.19.33)':
+  '@microsoft/api-extractor-model@7.28.8(@types/node@18.19.80)':
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.65.0(@types/node@18.19.33)
+      '@rushstack/node-core-library': 3.65.0(@types/node@18.19.80)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.39.5(@types/node@18.19.33)':
+  '@microsoft/api-extractor@7.39.5(@types/node@18.19.80)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.8(@types/node@18.19.33)
+      '@microsoft/api-extractor-model': 7.28.8(@types/node@18.19.80)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.65.0(@types/node@18.19.33)
+      '@rushstack/node-core-library': 3.65.0(@types/node@18.19.80)
       '@rushstack/rig-package': 0.5.1
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
@@ -6079,7 +6085,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.3.3': {}
 
-  '@rushstack/node-core-library@3.65.0(@types/node@18.19.33)':
+  '@rushstack/node-core-library@3.65.0(@types/node@18.19.80)':
     dependencies:
       colors: 1.2.5
       fs-extra: 7.0.1
@@ -6089,7 +6095,7 @@ snapshots:
       semver: 7.5.4
       z-schema: 5.0.5
     optionalDependencies:
-      '@types/node': 18.19.33
+      '@types/node': 18.19.80
 
   '@rushstack/rig-package@0.5.1':
     dependencies:
@@ -6197,7 +6203,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.14.10
+      '@types/node': 18.19.80
 
   '@types/hast@2.3.5':
     dependencies:
@@ -6234,7 +6240,7 @@ snapshots:
 
   '@types/ms@0.7.33': {}
 
-  '@types/node@18.19.33':
+  '@types/node@18.19.80':
     dependencies:
       undici-types: 5.26.5
 
@@ -6270,7 +6276,7 @@ snapshots:
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 18.19.80
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -9892,21 +9898,21 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.34
 
-  postcss-load-config@4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
+  postcss-load-config@4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 2.3.2
     optionalDependencies:
       postcss: 8.4.34
-      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.5.3)
+      ts-node: 10.9.2(@types/node@18.19.80)(typescript@5.5.3)
 
-  postcss-load-config@4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
+  postcss-load-config@4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 2.3.2
     optionalDependencies:
       postcss: 8.4.39
-      ts-node: 10.9.2(@types/node@18.19.33)(typescript@5.5.3)
+      ts-node: 10.9.2(@types/node@18.19.80)(typescript@5.5.3)
 
   postcss-nested@6.0.1(postcss@8.4.34):
     dependencies:
@@ -10536,11 +10542,11 @@ snapshots:
       '@pkgr/utils': 2.4.0
       tslib: 2.6.2
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))):
     dependencies:
-      tailwindcss: 3.4.5(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
+      tailwindcss: 3.4.5(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))
 
-  tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3)):
+  tailwindcss@3.4.5(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -10559,7 +10565,7 @@ snapshots:
       postcss: 8.4.34
       postcss-import: 15.1.0(postcss@8.4.34)
       postcss-js: 4.0.1(postcss@8.4.34)
-      postcss-load-config: 4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
+      postcss-load-config: 4.0.1(postcss@8.4.34)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))
       postcss-nested: 6.0.1(postcss@8.4.34)
       postcss-selector-parser: 6.0.13
       resolve: 1.22.8
@@ -10632,14 +10638,14 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3):
+  ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.19.33
+      '@types/node': 18.19.80
       acorn: 8.12.1
       acorn-walk: 8.3.3
       arg: 4.1.3
@@ -10682,7 +10688,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.33))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))(typescript@5.5.3):
+  tsup@8.1.0(@microsoft/api-extractor@7.39.5(@types/node@18.19.80))(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))(typescript@5.5.3):
     dependencies:
       bundle-require: 4.0.1(esbuild@0.21.5)
       cac: 6.7.14
@@ -10692,14 +10698,14 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.33)(typescript@5.5.3))
+      postcss-load-config: 4.0.1(postcss@8.4.39)(ts-node@10.9.2(@types/node@18.19.80)(typescript@5.5.3))
       resolve-from: 5.0.0
       rollup: 4.5.1
       source-map: 0.8.0-beta.0
       sucrase: 3.34.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.39.5(@types/node@18.19.33)
+      '@microsoft/api-extractor': 7.39.5(@types/node@18.19.80)
       postcss: 8.4.39
       typescript: 5.5.3
     transitivePeerDependencies:
