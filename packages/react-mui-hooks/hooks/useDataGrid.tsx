@@ -278,12 +278,18 @@ function headerRenderer({ colDef }: GridColumnHeaderParams<GridValidRowModel, an
 }
 
 /**
+ * The useDataGrid onPage type.
+ * @public
+ */
+export type useDataGridOnPage = (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>;
+
+/**
  * The DataGrid props.
  * @public
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: useDataGridOnPage,
     tableId?: string,
     /**
      * @defaultValue `20`
