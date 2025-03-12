@@ -101,7 +101,7 @@ const navbar = <Navbar
   chatIcon={(<SlackIcon width={24} height={24} />)} />
 const footer = (
   <Footer className="flex-col items-center md:items-start">
-    MIT {new Date().getFullYear()} © <a href="https://enterwell.net">Enterwell d.o.o.</a>
+    MIT {new Date().getFullYear()} - <a href="https://enterwell.net">Enterwell d.o.o.</a>
   </Footer>
 )
 

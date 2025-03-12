@@ -2,7 +2,7 @@
 
 import { evaluateSync } from "@mdx-js/mdx";
 import * as provider from "@mdx-js/react";
-import { useMDXComponents } from "../../mdx-components";
+// import { useMDXComponents } from "../../mdx-components";
 import React from "react";
 import * as runtime from "react/jsx-runtime";
 
@@ -13,11 +13,11 @@ export function Mdx({ children }: { children?: string }) {
         ...runtime,
         ...provider,
         baseUrl: import.meta.url,
-        useMDXComponents,
+        // useMDXComponents,
         format: "mdx",
         development: false,
         Fragment: React.Fragment
     });
 
-    return <MDXContent />;
+    return MDXContent({});
 }

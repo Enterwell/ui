@@ -38,7 +38,9 @@ export function ComponentDescription({ name }: ComponentDocsProps) {
     const { description } = comment || {};
 
     return (
-        <Mdx>{description}</Mdx>
+        <div className='pt-2'>
+            <Mdx>{description}</Mdx>
+        </div>
     )
 }
 
@@ -49,11 +51,11 @@ export function ComponentParameters({ name }: ComponentDocsProps) {
         name: param.parameterName,
         description: comment?.tags?.find((tag) => tag.tag === 'param' && tag.name === param.parameterName)?.description,
         optional: param.isOptional,
-        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex).map((t: any) => t.text).join('')
+        type: member.excerptTokens.slice(param.parameterTypeTokenRange.startIndex, param.parameterTypeTokenRange.endIndex)?.map((t: any) => t.text).join('')
     }));
     const returnsComment = comment?.tags?.find((tag) => tag.tag === 'returns');
     const returnsType = member?.returnTypeTokenRange 
-        ? member.excerptTokens.slice(member.returnTypeTokenRange.startIndex, member.returnTypeTokenRange.endIndex).map((t: any) => t.text).join('')
+        ? member.excerptTokens.slice(member.returnTypeTokenRange.startIndex, member.returnTypeTokenRange.endIndex)?.map((t: any) => t.text).join('')
         : undefined;
     const returnsTypeValid = returnsType && returnsType !== 'void';
 

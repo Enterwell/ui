@@ -23,16 +23,16 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.49.2",
-    "@types/node": "22.13.1",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3",
+    "@microsoft/api-extractor": "7.52.1",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "eslint-config-custom": "workspace:*",
     "react": "19.0.0",
     "rimraf": "6.0.1",
     "tsconfig": "workspace:*",
-    "tsup": "8.3.6",
-    "typescript": "5.7.3"
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
   },
   "peerDependencies": {
     "react": "^18",
