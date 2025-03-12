@@ -40,7 +40,7 @@
     "typescript": "5.8.2"
   },
   "peerDependencies": {
-    "@enterwell/react-ui": "workspace:*",
+    "@enterwell/react-ui": "^0",
     "@mui/material": "^6",
     "@mui/x-data-grid-pro": "^6",
     "react": "^18",
