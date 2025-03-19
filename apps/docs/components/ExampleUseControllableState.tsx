@@ -1,3 +1,5 @@
+'use client';
+
 import { useControllableState } from "@enterwell/react-hooks";
 import { useState } from "react";
 

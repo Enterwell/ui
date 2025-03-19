@@ -1,3 +1,5 @@
+'use client';
+
 import { DropdownButton } from '@enterwell/react-ui';
 import { Save } from '@mui/icons-material';
 

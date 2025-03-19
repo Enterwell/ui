@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '@enterwell/react-hooks';
 

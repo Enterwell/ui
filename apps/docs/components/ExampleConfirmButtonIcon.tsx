@@ -1,3 +1,5 @@
+'use client';
+
 import { ConfirmButton } from '@enterwell/react-ui';
 import { Delete } from '@mui/icons-material';
 

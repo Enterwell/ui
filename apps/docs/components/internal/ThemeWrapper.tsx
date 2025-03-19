@@ -1,3 +1,5 @@
+'use client';
+
 import { useMutationObserver } from "@enterwell/react-hooks";
 import { ThemeProvider } from "@mui/material";
 import { PropsWithChildren, useState } from "react";

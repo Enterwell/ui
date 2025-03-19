@@ -1,3 +1,5 @@
+'use client';
+
 import { ItemAccordion, ItemAccordionDetails, ItemAccordionSummary, ItemAccordionActions } from '@enterwell/react-ui';
 import { Button, Stack, Typography } from '@mui/material';
 
