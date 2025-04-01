@@ -7,8 +7,8 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
  * @returns The ref.
  * @public
  */
-export function useResizeObserver(callback: (element: any, entry: ResizeObserverEntry) => void) {
-    const ref = useRef(null);
+export function useResizeObserver<T extends Element>(callback: (element: any, entry: ResizeObserverEntry) => void) {
+    const ref = useRef<T>(null);
 
     useIsomorphicLayoutEffect(() => {
         const element = ref?.current;

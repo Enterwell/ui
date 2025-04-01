@@ -17,6 +17,7 @@ import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePi
 import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
+import { JSX } from 'react';
 import * as react from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
@@ -110,9 +111,6 @@ export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
 };
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
-
-// @public
 export function ItemAccordion(props: AccordionProps): react_jsx_runtime.JSX.Element;
 
 // @public
@@ -123,6 +121,9 @@ export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_ru
 
 // @public
 export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
