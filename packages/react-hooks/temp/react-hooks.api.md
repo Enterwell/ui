@@ -15,6 +15,9 @@ export type MaybeRef<T> = T | MutableRefObject<T>;
 export type PromiseFunction<T> = (Promise<T> | undefined) | (() => Promise<T> | undefined);
 
 // @public
+export function useControllableState<T>(value: T | undefined, defaultValue?: T | undefined, onChange?: (newValue: T) => void): readonly [T | undefined, (nextValue: T | undefined) => void];
+
+// @public
 export function useDebounce<T>(value: T, delay: number): T;
 
 // @public

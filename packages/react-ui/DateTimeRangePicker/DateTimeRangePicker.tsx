@@ -1,11 +1,9 @@
-import {
-  Box, Button, Grid, Popover, TextField, useTheme, useMediaQuery
-} from '@mui/material';
+import { Button, Grid, Popover, TextField, useMediaQuery, type Theme } from '@mui/material';
 import { ComponentProps, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { StaticDateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import hrLocale from 'date-fns/locale/hr';
-import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration } from 'date-fns';
+import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFnsV3';
+import { hr } from 'date-fns/locale/hr';
+import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration, Duration } from 'date-fns';
 import { TimeInput } from '../TimeInput';
 import { DateTimeRangePickerInput } from './DateTimeRangePickerInput';
 import { Stack } from '@mui/system';
@@ -75,8 +73,7 @@ export function DateTimeRangePicker({
   const defaultEndDate = startOfDay(end);
 
   const [dateValue, setDateValue] = useState<[Date | null, Date | null]>([defaultStartDate, defaultEndDate]);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+  const isDesktop = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
 
   // Reset cached value when props change (only when not in popover)
   useEffect(() => {
@@ -228,24 +225,18 @@ export function DateTimeRangePicker({
                 <TextField
                   type="date"
                   value={dateValue[0] ? format(dateValue[0], 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setDateValue([e.target.value as unknown as Date, dateValue[1]])}
+                  onChange={(e) => setDateValue([new Date(e.target.value), dateValue[1]])}
                   fullWidth
                   size="small"
                   label="Od"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
                 <TextField
                   type="date"
                   value={dateValue[1] ? format(dateValue[1], 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setDateValue([dateValue[0], e.target.value as unknown as Date])}
+                  onChange={(e) => setDateValue([dateValue[0], new Date(e.target.value)])}
                   fullWidth
                   size="small"
                   label="Do"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
               </Stack>
               {!hideTime && (
@@ -264,19 +255,19 @@ export function DateTimeRangePicker({
                     fullWidth />
                 </Stack>
               )}
-              <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hrLocale}>
+              <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hr}>
                 <StaticDateRangePicker
                   value={dateValue}
                   onChange={setDateValue}
                   disableFuture
                   displayStaticWrapperAs="desktop"
                   calendars={isDesktop ? 2 : 1}
-                  renderInput={(startProps, endProps) => (
-                    <Stack direction="row" spacing={2}>
-                      <TextField {...startProps} variant="standard" />
-                      <TextField {...endProps} variant="standard" />
-                    </Stack>
-                  )}
+                  // renderInput={(startProps, endProps) => (
+                  //   <Stack direction="row" spacing={2}>
+                  //     <TextField {...startProps} variant="standard" />
+                  //     <TextField {...endProps} variant="standard" />
+                  //   </Stack>
+                  // )}
                 />
               </LocalizationProvider>
             </Stack>

@@ -2,6 +2,7 @@ import {
     type ComponentPropsWithRef,
     type PropsWithChildren,
     isValidElement,
+    KeyboardEvent,
     useCallback,
     useEffect,
     useMemo,
@@ -12,7 +13,9 @@ import {
     Typography,
     Grid,
     useTheme,
-    LinearProgress
+    LinearProgress,
+    Theme,
+    lighten
 } from '@mui/material';
 import {
     type GridCallbackDetails,
@@ -32,16 +35,28 @@ import {
     type GridSortItem,
     type GridLocaleText,
     type GridRowScrollEndParams,
+    type GridDensity,
+    type GridFilterModel,
+    type GridColumnResizeParams,
+    type GridPinnedColumns,
+    type GridColumnOrderChangeParams,
+    GridPinnedColumnFields,
+    GridProSlotsComponent,
+    GridColumnHeaderParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
 import { Select } from '@enterwell/react-ui';
+import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
 
 const DISPLAY_DATETIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
 const DISPLAY_DATE_FORMAT = "dd.MM.yyyy.";
 const columnVisibilityLocalStorageKey = 'muidatagrid-columnvisibility';
+const columnSizeLocalStorageKey = 'muidatagrid-columnwidth';
+const columnPinningLocalStorageKey = 'muidatagrid-columnpinning';
+const columnOrderingLocalStorageKey = 'muidatagrid-columnordering';
 
-const dataGridSx = {
+const dataGridSx = (theme: Theme) => ({
     '& .MuiDataGrid-columnHeader::after': {
         content: '""',
         position: 'absolute',
@@ -52,9 +67,12 @@ const dataGridSx = {
         bgcolor: 'divider'
     },
     '& .MuiDataGrid-sortIcon': {
-        color: '#F3BB7B'
+        color: lighten(theme.palette.primary.main, 0.4)
+    },
+    '& .MuiDataGrid-filterIcon': {
+        color: lighten(theme.palette.primary.main, 0.4)
     }
-};
+});
 
 /**
  * The text component.
@@ -84,10 +102,6 @@ function Text({ children, width, rowHeight }: PropsWithChildren<{ width?: number
 // TODO: Allow customization
 type CellRendererCustomType = "datetime" | 'enum' | 'actions' | 'date' | 'boolean' | 'html';
 
-type ExtendedGridRenderHeaderParams = Omit<GridCallbackDetails<any>, "colDef"> & {
-    colDef: ExtendedGridColDef
-};
-
 type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unknown, unknown, GridTreeNode>, "colDef"> & {
     colDef: ExtendedGridColDef,
     width?: number
@@ -101,7 +115,6 @@ type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unkno
 export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     customType?: CellRendererCustomType
     enum?: { get: (value: any) => { label: string } | undefined },
-    width?: number
 };
 
 /**
@@ -110,7 +123,7 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
  * @public
  */
 export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
-  field: keyof T
+    field: keyof T
 };
 
 /**
@@ -119,7 +132,7 @@ export type TypedExtendedGridColDef<T> = ExtendedGridColDef & {
  * @public
  */
 export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
-  [K in keyof Partial<T>]: boolean
+    [K in keyof Partial<T>]: boolean
 };
 
 /**
@@ -128,7 +141,7 @@ export type TypedColVisibilityModel<T> = GridColumnVisibilityModel & {
  * @public
  */
 export type TypedSortModel<T> = (GridSortItem & {
-  field: keyof T
+    field: keyof T
 })[];
 
 type CellRendererProps = {
@@ -155,7 +168,12 @@ function CellRenderer({
         return <Text {...rest}>{format(value, DISPLAY_DATETIME_FORMAT)}</Text>;
     }
     if (customType === 'enum') {
-        const enumLabel = params.enum?.get(value)?.label;
+        let enumLabel: string | undefined = '';
+
+        try {
+            enumLabel = params.enum?.get(value)?.label;
+        } catch { }
+
         if (enumLabel) {
             return <Text {...rest}>{enumLabel}</Text>;
         }
@@ -250,7 +268,8 @@ function resolveCustomTypeOperators(column: ExtendedGridColDef): { filterOperato
  * The header renderer.
  * @param props - The props.
  */
-function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
+// GridColumnHeaderParams<R, V, F>
+function headerRenderer({ colDef }: GridColumnHeaderParams<GridValidRowModel, any, any>) {
     return (
         <Typography color="primary" fontWeight={600} noWrap>
             {colDef.headerName}
@@ -259,24 +278,52 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
 }
 
 /**
+ * The useDataGrid onPage type.
+ * @public
+ */
+export type useDataGridOnPage = (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>;
+
+/**
  * The DataGrid props.
  * @public
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, pageSize: number, sortModel?: GridSortModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: useDataGridOnPage,
     tableId?: string,
+    /**
+     * @defaultValue `20`
+     */
     pageSize?: number,
     columnVisibilityModel?: GridColumnVisibilityModel,
     defaultSort?: GridSortModel,
     onRowClick?: any,
+    /**
+     * @defaultValue `compact` on mobile devices and `standard` on desktop
+     */
+    density?: GridDensity,
+    /**
+     * @defaultValue `40`
+     */
     rowHeight?: number,
     selection?: boolean,
     checkboxSelection?: boolean,
+    /**
+     * @defaultValue `false`
+     */
+    enableColumnFilters?: boolean,
+    /**
+     * @defaultValue `true`
+     */
     enablePagination?: boolean,
     infiniteLoading?: boolean,
+    /**
+     * @defaultValue `true`
+     */
     keepNonExistentRowsSelected?: boolean,
-    localeText?: Partial<GridLocaleText>
+    localeText?: Partial<GridLocaleText>,
+    slots?: Partial<GridProSlotsComponent>,
+    slotProps?: GridProSlotProps
 };
 
 /**
@@ -285,7 +332,7 @@ export type UseDataGridProps = {
  */
 export type UseDataGridResponse = {
     props: ComponentPropsWithRef<typeof DataGridPro>,
-    filterChanged: (keepPage?: boolean) => void,
+    refreshTable: (keepPage?: boolean) => void,
     isSelectAll: boolean,
     setIsSelectAll: (value: boolean) => void,
     isAnySelected: boolean,
@@ -308,12 +355,16 @@ export function useDataGrid({
     onPage,
     onRowClick,
     rowHeight = 40,
+    density,
     selection,
     checkboxSelection,
+    enableColumnFilters = false,
     enablePagination = true,
     infiniteLoading,
     keepNonExistentRowsSelected = true,
-    localeText = {}
+    localeText = {},
+    slots = {},
+    slotProps = {}
 }: UseDataGridProps): UseDataGridResponse {
     const defaultSortOrFirst: GridSortModel | undefined = defaultSort || (columns.length > 0 ? [{ field: columns[0].field, sort: 'asc' }] : undefined);
 
@@ -324,6 +375,7 @@ export function useDataGrid({
     });
     const [pageIndex, setPageIndex] = useState(-1);
     const [sortModel, setSortModel] = useState<GridSortModel | undefined>(defaultSortOrFirst);
+    const [filterModel, setFilterModel] = useState<GridFilterModel | undefined>(undefined);
     const theme = useTheme();
 
     /**
@@ -333,11 +385,12 @@ export function useDataGrid({
      */
     const handleLoadPage = useCallback(async (page: number, clearCache: boolean) => {
         if (loading.includes(page)) return;
+
         try {
             setLoading((current) => [...current, page]);
             console.debug('Loading page', page, 'with sort', sortModel);
 
-            const response = await onPage(Math.max(page, 0), pageSize, sortModel);
+            const response = await onPage(Math.max(page, 0), pageSize, sortModel, filterModel);
             const pageIndexOrZero = page <= 0 ? 0 : page;
 
             console.debug('Loaded page', page);
@@ -355,14 +408,16 @@ export function useDataGrid({
         } finally {
             setLoading((current) => current.filter((p) => p !== page));
         }
-    }, [pageSize, sortModel, onPage, loading]);
+    }, [pageSize, sortModel, filterModel, onPage, loading]);
 
     /**
-     * Handles filter changed. This will go back to first page and request page.
-     * @param keepPage - If set to true, when filter is changed, page will remain selected; returns to first page if set to false.
+     * Handles the table refresh. This will go back to the first page and request a new one.
+     *
+     * @param keepPage - If set to true, when table is refreshed, page will remain selected; returns to first page if set to false.
      */
-    const handleFilterChanged = (keepPage = false) => {
+    const handleTableRefresh = (keepPage = false) => {
         if (!keepPage) setPageIndex(-1);
+
         handleLoadPage(keepPage ? pageIndex : -1, true);
     };
 
@@ -385,18 +440,46 @@ export function useDataGrid({
         setSortModel(data);
     };
 
+    /**
+     * Handles the filter model change.
+     *
+     * @param data Grid filter model data
+     */
+    const handleFilterModelChange = (data: GridFilterModel) => {
+        // If the filter items have no value selected just yet, don't make a state change
+        if (!!data.items.length && data.items.every((item) => item.value == null)) return;
+
+        // If the filter items with value are the same ones already
+        // in the state, don't make a state change
+        // this is here to prevent unnecessary rerendering
+        const filterItemsWithValues = data.items.filter((item) => item.value != null);
+        if (filterItemsWithValues.every((item) =>
+            filterModel?.items.find((stateItem) => stateItem.field === item.field && stateItem.value === item.value)) &&
+            filterItemsWithValues.length === filterModel?.items.length) {
+            return;
+        }
+
+        setPageIndex(-1);
+        setFilterModel(data);
+    };
+
     // Column visibility
-    const [columnVisibility, setColumnVisibility] = useState(
-        Boolean(tableId) && localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`) !== null
-            ? JSON.parse(localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`) ?? "")
+    const [columnVisibility, setColumnVisibility] = useState(() => {
+        const savedColumnVisibility = localStorage.getItem(`${columnVisibilityLocalStorageKey}-${tableId}`);
+        return Boolean(tableId) && savedColumnVisibility !== null
+            ? JSON.parse(savedColumnVisibility)
             : columnVisibilityModel
-    );
+    });
 
     /**
      * Handles the column visibility model changing.
      * @param newVisibility - The new visibility model.
      */
     const handleColumnVisibilityChange = (newVisibility: GridColumnVisibilityModel) => {
+        // Do not hide the last remaining column
+        const hiddenColumns = Object.values(newVisibility).filter(v => !v).length;
+        if ((columns.length - hiddenColumns) <= 0) return;
+
         setColumnVisibility(newVisibility);
         if (tableId) {
             localStorage.setItem(`${columnVisibilityLocalStorageKey}-${tableId}`, JSON.stringify(newVisibility));
@@ -422,10 +505,14 @@ export function useDataGrid({
         }
     }, [columnVisibilityModelMemo]);
 
+    /**
+     * Triggering the page load if the page index, sort model or the filter model have changed.
+     */
     useEffect(() => {
         if (pageIndex < 0 && sortModel === defaultSortOrFirst) return;
+
         handleLoadPage(pageIndex, !infiniteLoading);
-    }, [pageIndex, sortModel]);
+    }, [pageIndex, sortModel, filterModel]);
 
     const allRows = Object.values(rows.pages).flat();
 
@@ -450,24 +537,24 @@ export function useDataGrid({
     }, [customSelectionModel, allRows]);
 
     /**
-     * Handles the select all checkbox click.
-     * @param {GridCellParams<any, unknown, unknown, GridTreeNode>} params The params.
-     * @param {MuiEvent<React.KeyboardEvent<HTMLElement>>} event The event.
-     * @param {GridCallbackDetails<any>} details The details.
-     * @returns {void}
+     * Handles action fired when a keydown event comes from a cell element.
+     * @param params Grid cell properties.
+     * @param event The event object.
+     * @param details Additional details for the callback.
      */
-    const handleCellKeyDown = (
-        params: GridCellParams<any, unknown, unknown, GridTreeNode>,
-        event: MuiEvent<React.KeyboardEvent<HTMLElement>>,
-        details: any // NOTE: Workaournd for unavailable API in types
-    ) => {
-        if (selection
-            && !checkboxSelection) {
-            const currentRowIndex = allRows.indexOf(params.row);
-            const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
-            const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
-            if (nextRowId) {
-                setCustomSelectionModel([nextRowId]);
+    const handleCellKeyDown = (params: GridCellParams, event: MuiEvent<KeyboardEvent<HTMLElement>>, details: any) => {
+        if (selection && !checkboxSelection) {
+            // Move the selected row index only if the key pressed is either ArrowUp or ArrowDown
+            if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                const currentRowId = details.api.getRowId(params.row);
+                const currentRowIndex = details.api.getRowIndexRelativeToVisibleRows(currentRowId);
+
+                const nextRowIndex = Math.min(Math.max(currentRowIndex + (event.key === 'ArrowDown' ? 1 : -1), 0), allRows.length - 1);
+                const nextRowId = details.api.getRowIdFromRowIndex(nextRowIndex);
+
+                if (nextRowId && nextRowId !== currentRowId) {
+                    setCustomSelectionModel([nextRowId]);
+                }
             }
         }
     };
@@ -485,30 +572,110 @@ export function useDataGrid({
         setIsMobile(window.innerWidth < theme.breakpoints.values.sm);
     });
 
-    const columnsMemo = useMemo(() => columns.map((c) => ({
-        ...c,
-        cellClassName: () => 'mui-datagrid-cell-narrow-on-mobile',
-        renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
-            <CellRenderer
-                customType={params.colDef.customType}
-                value={params.value}
-                width={params.width}
-                rowHeight={rowHeight}
-                params={params.colDef}
-            />
-        )),
-        renderHeader: c.renderHeader || headerRenderer,
-        ...resolveCustomTypeOperators(c),
-    })), [columns, headerRenderer, rowHeight]);
+    const columnsMemo = useMemo(() => {
+        const columnsAdjusted = columns.map((c) => {
+            // Get column width from local storage
+            let width: number | null | undefined;
+
+            if (tableId) {
+                const columnSizeStorageValue = localStorage.getItem(`${columnSizeLocalStorageKey}-${tableId}-${c.field}`);
+                if (columnSizeStorageValue) {
+                    width = Number(columnSizeStorageValue);
+                }
+            }
+
+            return {
+                ...c,
+                cellClassName: `${c.cellClassName || ''} mui-datagrid-cell-narrow-on-mobile`,
+                renderCell: c.renderCell || ((params: ExtendedGridRenderCellParams) => (
+                    <CellRenderer
+                        customType={params.colDef.customType}
+                        value={params.value}
+                        width={params.width}
+                        rowHeight={rowHeight}
+                        params={params.colDef}
+                    />
+                )),
+                renderHeader: c.renderHeader || headerRenderer,
+                ...resolveCustomTypeOperators(c),
+                ...width && {
+                    flex: undefined,
+                    width
+                }
+            } satisfies ExtendedGridColDef;
+        });
+
+        // Reorder columns based on saves order (if provided)
+        if (tableId) {
+            columnsAdjusted.forEach((c) => {
+                const columnOrderingStorageValue = localStorage.getItem(`${columnOrderingLocalStorageKey}-${tableId}-${c.field}`);
+                if (!columnOrderingStorageValue) return;
+
+                const order = JSON.parse(columnOrderingStorageValue);
+                if (order != null) {
+                    // Move column to new index
+                    const index = columnsAdjusted.findIndex((x) => x.field === c.field);
+                    columnsAdjusted.splice(index, 1);
+                    columnsAdjusted.splice(order, 0, c);
+                }
+            });
+        }
+
+        return columnsAdjusted;
+    }, [tableId, columns, headerRenderer, rowHeight]);
 
     /**
      * Handles rows scroll end action.
      */
     const handleRowsScrollEnd = (params: GridRowScrollEndParams) => {
-      if (!infiniteLoading) return;
+        if (!infiniteLoading) return;
 
-      console.debug('Infinite loading: loading next page', params);
-      handlePaginationModelChange({ page: pageIndex + 1, pageSize });
+        console.debug('Infinite loading: loading next page', params);
+        handlePaginationModelChange({ page: pageIndex + 1, pageSize });
+    };
+
+    /**
+     * Handles the column resize action.
+     *
+     * @param params Grid column resize params
+     */
+    const handleOnColumnWidthChange = (params: GridColumnResizeParams) => {
+        if (tableId && params.width) {
+            localStorage.setItem(`${columnSizeLocalStorageKey}-${tableId}-${params.colDef.field}`, params.width.toString());
+        }
+    };
+
+    // Column pinning
+    const [pinnedColumns, setPinnedColumns] = useState(() => {
+        const savedPinnedColumns = localStorage.getItem(`${columnPinningLocalStorageKey}-${tableId}`);
+        return Boolean(tableId) && savedPinnedColumns != null
+            ? JSON.parse(savedPinnedColumns)
+            : null
+    });
+
+    /**
+     * Handles pinned columns change action.
+     * 
+     * @param newPinnedColumns The new pinned columns.
+     */
+    const handlePinnedColumnsChange = (newPinnedColumns: GridPinnedColumnFields) => {
+        if (tableId) {
+            localStorage.setItem(`${columnPinningLocalStorageKey}-${tableId}`, JSON.stringify(newPinnedColumns));
+        }
+        setPinnedColumns(newPinnedColumns);
+    };
+
+    /**
+     * Handles column order change.
+     * 
+     * @param newColumnOrder The new column order.
+     */
+    const handleColumnOrderChange = (newColumnOrder: GridColumnOrderChangeParams) => {
+        if (tableId) {
+            localStorage.setItem(
+                `${columnOrderingLocalStorageKey}-${tableId}-${newColumnOrder.column.field}`,
+                JSON.stringify(newColumnOrder.targetIndex));
+        }
     };
 
     return {
@@ -517,16 +684,20 @@ export function useDataGrid({
             rows: allRows,
             rowCount: rows.totalRows,
             pageSizeOptions: [pageSize],
-            density: isMobile ? 'compact' : 'standard',
-            sx: {
+            density: !!density ? density : (isMobile ? 'compact' : 'standard'),
+            sx: (theme: Theme) => ({
                 '& .MuiDataGrid-row': {
                     cursor: onRowClick !== undefined ? 'pointer' : 'default'
                 },
-                ...dataGridSx
-            },
+                ...dataGridSx(theme)
+            }),
             columns: columnsMemo,
             columnVisibilityModel: columnVisibility,
             onColumnVisibilityModelChange: handleColumnVisibilityChange,
+            onColumnWidthChange: handleOnColumnWidthChange,
+            onColumnOrderChange: handleColumnOrderChange,
+            pinnedColumns,
+            onPinnedColumnsChange: handlePinnedColumnsChange,
             pagination: !infiniteLoading && enablePagination,
             paginationMode: 'server',
             paginationModel: {
@@ -537,9 +708,12 @@ export function useDataGrid({
             onPaginationModelChange: handlePaginationModelChange,
             sortingMode: 'server',
             sortModel,
-            disableColumnFilter: true,
             disableDensitySelector: true,
             onSortModelChange: handleSortModelChange,
+            disableColumnFilter: !enableColumnFilters,
+            filterMode: 'server',
+            filterDebounceMs: 500,
+            onFilterModelChange: handleFilterModelChange,
             hideFooterSelectedRowCount: true,
             loading: loading.length > 0,
             localeText: {
@@ -556,12 +730,20 @@ export function useDataGrid({
             checkboxSelection,
             rowSelectionModel: customSelectionModel,
             onRowSelectionModelChange: handleRowSelectionModelChange,
-            slots: {
-                loadingOverlay: LinearProgress,
+            slots,
+            slotProps: {
+                columnsManagement: {
+                    disableShowHideToggle: true
+                },
+                loadingOverlay: {
+                    variant: 'linear-progress',
+                    noRowsVariant: 'skeleton'
+                },
+                ...slotProps
             },
             keepNonExistentRowsSelected
         },
-        filterChanged: handleFilterChanged,
+        refreshTable: handleTableRefresh,
         isSelectAll: isAllItemsSelected,
         setIsSelectAll: setIsAllItemsSelected,
         isAnySelected: customSelectionModel.length > 0,

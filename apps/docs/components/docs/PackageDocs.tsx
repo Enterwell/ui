@@ -21,8 +21,8 @@ export function PackagePeerDependencies({ metadata }: PackageDescriptionProps) {
 
     return (
         <div className="flex flex-col gap-2">
-            {peerDependencyNames.map(name => (
-                <NpmPackageCard name={name} version={metadata.peerDependencies[name]} />
+            {peerDependencyNames?.map(name => (
+                <NpmPackageCard key={name} name={name} version={metadata.peerDependencies[name]} />
             ))}
         </div>
     )

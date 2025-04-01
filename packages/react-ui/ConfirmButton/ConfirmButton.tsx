@@ -1,6 +1,6 @@
 import { ConfirmDialog, type ConfirmDialogProps } from '../ConfirmDialog';
 import { useState } from 'react';
-import { Button, type ButtonProps } from '@mui/material';
+import { Button, IconButton, type ButtonProps } from '@mui/material';
 
 /**
  * The keys of the {@link ConfirmDialog} props that are destructured from shared props.
@@ -16,6 +16,10 @@ export type ConfirmButtonProps =
   Omit<ButtonProps, "onClick"> &
   Pick<ConfirmDialogProps, DialogDestructuredPropKeys> &
   {
+    /**
+     * @defaultValue `false`
+     */
+    iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
       // Omit already used props and shared props, re-add color so we can 
@@ -31,7 +35,14 @@ export type ConfirmButtonProps =
  * @public
  */
 export function ConfirmButton({
-  header, message, confirmButtonText, color, onConfirm, slots, ...rest
+  header,
+  message,
+  confirmButtonText,
+  color,
+  iconButton = false,
+  onConfirm,
+  slots,
+  ...rest
 }: ConfirmButtonProps) {
   const [open, setOpen] = useState(false);
 
@@ -42,7 +53,19 @@ export function ConfirmButton({
 
   return (
     <>
-      <Button color={color} {...rest} onClick={() => setOpen(true)} />
+      {iconButton ? (
+        <IconButton
+          color={color}
+          {...rest}
+          onClick={() => setOpen(true)}
+        />
+      ) : (
+        <Button
+          color={color}
+          {...rest}
+          onClick={() => setOpen(true)}
+        />
+      )}
       <ConfirmDialog
         isOpen={open}
         onConfirm={handleConfirm}

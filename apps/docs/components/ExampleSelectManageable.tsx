@@ -1,3 +1,5 @@
+'use client';
+
 import { Select, type SelectItem } from '@enterwell/react-ui';
 import { Add, Edit } from '@mui/icons-material';
 import { Button, IconButton, Typography } from '@mui/material';
@@ -28,7 +30,14 @@ export function ExampleSelectManageable() {
                     </Stack>
                 )}
                 listEndDecorator={(
-                    <Button startIcon={<Add />} fullWidth>
+                    <Button
+                      fullWidth
+                      startIcon={<Add />}
+                      onMouseDown={(event) => {
+                        // Prevent input blur which triggers closing the Popper
+                        event.preventDefault();
+                      }}
+                    >
                         Add
                     </Button>
                 )}

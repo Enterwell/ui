@@ -7,12 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
-## [0.4.0] - 2023-12-20
+## [0.8.0] - 2024-06-18
+### Changed
+- [useDataGrid] Disabled column hide when last one is left
+- [useDataGrid] Hide all columns button removed
+
+## [0.7.0] - 2024-01-19
 ### Added
-- [useDataGrid] enablePagination optional prop
+- [useDataGrid] Column pinning support
+- [useDataGrid] Column ordering support
 
 ### Changed
-- [useDataGrid] pagination enabled by default
+- [useDataGrid] Properly forwarding the ColDef's `cellClassName` property
+- [useDataGrid] `filterChanged` prop renamed to `refreshTable`
+
+### Fixed
+- [useDataGrid] Keyboard navigation
+- [useDataGrid] Reduced the number of rerenders
+
+## [0.6.0] - 2024-01-04
+### Added
+- [useDataGrid] Documented props' default values
+- [useDataGrid] `enableColumnFilters` optional prop for server side filtering
+- [useDataGrid] `localeText` optional prop
+- [useDataGrid] `density` optional prop
+- [useDataGrid] Saving column widths to the local storage
+- [useDataGrid] `slots` and `slotProps` optional props
+
+### Fixed
+- [useDataGrid] missing enum value error
+
+## [0.5.0] - 2023-12-20
+### Added
+- [useDataGrid] localeText optional prop
+
+## [0.4.0] - 2023-12-20
+### Added
+- [useDataGrid] `enablePagination` optional prop
+
+### Changed
+- [useDataGrid] Pagination enabled by default
 
 ## [0.3.0] - 2023-12-15
 ### Added

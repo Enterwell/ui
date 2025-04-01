@@ -4,6 +4,10 @@
 
 ```ts
 
+import { AccordionActionsProps } from '@mui/material/AccordionActions';
+import { AccordionDetailsProps } from '@mui/material/AccordionDetails';
+import { AccordionProps } from '@mui/material/Accordion';
+import { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
@@ -25,10 +29,11 @@ import { Theme } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
+    iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
         dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
@@ -53,10 +58,10 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
+export function DatePicker({ onBlur, helperText, error, required, format, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
-export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
+export type DatePickerProps = Omit<DatePickerProps_2<Date, false>, "renderInput"> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;
@@ -89,7 +94,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
-export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
+export function DropdownButton({ options, onClick, icon, disabled, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DropdownButtonOption = {
@@ -98,7 +103,7 @@ export type DropdownButtonOption = {
 };
 
 // @public
-export type DropdownButtonProps = ButtonProps & {
+export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
     options?: DropdownButtonOption[];
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
@@ -106,6 +111,18 @@ export type DropdownButtonProps = ButtonProps & {
 
 // @public
 export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordion(props: AccordionProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionActions(props: AccordionActionsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
@@ -137,7 +154,7 @@ export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void;
     placeholder?: string | undefined;
     variant?: Variant | undefined;
-    children?: ReactNode | undefined;
+    children: ReactNode;
 };
 
 // @public

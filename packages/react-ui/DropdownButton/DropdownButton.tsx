@@ -14,7 +14,7 @@ export type DropdownButtonOption = {
  * The props of the {@link DropdownButton} component.
  * @public
  */
-export type DropdownButtonProps = ButtonProps & {
+export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
   options?: DropdownButtonOption[];
   icon?: ReactElement;
   onClick?: (event: any, value: any) => void;
@@ -27,7 +27,7 @@ export type DropdownButtonProps = ButtonProps & {
  * @public
  */
 export function DropdownButton({
-  options, onClick, icon, ...rest
+  options, onClick, icon, disabled, ...rest
 }: DropdownButtonProps) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ export function DropdownButton({
           {...rest}
           aria-describedby={id}
           onClick={handleButtonClick}
-          disabled={!options?.length}
+          disabled={disabled || !options?.length}
         >
           {icon}
         </IconButton>
@@ -69,7 +69,7 @@ export function DropdownButton({
           {...rest}
           aria-describedby={id}
           onClick={handleButtonClick}
-          disabled={!options?.length}
+          disabled={disabled || !options?.length}
         />
       )}
       <Popover

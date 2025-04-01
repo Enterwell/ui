@@ -1,3 +1,5 @@
+'use client';
+
 import { PageDrawer } from '@enterwell/react-ui';
 import { useState } from 'react';
 
