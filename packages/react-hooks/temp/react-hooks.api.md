@@ -42,7 +42,7 @@ export type UsePromiseResult<T> = {
 };
 
 // @public
-export function useResizeObserver(callback: (element: any, entry: ResizeObserverEntry) => void): react.MutableRefObject<null>;
+export function useResizeObserver<T extends Element>(callback: (element: any, entry: ResizeObserverEntry) => void): react.RefObject<T | null>;
 
 // (No @packageDocumentation comment for this package)
 
