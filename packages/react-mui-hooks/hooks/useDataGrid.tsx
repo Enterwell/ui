@@ -36,11 +36,13 @@ import {
     type GridLocaleText,
     type GridRowScrollEndParams,
     type GridDensity,
-    type UncapitalizedGridProSlotsComponent,
     type GridFilterModel,
     type GridColumnResizeParams,
     type GridPinnedColumns,
     type GridColumnOrderChangeParams,
+    GridPinnedColumnFields,
+    GridProSlotsComponent,
+    GridColumnHeaderParams,
 } from '@mui/x-data-grid-pro';
 import { useResizeObserver } from '@enterwell/react-hooks';
 import { format } from 'date-fns';
@@ -100,10 +102,6 @@ function Text({ children, width, rowHeight }: PropsWithChildren<{ width?: number
 // TODO: Allow customization
 type CellRendererCustomType = "datetime" | 'enum' | 'actions' | 'date' | 'boolean' | 'html';
 
-type ExtendedGridRenderHeaderParams = Omit<GridCallbackDetails<any>, "colDef"> & {
-    colDef: ExtendedGridColDef
-};
-
 type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unknown, unknown, GridTreeNode>, "colDef"> & {
     colDef: ExtendedGridColDef,
     width?: number
@@ -117,7 +115,6 @@ type ExtendedGridRenderCellParams = Omit<GridCellParams<GridValidRowModel, unkno
 export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
     customType?: CellRendererCustomType
     enum?: { get: (value: any) => { label: string } | undefined },
-    width?: number
 };
 
 /**
@@ -271,7 +268,8 @@ function resolveCustomTypeOperators(column: ExtendedGridColDef): { filterOperato
  * The header renderer.
  * @param props - The props.
  */
-function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
+// GridColumnHeaderParams<R, V, F>
+function headerRenderer({ colDef }: GridColumnHeaderParams<GridValidRowModel, any, any>) {
     return (
         <Typography color="primary" fontWeight={600} noWrap>
             {colDef.headerName}
@@ -280,12 +278,18 @@ function headerRenderer({ colDef }: ExtendedGridRenderHeaderParams) {
 }
 
 /**
+ * The useDataGrid onPage type.
+ * @public
+ */
+export type useDataGridOnPage = (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>;
+
+/**
  * The DataGrid props.
  * @public
  */
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[],
-    onPage: (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{ rows: GridValidRowModel[], totalRowsCount?: number }>,
+    onPage: useDataGridOnPage,
     tableId?: string,
     /**
      * @defaultValue `20`
@@ -318,7 +322,7 @@ export type UseDataGridProps = {
      */
     keepNonExistentRowsSelected?: boolean,
     localeText?: Partial<GridLocaleText>,
-    slots?: Partial<UncapitalizedGridProSlotsComponent>,
+    slots?: Partial<GridProSlotsComponent>,
     slotProps?: GridProSlotProps
 };
 
@@ -598,7 +602,7 @@ export function useDataGrid({
                     flex: undefined,
                     width
                 }
-            };
+            } satisfies ExtendedGridColDef;
         });
 
         // Reorder columns based on saves order (if provided)
@@ -654,7 +658,7 @@ export function useDataGrid({
      * 
      * @param newPinnedColumns The new pinned columns.
      */
-    const handlePinnedColumnsChange = (newPinnedColumns: GridPinnedColumns) => {
+    const handlePinnedColumnsChange = (newPinnedColumns: GridPinnedColumnFields) => {
         if (tableId) {
             localStorage.setItem(`${columnPinningLocalStorageKey}-${tableId}`, JSON.stringify(newPinnedColumns));
         }
@@ -726,13 +730,14 @@ export function useDataGrid({
             checkboxSelection,
             rowSelectionModel: customSelectionModel,
             onRowSelectionModelChange: handleRowSelectionModelChange,
-            slots: {
-                loadingOverlay: LinearProgress,
-                ...slots
-            },
+            slots,
             slotProps: {
-                columnsPanel: {
-                    disableHideAllButton: true
+                columnsManagement: {
+                    disableShowHideToggle: true
+                },
+                loadingOverlay: {
+                    variant: 'linear-progress',
+                    noRowsVariant: 'skeleton'
                 },
                 ...slotProps
             },

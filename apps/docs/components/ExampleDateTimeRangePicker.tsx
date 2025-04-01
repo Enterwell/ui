@@ -1,3 +1,5 @@
+'use client';
+
 import { DateTimeRangePicker } from '@enterwell/react-ui';
 import { useState } from 'react';
 

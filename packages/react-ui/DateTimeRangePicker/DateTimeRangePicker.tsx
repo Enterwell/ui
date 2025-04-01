@@ -1,9 +1,9 @@
 import { Button, Grid, Popover, TextField, useMediaQuery, type Theme } from '@mui/material';
 import { ComponentProps, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { StaticDateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import hrLocale from 'date-fns/locale/hr';
-import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration } from 'date-fns';
+import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFnsV3';
+import { hr } from 'date-fns/locale/hr';
+import { parse, format, isSameDay, startOfDay, endOfDay, startOfYesterday, endOfYesterday, sub, startOfMonth, endOfMonth, intervalToDuration, Duration } from 'date-fns';
 import { TimeInput } from '../TimeInput';
 import { DateTimeRangePickerInput } from './DateTimeRangePickerInput';
 import { Stack } from '@mui/system';
@@ -229,9 +229,6 @@ export function DateTimeRangePicker({
                   fullWidth
                   size="small"
                   label="Od"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
                 <TextField
                   type="date"
@@ -240,9 +237,6 @@ export function DateTimeRangePicker({
                   fullWidth
                   size="small"
                   label="Do"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
                 />
               </Stack>
               {!hideTime && (
@@ -261,19 +255,19 @@ export function DateTimeRangePicker({
                     fullWidth />
                 </Stack>
               )}
-              <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hrLocale}>
+              <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={hr}>
                 <StaticDateRangePicker
                   value={dateValue}
                   onChange={setDateValue}
                   disableFuture
                   displayStaticWrapperAs="desktop"
                   calendars={isDesktop ? 2 : 1}
-                  renderInput={(startProps, endProps) => (
-                    <Stack direction="row" spacing={2}>
-                      <TextField {...startProps} variant="standard" />
-                      <TextField {...endProps} variant="standard" />
-                    </Stack>
-                  )}
+                  // renderInput={(startProps, endProps) => (
+                  //   <Stack direction="row" spacing={2}>
+                  //     <TextField {...startProps} variant="standard" />
+                  //     <TextField {...endProps} variant="standard" />
+                  //   </Stack>
+                  // )}
                 />
               </LocalizationProvider>
             </Stack>

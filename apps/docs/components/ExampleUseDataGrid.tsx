@@ -1,3 +1,5 @@
+'use client';
+
 import { TypedExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { useEffect } from 'react';

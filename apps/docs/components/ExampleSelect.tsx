@@ -1,3 +1,5 @@
+'use client';
+
 import { Select, type SelectItem } from '@enterwell/react-ui';
 import { Box } from '@mui/material';
 import { useState } from 'react';

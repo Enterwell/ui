@@ -1,3 +1,5 @@
+'use client';
+
 import { SearchHeader } from '@enterwell/react-ui';
 
 export function ExampleSearchHeader() {

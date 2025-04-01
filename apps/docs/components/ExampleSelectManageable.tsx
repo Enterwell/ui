@@ -1,3 +1,5 @@
+'use client';
+
 import { Select, type SelectItem } from '@enterwell/react-ui';
 import { Add, Edit } from '@mui/icons-material';
 import { Button, IconButton, Typography } from '@mui/material';

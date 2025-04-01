@@ -1,3 +1,5 @@
+'use client';
+
 import { DatePicker } from '@enterwell/react-ui';
 import { useState } from 'react';
 

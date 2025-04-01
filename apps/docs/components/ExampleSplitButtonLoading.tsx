@@ -1,3 +1,5 @@
+'use client';
+
 import { SplitButton } from '@enterwell/react-ui';
 
 export function ExampleSplitButtonLoading() {
