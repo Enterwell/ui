@@ -9,6 +9,10 @@ on:
             name:
                 required: true
                 type: string
+                description: 'Name of the package directory to publish'
+            packageName:
+                required: true
+                type: string
                 description: 'Name of the package to publish'
         secrets:
             NPM_TOKEN:
