@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.6.0] - 2025-04-01
+### Changed
+- Updated packages
+
 ## [0.5.0] - 2024-01-08
 ### Added
 - [useControllableState] useControllableState hook
