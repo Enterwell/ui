@@ -27,7 +27,7 @@ import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
 import { Theme } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
+import { TypographyVariant } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
@@ -154,7 +154,7 @@ export function SearchHeader({ onSubmit, placeholder, children, variant }: Searc
 export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void;
     placeholder?: string | undefined;
-    variant?: Variant | undefined;
+    variant?: TypographyVariant | undefined;
     children: ReactNode;
 };
 

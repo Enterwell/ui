@@ -8,7 +8,7 @@ const withNextra = nextra({
     ]
   },
   defaultShowCopyCode: true,
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
