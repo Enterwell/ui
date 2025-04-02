@@ -10,6 +10,7 @@
     "Select",
     "SplitButton",
     "TimeInput",
-    "ItemAccordion"
+    "ItemAccordion",
+    "SideNav"
   ]
 }
