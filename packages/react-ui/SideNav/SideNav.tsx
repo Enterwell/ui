@@ -19,12 +19,12 @@ function itemBackgroundImageHighlight(theme: Theme, amount = 0.05) {
  */
 export type SideNavProps = AppBarProps & {
   /**
-   * @default 230px
+   * @defaultValue 230px
    */
   width?: number | string;
 
   /**
-   * @default 65px
+   * @defaultValue 65px
    */
   headerHeight?: number | string;
 
@@ -53,7 +53,7 @@ export function SideNav({ children, sx, width = 230, headerHeight = 65, header, 
         sx={{
           position: 'fixed',
           left: 0,
-          zIndex: (theme) => theme.zIndex.drawer + 1,
+          zIndex: (theme) => theme.zIndex.drawer + 1999,
           borderRadius: 0,
           boxShadow: 'none',
           borderBottom: '1px solid',
@@ -88,17 +88,19 @@ export function SideNav({ children, sx, width = 230, headerHeight = 65, header, 
         open={navOpen}
         variant={isMobile ? 'temporary' : 'permanent'}
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            borderRadius: 0,
-            backgroundImage: 'none',
-            height: {
-              md: '100vh',
-              xs: navOpen ? '100vh' : 0
-            },
-            width: {
-              xs: '100vw',
-              md: width
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: 0,
+              backgroundImage: 'none',
+              height: {
+                md: '100vh',
+                xs: navOpen ? '100vh' : 0
+              },
+              width: {
+                xs: '100vw',
+                md: width
+              }
             }
           }
         }}
@@ -124,6 +126,7 @@ export function SideNav({ children, sx, width = 230, headerHeight = 65, header, 
 type SideNavItemGroupProps = PropsWithChildren<{
   label: string;
   expanded?: boolean;
+  defaultExpanded?: boolean;
 }>;
 
 const SideNavItemGroupContext = createContext({ inGroup: false });
@@ -135,8 +138,8 @@ const SideNavItemGroupContext = createContext({ inGroup: false });
  * @returns The react function component.
  * @public
  */
-export function SideNavItemGroup({ children, label, expanded: controlledExpanded }: SideNavItemGroupProps) {
-  const [expanded, setExpanded] = useControllableState(controlledExpanded, false);
+export function SideNavItemGroup({ children, label, expanded: controlledExpanded, defaultExpanded }: SideNavItemGroupProps) {
+  const [expanded, setExpanded] = useControllableState(controlledExpanded, defaultExpanded ?? false);
   const handleToggleExpand = () => setExpanded(!expanded);
   const theme = useTheme();
 
