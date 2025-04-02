@@ -17,14 +17,17 @@ import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePi
 import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
+import { JSX } from 'react';
 import * as react from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
+import { SxProps } from '@mui/material';
 import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
+import { Theme } from '@mui/material';
+import { TypographyVariant } from '@mui/material';
 
 // @public
 export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
@@ -120,16 +123,28 @@ export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_ru
 export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     color?: string;
+    bgColor?: string;
     expanded?: boolean;
     height?: number;
     minHeight?: number;
     onChange?: () => void;
     onResize?: (height: number | undefined) => void;
+    slots?: {
+        root?: {
+            sx?: SxProps<Theme>;
+        };
+        summary?: {
+            sx?: SxProps<Theme>;
+        };
+        details?: {
+            sx?: SxProps<Theme>;
+        };
+    };
 };
 
 // @public
@@ -139,7 +154,7 @@ export function SearchHeader({ onSubmit, placeholder, children, variant }: Searc
 export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void;
     placeholder?: string | undefined;
-    variant?: Variant | undefined;
+    variant?: TypographyVariant | undefined;
     children: ReactNode;
 };
 

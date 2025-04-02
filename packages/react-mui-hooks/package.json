@@ -25,25 +25,26 @@
   "devDependencies": {
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
-    "@microsoft/api-extractor": "7.52.1",
-    "@mui/material": "6.4.3",
-    "@mui/x-data-grid-pro": "7.26.0",
-    "@types/node": "22.13.10",
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4",
+    "@microsoft/api-extractor": "7.52.2",
+    "@mui/material": "7.0.1",
+    "@mui/x-data-grid-pro": "7.28.2",
+    "@types/node": "22.13.17",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "date-fns": "4.1.0",
     "eslint-config-custom": "workspace:*",
-    "react": "19.0.0",
+    "react": "19.1.0",
     "rimraf": "6.0.1",
     "tsconfig": "workspace:*",
     "tsup": "8.4.0",
     "typescript": "5.8.2"
   },
   "peerDependencies": {
+    "@enterwell/react-hooks": "^0",
     "@enterwell/react-ui": "^0",
-    "@mui/material": "^6",
-    "@mui/x-data-grid-pro": "^6",
-    "react": "^18",
-    "react-dom": "^18"
+    "@mui/material": "^7",
+    "@mui/x-data-grid-pro": "^7",
+    "react": "^19",
+    "react-dom": "^19"
   }
 }

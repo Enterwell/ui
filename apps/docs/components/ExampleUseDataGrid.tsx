@@ -41,17 +41,19 @@ export function ExampleUseDataGrid() {
         };
     };
 
-    const dataGrid = useDataGrid({
+    const { props: dataGridProps, refreshTable } = useDataGrid({
         tableId: 'example-use-data-grid',
         columns,
         onPage: handleOnPage
     });
 
     useEffect(() => {
-        dataGrid.refreshTable();
+        refreshTable();
     }, []);
 
     return (
-        <DataGridPro autoHeight {...dataGrid.props} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <DataGridPro {...dataGridProps} />
+        </div>
     );
 }

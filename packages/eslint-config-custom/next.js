@@ -8,7 +8,6 @@ const project = resolve(process.cwd(), "tsconfig.json");
  *
  * This config extends the Vercel Engineering Style Guide.
  * For more information, see https://github.com/vercel/style-guide
- *
  */
 
 module.exports = {
@@ -18,7 +17,6 @@ module.exports = {
     "@vercel/style-guide/eslint/browser",
     "@vercel/style-guide/eslint/react",
     "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
   ].map(require.resolve),
   parserOptions: {
     project,
