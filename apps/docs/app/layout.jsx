@@ -8,7 +8,9 @@ import { SlackIcon } from '../components/internal/icons/SlackIcon';
 import Image from 'next/image';
 import { Search } from 'nextra/components'
 import { inter } from '../src/fonts';
-import { ThemeWrapper } from './ThemeWrapperDynamic';
+import { theme } from "../components/theme";
+import { ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 /*
       <>
@@ -128,20 +130,22 @@ export default async function RootLayout({ children }) {
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
       </Head>
       <body className={`${inter.variable} font-sans`}>
-        <ThemeWrapper>
-          <Layout
-            search={<Search />}
-            navbar={navbar}
-            pageMap={await getPageMap()}
-            docsRepositoryBase="https://github.com/enterwell/ui/tree/stage/apps/docs"
-            editLink="Edit this page on GitHub"
-            sidebar={{ defaultMenuCollapseLevel: 1 }}
-            footer={footer}
-          // ...Your additional theme config options
-          >
-            {children}
-          </Layout>
-        </ThemeWrapper>
+        <AppRouterCacheProvider options={{ key: 'css', enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            <Layout
+              search={<Search />}
+              navbar={navbar}
+              pageMap={await getPageMap()}
+              docsRepositoryBase="https://github.com/enterwell/ui/tree/stage/apps/docs"
+              editLink="Edit this page on GitHub"
+              sidebar={{ defaultMenuCollapseLevel: 1 }}
+              footer={footer}
+            // ...Your additional theme config options
+            >
+              {children}
+            </Layout>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   )
