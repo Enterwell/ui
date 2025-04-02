@@ -1,7 +1,7 @@
 {
   "name": "@enterwell/react-ui",
   "description": "Enterwell's React UI component library.",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "type": "module",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
