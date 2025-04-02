@@ -1,3 +1,5 @@
+'use client';
+
 import { TypedExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { useEffect } from 'react';
@@ -39,16 +41,19 @@ export function ExampleUseDataGrid() {
         };
     };
 
-    const dataGrid = useDataGrid({
+    const { props: dataGridProps, refreshTable } = useDataGrid({
+        tableId: 'example-use-data-grid',
         columns,
         onPage: handleOnPage
     });
 
     useEffect(() => {
-        dataGrid.filterChanged();
+        refreshTable();
     }, []);
 
     return (
-        <DataGridPro autoHeight {...dataGrid.props} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <DataGridPro {...dataGridProps} />
+        </div>
     );
 }

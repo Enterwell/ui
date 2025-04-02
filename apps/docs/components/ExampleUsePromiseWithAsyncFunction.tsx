@@ -1,3 +1,5 @@
+'use client';
+
 import { usePromise } from '@enterwell/react-hooks';
 
 const getData = async () => {

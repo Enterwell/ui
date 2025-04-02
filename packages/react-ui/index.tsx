@@ -2,6 +2,7 @@
 
 // component exports
 export * from "./SideNav";
+export * from "./ItemAccordion";
 export * from "./Select";
 export * from "./SplitButton";
 export * from "./DatePicker";

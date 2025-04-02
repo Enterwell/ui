@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.15.0] - 2025-04-01
+### Changed
+- Updated MUI to v6
+
+## [0.14.1] - 2024-02-05
+### Fixed
+- [DropdownButton] Properly disabling the button if the disable prop is passed in
+
+## [0.14.0] - 2024-01-26
+### Changed
+- [Select] The way list decorators are injected
+
+## [0.13.0] - 2024-01-19
+### Added
+- [ConfirmButton] `iconButton` optional prop
+
+### Fixed
+- [DropdownButton] `onClick` prop type
+
+## [0.12.0] - 2024-01-08
+### Added
+- [ItemAccordion] ItemAccordion component
+
 ## [0.11.0] - 2024-01-04
 ### Changed
 - [SearchHeader] Made `children` prop required

@@ -1,3 +1,5 @@
+'use client';
+
 import { DropdownButton } from '@enterwell/react-ui';
 import { Save } from '@mui/icons-material';
 
@@ -20,7 +22,8 @@ export function ExampleDropdownButton() {
                 options={[
                     { label: 'Option 1', value: 'option1' },
                     { label: 'Option 2', value: 'option2' },
-                ]}>
+                ]}
+            >
                 Export
             </DropdownButton>
             {/* // @highlight-end */}

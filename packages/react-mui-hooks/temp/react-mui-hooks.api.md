@@ -12,10 +12,10 @@ import { GridDensity } from '@mui/x-data-grid-pro';
 import { GridFilterModel } from '@mui/x-data-grid-pro';
 import { GridLocaleText } from '@mui/x-data-grid-pro';
 import { GridProSlotProps } from '@mui/x-data-grid-pro/models/gridProSlotProps';
+import { GridProSlotsComponent } from '@mui/x-data-grid-pro';
 import { GridSortItem } from '@mui/x-data-grid-pro';
 import { GridSortModel } from '@mui/x-data-grid-pro';
 import { GridValidRowModel } from '@mui/x-data-grid-pro';
-import { UncapitalizedGridProSlotsComponent } from '@mui/x-data-grid-pro';
 
 // @public
 export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
@@ -25,7 +25,6 @@ export type ExtendedGridColDef = GridColDef<GridValidRowModel> & {
             label: string;
         } | undefined;
     };
-    width?: number;
 };
 
 // @public
@@ -47,12 +46,15 @@ export type TypedSortModel<T> = (GridSortItem & {
 export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, density, selection, checkboxSelection, enableColumnFilters, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText, slots, slotProps }: UseDataGridProps): UseDataGridResponse;
 
 // @public
+export type useDataGridOnPage = (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{
+    rows: GridValidRowModel[];
+    totalRowsCount?: number;
+}>;
+
+// @public
 export type UseDataGridProps = {
     columns: ExtendedGridColDef[];
-    onPage: (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{
-        rows: GridValidRowModel[];
-        totalRowsCount?: number;
-    }>;
+    onPage: useDataGridOnPage;
     tableId?: string;
     pageSize?: number;
     columnVisibilityModel?: GridColumnVisibilityModel;
@@ -67,14 +69,14 @@ export type UseDataGridProps = {
     infiniteLoading?: boolean;
     keepNonExistentRowsSelected?: boolean;
     localeText?: Partial<GridLocaleText>;
-    slots?: Partial<UncapitalizedGridProSlotsComponent>;
+    slots?: Partial<GridProSlotsComponent>;
     slotProps?: GridProSlotProps;
 };
 
 // @public
 export type UseDataGridResponse = {
     props: ComponentPropsWithRef<typeof DataGridPro>;
-    filterChanged: (keepPage?: boolean) => void;
+    refreshTable: (keepPage?: boolean) => void;
     isSelectAll: boolean;
     setIsSelectAll: (value: boolean) => void;
     isAnySelected: boolean;

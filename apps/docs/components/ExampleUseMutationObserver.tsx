@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { useMutationObserver } from '@enterwell/react-hooks';
 
@@ -9,11 +11,13 @@ export function ExampleUseMutationObserver() {
         document.querySelector('html'),
         (mutations) => {
             setMutations((curr) => [...curr, ...mutations]);
-        }, {
+        },
+        {
             attributes: true,
             characterData: true,
             childList: true,
-        });
+        }
+    );
     // @highlight-end
 
     return (

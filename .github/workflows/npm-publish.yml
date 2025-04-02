@@ -15,18 +15,21 @@ jobs:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
             name: 'react-ui'
+            packageName: '@enterwell/react-ui'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     publish_hooks:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
             name: 'react-hooks'
+            packageName: '@enterwell/react-hooks'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     publish_mui_hooks:
         uses: './.github/workflows/npm-publish-reusable.yml'
         with:
             name: 'react-mui-hooks'
+            packageName: '@enterwell/react-mui-hooks'
         secrets: 
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         

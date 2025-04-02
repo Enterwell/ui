@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ConfirmDialog } from '@enterwell/react-ui';
 import { Button } from '@mui/material';

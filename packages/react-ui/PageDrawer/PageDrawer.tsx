@@ -6,8 +6,14 @@ import {
   type TouchEvent as ReactTouchEvent,
   type MouseEvent as ReactMouseEvent
 } from 'react';
-import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
-import { Box } from '@mui/system';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  type SxProps,
+  type Theme
+} from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 
 const isScrollable = (node: Element) => {
@@ -37,12 +43,33 @@ const getScrollParent = (node: Element): Element => {
  * @public
  */
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * @defaultValue `primary.dark`
+   */
   color?: string;
+  /**
+   * @defaultValue `background.default`
+   */
+  bgColor?: string;
   expanded?: boolean;
   height?: number;
+  /**
+   * @defaultValue `50`
+   */
   minHeight?: number;
   onChange?: () => void;
   onResize?: (height: number | undefined) => void;
+  slots?: {
+    root?: {
+      sx?: SxProps<Theme>;
+    },
+    summary?: {
+      sx?: SxProps<Theme>;
+    },
+    details?: {
+      sx?: SxProps<Theme>;
+    }
+  }
 };
 
 /**
@@ -59,7 +86,9 @@ export function PageDrawer({
   height, 
   minHeight = 50, 
   onResize,
-  color, 
+  color = 'primary.dark', 
+  bgColor = 'background.default',
+  slots = {},
   ...rest 
 }: PageDrawerProps) {
   const isResizingRef = useRef(false);
@@ -167,7 +196,8 @@ export function PageDrawer({
         border: 'none',
         '&::before': {
           display: 'none'
-        }
+        },
+        ...(slots.root?.sx ?? {})
       }}
       expanded={realExpanded}
       onChange={handleOnChange}
@@ -183,7 +213,7 @@ export function PageDrawer({
           minHeight: 32,
           height: 32,
           '.MuiAccordionSummary-expandIconWrapper': {
-            bgcolor: color ?? 'primary.dark',
+            bgcolor: color,
             color: 'primary.main',
             borderRadius: 1
           },
@@ -199,15 +229,16 @@ export function PageDrawer({
             left: 0,
             right: 0,
             bottom: 0,
-            bgcolor: 'background.default'
-          }
+            bgcolor: bgColor
+          },
+          ...(slots.summary?.sx ?? {})
         }}
       >
         <Box
           sx={{
             borderTop: '1px solid',
             borderBottom: '1px solid',
-            borderColor: color ?? 'primary.dark',
+            borderColor: color,
             height: 3,
             width: '100%',
             position: 'absolute',
@@ -219,10 +250,11 @@ export function PageDrawer({
       <AccordionDetails
         ref={contentRef}
         sx={{
-          bgcolor: 'background.default',
+          bgcolor: bgColor,
           overflowX: 'hidden',
           overflowY: 'auto',
           height: height ? `${height}px` : undefined,
+          ...(slots.details?.sx ?? {})
         }}
       >
         {children}

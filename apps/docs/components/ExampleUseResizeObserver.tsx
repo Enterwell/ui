@@ -1,4 +1,6 @@
-import { useRef, useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { useResizeObserver } from '@enterwell/react-hooks';
 
 export function ExampleUseResizeObserver() {

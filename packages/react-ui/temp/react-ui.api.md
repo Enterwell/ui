@@ -4,7 +4,10 @@
 
 ```ts
 
-import { AppBarProps } from '@mui/material';
+import { AccordionActionsProps } from '@mui/material/AccordionActions';
+import { AccordionDetailsProps } from '@mui/material/AccordionDetails';
+import { AccordionProps } from '@mui/material/Accordion';
+import { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
@@ -14,21 +17,24 @@ import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePi
 import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
-import { PropsWithChildren } from 'react';
+import { JSX } from 'react';
 import * as react from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
+import { SxProps } from '@mui/material';
 import { SyntheticEvent } from 'react';
 import { TextField } from '@mui/material';
 import { TextFieldProps } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
+import { Theme } from '@mui/material';
+import { TypographyVariant } from '@mui/material';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
+export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
+    iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
         dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
@@ -53,10 +59,10 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onBlur, helperText, error, required, inputFormat, InputProps, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
+export function DatePicker({ onBlur, helperText, error, required, format, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
 
 // @public
-export type DatePickerProps = Omit<DatePickerProps_2<Date, Date>, "renderInput"> & {
+export type DatePickerProps = Omit<DatePickerProps_2<Date, false>, "renderInput"> & {
     helperText?: string;
     error?: boolean;
     required?: boolean;
@@ -89,7 +95,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
-export function DropdownButton({ options, onClick, icon, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
+export function DropdownButton({ options, onClick, icon, disabled, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type DropdownButtonOption = {
@@ -98,23 +104,47 @@ export type DropdownButtonOption = {
 };
 
 // @public
-export type DropdownButtonProps = ButtonProps & {
+export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
     options?: DropdownButtonOption[];
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
 };
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+export function ItemAccordion(props: AccordionProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionActions(props: AccordionActionsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
     color?: string;
+    bgColor?: string;
     expanded?: boolean;
     height?: number;
     minHeight?: number;
     onChange?: () => void;
     onResize?: (height: number | undefined) => void;
+    slots?: {
+        root?: {
+            sx?: SxProps<Theme>;
+        };
+        summary?: {
+            sx?: SxProps<Theme>;
+        };
+        details?: {
+            sx?: SxProps<Theme>;
+        };
+    };
 };
 
 // @public
@@ -124,7 +154,7 @@ export function SearchHeader({ onSubmit, placeholder, children, variant }: Searc
 export type SearchHeaderProps = {
     onSubmit?: (searchTerm: string) => void;
     placeholder?: string | undefined;
-    variant?: Variant | undefined;
+    variant?: TypographyVariant | undefined;
     children: ReactNode;
 };
 
@@ -160,32 +190,6 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
     listStartDecorator?: ReactNode;
     listEndDecorator?: ReactNode;
-};
-
-// @public
-export function SideNav({ children, sx, width, headerHeight, header, endAdorner, ...rest }: SideNavProps): react_jsx_runtime.JSX.Element;
-
-// @public
-export function SideNavItem({ children, href, selected, icon }: SideNavItemProps): react_jsx_runtime.JSX.Element;
-
-// Warning: (ae-forgotten-export) The symbol "SideNavItemGroupProps" needs to be exported by the entry point index.d.ts
-//
-// @public
-export function SideNavItemGroup({ children, label, expanded: controlledExpanded }: SideNavItemGroupProps): react_jsx_runtime.JSX.Element;
-
-// @public
-export type SideNavItemProps = PropsWithChildren<{
-    href: string;
-    icon?: ReactNode;
-    selected?: boolean;
-}>;
-
-// @public
-export type SideNavProps = AppBarProps & {
-    width?: number | string;
-    headerHeight?: number | string;
-    header?: ReactNode;
-    endAdorner?: ReactNode;
 };
 
 // @public

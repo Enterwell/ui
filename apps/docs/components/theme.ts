@@ -1,3 +1,5 @@
+'use client';
+
 import { createTheme } from "@mui/material";
 import { Roboto } from 'next/font/google';
 
@@ -7,15 +9,9 @@ const roboto = Roboto({
     display: 'swap',
 });
 
-export const theme = (mode: string | undefined) => createTheme({
-    palette: {
-        mode: mode === 'light' ? 'light' : 'dark',
-        primary: {
-            main: '#eeeeee',
-        },
-        secondary: {
-            main: '#b5b5b5',
-        }
+export const theme = createTheme({
+    colorSchemes: {
+        dark: true
     },
     typography: {
         fontFamily: roboto.style.fontFamily,

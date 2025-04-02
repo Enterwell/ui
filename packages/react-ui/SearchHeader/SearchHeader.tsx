@@ -1,8 +1,8 @@
 import React, { ReactNode, type MouseEvent } from 'react';
 import {
-    Typography, Stack, IconButton, InputBase, useTheme
+    Typography, Stack, IconButton, InputBase, useTheme,
+    type TypographyVariant
 } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
 import { Search, Clear } from '@mui/icons-material';
 
 /**
@@ -15,7 +15,7 @@ export type SearchHeaderProps = {
     /**
      * @defaultValue `h1`
      */
-    variant?: Variant | undefined,
+    variant?: TypographyVariant | undefined,
     children: ReactNode
 }
 
@@ -29,7 +29,7 @@ export function SearchHeader({
     onSubmit,
     placeholder,
     children,
-    variant = 'h1'
+    variant = "h1"
 }: SearchHeaderProps) {
     const [isSearching, setIsSearching] = React.useState(false);
     const [searchTerm, setSearchTerm] = React.useState('');
@@ -65,7 +65,7 @@ export function SearchHeader({
         }
     };
 
-    const fontSize = variant ? theme.typography[variant as Variant].fontSize : undefined;
+    const fontSize = variant ? theme.typography[variant].fontSize : undefined;
 
     return isSearching ? (
         <InputBase
