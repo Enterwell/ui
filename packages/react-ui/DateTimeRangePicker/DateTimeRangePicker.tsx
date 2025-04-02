@@ -200,7 +200,7 @@ export function DateTimeRangePicker({
           }}
           justifyContent="center"
         >
-          <Grid item md={3}>
+          <Grid size={{ xs: 12, md: 3 }}>
             <Stack spacing={1} sx={{ p: 2 }}>
               <Stack direction="row" spacing={1}>
                 <Button variant="contained" fullWidth onClick={handleAccept}>Potvrdi</Button>
@@ -219,7 +219,7 @@ export function DateTimeRangePicker({
               ))}
             </Stack>
           </Grid>
-          <Grid item md={9} sx={{ maxWidth: '662px', overflow: 'hidden' }}>
+          <Grid size={{ xs: 12, md: 9 }} sx={{ maxWidth: '662px', overflow: 'hidden' }}>
             <Stack justifyContent="center">
               <Stack direction="row" spacing={1} sx={{ p: 2, pb: 1 }}>
                 <TextField

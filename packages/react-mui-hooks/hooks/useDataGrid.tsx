@@ -182,7 +182,7 @@ function CellRenderer({
         return (
             <Grid container alignItems="center" justifyContent="space-evenly" wrap="nowrap">
                 {Object.keys(value).map((key, index) => (
-                    <Grid key={key} item>
+                    <Grid key={key}>
                         <Button variant={index <= 0 ? 'contained' : 'outlined'} onClick={(e) => value[key](e)}>{key}</Button>
                     </Grid>
                 ))}
@@ -568,7 +568,7 @@ export function useDataGrid({
     };
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < theme.breakpoints.values.sm);
-    const resizeRef = useResizeObserver(() => {
+    const resizeRef = useResizeObserver<HTMLDivElement>(() => {
         setIsMobile(window.innerWidth < theme.breakpoints.values.sm);
     });
 
