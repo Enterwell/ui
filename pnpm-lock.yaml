@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@turbo/gen':
         specifier: 2.4.4
-        version: 2.4.4(@types/node@22.13.17)(typescript@5.8.2)
+        version: 2.4.4(@types/node@22.14.0)(typescript@5.8.2)
       eslint:
         specifier: 9.23.0
         version: 9.23.0(jiti@2.4.2)
@@ -106,8 +106,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       '@types/node':
-        specifier: 22.13.17
-        version: 22.13.17
+        specifier: 22.14.0
+        version: 22.14.0
       '@types/react':
         specifier: 19.1.0
         version: 19.1.0
@@ -150,10 +150,10 @@ importers:
     devDependencies:
       '@microsoft/api-extractor':
         specifier: 7.52.2
-        version: 7.52.2(@types/node@22.13.17)
+        version: 7.52.2(@types/node@22.14.0)
       '@types/node':
-        specifier: 22.13.17
-        version: 22.13.17
+        specifier: 22.14.0
+        version: 22.14.0
       '@types/react':
         specifier: 19.1.0
         version: 19.1.0
@@ -174,7 +174,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.13.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
+        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.14.0))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -193,7 +193,7 @@ importers:
         version: link:../react-ui
       '@microsoft/api-extractor':
         specifier: 7.52.2
-        version: 7.52.2(@types/node@22.13.17)
+        version: 7.52.2(@types/node@22.14.0)
       '@mui/material':
         specifier: 7.0.1
         version: 7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -201,8 +201,8 @@ importers:
         specifier: 7.28.2
         version: 7.28.2(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@mui/material@7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mui/system@7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@types/node':
-        specifier: 22.13.17
-        version: 22.13.17
+        specifier: 22.14.0
+        version: 22.14.0
       '@types/react':
         specifier: 19.1.0
         version: 19.1.0
@@ -226,7 +226,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.13.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
+        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.14.0))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -248,7 +248,7 @@ importers:
         version: link:../react-hooks
       '@microsoft/api-extractor':
         specifier: 7.52.2
-        version: 7.52.2(@types/node@22.13.17)
+        version: 7.52.2(@types/node@22.14.0)
       '@mui/icons-material':
         specifier: 7.0.1
         version: 7.0.1(@mui/material@7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.0)(react@19.1.0)
@@ -265,8 +265,8 @@ importers:
         specifier: 7.28.2
         version: 7.28.2(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@mui/material@7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mui/system@7.0.1(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(react@19.1.0))(@types/react@19.1.0)(date-fns@4.1.0)(dayjs@1.11.13)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@types/node':
-        specifier: 22.13.17
-        version: 22.13.17
+        specifier: 22.14.0
+        version: 22.14.0
       '@types/react':
         specifier: 19.1.0
         version: 19.1.0
@@ -290,7 +290,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.13.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
+        version: 8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.14.0))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -1830,8 +1830,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@22.13.17':
-    resolution: {integrity: sha512-nAJuQXoyPj04uLgu+obZcSmsfOenUg6DxPKogeUy6yNCFwWaj5sBF8/G/pNo8EtBJjAfSVgfIlugR/BCOleO+g==}
+  '@types/node@22.14.0':
+    resolution: {integrity: sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -5417,8 +5417,8 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  undici-types@6.20.0:
-    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -6305,23 +6305,23 @@ snapshots:
     dependencies:
       langium: 3.0.0
 
-  '@microsoft/api-extractor-model@7.30.5(@types/node@22.13.17)':
+  '@microsoft/api-extractor-model@7.30.5(@types/node@22.14.0)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.13.17)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.14.0)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.52.2(@types/node@22.13.17)':
+  '@microsoft/api-extractor@7.52.2(@types/node@22.14.0)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.30.5(@types/node@22.13.17)
+      '@microsoft/api-extractor-model': 7.30.5(@types/node@22.14.0)
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.13.17)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.14.0)
       '@rushstack/rig-package': 0.5.3
-      '@rushstack/terminal': 0.15.2(@types/node@22.13.17)
-      '@rushstack/ts-command-line': 4.23.7(@types/node@22.13.17)
+      '@rushstack/terminal': 0.15.2(@types/node@22.14.0)
+      '@rushstack/ts-command-line': 4.23.7(@types/node@22.14.0)
       lodash: 4.17.21
       minimatch: 3.0.8
       resolve: 1.22.10
@@ -6808,7 +6808,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@rushstack/node-core-library@5.13.0(@types/node@22.13.17)':
+  '@rushstack/node-core-library@5.13.0(@types/node@22.14.0)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -6819,23 +6819,23 @@ snapshots:
       resolve: 1.22.10
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 22.13.17
+      '@types/node': 22.14.0
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.10
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.15.2(@types/node@22.13.17)':
+  '@rushstack/terminal@0.15.2(@types/node@22.14.0)':
     dependencies:
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.13.17)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.14.0)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 22.13.17
+      '@types/node': 22.14.0
 
-  '@rushstack/ts-command-line@4.23.7(@types/node@22.13.17)':
+  '@rushstack/ts-command-line@4.23.7(@types/node@22.14.0)':
     dependencies:
-      '@rushstack/terminal': 0.15.2(@types/node@22.13.17)
+      '@rushstack/terminal': 0.15.2(@types/node@22.14.0)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -6989,7 +6989,7 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
-  '@turbo/gen@2.4.4(@types/node@22.13.17)(typescript@5.8.2)':
+  '@turbo/gen@2.4.4(@types/node@22.14.0)(typescript@5.8.2)':
     dependencies:
       '@turbo/workspaces': 2.4.4
       commander: 10.0.1
@@ -6999,7 +6999,7 @@ snapshots:
       node-plop: 0.26.3
       picocolors: 1.0.1
       proxy-agent: 6.5.0
-      ts-node: 10.9.2(@types/node@22.13.17)(typescript@5.8.2)
+      ts-node: 10.9.2(@types/node@22.14.0)(typescript@5.8.2)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
@@ -7170,7 +7170,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.13.17
+      '@types/node': 22.14.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -7201,9 +7201,9 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@22.13.17':
+  '@types/node@22.14.0':
     dependencies:
-      undici-types: 6.20.0
+      undici-types: 6.21.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -7227,7 +7227,7 @@ snapshots:
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 22.13.17
+      '@types/node': 22.14.0
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -11660,14 +11660,14 @@ snapshots:
       '@ts-morph/common': 0.26.1
       code-block-writer: 13.0.3
 
-  ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2):
+  ts-node@10.9.2(@types/node@22.14.0)(typescript@5.8.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.13.17
+      '@types/node': 22.14.0
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -11689,7 +11689,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.13.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0):
+  tsup@8.4.0(@microsoft/api-extractor@7.52.2(@types/node@22.14.0))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.1)
       cac: 6.7.14
@@ -11708,7 +11708,7 @@ snapshots:
       tinyglobby: 0.2.12
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.52.2(@types/node@22.13.17)
+      '@microsoft/api-extractor': 7.52.2(@types/node@22.14.0)
       postcss: 8.5.3
       typescript: 5.8.2
     transitivePeerDependencies:
@@ -11818,7 +11818,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  undici-types@6.20.0: {}
+  undici-types@6.21.0: {}
 
   unified@11.0.5:
     dependencies:
