@@ -51,6 +51,8 @@ pnpm build
 
 ### Develop
 
+**Note:** Run `pnpm build` before `pnpm dev` to ensure that all packages have required files built and ready.
+
 To develop all apps and packages, run the following command:
 
 ```bash
