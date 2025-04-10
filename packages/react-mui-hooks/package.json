@@ -30,7 +30,7 @@
     "@mui/x-data-grid-pro": "7.28.2",
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/react-dom": "19.1.2",
     "date-fns": "4.1.0",
     "eslint-config-custom": "workspace:*",
     "react": "19.1.0",
