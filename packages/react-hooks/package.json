@@ -23,7 +23,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.52.2",
+    "@microsoft/api-extractor": "7.52.3",
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
