@@ -203,7 +203,7 @@ export function SideNavItem({ children, href, selected, icon }: SideNavItemProps
 // Warning: (ae-forgotten-export) The symbol "SideNavItemGroupProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function SideNavItemGroup({ children, label, expanded: controlledExpanded }: SideNavItemGroupProps): react_jsx_runtime.JSX.Element;
+export function SideNavItemGroup({ children, label, expanded: controlledExpanded, defaultExpanded }: SideNavItemGroupProps): react_jsx_runtime.JSX.Element;
 
 // @public
 export type SideNavItemProps = PropsWithChildren<{
