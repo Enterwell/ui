@@ -8,6 +8,7 @@ import { AccordionActionsProps } from '@mui/material/AccordionActions';
 import { AccordionDetailsProps } from '@mui/material/AccordionDetails';
 import { AccordionProps } from '@mui/material/Accordion';
 import { AccordionSummaryProps } from '@mui/material/AccordionSummary';
+import { AppBarProps } from '@mui/material';
 import { AutocompleteProps } from '@mui/material/Autocomplete';
 import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
@@ -18,6 +19,7 @@ import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { HTMLAttributes } from 'react';
 import { JSX } from 'react';
+import { PropsWithChildren } from 'react';
 import * as react from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactElement } from 'react';
@@ -190,6 +192,32 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
     onBlur?: (event: FocusEvent_2<HTMLInputElement | HTMLTextAreaElement>) => void;
     listStartDecorator?: ReactNode;
     listEndDecorator?: ReactNode;
+};
+
+// @public
+export function SideNav({ children, sx, width, headerHeight, header, endAdorner, ...rest }: SideNavProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export function SideNavItem({ children, href, selected, icon }: SideNavItemProps): react_jsx_runtime.JSX.Element;
+
+// Warning: (ae-forgotten-export) The symbol "SideNavItemGroupProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function SideNavItemGroup({ children, label, expanded: controlledExpanded, defaultExpanded }: SideNavItemGroupProps): react_jsx_runtime.JSX.Element;
+
+// @public
+export type SideNavItemProps = PropsWithChildren<{
+    href: string;
+    icon?: ReactNode;
+    selected?: boolean;
+}>;
+
+// @public
+export type SideNavProps = AppBarProps & {
+    width?: number | string;
+    headerHeight?: number | string;
+    header?: ReactNode;
+    endAdorner?: ReactNode;
 };
 
 // @public
