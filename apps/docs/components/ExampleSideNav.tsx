@@ -4,16 +4,21 @@ import { SideNav, SideNavItem, SideNavItemGroup } from '@enterwell/react-ui';
 import { Button } from '@mui/material';
 import { Stack } from '@mui/system';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export function ExampleSideNav() {
+    const router = useRouter();
     const params = useSearchParams();
     const selectedItem = params.get('item');
     const show = params.get('show') === 'true';
     function setShow(show: boolean) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('show', show.toString());
-        window.history.pushState({}, '', url.toString());
+        const query = new URLSearchParams(Array.from(params.entries()));
+        if (!show)
+            query.delete('show');
+        else query.set('show', show.toString());
+
+        const currentHash = window.location.hash;
+        router.push(`?${query.toString()}${currentHash}`);
     }
 
     return (
