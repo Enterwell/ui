@@ -33,7 +33,7 @@
     "@mui/system": "7.0.2",
     "@mui/x-date-pickers": "7.28.3",
     "@mui/x-date-pickers-pro": "7.28.3",
-    "@types/node": "22.14.0",
+    "@types/node": "22.14.1",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
     "date-fns": "4.1.0",
