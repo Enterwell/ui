@@ -21,7 +21,7 @@ export type SideNavItemProps = PropsWithChildren<{
  */
 export function SideNavItem({ children, href, selected, icon }: SideNavItemProps) {
     const groupContext = useContext(SideNavItemGroupContext);
-    const child = groupContext?.inGroup;
+    const isInGroup = groupContext?.inGroup;
     const theme = useTheme();
 
     return (
@@ -38,16 +38,16 @@ export function SideNavItem({ children, href, selected, icon }: SideNavItemProps
                     color: 'primary.main',
                     fill: 'primary.main',
                     backgroundColor: 'transparent',
-                    backgroundImage: child && selected ? itemBackgroundImageHighlight(theme) : 'none',
+                    backgroundImage: isInGroup && selected ? itemBackgroundImageHighlight(theme) : 'none',
                     "&:hover": {
                         backgroundColor: 'transparent',
-                        backgroundImage: child ? itemBackgroundImageHighlight(theme) : 'none',
+                        backgroundImage: isInGroup ? itemBackgroundImageHighlight(theme) : 'none',
                     }
                 },
-                opacity: child ? itemHoverOpacity : itemOpacity,
+                opacity: isInGroup ? itemHoverOpacity : itemOpacity,
                 ':hover': {
                     opacity: itemHoverOpacity,
-                    backgroundColor: child ? itemBackgroundImageHighlight(theme) : 'transparent'
+                    backgroundColor: isInGroup ? itemBackgroundImageHighlight(theme) : 'transparent'
                 }
             }}>
             {icon && (
