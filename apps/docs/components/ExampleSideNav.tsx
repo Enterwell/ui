@@ -8,17 +8,15 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 export function ExampleSideNav() {
     const router = useRouter();
-    const params = useSearchParams();
-    const selectedItem = params.get('item');
-    const show = params.get('show') === 'true';
+    const searchParams = useSearchParams();
+    const selectedItem = searchParams.get('item');
+    const show = searchParams.get('show') === 'true';
     function setShow(show: boolean) {
-        const query = new URLSearchParams(Array.from(params.entries()));
+        const query = new URLSearchParams(Array.from(searchParams.entries()));
         if (!show)
             query.delete('show');
         else query.set('show', show.toString());
-
-        const currentHash = window.location.hash;
-        router.push(`?${query.toString()}${currentHash}`);
+        router.push(`?${query.toString()}`);
     }
 
     return (
