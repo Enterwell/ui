@@ -11,11 +11,11 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "@turbo/gen": "2.5.0",
+    "@turbo/gen": "2.5.4",
     "eslint": "9.24.0",
     "just-camel-case": "6.2.0",
     "just-pascal-case": "3.2.0",
     "tsconfig": "workspace:*",
-    "turbo": "2.5.0"
+    "turbo": "2.5.4"
   }
 }
