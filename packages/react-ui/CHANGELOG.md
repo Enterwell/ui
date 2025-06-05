@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.17.0] - 2025-06-05
+### Added
+- [SideNav] Component
+
 ## [0.16.0] - 2025-04-02
 ### Added
 - [PageDrawer] `bgColor` and `slots` optional props
