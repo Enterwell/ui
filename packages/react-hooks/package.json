@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.52.3",
-    "@types/node": "22.14.1",
+    "@types/node": "22.15.32",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
     "eslint-config-custom": "workspace:*",
