@@ -22,7 +22,7 @@
   "homepage": "https://github.com/enterwell/ui#readme",
   "dependencies": {
     "@emotion/react": "11.14.0",
-    "@emotion/styled": "11.14.0",
+    "@emotion/styled": "11.14.1",
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-mui-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
