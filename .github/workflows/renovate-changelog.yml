@@ -26,7 +26,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Get list of files changed in the PR
-          CHANGED_FILES=$(gh pr diff ${{ github.event.pull_request.number }} --name-only)
+          CHANGED_FILES=$(gh pr diff ${{ github.event.pull_request.number }} --name-only || true)
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found"
+            exit 0
+          fi
 
           # Extract unique package names from changed package.json files
           PACKAGES=$(echo "$CHANGED_FILES" | grep -E '^packages/[^/]+/package\.json$' | sed 's|^packages/\([^/]*\)/package\.json$|\1|' || true)
