@@ -43,7 +43,7 @@ export type TypedSortModel<T> = (GridSortItem & {
 })[];
 
 // @public
-export function useDataGrid({ tableId, pageSize, columns, columnVisibilityModel, defaultSort, onPage, onRowClick, rowHeight, density, selection, checkboxSelection, enableColumnFilters, enablePagination, infiniteLoading, keepNonExistentRowsSelected, localeText, slots, slotProps }: UseDataGridProps): UseDataGridResponse;
+export function useDataGrid(input: UseDataGridProps): UseDataGridResponse;
 
 // @public
 export type useDataGridOnPage = (page: number, pageSize: number, sortModel?: GridSortModel, filterModel?: GridFilterModel) => Promise<{
