@@ -39,8 +39,8 @@
     "classix": "2.2.2",
     "comment-parser": "1.4.1",
     "next": "15.3.0",
-    "nextra": "4.3.0-alpha.18",
-    "nextra-theme-docs": "4.2.17",
+    "nextra": "4.6.1",
+    "nextra-theme-docs": "4.6.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwindcss-animate": "1.0.7"
