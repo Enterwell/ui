@@ -27,7 +27,7 @@
     "@enterwell/react-ui": "workspace:*",
     "@microsoft/api-extractor": "7.57.7",
     "@mui/material": "7.3.9",
-    "@mui/x-data-grid-pro": "7.28.3",
+    "@mui/x-data-grid-pro": "8.28.1",
     "@types/node": "22.19.15",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -43,7 +43,7 @@
     "@enterwell/react-hooks": "^0",
     "@enterwell/react-ui": "^0",
     "@mui/material": "^7",
-    "@mui/x-data-grid-pro": "^7",
+    "@mui/x-data-grid-pro": "^7 || ^8.0.0",
     "react": "^19",
     "react-dom": "^19"
   }
