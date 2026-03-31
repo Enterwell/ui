@@ -1,0 +1,56 @@
+name: Renovate Changelog
+
+on:
+  pull_request:
+    types:
+      - "opened"
+      - "synchronize"
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    name: Create changelog entries
+    if: github.event.pull_request.user.login == 'renovate[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Create changelog entries
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get list of files changed in the PR
+          CHANGED_FILES=$(gh pr diff ${{ github.event.pull_request.number }} --name-only || true)
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found"
+            exit 0
+          fi
+
+          # Extract unique package names from changed package.json files
+          PACKAGES=$(echo "$CHANGED_FILES" | grep -E '^packages/[^/]+/package\.json$' | sed 's|^packages/\([^/]*\)/package\.json$|\1|' || true)
+
+          CREATED=false
+          for pkg in $PACKAGES; do
+            # Only create changelog entries for publishable packages (those with .changelog.json)
+            if [ -f "packages/$pkg/.changelog.json" ] && [ ! -f "packages/$pkg/changes/Changed Updated packages" ]; then
+              mkdir -p "packages/$pkg/changes"
+              touch "packages/$pkg/changes/Changed Updated packages"
+              echo "Created changelog entry for $pkg"
+              CREATED=true
+            fi
+          done
+
+          if [ "$CREATED" = true ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add packages/*/changes/*
+            git commit -m "Add changelog entries for dependency updates"
+            git push
+          fi
