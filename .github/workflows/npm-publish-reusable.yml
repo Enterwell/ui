@@ -37,7 +37,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
 
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v6
           with:
             ref: main
             token: ${{ env.GH_TOKEN }}
