@@ -174,7 +174,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.5.1
-        version: 8.5.1(@microsoft/api-extractor@7.57.7(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
+        version: 8.5.1(@microsoft/api-extractor@7.58.8(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -226,7 +226,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.5.1
-        version: 8.5.1(@microsoft/api-extractor@7.57.7(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
+        version: 8.5.1(@microsoft/api-extractor@7.58.8(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -290,7 +290,7 @@ importers:
         version: link:../tsconfig
       tsup:
         specifier: 8.5.1
-        version: 8.5.1(@microsoft/api-extractor@7.57.7(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
+        version: 8.5.1(@microsoft/api-extractor@7.58.8(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -10943,7 +10943,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.5.1(@microsoft/api-extractor@7.57.7(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0):
+  tsup@8.5.1(@microsoft/api-extractor@7.58.8(@types/node@22.19.15))(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.3)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.27.4)
       cac: 6.7.14
@@ -10963,7 +10963,7 @@ snapshots:
       tinyglobby: 0.2.15
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.57.7(@types/node@22.19.15)
+      '@microsoft/api-extractor': 7.58.8(@types/node@22.19.15)
       postcss: 8.5.15
       typescript: 5.9.3
     transitivePeerDependencies:
