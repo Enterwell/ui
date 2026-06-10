@@ -75,8 +75,8 @@ importers:
         specifier: 7.29.4
         version: 7.29.4(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@mui/material@7.3.9(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@mui/system@7.3.9(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(date-fns@4.1.0)(dayjs@1.11.13)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       classix:
-        specifier: 2.2.11
-        version: 2.2.11
+        specifier: 2.2.12
+        version: 2.2.12
       comment-parser:
         specifier: 1.4.7
         version: 1.4.7
@@ -2699,8 +2699,8 @@ packages:
     resolution: {integrity: sha512-cYY9mypksY8NRqgDB1XD1RiJL338v/551niynFTGkZOO2LHuB2OmOYxDIe/ttN9AHwrqdum1360G3ald0W9kCg==}
     engines: {node: '>=8'}
 
-  classix@2.2.11:
-    resolution: {integrity: sha512-+EpXK740jrWJpwA3fi2mfXlaWv9PzjwDzvRdWfnULyoikhkGWudFAfkNKcMp0otmSMxPysHFfA7u0349TnkJaQ==}
+  classix@2.2.12:
+    resolution: {integrity: sha512-8tvvtXV4nPZZt3PduJGUFhU28JYx8kle7cv8O9j8iUXvPoWIDXiGvl2htVOetjxKIp/ahJi9XI0a8ssEcdzCrw==}
 
   clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -7693,7 +7693,7 @@ snapshots:
 
   ci-info@4.2.0: {}
 
-  classix@2.2.11: {}
+  classix@2.2.12: {}
 
   clean-regexp@1.0.0:
     dependencies:
