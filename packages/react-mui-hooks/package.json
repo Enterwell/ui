@@ -25,7 +25,7 @@
   "devDependencies": {
     "@enterwell/react-hooks": "workspace:*",
     "@enterwell/react-ui": "workspace:*",
-    "@microsoft/api-extractor": "7.57.7",
+    "@microsoft/api-extractor": "7.58.8",
     "@mui/material": "7.3.9",
     "@mui/x-data-grid-pro": "7.29.12",
     "@types/node": "22.19.15",
