@@ -27,6 +27,8 @@
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@enterwell/react-hooks": "workspace:*",
+    "@eslint/eslintrc": "3.3.5",
+    "@eslint/js": "9.39.4",
     "@microsoft/api-extractor": "7.58.8",
     "@mui/icons-material": "7.3.11",
     "@mui/material": "7.3.11",
