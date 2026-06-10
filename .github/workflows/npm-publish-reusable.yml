@@ -37,7 +37,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
 
-        - uses: actions/checkout@v6
+        - uses: actions/checkout@v6.0.3
           with:
             ref: main
             token: ${{ env.GH_TOKEN }}
@@ -47,7 +47,7 @@ jobs:
           with:
             version: 'latest'
 
-        - uses: actions/setup-node@v6
+        - uses: actions/setup-node@v6.4.0
           with:
             node-version: "22.22.1"
             cache: "pnpm"
@@ -59,7 +59,7 @@ jobs:
 
         - name: Changelog
           id: version-bump
-          uses: Enterwell/ChangelogManager-GitHub-Action@v3
+          uses: Enterwell/ChangelogManager-GitHub-Action@v3.5.0
           with:
             changelog-location: ./packages/${{ inputs.name }}
             should-bump-version: true
