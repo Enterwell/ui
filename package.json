@@ -3,7 +3,7 @@
   "name": "ui",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "scripts": {
     "build": "turbo run build",
