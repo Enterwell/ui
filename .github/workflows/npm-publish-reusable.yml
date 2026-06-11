@@ -26,7 +26,7 @@ jobs:
         steps:
         # Ensuring that only one PR-environment-creation per branch will run at a time
         - name: Mutex setup
-          uses: ben-z/gh-action-mutex@v1.0-alpha-7
+          uses: ben-z/gh-action-mutex@v1.0-alpha-8
           with:
             branch: "mutex/${{ github.event.workflow_run.head_branch }}-publish"
 
