@@ -106,7 +106,7 @@ export type DropdownButtonOption = {
 };
 
 // @public
-export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
+export type DropdownButtonProps = Omit<ButtonProps, "onClick"> & {
     options?: DropdownButtonOption[];
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
@@ -161,7 +161,7 @@ export type SearchHeaderProps = {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>(input: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"]>(input: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -170,7 +170,7 @@ export type SelectItem = {
 };
 
 // @public
-export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"]> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
     value: T | T[];
     options: T[];
     onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
