@@ -1,37 +1,41 @@
+import { ArrowDropDown } from "@mui/icons-material";
 import {
   Button,
   ButtonGroup,
   type ButtonGroupProps,
-  Popper,
-  Paper,
+  CircularProgress,
+  ClickAwayListener,
   MenuItem,
   MenuList,
-  ClickAwayListener,
-  CircularProgress
-} from '@mui/material';
-import { ArrowDropDown } from '@mui/icons-material';
-import {
-  useState, useEffect, useRef, forwardRef, MouseEvent
-} from 'react';
+  Paper,
+  Popper,
+} from "@mui/material";
+import { forwardRef, type MouseEvent, useEffect, useRef, useState } from "react";
 
 /**
  * Split button props.
  * @public
  */
 export type SplitButtonProps = Omit<ButtonGroupProps, "onChange" | "onClick"> & {
-  options: Array<{ key: string, value: string }>,
-  loading?: boolean,
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>, option: { key: string, value: string }) => void,
-  onChange?: (event: React.MouseEvent<HTMLLIElement>, option: { key: string, value: string }) => void,
-}
+  options: Array<{ key: string; value: string }>;
+  loading?: boolean;
+  onClick?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    option: { key: string; value: string },
+  ) => void;
+  onChange?: (
+    event: React.MouseEvent<HTMLLIElement>,
+    option: { key: string; value: string },
+  ) => void;
+};
 
 /**
-* The split button component.
-* @param props - The props.
-* @param ref - The reference.
-* @returns The react function component.
-* @public
-*/
+ * The split button component.
+ * @param props - The props.
+ * @param ref - The reference.
+ * @returns The react function component.
+ * @public
+ */
 const SplitButton = forwardRef<HTMLButtonElement, SplitButtonProps>((props, ref) => {
   const {
     children,
@@ -99,38 +103,42 @@ const SplitButton = forwardRef<HTMLButtonElement, SplitButtonProps>((props, ref)
           onClick={handleClick}
           variant={variant}
           sx={{
-            position: 'relative',
-            '&.Mui-disabled': { pointerEvents: 'auto' },
-            color: loading ? 'transparent !important' : undefined,
+            position: "relative",
+            "&.Mui-disabled": { pointerEvents: "auto" },
+            color: loading ? "transparent !important" : undefined,
           }}
         >
-          {loading && <CircularProgress size={16} sx={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-          }} />}
+          {loading && (
+            <CircularProgress
+              size={16}
+              sx={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+            />
+          )}
           {children}
         </Button>
         <Button onClick={handleToggle} ref={anchorRef}>
           <ArrowDropDown />
         </Button>
       </ButtonGroup>
-      <Popper
-        open={open}
-        anchorEl={anchorRef.current}
-      >
+      <Popper open={open} anchorEl={anchorRef.current}>
         <Paper>
           <ClickAwayListener onClickAway={handleClose}>
             <MenuList autoFocusItem>
-              {options?.length > 0 ? options.map((option, index) => (
-                <MenuItem
-                  key={option.key}
-                  selected={index === selectedIndex}
-                  onClick={(e) => handleMenuItemClick(e, index)}
-                >
-                  {option.value}
-                </MenuItem>
-              )) : (
+              {options?.length > 0 ? (
+                options.map((option, index) => (
+                  <MenuItem
+                    key={option.key}
+                    selected={index === selectedIndex}
+                    onClick={(e) => handleMenuItemClick(e, index)}
+                  >
+                    {option.value}
+                  </MenuItem>
+                ))
+              ) : (
                 <MenuItem disabled>Nema elemenata</MenuItem>
               )}
             </MenuList>
@@ -140,6 +148,6 @@ const SplitButton = forwardRef<HTMLButtonElement, SplitButtonProps>((props, ref)
     </>
   );
 });
-SplitButton.displayName = 'SplitButton';
+SplitButton.displayName = "SplitButton";
 
 export { SplitButton };

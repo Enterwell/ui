@@ -1,13 +1,13 @@
 import {
-  Dialog,
-  DialogContent,
-  DialogActions,
   Button,
-  Typography,
-  type DialogProps,
   type ButtonProps,
-} from '@mui/material';
-import { Stack } from '@mui/system';
+  Dialog,
+  DialogActions,
+  DialogContent,
+  type DialogProps,
+  Typography,
+} from "@mui/material";
+import { Stack } from "@mui/system";
 
 /**
  * The confirm dialog props type.
@@ -26,7 +26,7 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 
 /**
  * The confirm dialog component.
- * 
+ *
  * @param props - The props.
  * @returns The confirm dialog.
  * @public
@@ -47,8 +47,14 @@ export function ConfirmDialog({
     <Dialog open={isOpen} onClose={onCancel} maxWidth={maxWidth} {...rest}>
       <DialogContent>
         <Stack spacing={2} paddingX={3}>
-          <Typography variant="h2" textAlign="center" paddingTop={4}>{header}</Typography>
-          {message && <Typography color="textSecondary" textAlign="center">{message}</Typography>}
+          <Typography variant="h2" textAlign="center" paddingTop={4}>
+            {header}
+          </Typography>
+          {message && (
+            <Typography color="textSecondary" textAlign="center">
+              {message}
+            </Typography>
+          )}
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>

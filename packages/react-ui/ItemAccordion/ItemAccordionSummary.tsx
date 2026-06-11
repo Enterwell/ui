@@ -1,18 +1,15 @@
-import MuiAccordionSummary, { type AccordionSummaryProps } from '@mui/material/AccordionSummary';
-import { ExpandMore } from '@mui/icons-material';
+import { ExpandMore } from "@mui/icons-material";
+import MuiAccordionSummary, { type AccordionSummaryProps } from "@mui/material/AccordionSummary";
 
 /**
  * Item accordion summary component.
- * 
+ *
  * @param props - The props of the component
  * @returns The ItemAccordionSummary component.
  * @public
  */
 export function ItemAccordionSummary(props: AccordionSummaryProps) {
-  const {
-    children,
-    ...rest
-  } = props;
+  const { children, ...rest } = props;
 
   return (
     <MuiAccordionSummary
@@ -21,7 +18,7 @@ export function ItemAccordionSummary(props: AccordionSummaryProps) {
       sx={{ height: 56, ...rest.sx }}
     >
       {children}
-    </MuiAccordionSummary >
+    </MuiAccordionSummary>
   );
 }
 
