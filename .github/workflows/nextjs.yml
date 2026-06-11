@@ -57,7 +57,7 @@ jobs:
       - name: Build with Next.js
         run: pnpm build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4.0.0
+        uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: ./apps/docs/out
 
