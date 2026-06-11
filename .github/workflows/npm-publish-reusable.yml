@@ -67,7 +67,7 @@ jobs:
             path-to-project-file: ./packages/${{ inputs.name }}/package.json
 
         - name: Commit changelog changes
-          uses: EndBug/add-and-commit@v9.1.4
+          uses: EndBug/add-and-commit@v10.0.0
           with:
             message: "[skip ci] [version-bump] Automated commit for version ${{ steps.version-bump.outputs.bumped-semantic-version }}"
 
