@@ -34,7 +34,7 @@ jobs:
         with:
           # Fetches all history for all tags and branches
           fetch-depth: 0
-      - uses: pnpm/action-setup@v2.4.1
+      - uses: pnpm/action-setup@v6.0.8
         with:
           version: 10.34.2
       - name: Use Node.js 22
