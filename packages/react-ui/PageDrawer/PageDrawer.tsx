@@ -8,7 +8,7 @@ import {
   type Theme,
 } from "@mui/material";
 import {
-  type ElementRef,
+  type ComponentRef,
   type HTMLAttributes,
   type MouseEvent as ReactMouseEvent,
   type TouchEvent as ReactTouchEvent,
@@ -93,9 +93,9 @@ export function PageDrawer({
 }: PageDrawerProps) {
   const isResizingRef = useRef(false);
   const didResize = useRef(false);
-  const ref = useRef<ElementRef<"div">>(null);
-  const contentRef = useRef<ElementRef<"div">>(null);
-  const handleRef = useRef<ElementRef<"div">>(null);
+  const ref = useRef<ComponentRef<"div">>(null);
+  const contentRef = useRef<ComponentRef<"div">>(null);
+  const handleRef = useRef<ComponentRef<"div">>(null);
   const [isExpanded, setIsExpanded] = useState(expanded ?? false);
   const realExpanded = expanded ?? isExpanded;
 
@@ -202,6 +202,7 @@ export function PageDrawer({
         "&::before": {
           display: "none",
         },
+        zIndex: (theme) => theme.zIndex.drawer,
         ...(slots.root?.sx ?? {}),
       }}
       expanded={realExpanded}
