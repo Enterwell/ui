@@ -30,20 +30,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.3
         with:
           # Fetches all history for all tags and branches
           fetch-depth: 0
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2.4.1
         with:
-          version: 8
+          version: 10.34.2
       - name: Use Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6.4.0
         with:
-          node-version: "22.14.0"
+          node-version: "24.16.0"
           cache: 'pnpm'
       - name: Restore cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5.0.5
         with:
           path: |
             .next/cache
@@ -57,7 +57,7 @@ jobs:
       - name: Build with Next.js
         run: pnpm build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: ./apps/docs/out
 
@@ -71,4 +71,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4.0.5

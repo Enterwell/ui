@@ -1,42 +1,42 @@
-import {
-  useState,
-  useRef,
-  type HTMLAttributes,
-  type ElementRef,
-  type TouchEvent as ReactTouchEvent,
-  type MouseEvent as ReactMouseEvent
-} from 'react';
+import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
   type SxProps,
-  type Theme
-} from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
+  type Theme,
+} from "@mui/material";
+import {
+  type ComponentRef,
+  type HTMLAttributes,
+  type MouseEvent as ReactMouseEvent,
+  type TouchEvent as ReactTouchEvent,
+  useRef,
+  useState,
+} from "react";
 
 const isScrollable = (node: Element) => {
   if (!(node instanceof HTMLElement || node instanceof SVGElement)) {
-    return false
+    return false;
   }
-  const style = getComputedStyle(node)
-  return ['overflow', 'overflow-x', 'overflow-y'].some((propertyName) => {
-    const value = style.getPropertyValue(propertyName)
-    return value === 'auto' || value === 'scroll'
-  })
-}
+  const style = getComputedStyle(node);
+  return ["overflow", "overflow-x", "overflow-y"].some((propertyName) => {
+    const value = style.getPropertyValue(propertyName);
+    return value === "auto" || value === "scroll";
+  });
+};
 
 const getScrollParent = (node: Element): Element => {
-  let currentParent = node.parentElement
+  let currentParent = node.parentElement;
   while (currentParent) {
     if (isScrollable(currentParent)) {
-      return currentParent
+      return currentParent;
     }
-    currentParent = currentParent.parentElement
+    currentParent = currentParent.parentElement;
   }
-  return document.scrollingElement || document.documentElement
-}
+  return document.scrollingElement || document.documentElement;
+};
 
 /**
  * The PageDrawer component props.
@@ -62,14 +62,14 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
   slots?: {
     root?: {
       sx?: SxProps<Theme>;
-    },
+    };
     summary?: {
       sx?: SxProps<Theme>;
-    },
+    };
     details?: {
       sx?: SxProps<Theme>;
-    }
-  }
+    };
+  };
 };
 
 /**
@@ -80,28 +80,27 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
  * @public
  */
 export function PageDrawer({
-  expanded, 
+  expanded,
   onChange,
   children,
-  height, 
-  minHeight = 50, 
+  height,
+  minHeight = 50,
   onResize,
-  color = 'primary.dark', 
-  bgColor = 'background.default',
+  color = "primary.dark",
+  bgColor = "background.default",
   slots = {},
-  ...rest 
+  ...rest
 }: PageDrawerProps) {
   const isResizingRef = useRef(false);
   const didResize = useRef(false);
-  const ref = useRef<ElementRef<'div'>>(null);
-  const contentRef = useRef<ElementRef<'div'>>(null);
-  const handleRef = useRef<ElementRef<'div'>>(null);
+  const ref = useRef<ComponentRef<"div">>(null);
+  const contentRef = useRef<ComponentRef<"div">>(null);
+  const handleRef = useRef<ComponentRef<"div">>(null);
   const [isExpanded, setIsExpanded] = useState(expanded ?? false);
   const realExpanded = expanded ?? isExpanded;
 
   const handleOnChange = () => {
-    if (didResize.current)
-      return;
+    if (didResize.current) return;
 
     setIsExpanded(!realExpanded);
     if (onChange) {
@@ -114,9 +113,9 @@ export function PageDrawer({
 
     isResizingRef.current = true;
     didResize.current = false;
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-  }
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
+  };
 
   const handleMouseDown = (event: ReactMouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
@@ -124,8 +123,8 @@ export function PageDrawer({
 
     isResizingRef.current = true;
     didResize.current = false;
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   const handleTouchMove = (event: TouchEvent) => {
@@ -141,21 +140,27 @@ export function PageDrawer({
 
     const containerRect = ref.current?.getBoundingClientRect();
     const handleClientRect = handleRef.current?.getBoundingClientRect();
-    let newHeight: number | undefined = (containerRect?.y ?? 0) + (containerRect?.height ?? 0) - clientY - (handleClientRect?.height ?? 0) / 2;
+    let newHeight: number | undefined =
+      (containerRect?.y ?? 0) +
+      (containerRect?.height ?? 0) -
+      clientY -
+      (handleClientRect?.height ?? 0) / 2;
 
     // Correct for min height
     if (newHeight < minHeight) return;
 
     // Correct for max height
     // We use scroll parent as container because the drawer is sticky
-    const containerClientRect = getScrollParent(ref.current ?? document.documentElement).getBoundingClientRect();
+    const containerClientRect = getScrollParent(
+      ref.current ?? document.documentElement,
+    ).getBoundingClientRect();
     if (newHeight > containerClientRect.height) {
       newHeight = containerClientRect?.height - (handleClientRect?.height ?? 0);
     }
 
     if (contentRef.current && newHeight != null) {
       didResize.current = true;
-      contentRef.current.style.setProperty('height', `${newHeight}px`);
+      contentRef.current.style.setProperty("height", `${newHeight}px`);
       if (onResize) {
         onResize(newHeight);
       }
@@ -169,8 +174,8 @@ export function PageDrawer({
 
     isResizingRef.current = false;
 
-    document.removeEventListener('touchmove', handleTouchMove);
-    document.removeEventListener('touchend', handleTouchEnd);
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
   };
 
   const handleMouseUp = (event: MouseEvent) => {
@@ -181,23 +186,24 @@ export function PageDrawer({
 
     isResizingRef.current = false;
 
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
   };
 
   return (
     <Accordion
       ref={ref}
       sx={{
-        position: 'sticky',
-        inset: 'auto 0 0 0',
-        bgcolor: 'transparent',
-        backgroundImage: 'none',
-        border: 'none',
-        '&::before': {
-          display: 'none'
+        position: "sticky",
+        inset: "auto 0 0 0",
+        bgcolor: "transparent",
+        backgroundImage: "none",
+        border: "none",
+        "&::before": {
+          display: "none",
         },
-        ...(slots.root?.sx ?? {})
+        zIndex: (theme) => theme.zIndex.drawer,
+        ...(slots.root?.sx ?? {}),
       }}
       expanded={realExpanded}
       onChange={handleOnChange}
@@ -209,39 +215,39 @@ export function PageDrawer({
         onTouchStart={handleTouchStart}
         expandIcon={<ExpandMore />}
         sx={{
-          position: 'relative',
+          position: "relative",
           minHeight: 32,
           height: 32,
-          '.MuiAccordionSummary-expandIconWrapper': {
+          ".MuiAccordionSummary-expandIconWrapper": {
             bgcolor: color,
-            color: 'primary.main',
-            borderRadius: 1
+            color: "primary.main",
+            borderRadius: 1,
           },
-          '&.Mui-expanded': {
+          "&.Mui-expanded": {
             minHeight: 24,
             height: 24,
           },
-          '&::before': {
-            display: 'block',
+          "&::before": {
+            display: "block",
             content: '""',
-            position: 'absolute',
-            top: '40%',
+            position: "absolute",
+            top: "40%",
             left: 0,
             right: 0,
             bottom: 0,
-            bgcolor: bgColor
+            bgcolor: bgColor,
           },
-          ...(slots.summary?.sx ?? {})
+          ...(slots.summary?.sx ?? {}),
         }}
       >
         <Box
           sx={{
-            borderTop: '1px solid',
-            borderBottom: '1px solid',
+            borderTop: "1px solid",
+            borderBottom: "1px solid",
             borderColor: color,
             height: 3,
-            width: '100%',
-            position: 'absolute',
+            width: "100%",
+            position: "absolute",
             left: 0,
             right: 0,
           }}
@@ -251,14 +257,14 @@ export function PageDrawer({
         ref={contentRef}
         sx={{
           bgcolor: bgColor,
-          overflowX: 'hidden',
-          overflowY: 'auto',
+          overflowX: "hidden",
+          overflowY: "auto",
           height: height ? `${height}px` : undefined,
-          ...(slots.details?.sx ?? {})
+          ...(slots.details?.sx ?? {}),
         }}
       >
         {children}
       </AccordionDetails>
     </Accordion>
   );
-};
+}

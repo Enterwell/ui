@@ -21,7 +21,7 @@ import { HTMLAttributes } from 'react';
 import { JSX } from 'react';
 import { PropsWithChildren } from 'react';
 import * as react from 'react';
-import * as react_jsx_runtime from 'react/jsx-runtime';
+import react__default from 'react';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 import { SxProps } from '@mui/material';
@@ -32,7 +32,7 @@ import { Theme } from '@mui/material';
 import { TypographyVariant } from '@mui/material';
 
 // @public
-export function ConfirmButton({ header, message, confirmButtonText, color, iconButton, onConfirm, slots, ...rest }: ConfirmButtonProps): react_jsx_runtime.JSX.Element;
+export function ConfirmButton(input: ConfirmButtonProps): react.JSX.Element;
 
 // @public
 export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
@@ -46,7 +46,7 @@ export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDial
 };
 
 // @public
-export function ConfirmDialog({ isOpen, header, message, maxWidth, color, confirmButtonText, cancelButtonText, onConfirm, onCancel, ...rest }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+export function ConfirmDialog(input: ConfirmDialogProps): react.JSX.Element;
 
 // @public
 export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color"> & {
@@ -61,7 +61,7 @@ export type ConfirmDialogProps = Omit<DialogProps, "open" | "onClose" | "color">
 };
 
 // @public
-export function DatePicker({ onBlur, helperText, error, required, format, renderInput, ...rest }: DatePickerProps): react_jsx_runtime.JSX.Element;
+export function DatePicker(input: DatePickerProps): JSX.Element;
 
 // @public
 export type DatePickerProps = Omit<DatePickerProps_2<Date, false>, "renderInput"> & {
@@ -73,7 +73,7 @@ export type DatePickerProps = Omit<DatePickerProps_2<Date, false>, "renderInput"
 };
 
 // @public
-export function DateTimeRangePicker({ start, end, hideTime, useSeconds, preselectOptions, onChange, ...rest }: DateTimeRangePickerProps): react_jsx_runtime.JSX.Element;
+export function DateTimeRangePicker(input: DateTimeRangePickerProps): react.JSX.Element;
 
 // @public
 export type DateTimeRangePickerPreselectOption = {
@@ -97,7 +97,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
 
 // @public
-export function DropdownButton({ options, onClick, icon, disabled, ...rest }: DropdownButtonProps): react_jsx_runtime.JSX.Element;
+export function DropdownButton(input: DropdownButtonProps): react.JSX.Element;
 
 // @public
 export type DropdownButtonOption = {
@@ -106,26 +106,26 @@ export type DropdownButtonOption = {
 };
 
 // @public
-export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
+export type DropdownButtonProps = Omit<ButtonProps, "onClick"> & {
     options?: DropdownButtonOption[];
     icon?: ReactElement;
     onClick?: (event: any, value: any) => void;
 };
 
 // @public
-export function ItemAccordion(props: AccordionProps): react_jsx_runtime.JSX.Element;
+export function ItemAccordion(props: AccordionProps): react.JSX.Element;
 
 // @public
-export function ItemAccordionActions(props: AccordionActionsProps): react_jsx_runtime.JSX.Element;
+export function ItemAccordionActions(props: AccordionActionsProps): react.JSX.Element;
 
 // @public
-export function ItemAccordionDetails(props: AccordionDetailsProps): react_jsx_runtime.JSX.Element;
+export function ItemAccordionDetails(props: AccordionDetailsProps): react.JSX.Element;
 
 // @public
-export function ItemAccordionSummary(props: AccordionSummaryProps): react_jsx_runtime.JSX.Element;
+export function ItemAccordionSummary(props: AccordionSummaryProps): react.JSX.Element;
 
 // @public
-export function PageDrawer({ expanded, onChange, children, height, minHeight, onResize, color, bgColor, slots, ...rest }: PageDrawerProps): react_jsx_runtime.JSX.Element;
+export function PageDrawer(input: PageDrawerProps): react.JSX.Element;
 
 // @public
 export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
@@ -150,7 +150,7 @@ export type PageDrawerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
-export function SearchHeader({ onSubmit, placeholder, children, variant }: SearchHeaderProps): react_jsx_runtime.JSX.Element;
+export function SearchHeader(input: SearchHeaderProps): react__default.JSX.Element;
 
 // @public
 export type SearchHeaderProps = {
@@ -161,7 +161,7 @@ export type SearchHeaderProps = {
 };
 
 // @public
-export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({ multiple, value, options, placeholder, loading: parentLoading, label, onChange, displayOption, pageSize, onPage, debounce, noOptionsText, loadingOptionsText, error, helperText, required, disableFilterOptions, stopPropagationOnKeyCodeSpace, onBlur, listStartDecorator, listEndDecorator, ...rest }: SelectProps<T, ChipComponent>): react_jsx_runtime.JSX.Element;
+export function Select<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"]>(input: SelectProps<T, ChipComponent>): react.JSX.Element;
 
 // @public
 export type SelectItem = {
@@ -170,7 +170,7 @@ export type SelectItem = {
 };
 
 // @public
-export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
+export type SelectProps<T extends SelectItem, ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"]> = Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
     value: T | T[];
     options: T[];
     onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
@@ -195,13 +195,13 @@ export type SelectProps<T extends SelectItem, ChipComponent extends React.Elemen
 };
 
 // @public
-export function SideNav({ children, sx, width, headerHeight, header, endAdorner, ...rest }: SideNavProps): react_jsx_runtime.JSX.Element;
+export function SideNav(input: SideNavProps): react.JSX.Element;
 
 // @public
-export function SideNavItem({ children, href, selected, icon }: SideNavItemProps): react_jsx_runtime.JSX.Element;
+export function SideNavItem(input: SideNavItemProps): react.JSX.Element;
 
 // @public
-export function SideNavItemGroup({ children, label, expanded: controlledExpanded, defaultExpanded }: SideNavItemGroupProps): react_jsx_runtime.JSX.Element;
+export function SideNavItemGroup(input: SideNavItemGroupProps): react.JSX.Element;
 
 // @public
 export type SideNavItemGroupProps = PropsWithChildren<{
@@ -246,7 +246,7 @@ export type SplitButtonProps = Omit<ButtonGroupProps, "onChange" | "onClick"> & 
 };
 
 // @public
-export function TimeInput({ value, defaultValue, useSeconds, onChange, onKeyDown, onBlur, onTimeChange, ...rest }: TimeInputProps): react_jsx_runtime.JSX.Element;
+export function TimeInput(input: TimeInputProps): react.JSX.Element;
 
 // @public
 export type TimeInputProps = ComponentProps<typeof TextField> & {

@@ -1,9 +1,12 @@
-import { DatePicker as MuiDatePicker, type DatePickerProps as MuiDatePickerProps } from '@mui/x-date-pickers/DatePicker';
-import { TextField, type TextFieldProps } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
-import { hr } from 'date-fns/locale/hr';
-import { FocusEvent, JSX } from 'react';
+import { TextField, type TextFieldProps } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
+import {
+  DatePicker as MuiDatePicker,
+  type DatePickerProps as MuiDatePickerProps,
+} from "@mui/x-date-pickers/DatePicker";
+import { hr } from "date-fns/locale/hr";
+import type { FocusEvent, JSX } from "react";
 
 /**
  * DatePicker props
@@ -37,15 +40,17 @@ export function DatePicker({
       <MuiDatePicker
         format={format}
         slots={{
-          field: renderInput ?? ((params) => (
-            <TextField
-              error={error}
-              helperText={helperText}
-              required={required}
-              onBlur={onBlur}
-              {...params}
-            />
-          ))
+          field:
+            renderInput ??
+            ((params) => (
+              <TextField
+                error={error}
+                helperText={helperText}
+                required={required}
+                onBlur={onBlur}
+                {...params}
+              />
+            )),
         }}
         {...rest}
       />
