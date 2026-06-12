@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.8.0] - 2026-06-12
+### Changed
+- Updated packages
+
 ## [0.7.0] - 2025-04-02
 ### Changed
 - Updated React to v19
