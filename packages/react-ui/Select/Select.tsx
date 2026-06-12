@@ -1,7 +1,14 @@
-import { useState, useEffect, KeyboardEvent, SyntheticEvent, FocusEvent, ReactNode } from 'react';
-import { Autocomplete, TextField, CircularProgress, ChipTypeMap, Paper } from '@mui/material';
-import { type AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
-import { useDebounce } from '@enterwell/react-hooks';
+import { useDebounce } from "@enterwell/react-hooks";
+import { Autocomplete, type ChipTypeMap, CircularProgress, Paper, TextField } from "@mui/material";
+import { type AutocompleteProps, createFilterOptions } from "@mui/material/Autocomplete";
+import {
+  type FocusEvent,
+  type KeyboardEvent,
+  type ReactNode,
+  type SyntheticEvent,
+  useEffect,
+  useState,
+} from "react";
 
 const ScrollLoadOffset = 100;
 
@@ -11,7 +18,7 @@ const ScrollLoadOffset = 100;
  * @param array - The input array.
  * @returns Returns new array.
  */
-function distinctByValue<T extends { value: any; }>(array: T[]) {
+function distinctByValue<T extends { value: any }>(array: T[]) {
   const a = array.concat();
   for (let i = 0; i < a.length; ++i) {
     for (let j = i + 1; j < a.length; ++j) {
@@ -39,34 +46,37 @@ export type SelectItem = {
  */
 export type SelectProps<
   T extends SelectItem,
-  ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']> =
-  Omit<AutocompleteProps<T, boolean, false, false, ChipComponent>, "options" | "value" | "onChange" | "renderInput" | "renderOption"> & {
-    value: T | T[];
-    options: T[];
-    onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
-    multiple?: boolean;
-    placeholder?: string;
-    loading?: boolean;
-    label?: ReactNode;
-    displayOption?: (option: T) => string | ReactNode;
-    pageSize?: number;
-    onPage?: (text: string | null, page: number, pageSize: number) => void;
+  ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"],
+> = Omit<
+  AutocompleteProps<T, boolean, false, false, ChipComponent>,
+  "options" | "value" | "onChange" | "renderInput" | "renderOption"
+> & {
+  value: T | T[];
+  options: T[];
+  onChange: (event: SyntheticEvent<Element, Event>, value: T[]) => void;
+  multiple?: boolean;
+  placeholder?: string;
+  loading?: boolean;
+  label?: ReactNode;
+  displayOption?: (option: T) => string | ReactNode;
+  pageSize?: number;
+  onPage?: (text: string | null, page: number, pageSize: number) => void;
 
-    /**
-     * Defaults to 200 (ms).
-     */
-    debounce?: number;
-    noOptionsText?: string;
-    loadingOptionsText?: string;
-    error?: boolean;
-    helperText?: string;
-    required?: boolean;
-    disableFilterOptions?: boolean;
-    stopPropagationOnKeyCodeSpace?: boolean;
-    onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    listStartDecorator?: ReactNode;
-    listEndDecorator?: ReactNode;
-  };
+  /**
+   * Defaults to 200 (ms).
+   */
+  debounce?: number;
+  noOptionsText?: string;
+  loadingOptionsText?: string;
+  error?: boolean;
+  helperText?: string;
+  required?: boolean;
+  disableFilterOptions?: boolean;
+  stopPropagationOnKeyCodeSpace?: boolean;
+  onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  listStartDecorator?: ReactNode;
+  listEndDecorator?: ReactNode;
+};
 
 /**
  * The select component.
@@ -77,31 +87,31 @@ export type SelectProps<
  */
 export function Select<
   T extends SelectItem,
-  ChipComponent extends React.ElementType = ChipTypeMap['defaultComponent']>({
-    multiple,
-    value,
-    options,
-    placeholder,
-    loading: parentLoading,
-    label,
-    onChange,
-    displayOption,
-    pageSize,
-    onPage,
-    debounce = 200,
-    noOptionsText = 'Nema elemenata',
-    loadingOptionsText = 'Učitavanje...',
-    error,
-    helperText = '',
-    required,
-    disableFilterOptions,
-    stopPropagationOnKeyCodeSpace,
-    onBlur,
-    listStartDecorator,
-    listEndDecorator,
-    ...rest
-  }: SelectProps<T, ChipComponent>) {
-
+  ChipComponent extends React.ElementType = ChipTypeMap["defaultComponent"],
+>({
+  multiple,
+  value,
+  options,
+  placeholder,
+  loading: parentLoading,
+  label,
+  onChange,
+  displayOption,
+  pageSize,
+  onPage,
+  debounce = 200,
+  noOptionsText = "Nema elemenata",
+  loadingOptionsText = "Učitavanje...",
+  error,
+  helperText = "",
+  required,
+  disableFilterOptions,
+  stopPropagationOnKeyCodeSpace,
+  onBlur,
+  listStartDecorator,
+  listEndDecorator,
+  ...rest
+}: SelectProps<T, ChipComponent>) {
   // Input text and debounced text are used to more cleanly
   // call an BE for additional data when user changes input.
   const [inputText, setInputText] = useState<string | null>(null);
@@ -153,7 +163,7 @@ export function Select<
     if (scrollOffset > listboxNode.scrollHeight) {
       handleScrollPagination();
     }
-  }
+  };
 
   /**
    * Handle the dropdown opening.
@@ -183,7 +193,7 @@ export function Select<
    * @param event - event
    */
   const handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (stopPropagationOnKeyCodeSpace && event.key === ' ') {
+    if (stopPropagationOnKeyCodeSpace && event.key === " ") {
       event.stopPropagation();
     }
   };
@@ -191,7 +201,7 @@ export function Select<
   // If we passed in selected elements to the component, check if its an array.
   // Because, if its not, it needs to be.
   const defaultValue = Array.isArray(value) ? value : [value];
-  const inputValue = multiple ? defaultValue : defaultValue?.at(0) ?? null;
+  const inputValue = multiple ? defaultValue : (defaultValue?.at(0) ?? null);
 
   // Merges both arrays and gets unique items
   const optionItems = distinctByValue(options.concat(defaultValue))
@@ -199,9 +209,7 @@ export function Select<
     .map((o) => ({ ...o, text: o.value }));
 
   // Filter options
-  const customFilterOptions = disableFilterOptions
-    ? (x: T[]) => x
-    : createFilterOptions<T>();
+  const customFilterOptions = disableFilterOptions ? (x: T[]) => x : createFilterOptions<T>();
 
   /**
    * Handles the change event.
@@ -224,9 +232,7 @@ export function Select<
       multiple={multiple}
       options={optionItems}
       value={inputValue}
-      noOptionsText={
-        parentLoading || loading ? loadingOptionsText : noOptionsText
-      }
+      noOptionsText={parentLoading || loading ? loadingOptionsText : noOptionsText}
       isOptionEqualToValue={(to, cv) => to?.value === cv?.value}
       // Options should have label property!
       getOptionLabel={(option) => option.label || option.value}
@@ -260,9 +266,7 @@ export function Select<
             onBlur,
             endAdornment: (
               <>
-                {parentLoading || loading ? (
-                  <CircularProgress color="inherit" size={20} />
-                ) : null}
+                {parentLoading || loading ? <CircularProgress color="inherit" size={20} /> : null}
                 {params.InputProps.endAdornment}
               </>
             ),

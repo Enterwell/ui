@@ -1,5 +1,13 @@
-import { Button, type ButtonProps, IconButton, List, ListItemButton, ListItemText, Popover } from '@mui/material';
-import { type ReactElement, useId, useState, MouseEvent } from 'react';
+import {
+  Button,
+  type ButtonProps,
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
+  Popover,
+} from "@mui/material";
+import { type MouseEvent, type ReactElement, useId, useState } from "react";
 
 /**
  * The type of the options of the {@link DropdownButton} component.
@@ -8,13 +16,13 @@ import { type ReactElement, useId, useState, MouseEvent } from 'react';
 export type DropdownButtonOption = {
   label: string | ReactElement;
   value: string;
-}
+};
 
 /**
  * The props of the {@link DropdownButton} component.
  * @public
  */
-export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
+export type DropdownButtonProps = Omit<ButtonProps, "onClick"> & {
   options?: DropdownButtonOption[];
   icon?: ReactElement;
   onClick?: (event: any, value: any) => void;
@@ -26,9 +34,7 @@ export type DropdownButtonProps = Omit<ButtonProps, 'onClick'> & {
  * @returns The component.
  * @public
  */
-export function DropdownButton({
-  options, onClick, icon, disabled, ...rest
-}: DropdownButtonProps) {
+export function DropdownButton({ options, onClick, icon, disabled, ...rest }: DropdownButtonProps) {
   const id = useId();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -39,10 +45,12 @@ export function DropdownButton({
     setOpen(true);
   };
 
-  const handleOnOptionClick = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>, option: DropdownButtonOption) => {
-    if (!onClick)
-      return;
-    
+  const handleOnOptionClick = (
+    event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+    option: DropdownButtonOption,
+  ) => {
+    if (!onClick) return;
+
     event.stopPropagation();
     onClick(event, option.value);
     setOpen(false);
@@ -78,14 +86,17 @@ export function DropdownButton({
         anchorEl={anchorEl}
         onClose={handleOnClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
       >
         <List sx={{ minWidth: 240 }}>
           {options?.map((option) => (
-            <ListItemButton key={option.value} onClick={(event) => handleOnOptionClick(event, option)}>
-              {typeof option.label === 'string' ? (
+            <ListItemButton
+              key={option.value}
+              onClick={(event) => handleOnOptionClick(event, option)}
+            >
+              {typeof option.label === "string" ? (
                 <ListItemText primary={option.label} />
               ) : (
                 option.label
@@ -96,4 +107,4 @@ export function DropdownButton({
       </Popover>
     </>
   );
-};
+}

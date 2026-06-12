@@ -21,9 +21,10 @@
     "build:js": "tsup index.tsx --format esm --dts",
     "after-build:api": "api-extractor run && node ./scripts/transform-api-docs.js",
     "build": "pnpm run \"/^before-build:.*/\" && pnpm run \"/^build:.*/\" && pnpm run \"/^after-build:.*/\"",
-    "lint": "eslint ."
+    "lint": "biome check ."
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.16",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@enterwell/react-hooks": "workspace:*",
@@ -37,7 +38,6 @@
     "@types/node": "24.13.2",
     "@types/react-dom": "19.2.3",
     "date-fns": "4.4.0",
-    "eslint-config-custom": "workspace:*",
     "react": "19.2.7",
     "rimraf": "6.1.3",
     "tsconfig": "workspace:*",

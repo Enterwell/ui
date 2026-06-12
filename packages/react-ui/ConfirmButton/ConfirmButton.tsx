@@ -1,31 +1,36 @@
-import { ConfirmDialog, type ConfirmDialogProps } from '../ConfirmDialog';
-import { useState } from 'react';
-import { Button, IconButton, type ButtonProps } from '@mui/material';
+import { Button, type ButtonProps, IconButton } from "@mui/material";
+import { useState } from "react";
+import { ConfirmDialog, type ConfirmDialogProps } from "../ConfirmDialog";
 
 /**
  * The keys of the {@link ConfirmDialog} props that are destructured from shared props.
  * @public
  */
-export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
+export type DialogDestructuredPropKeys =
+  | "header"
+  | "onConfirm"
+  | "message"
+  | "color"
+  | "confirmButtonText";
 
 /**
  * The props of the {@link ConfirmButton} component.
  * @public
  */
-export type ConfirmButtonProps =
-  Omit<ButtonProps, "onClick"> &
-  Pick<ConfirmDialogProps, DialogDestructuredPropKeys> &
-  {
+export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> &
+  Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
     /**
      * @defaultValue `false`
      */
     iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
-      // Omit already used props and shared props, re-add color so we can 
+      // Omit already used props and shared props, re-add color so we can
       // specify different color for the dialog than the button
-      dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & { color?: ConfirmDialogProps["color"] }
-    }
+      dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
+        color?: ConfirmDialogProps["color"];
+      };
+    };
   };
 
 /**
@@ -54,17 +59,9 @@ export function ConfirmButton({
   return (
     <>
       {iconButton ? (
-        <IconButton
-          color={color}
-          {...rest}
-          onClick={() => setOpen(true)}
-        />
+        <IconButton color={color} {...rest} onClick={() => setOpen(true)} />
       ) : (
-        <Button
-          color={color}
-          {...rest}
-          onClick={() => setOpen(true)}
-        />
+        <Button color={color} {...rest} onClick={() => setOpen(true)} />
       )}
       <ConfirmDialog
         isOpen={open}
@@ -74,7 +71,8 @@ export function ConfirmButton({
         message={message}
         color={color}
         confirmButtonText={confirmButtonText}
-        {...(slots?.dialog ?? {})} />
+        {...(slots?.dialog ?? {})}
+      />
     </>
   );
-};
+}

@@ -7,8 +7,32 @@ import hooksApi from '@enterwell/react-hooks/api';
 import uiApi from '@enterwell/react-ui/api';
 import muiHooksApi from '@enterwell/react-mui-hooks/api';
 
+/**
+ * Supported library badge types.
+ */
+type Library = 'MUI' | 'MUI X' | 'MUI X Pro';
+
+const libraryDefinitions: Record<Library, { label: string; url: string; className: string }> = {
+    'MUI': {
+        label: 'MUI',
+        url: 'https://mui.com/material-ui/',
+        className: 'bg-blue-600/10 text-blue-700 dark:text-blue-300 border-blue-600/20',
+    },
+    'MUI X': {
+        label: 'MUI X',
+        url: 'https://mui.com/x/introduction/',
+        className: 'bg-blue-600/10 text-blue-700 dark:text-blue-300 border-blue-600/20',
+    },
+    'MUI X Pro': {
+        label: 'MUI X Pro',
+        url: 'https://mui.com/x/introduction/licensing/#pro-plan',
+        className: 'bg-green-600/10 text-green-700 dark:text-green-300 border-green-600/20',
+    },
+};
+
 type ComponentDocsProps = {
     name: string;
+    libraries?: Library[];
 };
 
 type ComponentSource = PropsWithChildren<{
@@ -33,13 +57,31 @@ function componentComment(name: string) {
     return comments?.at(0);
 }
 
-export function ComponentDescription({ name }: ComponentDocsProps) {
+export function ComponentDescription({ name, libraries }: ComponentDocsProps) {
     const comment = componentComment(name);
     const { description } = comment || {};
 
     return (
         <div className='pt-2'>
             <Mdx>{description}</Mdx>
+            {libraries && libraries.length > 0 && (
+                <div className='flex flex-wrap gap-2 mt-3'>
+                    {libraries.map((lib) => {
+                        const def = libraryDefinitions[lib];
+                        return (
+                            <a
+                                key={lib}
+                                href={def.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium border no-underline hover:opacity-80 transition-opacity ${def.className}`}
+                            >
+                                {def.label}
+                            </a>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     )
 }
