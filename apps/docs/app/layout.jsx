@@ -7,7 +7,6 @@ import './global.css';
 import { SlackIcon } from '../components/internal/icons/SlackIcon';
 import Image from 'next/image';
 import { Search } from 'nextra/components'
-import { inter } from '../src/fonts';
 import { theme } from "../components/theme";
 import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
@@ -129,7 +128,7 @@ export default async function RootLayout({ children }) {
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
       </Head>
-      <body className={`${inter.variable} font-sans`}>
+      <body className="font-sans">
         <AppRouterCacheProvider options={{ key: 'css', enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <Layout

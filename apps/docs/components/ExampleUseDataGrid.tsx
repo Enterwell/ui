@@ -1,7 +1,7 @@
 'use client';
 
 import { TypedExtendedGridColDef, useDataGrid } from '@enterwell/react-mui-hooks';
-import { DataGridPro } from '@mui/x-data-grid-pro';
+import { DataGridPro, type DataGridProProps } from '@mui/x-data-grid-pro';
 import { useEffect } from 'react';
 
 type Todo = {
@@ -41,11 +41,12 @@ export function ExampleUseDataGrid() {
         };
     };
 
-    const { props: dataGridProps, refreshTable } = useDataGrid({
+    const { props, refreshTable } = useDataGrid({
         tableId: 'example-use-data-grid',
         columns,
         onPage: handleOnPage
     });
+    const dataGridProps = props as DataGridProProps;
 
     useEffect(() => {
         refreshTable();
