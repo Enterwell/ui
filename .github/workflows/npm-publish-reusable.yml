@@ -66,14 +66,14 @@ jobs:
             changes-location: ./packages/${{ inputs.name }}/changes
             path-to-project-file: ./packages/${{ inputs.name }}/package.json
 
+        - run: pnpm i --frozen-lockfile --filter=${{ inputs.packageName }}...
+        - run: pnpm build --filter=${{ inputs.packageName }}...
+        - run: pnpm publish --access public --filter=${{ inputs.packageName }} --no-git-checks
+
         - name: Commit changelog changes
           uses: EndBug/add-and-commit@v9.1.4
           with:
             message: "[skip ci] [version-bump] Automated commit for version ${{ steps.version-bump.outputs.bumped-semantic-version }}"
-
-        - run: pnpm i --frozen-lockfile --filter=${{ inputs.packageName }}...
-        - run: pnpm build --filter=${{ inputs.packageName }}...
-        - run: pnpm publish --access public --filter=${{ inputs.packageName }} --no-git-checks
 
         - name: Git tags update
           run: |
