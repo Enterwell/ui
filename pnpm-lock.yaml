@@ -78,8 +78,8 @@ importers:
         specifier: 2.2.12
         version: 2.2.12
       comment-parser:
-        specifier: 1.4.7
-        version: 1.4.7
+        specifier: 1.4.8
+        version: 1.4.8
       next:
         specifier: 15.5.19
         version: 15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -2822,8 +2822,8 @@ packages:
     resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
     engines: {node: ^12.20.0 || >=14}
 
-  comment-parser@1.4.7:
-    resolution: {integrity: sha512-0h+uSNtQGW3D98eQt3jJ8L06Fves8hncB4V/PKdw/Qb8Hnk19VaKuTr55UNRYiSoVa7WwrFls+rh3ux9agmkeQ==}
+  comment-parser@1.4.8:
+    resolution: {integrity: sha512-rKZTGo4fzKYna8UcL0isTg5wkBNla7bxTypLwZQXjIdi++IdP1OJ41rI5Mti3/jltkPujbu4i9LIARYA+zpotQ==}
     engines: {node: '>= 12.0.0'}
 
   compute-scroll-into-view@3.1.1:
@@ -3389,6 +3389,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -7929,7 +7930,7 @@ snapshots:
 
   commander@9.2.0: {}
 
-  comment-parser@1.4.7: {}
+  comment-parser@1.4.8: {}
 
   compute-scroll-into-view@3.1.1: {}
 
