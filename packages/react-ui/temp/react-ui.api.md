@@ -14,6 +14,7 @@ import { ButtonGroupProps } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 import { ChipTypeMap } from '@mui/material';
 import { ComponentProps } from 'react';
+import { ComponentType } from 'react';
 import { DatePickerProps as DatePickerProps_2 } from '@mui/x-date-pickers/DatePicker';
 import { DialogProps } from '@mui/material';
 import { FocusEvent as FocusEvent_2 } from 'react';
@@ -35,13 +36,14 @@ import { TypographyVariant } from '@mui/material';
 export function ConfirmButton(input: ConfirmButtonProps): react.JSX.Element;
 
 // @public
-export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
+export type ConfirmButtonProps = Omit<ButtonProps, "onClick" | "slots" | "slotProps"> & Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
     iconButton?: boolean;
     onConfirm?: () => void;
     slots?: {
-        dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
-            color?: ConfirmDialogProps["color"];
-        };
+        dialog?: ComponentType<ConfirmDialogProps>;
+    };
+    slotProps?: {
+        dialog?: Partial<Omit<ConfirmDialogProps, "isOpen" | "onConfirm" | "onCancel">>;
     };
 };
 
@@ -94,7 +96,7 @@ export type DateTimeRangePickerProps = Omit<ComponentProps<typeof TextField>, "o
 };
 
 // @public
-export type DialogDestructuredPropKeys = "header" | "onConfirm" | "message" | "color" | "confirmButtonText";
+export type DialogDestructuredPropKeys = "header" | "message" | "color" | "confirmButtonText";
 
 // @public
 export function DropdownButton(input: DropdownButtonProps): react.JSX.Element;
