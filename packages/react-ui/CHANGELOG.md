@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.19.0] - 2026-10-16
+### Added
+- [ConfirmDialog] Custom body content via children
+
+### Changed
+- [ConfirmButton] BREAKING - Move dialog props to slotProps.dialog and use slots.dialog for components
+
+### Fixed
+- [ConfirmButton] Allow omitting onConfirm as intended
+
 ## [0.18.0] - 2026-06-12
 ### Changed
 - Updated packages
