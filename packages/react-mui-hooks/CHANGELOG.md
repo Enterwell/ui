@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE: This is an automatically generated file. Do not modify contents of this file manually._
 
+## [0.11.1] - 2026-10-16
+### Fixed
+- Release pipeline
+
 ## [0.11.0] - 2026-06-12
 ### Changed
 - Updated packages
