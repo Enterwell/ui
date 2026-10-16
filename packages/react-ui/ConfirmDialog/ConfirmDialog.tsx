@@ -41,6 +41,7 @@ export function ConfirmDialog({
   cancelButtonText = "Odustani",
   onConfirm,
   onCancel,
+  children,
   ...rest
 }: ConfirmDialogProps) {
   return (
@@ -55,6 +56,7 @@ export function ConfirmDialog({
               {message}
             </Typography>
           )}
+          {children}
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>

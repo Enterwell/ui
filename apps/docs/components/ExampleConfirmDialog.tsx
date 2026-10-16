@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ConfirmDialog } from '@enterwell/react-ui';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 export function ExampleConfirmDialog() {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,12 @@ export function ExampleConfirmDialog() {
                 header='Confirm'
                 message='Are you sure you want to proceed with the operation?'
                 onCancel={() => setIsOpen(false)}
-                onConfirm={() => setIsOpen(false)} />
+                onConfirm={() => setIsOpen(false)}>
+                <Box component='ul' sx={{ listStyleType: 'disc', pl: 3 }}>
+                    <li>Your changes will be saved.</li>
+                    <li>Shared views will show the updated information.</li>
+                </Box>
+            </ConfirmDialog>
             {/* // @highlight-end */}
         </>
     )

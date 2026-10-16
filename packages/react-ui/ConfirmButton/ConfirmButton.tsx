@@ -1,35 +1,33 @@
 import { Button, type ButtonProps, IconButton } from "@mui/material";
-import { useState } from "react";
+import { type ComponentType, useState } from "react";
 import { ConfirmDialog, type ConfirmDialogProps } from "../ConfirmDialog";
 
 /**
  * The keys of the {@link ConfirmDialog} props that are destructured from shared props.
  * @public
  */
-export type DialogDestructuredPropKeys =
-  | "header"
-  | "onConfirm"
-  | "message"
-  | "color"
-  | "confirmButtonText";
+export type DialogDestructuredPropKeys = "header" | "message" | "color" | "confirmButtonText";
 
 /**
  * The props of the {@link ConfirmButton} component.
  * @public
  */
-export type ConfirmButtonProps = Omit<ButtonProps, "onClick"> &
+export type ConfirmButtonProps = Omit<ButtonProps, "onClick" | "slots" | "slotProps"> &
   Pick<ConfirmDialogProps, DialogDestructuredPropKeys> & {
     /**
      * @defaultValue `false`
      */
     iconButton?: boolean;
+    /** Called after the dialog is confirmed and closed. */
     onConfirm?: () => void;
+    /** Components used to render the confirmation dialog. */
     slots?: {
-      // Omit already used props and shared props, re-add color so we can
-      // specify different color for the dialog than the button
-      dialog?: Omit<ConfirmDialogProps, "isOpen" | "onCancel" | DialogDestructuredPropKeys> & {
-        color?: ConfirmDialogProps["color"];
-      };
+      /** @defaultValue ConfirmDialog */
+      dialog?: ComponentType<ConfirmDialogProps>;
+    };
+    /** Dialog props override the shared defaults; open state and callbacks remain controlled. */
+    slotProps?: {
+      dialog?: Partial<Omit<ConfirmDialogProps, "isOpen" | "onConfirm" | "onCancel">>;
     };
   };
 
@@ -47,9 +45,11 @@ export function ConfirmButton({
   iconButton = false,
   onConfirm,
   slots,
+  slotProps,
   ...rest
 }: ConfirmButtonProps) {
   const [open, setOpen] = useState(false);
+  const DialogComponent = slots?.dialog ?? ConfirmDialog;
 
   const handleConfirm = () => {
     setOpen(false);
@@ -63,15 +63,15 @@ export function ConfirmButton({
       ) : (
         <Button color={color} {...rest} onClick={() => setOpen(true)} />
       )}
-      <ConfirmDialog
-        isOpen={open}
-        onConfirm={handleConfirm}
-        onCancel={() => setOpen(false)}
+      <DialogComponent
         header={header}
         message={message}
         color={color}
         confirmButtonText={confirmButtonText}
-        {...(slots?.dialog ?? {})}
+        {...slotProps?.dialog}
+        isOpen={open}
+        onConfirm={handleConfirm}
+        onCancel={() => setOpen(false)}
       />
     </>
   );

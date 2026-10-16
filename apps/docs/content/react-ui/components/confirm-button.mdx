@@ -6,6 +6,8 @@ import { ConfirmButton } from '@enterwell/react-ui';
 import { ComponentWithSource } from '../../../components/docs/ComponentWithSource.tsx';
 import { ExampleConfirmButton } from '../../../components/ExampleConfirmButton.tsx';
 import { ExampleConfirmButtonIcon } from '../../../components/ExampleConfirmButtonIcon.tsx';
+import { ExampleConfirmButtonContent } from '../../../components/ExampleConfirmButtonContent.tsx';
+import { ExampleConfirmButtonCustomDialog } from '../../../components/ExampleConfirmButtonCustomDialog.tsx';
 import { ComponentDescription, ComponentParameters, ComponentSource } from '../../../components/docs/ComponentDocs';
 
 # ConfirmButton
@@ -18,6 +20,17 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 
 {/* <ComponentParameters name="ConfirmButton" /> */}
 
+`children` is the visible trigger-button label. `header`, `message`, `color`, and
+`confirmButtonText` provide defaults for the dialog. `onConfirm` is optional and
+runs after confirmation; cancelling only closes the dialog.
+
+Use `slotProps.dialog` to configure the dialog, including its `children`, button
+labels, and size. These props override the top-level dialog defaults. Use
+`slots.dialog` to provide a replacement component accepting `ConfirmDialogProps`.
+
+`ConfirmButton` owns the dialog's open state and supplies `isOpen`, `onConfirm`,
+and `onCancel`. Those three props cannot be configured through `slotProps.dialog`.
+
 ## Example
 
 <ComponentWithSource component={ ExampleConfirmButton } centered />
@@ -25,6 +38,56 @@ import { ComponentDescription, ComponentParameters, ComponentSource } from '../.
 ## As icon button
 
 <ComponentWithSource component={ ExampleConfirmButtonIcon } centered />
+
+## Custom content
+
+Pass body content through `slotProps.dialog.children`. It appears below the
+optional message while the button's own children remain its label. Confirming
+increments the count in this example; cancelling leaves it unchanged.
+
+<ComponentWithSource component={ ExampleConfirmButtonContent } centered />
+
+## Custom dialog component
+
+A replacement component receives `ConfirmDialogProps`, including configuration
+from `slotProps.dialog`. Connect `isOpen`, `onConfirm`, and `onCancel` to the
+replacement dialog as shown below; no additional open state is needed.
+
+<ComponentWithSource component={ ExampleConfirmButtonCustomDialog } centered />
+
+## Migrating dialog configuration
+
+`slots.dialog` now accepts a component instead of a props object. Move existing
+dialog configuration to `slotProps.dialog`:
+
+```tsx
+// Before
+<ConfirmButton
+    header="Confirm deletion"
+    onConfirm={handleDelete}
+    slots={{ dialog: { cancelButtonText: 'Keep item' } }}
+>
+    Delete item
+</ConfirmButton>
+
+// After
+<ConfirmButton
+    header="Confirm deletion"
+    onConfirm={handleDelete}
+    slotProps={{ dialog: { cancelButtonText: 'Keep item' } }}
+>
+    Delete item
+</ConfirmButton>
+```
+
+Wrappers that merge a default cancel label should also move that merge:
+
+```tsx
+slotProps={{
+    ...slotProps,
+    dialog: { cancelButtonText: 'Keep item', ...slotProps?.dialog },
+}}
+```
 
 ## Inspect
 
