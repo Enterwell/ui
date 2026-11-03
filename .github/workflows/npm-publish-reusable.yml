@@ -44,18 +44,12 @@ jobs:
 
         - name: Setup pnpm
           uses: pnpm/action-setup@v3.0.0
-          with:
-            version: 'latest'
 
         - uses: actions/setup-node@v6.4.0
           with:
             node-version: "24.16.0"
             cache: "pnpm"
-
-        - name: Setup npmrc
-          run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-          env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            registry-url: "https://registry.npmjs.org"
 
         - name: Changelog
           id: version-bump
@@ -69,6 +63,8 @@ jobs:
         - run: pnpm i --frozen-lockfile --filter=${{ inputs.packageName }}...
         - run: pnpm build --filter=${{ inputs.packageName }}...
         - run: pnpm publish --access public --filter=${{ inputs.packageName }} --no-git-checks
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
         - name: Commit changelog changes
           uses: EndBug/add-and-commit@v9.1.4
